@@ -1,0 +1,16 @@
+{
+    "ADVANCED_JOURNAL_SETTINGS": {
+        "CANCEL": "CANCEL",
+        "SAVE": "SAVE",
+        "TITLE": "Advanced Journal Settings",
+        "RESET_LABEL": "Reset to Default Values",
+        "JOURNAL_HISTORY": "Journal History",
+        "DEFAULT_JOURNAL_DATASTORE": "Default Journal Datastore",
+        "DEFAULT_JOURNAL_STORAGE": "Default Journal Storage",
+        "JOURNAL_SIZE_HARD_LIMIT": "Journal Size Hard Limit",
+        "JOURNAL_SIZE_WARNING_THRESHOLD": "Journal Size Warning Threshold",
+        "LIMIT_ERROR":  "The journal size hard limit must be higher than journal warning threshold.",
+        "PERSISTENT_HISTORY": "Fail safe history",
+        "PERSISTENT_HISTORY_LABEL" : "The time always saved in the journal, so that a recovery can always be performed. This time does not have to be contiguous with the rest of the journal."
+    }
+}

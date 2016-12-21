@@ -1,0 +1,17 @@
+.info-cell{
+  height:100%;
+  width:100%;
+  margin: 0;
+  border: none;
+  padding:0;
+  background-color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  &:focus{
+    background-color: transparent;
+  }
+  &:hover{
+    background-color: transparent;
+  }
+}

@@ -1,0 +1,117 @@
+.cards-filter-container {
+
+    .cards-filter-toggle-wrapper {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        width: auto;
+        padding-right: 20px;
+    }
+
+    .cards-filter-class-group-item {
+        display: block;
+        height: 18px;
+    }
+
+    .dropdown-menu {
+        border: 2px solid #616773;
+        padding: 0;
+    }
+
+    .slick-header-menu {
+        margin-top: 8px;
+        position: static;
+        border: none;
+        box-shadow: none;
+        padding-top: 20px;
+    }
+
+    .slick-grid-header-formatter {
+        width: 40px;
+    }
+
+    .cards-filter-name, .cards-active-filter__value {
+        white-space: nowrap;
+        line-height: 26px;
+        display: inline;
+    }
+
+    .cards-active-filter__content {
+        display: inline;
+
+    }
+
+    .card-selection-wrapper {
+        width: 30px;
+        height: 26px;
+        display: inline-block;
+        vertical-align: middle;
+    }
+}
+
+.card-active-filter--category-item {
+    font-weight: bold;
+}
+
+.cards-filters-drop-down {
+    .ui-select-choices {
+        outline: none;
+    }
+    @media (max-height: 515px) {
+        .ui-select-choices {
+            max-height: 80px;
+            outline: none;
+        }
+    }
+
+    .ui-select-choices-group-label {
+        font-weight: bold;
+        font-size: 1.1em;
+    }
+
+    .ui-select-choices-group {
+        > ul {
+            padding: 2.5px 0px;
+
+            > li {
+                padding-left: 5px;
+            }
+        }
+    }
+
+    .ui-select-dropdown.select2-drop.select2-with-searchbox.select2-drop-active {
+        border-top: 1px solid #7C8289;
+        padding-top: 4px;
+        outline: none;
+    }
+
+    a.ui-select-match {
+        cursor: default;
+        width: 70px;
+
+        span.select2-chosen {
+            display: none;
+        }
+
+        span.ui-select-toggle {
+            left: 45px;
+        }
+
+        border: none;
+        position: relative;
+        background: none;
+
+        &::before {
+            content: "ADD";
+            position: absolute;
+            left: 15px;
+            font-weight: bold;
+            color: #5581ae;
+        }
+
+        &:hover {
+            background: none;
+        }
+    }
+
+}

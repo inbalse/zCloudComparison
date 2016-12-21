@@ -1,0 +1,31 @@
+<div class="z-wizard-hud">
+    <ul>
+        <li ng-repeat="step in steps" ng-click="handleStepClick(step)">
+            <label class="{{step.class}}" ng-disabled="!step.isEnabled" >
+                {{step.stepTitle}}
+            </label>
+            <span ng-class="step.stateIcon"></span>
+        </li>
+    </ul>
+</div>
+
+<div class="z-wizard-body" id="z-wizard-placeholder">
+
+</div>
+
+<div class="z-wizard-footer">
+    <div class="pull-right">
+        <button class="btn btn-link" ng-click="handleButtonClick($event)" ng-disabled="!cancelEnabled">
+            {{'Z_WIZARD.CANCEL' | translate}}
+        </button>
+        <button class="btn z-btn-default" ng-click="handleButtonClick($event)" ng-disabled="!previousEnabled">
+            {{'Z_WIZARD.PREVIOUS' | translate}}
+        </button>
+        <button class="btn z-btn-default z-btn-wizard-next" ng-click="handleButtonClick($event)" ng-disabled="!nextEnabled">
+            {{'Z_WIZARD.NEXT' | translate}}
+        </button>
+        <button class="btn z-btn-default" ng-show="showDoneButton" ng-click="handleButtonClick($event)" ng-disabled="!doneEnabled">
+            {{'Z_WIZARD.DONE' | translate}}
+        </button>
+    </div>
+</div>

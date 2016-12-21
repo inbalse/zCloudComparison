@@ -1,0 +1,48 @@
+<div class="z-wizard-container-narrow restore-step-plan" ng-controller="restorePlanController" ng-cloak="">
+
+    <h5 class="recovery-title">{{'RESTORE_WIZARD.RESTORE_PLAN_STEP.INFO' | translate}}</h5>
+
+    <form class="form-horizontal">
+        <div class="form-group" ng-if="!isZca">
+            <div class="col-xs-6">
+                <z-radio value="restorePlanTypes.ByVpgName" model="data.planType">{{ 'RESTORE_WIZARD.RESTORE_PLAN_STEP.RESTORE_FROM_BACKUP' | translate }}
+                </z-radio>
+            </div>
+            <div class="col-xs-5">
+                <ui-select theme="select2" id="priority1" ng-model="$parent.data.selectedProtectionGroup" required="" ng-disabled="data.planType != restorePlanTypes.ByVpgName">
+                    <ui-select-match class="ui-select-match">{{$select.selected.DisplayName}}</ui-select-match>
+                    <ui-select-choices class="ui-select-choices" group-by="deletedVpgGroup" repeat="item in data.potentialSources.PotentialProtectionGroups | filter: $select.search">
+                        <span ng-class="item.IsExists ? '' : 'deleted-vpg'"  ng-bind-html="item.DisplayName | highlight: $select.search"></span>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+            <div class="col-xs-1">
+                        <span class="help-icon"
+                              tooltip-append-to-body="true"
+                              uib-tooltip-html="restoreFromBackupTooltip"
+                              tooltip-placement="right">?</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-6">
+                <z-radio ng-if="!isZca" value="restorePlanTypes.ByTarget" model="data.planType">{{ 'RESTORE_WIZARD.RESTORE_PLAN_STEP.RESTORE_FROM_REPOSITORY' | translate }}
+                </z-radio>
+            </div>
+            <div class="col-xs-5">
+                <ui-select theme="select2"  id="priority2" ng-model="$parent.data.selectedRepository" required="" ng-disabled="data.planType != restorePlanTypes.ByTarget">
+                    <ui-select-match class="ui-select-match">{{$select.selected.DisplayName}}</ui-select-match>
+                    <ui-select-choices class="ui-select-choices"  repeat="item in data.potentialSources.PotentialRepositories | filter: $select.search">
+                        <span ng-bind-html="item.DisplayName | highlight: $select.search"></span>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+            <div class="col-xs-1">
+                        <span class="help-icon"
+                              tooltip-append-to-body="true"
+                              uib-tooltip-html="restoreFromRepositoryTooltip"
+                              tooltip-placement="right">?</span>
+            </div>
+        </div>
+    </form>
+
+</div>

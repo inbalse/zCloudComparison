@@ -1,0 +1,14 @@
+{
+    "EDIT_VM": {
+        "TITLE_VMS": "Edit {{vmsCount}} selected VMs",
+        "TITLE_VM": "Edit VM",
+        "RECOVERY_HOST": "Recovery Host",
+        "STORAGE_PROFILE": "Storage Profile",
+        "RECOVERY_DATASTORE": "VM Recovery Datastore",
+        "RECOVERY_STORAGE": "VM Recovery Storage",
+        "JOURNAL_SIZE_HARD_LIMIT": "Journal Size Hard Limit",
+        "JOURNAL_SIZE_WARNING_THRESHOLD": "Journal Size Warning Threshold",
+        "JOURNAL_DATASTORE": "Journal Datastore",
+        "JOURNAL_STORAGE": "Journal Storage"
+    }
+}

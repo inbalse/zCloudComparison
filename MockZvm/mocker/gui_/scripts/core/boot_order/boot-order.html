@@ -1,0 +1,12 @@
+<base-modal-window modal-title="{{:: 'BOOT_ORDER.TITLE' | translate }}" close="handleCancelClicked" btns="buttons"
+                   loading="loading" help="bootOrderController">
+
+    <p class="step-desc">{{:: "BOOT_ORDER.ADD_INFO" | translate }}</p>
+    <a class="btn btn-link pull-right btn-add" ng-click="handleAddGroupClicked()"><b>{{:: "BOOT_ORDER.ADD_GROUP" | translate }}</b></a>
+
+    <div class="ui-tree boot-order-root" ui-tree="options" data-max-depth="2">
+        <ul ui-tree-nodes ng-model="list">
+            <li ng-repeat="item in list" ui-tree-node ng-include="partialViews.itemRenderer" class="tree-view-root-item"></li>
+        </ul>
+    </div>
+</base-modal-window>

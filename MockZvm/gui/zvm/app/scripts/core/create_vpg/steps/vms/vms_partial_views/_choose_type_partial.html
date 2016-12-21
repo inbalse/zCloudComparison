@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-xs-12">
+        <b class="pull-left protected-site">
+            {{:: "CREATE_VPG_SELECT_VMS.PROTECTED_SITE" | translate }}
+        </b>
+        <div class="pull-left">
+            <div class="vcd-icon"></div>
+            <z-radio name="vcdVAppsRadio"
+                     on-click="handleSourceTypeChange"
+                     value="vcdVappType"
+                     model="data.sourceSiteType">
+                {{:: "CREATE_VPG_SELECT_VMS.VCLOUDDIRECTOR" | translate}}
+            </z-radio>
+            <br/>
+            <div class="vc-icon"></div>
+            <z-radio name="vcVMsRadio"
+                     on-click="handleSourceTypeChange"
+                     value="vcType"
+                     model="data.sourceSiteType">
+                {{:: "CREATE_VPG_SELECT_VMS.CVENTER" | translate}}
+            </z-radio>
+        </div>
+    </div>
+</div>

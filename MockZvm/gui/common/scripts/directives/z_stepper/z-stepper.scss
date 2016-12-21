@@ -1,0 +1,71 @@
+$stepper-height: 26px;
+$stepper-button-bg: #4D4DFF;
+$stepper-value-bg: #eee;
+div[z-stepper] {
+    &.ng-invalid-out-of-bounds {
+        input {
+            color: red;
+            border-color: red;
+        }
+    }
+
+    display: inline-block;
+    height: $stepper-height;
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+
+    input {
+        vertical-align: top;
+        padding-right: 20px;
+        text-align: center;
+        display: inline-block;
+        height: $stepper-height;
+        line-height: $stepper-height;
+        box-sizing: border-box;
+
+        &:hover {
+            background-color: #DDDDDF;
+        }
+    }
+
+    .button-container {
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 100%;
+        width: 14px;
+        padding: 1px;
+
+        button {
+            border: 0;
+            position: relative;
+            float: left;
+            width: 100%;
+            height: 50%;
+            outline: none;
+            padding: 0;
+            margin: 0;
+            &[disabled] {
+                opacity: 0.3;
+            }
+
+            img {
+                position: absolute;
+                display: block;
+                top: 50%;
+                margin-top: -2px;
+                left: 50%;
+                margin-left: -4px;
+            }
+
+            &:hover {
+                background-color: #DADADA;
+            }
+
+            &:active {
+                background-color: #808080;
+            }
+        }
+    }
+}

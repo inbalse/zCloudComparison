@@ -1,0 +1,8 @@
+{
+  "VPG_CARDS": {
+    "FREQUENT" : "Frequent",
+    "GENERAL": "General",
+    "PERFORMANCE_AND_STORAGE": "Performance and Storage",
+    "OFFSITE_BACKUPS": "Offsite Backups"
+  }
+}

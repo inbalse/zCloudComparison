@@ -1,0 +1,36 @@
+<base-modal-window modal-title="{{'RESTORE_WIZARD.EDIT_BULK_TITLE' | translate}}" btns="buttons"
+                   close="handleCancel" loading="loading" help="restoreBulk">
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label class="control-label col-xs-4">{{'RESTORE_WIZARD.RESTORE_VM_SETTINGS_STEP.RESTORE_ON_HOST' |
+                translate}}</label>
+
+            <div class="col-xs-8">
+                <ui-select theme="select2" ng-model="$parent.item.ComputeResource" ng-change="onHostChange()">
+                    <ui-select-match class="ui-select-match">{{$select.selected.DisplayName}}</ui-select-match>
+                    <ui-select-choices class="ui-select-choices" repeat="item in hosts | filter: $select.search">
+                        <span ng-bind-html="item.DisplayName | highlight: $select.search"></span>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-4">{{'RESTORE_WIZARD.RESTORE_VM_SETTINGS_STEP.RESTORE_ON_DATASTORE' |
+                translate}}</label>
+
+            <div class="col-xs-8">
+                <ui-select theme="select2" ng-model="$parent.item.Datastore">
+                    <ui-select-match class="ui-select-match">{{$select.selected.DisplayName || $select.selected.Datastore.DisplayName}}</ui-select-match>
+                    <ui-select-choices class="ui-select-choices" repeat="item.Datastore as item in datastores | filter: $select.search" ui-disable-choice="!item.IsEnabled">
+                        <span ng-bind-html="item.Datastore.DisplayName | highlight: $select.search"></span>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-offset-4 col-xs-8">
+                <z-checkbox model="item.IsPowerOn" use-indeterminate="true">{{'RESTORE_WIZARD.RESTORE_VM_SETTINGS_STEP.POWER_ON' | translate}}</z-checkbox>
+            </div>
+        </div>
+    </form>
+</base-modal-window>

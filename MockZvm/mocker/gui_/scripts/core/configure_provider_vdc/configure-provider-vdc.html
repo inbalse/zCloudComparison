@@ -1,0 +1,38 @@
+<base-modal-window modal-title="{{'SITE_SETTINGS.CLOUD_SETTINGS.CONFIGURE_PROVIDER_VDCS.TITLE' | translate}}" btns="buttons"
+                   close="handleCancel" loading="loading" help="configureProviderVdc">
+
+    <z-slick-grid id="providerVdcs" grid-id="providerVdcs"
+                  data="data.Potential" class="configure-provider-vdc-grid"
+                  custom-options="providerVdcsCustomOptions" selected-items="providerVdcsSelectedItems"
+                  on-selection="providerVdcsSelectionChange"></z-slick-grid>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12">
+                <h5>{{'SITE_SETTINGS.CLOUD_SETTINGS.CONFIGURE_PROVIDER_VDCS.PROVIDER_DATASTORE_TITLE' | translate}}</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <z-radio name="UseOnlyGroup" value="true" model="data.UseOnly">{{'SITE_SETTINGS.CLOUD_SETTINGS.CONFIGURE_PROVIDER_VDCS.USE_FOR_REPLICATION'| translate}}</z-radio>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <z-radio name="UseOnlyGroup" value="false"  model="data.UseOnly">{{'SITE_SETTINGS.CLOUD_SETTINGS.CONFIGURE_PROVIDER_VDCS.USE_FOR_NOT_REPLICATION'| translate}}</z-radio>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <label>{{'SITE_SETTINGS.CLOUD_SETTINGS.CONFIGURE_PROVIDER_VDCS.TEXT'| translate}}</label>
+            </div>
+        </div>
+    </div>
+
+    <z-slick-grid id="providerDatastore" grid-id="providerDatastore"
+                  data="datastoreGridData" class="configure-provider-vdc-grid"
+                  custom-options="datastoreCustomOptions" selected-items="datastoreSelectedItems"
+                  on-selection="providerDatastoreSelectionChange"></z-slick-grid>
+
+</base-modal-window>

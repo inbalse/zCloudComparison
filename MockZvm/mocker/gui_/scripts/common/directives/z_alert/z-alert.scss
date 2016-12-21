@@ -1,0 +1,105 @@
+@mixin buttons-positive-active() {
+  button[name="MODAL.OK"], button[name="MODAL.REFRESH"],
+  button[name="MODAL.YES"], button[name="MODAL.NO"], button[name="MODAL.NEXT"], button {
+    @extend .z-button;
+    border: 2px solid #E5E7E9;
+    &:hover {
+      border-color: #B2B5B9;
+      cursor: pointer;
+    }
+    &:focus {
+      border-color: #4C4F55;
+    }
+  }
+
+  button[name="MODAL.CANCEL"], button[name="MODAL.CLOSE"] {
+    @extend .btn-link;
+    margin-right: 5px;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+@mixin button-all-active() {
+  button[name="MODAL.OK"], button[name="MODAL.REFRESH"], button[name="MODAL.CANCEL"], button[name="MODAL.CLOSE"] {
+    @extend .z-button;
+    border: 2px solid #E5E7E9;
+    &:hover {
+      border-color: #B2B5B9;
+      cursor: pointer;
+    }
+    &:focus {
+      border-color: #4C4F55;
+    }
+  }
+}
+
+@mixin alert-type($class, $border-top-color, $bg-left) {
+  &#{$class} {
+    border-top-color: $border-top-color;
+    .indicator {
+      background-position: $bg-left center;
+    }
+    @if $class == ".z-alert-success" or $class == ".z-alert-warn" or $class == ".z-alert-help" {
+      @include buttons-positive-active();
+    } @else if $class == ".z-alert-info" or $class == ".z-alert-fail" {
+      @include button-all-active();
+    } @else {
+      @include buttons-positive-active();
+    }
+  }
+}
+
+.z-alert {
+  .drag-area{
+    height: 30px;
+    position: absolute;
+    top: -7px;
+    left: 0px;
+    right: 0px;
+  }
+
+  .modal-content {
+    background-color: #E6E8E9;
+    border-top: 7px solid;
+    padding: 30px 32px 75px 85px;
+    box-sizing: border-box;
+    font-size: 14px;
+    border-right: none;
+    border-bottom: none;
+    border-left:none;
+  }
+
+  .indicator {
+    width: 44px;
+    height: 44px;
+    position: absolute;
+    left: 28px;
+    top: 30px;
+
+    background: transparent url('../assets/alert_sprites.png') no-repeat left center;
+  }
+
+  @include alert-type(".z-alert-info .modal-content", #68B9F3, left);
+  @include alert-type(".z-alert-success .modal-content", #7EDA1C, -89px);
+  @include alert-type(".z-alert-help .modal-content", #E9D01B, -45px);
+  @include alert-type(".z-alert-warn .modal-content", #E9D01B, -177px);
+  @include alert-type(".z-alert-fail .modal-content", #D26066, -133px);
+
+  .z-alert-title {
+    margin: 0 0 9px 0;
+    font-weight: bold;
+  }
+  .z-alert-description {
+    margin: 0;
+    word-wrap: break-word;
+  }
+  .z-alert-buttons {
+    position: absolute;
+    right: 32px;
+    bottom: 22px;
+
+  }
+
+}

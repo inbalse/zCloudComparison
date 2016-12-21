@@ -1,0 +1,66 @@
+<base-modal-window modal-title="{{ 'SUPPORT_TICKET.TITLE' | translate }}" close="close" btns="buttons"
+                   loading="loading" help="supportTicketController">
+    <form class="form-horizontal" autocomplete="off" name="forms.ticketForm">
+        <h4 class="form-h4">{{'SUPPORT_TICKET.TICKET_INFO' | translate}}</h4>
+
+        <div class="form-group">
+            <label help-icon="SUPPORT_TICKET.SUBJECT" class="col-xs-5">{{'SUPPORT_TICKET.SUBJECT' | translate}}</label>
+
+            <div class="col-xs-7">
+                <input type="text" required name="subject" ng-model="supportTicket.Subject"/>
+                <span class="z-asterisk">*</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label help-icon="SUPPORT_TICKET.TYPE" class="col-xs-5">{{'SUPPORT_TICKET.TYPE' | translate}}</label>
+
+            <div class="col-xs-7">
+                <ui-select theme="select2" name="ticketType" ng-model="$parent.supportTicket.Type" required class="pull-left" search-enabled="false">
+                    <ui-select-match class="ui-select-match">{{$select.selected.name}}</ui-select-match>
+                    <ui-select-choices class="ui-select-choices" repeat="item.id as item in types | filter: $select.search">
+                        <span ng-bind-html="item.name | highlight: $select.search"></span>
+                    </ui-select-choices>
+                </ui-select>
+                <span class="z-asterisk">*</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label help-icon="SUPPORT_TICKET.DESCRIPTION" class="col-xs-5">{{'SUPPORT_TICKET.DESC' | translate}}</label>
+
+            <div class="col-xs-7">
+                <textarea required name="description" ng-model="supportTicket.Description"></textarea>
+                <span class="z-asterisk">*</span>
+            </div>
+
+        </div>
+
+        <h4 class="form-h4">{{'SUPPORT_TICKET.CONTACT' | translate}}</h4>
+
+        <div class="form-group">
+            <label help-icon="SUPPORT_TICKET.SSP_EMAIL_ADDRESS" class="col-xs-5">{{'SUPPORT_TICKET.SSP' | translate}}</label>
+
+            <div class="tooltip-invalid top supportTicketModal__tooltip-position" ng-show="!forms.ticketForm.sspemail.$pristine && forms.ticketForm.sspemail.$invalid">
+                <div class="tooltip-arrow"></div>
+                <div class="tooltip-invalid-inner">{{'SUPPORT_TICKET.SSP_MAIL_TOOLTIP' | translate}}</div></div>
+
+            <div class="col-xs-7">
+                <input type="email" email-empty-or-valid required name="sspemail" ng-model="supportTicket.SspEmailAddress">
+                <span class="z-asterisk">*</span>
+            </div>
+        </div>
+        <h4 class="form-h4">{{'SUPPORT_TICKET.PROGRESS' | translate}}</h4>
+
+        <div class="form-group">
+            <div class="col-xs-12">
+                <p ng-show="showResultText" ng-bind-html="resultText" ng-class="textResultClass"></p>
+                <uib-progressbar ng-show="showProgress" class="progress-striped active" max="100"
+                             value="100"></uib-progressbar>
+            </div>
+        </div>
+    </form>
+
+    <label class="version-label">{{'SUPPORT_TICKET.VERSION' | translate}}: {{version}}</label>
+
+</base-modal-window>

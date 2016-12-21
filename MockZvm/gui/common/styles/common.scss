@@ -1,0 +1,21 @@
+//-------------------------------------------
+// Global Mixins
+//-------------------------------------------
+@import 'mixins';
+
+//-------------------------------------------
+// Overriding styles and classes
+//-------------------------------------------
+@import 'modal'; //<-- the styles that make the skin of the modal popup
+
+@import 'nav-tabs'; //<-- the nav tabs style
+@import 'select-ui-override'; //<-- the style of the drop downs
+@import 'progress-bar'; //<-- the style of the bars (bootstrap ones)
+@import 'z-forms.scss'; //<-- the forms style
+@import 'z-tabbed-view'; //<-- the tabbed view layout style
+@import 'classes-override'; //<-- other classes like sliders and buttons etc
+@import 'tree-view';
+@import 'ellipsis';
+@import 'daterange-override';
+@import 'z-dropdown-multiselect';
+@import 'z-invalid-tooltip';

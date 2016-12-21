@@ -1,0 +1,86 @@
+<base-modal-window modal-title="{{'SITE_SETTINGS.CLOUD_SETTINGS.SITE_ROUTES.TITLE' | translate}}" btns="buttons"
+                   close="handleCancel" loading="loading" help="manageStaticRoutesController">
+    <script type="text/ng-template" id="addStaticRoutes.html">
+        <div class="modal-header" draggable>
+            <div class="modal-header-inner">
+                <h4 class="pull-left">Add Static Route</h4>
+                <div class="pull-right modal-buttons-header">
+                    <button type="button" class="z-close" ng-click="cancel()" aria-hidden="true" >&nbsp;</button>
+                </div>
+            </div>
+        </div>
+        <div class="modal-body">
+            <label>Group Name: {{data.title}}</label>
+            <form class="form-horizontal" name="forms.addStaticRoutForm">
+                <div class="form-group">
+                    <label class="col-xs-4 control-label">{{'SITE_SETTINGS.CLOUD_SETTINGS.SITE_ROUTES.ADDRESS' | translate}}</label>
+
+                    <div class="col-xs-8">
+                        <input z-ip-field type='text' ng-model='staticRouteObj.address'
+                               required="true"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 control-label">{{'SITE_SETTINGS.CLOUD_SETTINGS.SITE_ROUTES.SUBNET_MASK' | translate}}</label>
+
+                    <div class="col-xs-8">
+                        <input z-ip-field type='text' ng-model='staticRouteObj.subnetMask'
+                               required="true"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 control-label">{{'SITE_SETTINGS.CLOUD_SETTINGS.SITE_ROUTES.GATEWAY' | translate}}</label>
+                    <div class="col-xs-8">
+                        <input z-ip-field type='text' ng-model='staticRouteObj.gateway' required="true"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-link" ng-click="cancel()">{{'MODAL.CANCEL' | translate}}</button>
+            <button class="btn z-btn-default" ng-disabled="!isAddStaticRouteSaveEnabled" ng-click="save()">{{'MODAL.SAVE' | translate}}</button>
+        </div>
+    </script>
+    <script type="text/ng-template" id="items_renderer.html">
+        <div class="tree-view-item">
+            <a class="tree-view-icon" ng-class="{'tree-view-collapse': !collapsed, 'tree-view-expand': collapsed}"
+               data-nodrag ng-click="toggle(this)" ng-show="this.$modelValue.isGroup">
+            </a>
+            <a class="tree-view-icon"
+               ng-class="{'tree-view-folder-opened': !collapsed, 'tree-view-folder-closed': collapsed}"
+               data-nodrag ng-click="toggle(this)" ng-show="this.$modelValue.isGroup">
+            </a>
+
+            <label ui-tree-handle ng-hide="showedit && this.$modelValue.isGroup" ng-bind-html="item.title"></label>
+            <a data-nodrag class="static-routes-icon static-routes-edit" ng-click="enableEdit(this)"
+               ng-show="!showedit && this.$modelValue.isGroup && this.$modelValue.editable"></a>
+            <input class="static-routes-edit-text" ng-show="showedit && this.$modelValue.isGroup" ng-model="item.title"
+                   type="text"
+                   z-ng-enter="disableEdit(this, item)">
+            <a class="btn btn-link static-routes-save text-uppercase" ng-click="disableEdit(this, item)"
+               ng-show="showedit && this.$modelValue.isGroup">{{'MODAL.SAVE' | translate}}</a>
+
+            <div class="static-routes-controls">
+                <a class="btn btn-link" ng-show="this.$modelValue.isGroup" data-nodrag
+                   ng-click="addStaticRouteToGroup(this)" ng-disabled="!this.$modelValue.editable">{{'SITE_SETTINGS.CLOUD_SETTINGS.SITE_ROUTES.ADD_STATIC_ROUTE'
+                    | translate}}</a>
+                <a class="btn btn-link static-routes-icon static-routes-remove" ng-disabled="!this.$modelValue.editable"
+                   data-nodrag ng-click="removeGroup(this)"></a>
+            </div>
+        </div>
+        <ul ui-tree-nodes="options" ng-model="item.items" ng-class="{hidden: collapsed}">
+            <li ng-repeat="item in item.items track by $index" ui-tree-node ng-include="'items_renderer.html'">
+            </li>
+        </ul>
+    </script>
+    <a class="btn btn-link pull-right btn-add" ng-click="handleAddGroupClicked()">{{"SITE_SETTINGS.CLOUD_SETTINGS.SITE_ROUTES.ADD_GROUP"
+        | translate }}</a>
+
+    <div class="ui-tree boot-order-root" ui-tree="options" data-max-depth="2">
+        <ul ui-tree-nodes ng-model="list">
+            <li ng-repeat="item in list track by $index" ui-tree-node ng-include="'items_renderer.html'"
+                class="tree-view-root-item"></li>
+        </ul>
+    </div>
+</base-modal-window>
+

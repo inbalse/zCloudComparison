@@ -1,0 +1,28 @@
+{
+  "PUBLIC_CLOUD_NETWORK_SETTINGS": {
+    "COMMON" :{
+      "EDIT_VM_SETTINGS": "Edit VM Settings",
+      "PRIVATE_IP": "Private IP",
+      "FAILOVER_SUBNET": "Failover/Move Subnet",
+      "FAILOVER_GROUP": "Failover/Move Security Group",
+      "FAILOVER_GROUPS": "Failover/Move Security Groups",
+      "FAILOVER_IP": "Failover/Move Private IP",
+      "FAILOVER_TEST_SUBNET": "Failover Test Subnet",
+      "FAILOVER_TEST_GROUP": "Failover Test Security Group",
+      "FAILOVER_TEST_GROUPS": "Failover Test Security Group(s)",
+      "FAILOVER_TEST_IP": "Failover Test Private IP"
+    },
+    "AWS" : {
+      "FAILOVER_VPC": "Failover/Move VPC",
+      "FAILOVER_TEST_VPC": "Failover Test VPC",
+      "FOL_INSTANCE_TYPE": "Failover/Move Instance Type",
+      "TEST_INSTANCE_TYPE": "Failover Test Instance Type"
+    },
+    "AZURE" : {
+      "FAILOVER_MOVE_VNET": "Failover/Move VNet",
+      "FAILOVER_TEST_VNET": "Failover Test VNet",
+      "FOL_INSTANCE_SIZE": "Failover/Move Instance Size",
+      "TEST_INSTANCE_SIZE": "Failover Test Instance Size"
+    }
+  }
+}

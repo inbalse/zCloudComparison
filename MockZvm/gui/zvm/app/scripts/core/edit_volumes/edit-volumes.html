@@ -1,0 +1,97 @@
+<base-modal-window modal-title="{{ 'EDIT_VOLUMES.TITLE' | translate }}" close="close" btns="buttons"
+                   loading="loading()"
+                   help="editVolumesController">
+
+    <form name="form.editVolume" autocomplete="off" class="form-horizontal">
+        <div class="form-group">
+            <label class="col-xs-3 control-label">{{ "EDIT_VOLUMES.PRE_SEED" | translate}}</label>
+
+            <div class="col-xs-6">
+                <ui-select theme="select2" id="preseedOptions"
+                           ng-model="$parent.volumeConfiguration.replicationDestinationType" search-enabled="false"
+                           ng-change="onReplicationDestinationChange()">
+                    <ui-select-match class="ui-select-match">{{$select.selected.label | translate}}</ui-select-match>
+                    <ui-select-choices class="ui-select-choices"
+                                       repeat="item in sharedVolumePotentials.replicationDestinationTypes | filter: $select.search"
+                                       ui-disable-choice="isPortal && (item.value === dataCollectionFactory.REPLICATION_TYPE.NEW_DISK.value)">
+                        <span ng-bind-html="item.label | highlight: $select.search"></span>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+            <div class="col-xs-3">
+                <z-checkbox help-icon="VPG_WIZARD.TEMP_DISK" model="volumeConfiguration.swap" use-indeterminate="true">
+                    {{ "EDIT_VOLUMES.TEMP_DISK" | translate}}
+                </z-checkbox>
+            </div>
+        </div>
+        <div class="form-group"
+             ng-if="volumeConfiguration.replicationDestinationType.value==dataCollectionFactory.REPLICATION_TYPE.DATASTORE.value || volumeConfiguration.replicationDestinationType.value==dataCollectionFactory.REPLICATION_TYPE.PRESEED.value">
+            <label class="col-xs-3 control-label">{{ textLabel }}</label>
+
+            <div class="col-xs-6">
+                <ui-select theme="select2" id="volumeDatastores" ng-model="$parent.volumeConfiguration.datastore"
+                           ng-change="onDatastoreChange(volumeConfiguration.datastore)">
+                    <ui-select-match class="ui-select-match">{{$select.selected.Datastore.DisplayName}}
+                    </ui-select-match>
+                    <ui-select-choices class="ui-select-choices" ui-disable-choice="!item.IsEnabled"
+                                       repeat="item in sharedVolumePotentials.PotentialDatastores | filter: $select.search">
+                        <span ng-bind-html="item.Datastore.DisplayName | highlight: $select.search"></span>
+                    </ui-select-choices>
+                </ui-select>
+                <div ng-show="isDataStoreEmpty" class="tooltip-invalid bottom">
+                    <div class="tooltip-arrow"></div>
+                    <div class="tooltip-invalid-inner">{{isScvmm ? "EDIT_VOLUMES.EMPTY_STORAGE_TOOLTIP_ERROR" :
+                        "EDIT_VOLUMES.EMPTY_DATASTORE_TOOLTIP_ERROR" | translate}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <z-checkbox
+                    help-icon="VPG_WIZARD.THIN"
+                    ng-if="volumeConfiguration.replicationDestinationType.value==dataCollectionFactory.REPLICATION_TYPE.DATASTORE.value && !isScvmm"
+                    model="volumeConfiguration.thin"
+                    use-indeterminate="true"
+                    z-disabled="isDataStoreEmpty"
+                    change="onThinProvisionChange()">{{ "EDIT_VOLUMES.THIN_PROVISIONING" | translate}}
+                </z-checkbox>
+            </div>
+        </div>
+        <div class="form-group"
+             ng-if="volumeConfiguration.replicationDestinationType.value==dataCollectionFactory.REPLICATION_TYPE.NEW_DISK.value">
+            <label class="col-xs-3 control-label">{{ "EDIT_VOLUMES.RAW_DISK" | translate}}</label>
+
+            <div class="col-xs-9">
+                <ui-select theme="select2" id="rawDisk" ng-model="$parent.volumeConfiguration.raw_device" required
+                           ng-change="onRawDeviceChange(volumeConfiguration.raw_device)">
+                    <ui-select-match class="ui-select-match">{{$select.selected.DisplayName}}</ui-select-match>
+                    <ui-select-choices class="ui-select-choices" ui-disable-choice="!item.IsEnabled"
+                                       repeat="item in sharedVolumePotentials.PotentialRawDevices | filter: $select.search">
+                        <span ng-bind-html="item.DisplayName | highlight: $select.search"></span>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <div class="form-group"
+             ng-if="volumeConfiguration.replicationDestinationType.value==dataCollectionFactory.REPLICATION_TYPE.EXISTING.value">
+            <label class="col-xs-3 control-label" for="existing">{{ "EDIT_VOLUMES.EXISTING_DISK" | translate}}</label>
+
+            <div class="col-xs-9">
+                <input id="existing" type="text" readonly ng-model="volumeConfiguration.existing"/>
+            </div>
+        </div>
+        <div class="form-group"
+             ng-if="volumeConfiguration.replicationDestinationType.value==dataCollectionFactory.REPLICATION_TYPE.PRESEED.value && !isDataStoreEmpty">
+            <label class="col-xs-3 control-label" for="path">{{ "EDIT_VOLUMES.PATH" | translate}}</label>
+
+            <div class="col-xs-6">
+                <input id="path" class="preseeded-volume-path" type="text" ng-model="volumeConfiguration.preSeedText"
+                       required
+                       extension="validFileExtensions"
+                       ng-model-options="{allowInvalid:true}"
+                       placeholder="{{pathPlaceHolder}}"/>
+            </div>
+            <div class="browse-icon-container" ng-click="browse()"></div>
+
+        </div>
+    </form>
+</base-modal-window>

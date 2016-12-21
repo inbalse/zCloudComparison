@@ -1,0 +1,97 @@
+<div class="status-tab">
+    <div class="status-tab-left" ng-controller="vraChartsController">
+            <div class="charts-row">
+                <div class="flot-placeholder" id="cpuChart" ng-non-bindable></div>
+                <span class='chart-title'>CPU USAGE</span>
+                <span class='main-value'>{{cpuMainValue}}%</span>
+                <div class="flot-x-axis"><div class="flot-x-axis-left">4 Hours</div><div class="flot-x-axis-middle">2 Hours</div><div class="flot-x-axis-right">Now</div></div>
+            </div>
+            <div class="charts-row">
+                <div class="flot-placeholder" id="localChart" ng-non-bindable></div>
+                <span class='chart-title'>LOCAL MEMORY</span>
+                <span class='main-value'>{{localMainValue}}%</span>
+                <div class="flot-x-axis"><div class="flot-x-axis-left">4 Hours</div><div class="flot-x-axis-middle">2 Hours</div><div class="flot-x-axis-right">Now</div></div>
+            </div>
+            <div class="charts-row">
+                <div class="flot-placeholder" id="remoteChart" ng-non-bindable></div>
+                <span class='chart-title'>REMOTE MEMORY</span>
+                <span class='main-value'>{{remoteMainValue}}%</span>
+                <div class="flot-x-axis"><div class="flot-x-axis-left">4 Hours</div><div class="flot-x-axis-middle">2 Hours</div><div class="flot-x-axis-right">Now</div></div>
+            </div>
+            <!--<div class="charts-row">-->
+                <!--<div class="container-fluid">-->
+                    <!--<div class="row">-->
+                        <!--<div class="col-xs-4 text-left">-->
+                            <!--<label >30 Minutes</label>-->
+                        <!--</div>-->
+                        <!--<div class="col-xs-4 text-center">-->
+                            <!--<label>15 Minutes</label>-->
+                        <!--</div>-->
+                        <!--<div class="col-xs-4 text-right">-->
+                            <!--<label >{{'VPG_DETAILS.STATUS.NOW' | translate}}</label>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+
+    </div>
+    <div class="status-tab-right">
+        <div class="status-widget status-widget-alerts">
+            <h4 ng-if="vraData.State.AlertTips.Alerts.length > 0">{{ 'VPG_DETAILS.TITLES.ACTIVE_ALERTS' | translate}}</h4>
+            <h4 ng-if="vraData.State.AlertTips.Alerts.length === 0">{{ 'VPG_DETAILS.TITLES.NO_ACTIVE_ALERTS' | translate}}</h4>
+
+            <div ng-repeat="alert in vraData.State.AlertTips.Alerts track by $index" class="global-list-item alerts-list-item">
+                <div class="col col-1 alert-icon alert-icon-{{alert.AlertLevel}} line-ellipsis">
+                    {{alert.SiteName}}
+                </div>
+                <div class="col col-2 line-ellipsis" uib-tooltip-html="alert.Description"
+                     tooltip-append-to-body="true" ng-bind-html="alert.Description">
+                </div>
+            </div>
+        </div>
+        <!---------------- TASKS ------------------------------------------------------------->
+        <div class="status-widget recent-tasks" ng-controller="vraStatusTasksController">
+            <h4 ng-if="TaskItems.length > 0">{{ 'VPG_DETAILS.STATUS.TASKS' | translate}}</h4>
+            <h4 ng-if="TaskItems.length === 0">{{ 'VPG_DETAILS.STATUS.NO_TASKS' | translate}}</h4>
+
+            <div ng-repeat="task in TaskItems track by $index" class="global-list-item tasks-list-item"
+                 ng-class="{'tasks-list-item-show-buttons': (task.showLeftButton || task.showRightButton)}">
+                <div class="col col-1 line-ellipsis">{{task.Started}}</div>
+                <div class="col col-2 line-ellipsis" ng-bind="task.TaskTypeName">
+                </div>
+                <div class="col col-3 col-progress" ng-if="task.showProgress">
+                    <label class="progress-label">{{task.StateAndProgress.Progress}}%</label>
+                    <uib-progressbar value="task.StateAndProgress.Progress" animate="true"
+                                 class="vpg-status-tasks-progress"></uib-progressbar>
+
+                </div>
+                <div class="col col-3" ng-if="task.showProgressCandy">
+                    <uib-progressbar max="100" value="100"
+                                 class="progress-striped active"></uib-progressbar>
+                </div>
+                <div class="col col-4 tasks-buttons-in-view">
+                    <button ng-show="task.showLeftButton" ng-click="task.leftFunction(task)"
+                            ng-class="task.leftButtonClass" title="{{task.leftLabel}}">
+                    </button>
+                    <button ng-show="task.showRightButton" ng-click="task.rightFunction(task)"
+                            ng-class="task.rightButtonClass" title="{{task.rightLabel}}">
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="status-widget">
+            <h4 ng-if="vraActivities.Events.length > 0">{{"VPG_DETAILS.TITLES.EVENTS"|translate}}</h4>
+            <h4 ng-if="vraActivities.Events.length === 0">{{"VPG_DETAILS.TITLES.NO_EVENTS"|translate}}</h4>
+
+            <div ng-repeat="event in vraActivities.Events track by $index"
+                 class="global-list-item events-list-item">
+                <div class="col col-1">{{event.TimeStamp | date : 'dd/MM/yyyy HH:mm'}}</div>
+                <div class="col col-2 line-ellipsis" uib-tooltip="{{event.EventType}}"
+                     tooltip-append-to-body="true" ng-bind="event.EventType"></div>
+                <div class="col col-3"><label uib-tooltip="{{event.Description}}"
+                                              class="line-ellipsis">{{event.Description}}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

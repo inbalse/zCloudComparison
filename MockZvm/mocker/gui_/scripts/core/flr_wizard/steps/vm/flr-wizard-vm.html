@@ -1,0 +1,12 @@
+<div class="z-wizard-container-wide" ng-controller="flrWizardVmController" ng-cloak>
+    <div class="form-horizontal">
+        <div class="form-group">
+            <p class="text-center step-desc" translate="FLR.WIZARD.VM.TITLE"></p>
+        </div>
+    </div>
+
+    <z-slick-grid class="flr-vm-grid" id="flr-vm-grid" grid-id="flr-vm-grid" data="model.data"
+                  grid="grid" group-by-values="model.groupByValues" selected-items="model.selectedItems"
+                  on-selection="validate"
+                  custom-options="model.options" hide-create-view="true"></z-slick-grid>
+</div>

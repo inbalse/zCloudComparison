@@ -1,0 +1,9 @@
+{
+    "NO_RUNNING_TASKS":                 "NO RUNNING TASKS",
+    "RUNNING_TASKS":                    "RUNNING TASKS",
+    "TASK_AWAITING_INPUT":              "TASK WAITING FOR INPUT",
+    "TASK_SUMMARY_TITLE":               "TASKS",
+    "TASK_SUMMARY_ALL":                 "See All Tasks >>",
+    "TASK_FILTER_STATUS":               "Filter by status",
+    "TASK_FILTER_ANY":                  "Any time"
+}

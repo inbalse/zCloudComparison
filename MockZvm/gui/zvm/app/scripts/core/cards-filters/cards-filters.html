@@ -1,0 +1,38 @@
+<div class="row" ng-repeat="row in $ctrl.selectedColumns">
+    <div class="col-xs-2" ng-repeat="column in row track by column.field">
+        <div ng-if="column" class="cards-active-filter">
+            <card-filter class="cards-active-filter__field"
+                         ng-class="{
+                         'cards-active-filter__field--active': column.isFilterActive,
+                         'cards-active-filter__field--open': column.isDropdownVisible,
+                         }"
+                         column="column"
+                         items="$ctrl.items"
+                         on-filter-change="$ctrl.onFilterChanged()">
+            </card-filter>
+            <b class="cards-active-filter__arrow"></b>
+            <a class="cards-active-filter__clear" type="button" ng-if="!column.card_default"
+               ng-click="$ctrl.removeColumnFilter(column)">x
+            </a>
+        </div>
+        <div class="cards-filters-drop-down" ng-if="!column">
+            <ui-select theme="select2"
+                       ng-model="$ctrl.sortBy"
+                       skip-focusser="true"
+                       on-select="$ctrl.addColumnFilter($select.selected)"
+                       id="frequentFilterSelect">
+                <ui-select-match class="ui-select-match" placeholder="{{::'ADD_FILTER'|translate}}"><span
+                    class="ui-select-placeholder">{{::'ADD_FILTER'|translate}}&nbsp;</span>
+                </ui-select-match>
+                <ui-select-choices class="ui-select-choices"
+                                   group-by="$ctrl.groupByFn"
+                                   group-filter="$ctrl.groupFilterFn"
+                                   ui-disable-choice="filterBy.isSelected"
+                                   repeat="filterBy in $ctrl.filterItems | filter: $select.search">
+                    <span ng-bind-html="filterBy.name | highlight: $select.search"></span>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+    </div>
+</div>
+<a class="cards-control-clear-btn" type="button" ng-click="$ctrl.clearAll()">{{::'CLEAR_ALL_FILTERS'|translate}}</a>

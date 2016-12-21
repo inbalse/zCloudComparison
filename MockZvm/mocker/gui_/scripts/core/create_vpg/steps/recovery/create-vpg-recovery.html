@@ -1,0 +1,56 @@
+<div ng-class="{'z-wizard-container-wide-public-clouds' : data.isPublicCloud, 'z-wizard-container' : !data.isPublicCloud}" ng-controller="createVPGRecoveryController" ng-cloak="">
+    <form class="form-horizontal" name="forms.recoveryForm">
+        <p class="text-center step-desc">{{::"CREATE_VPG_RECOVERY.RECOVERY_INFO" | translate }}</p>
+        <!--AWS-->
+        <public-cloud-partial ng-if="data.isPublicCloud"></public-cloud-partial>
+
+        <div class="form-group create-vpg-recovery" ng-if="!data.isPublicCloud">
+            <label class="col-xs-3 control-label"><b>{{::"CREATE_VPG_RECOVERY.TITLE" | translate}}</b></label>
+
+            <div class="col-xs-9">
+                <!-- Guest customization and NAT rules-->
+                <vcd-vapp-partial ng-if="data.isVcdVapp"></vcd-vapp-partial>
+                <!-- Failover Networks mapping -->
+                <failover-live-networks-partial
+                    ng-if="!data.isUsingVappNetworkMapping"></failover-live-networks-partial>
+                <failover-test-networks-partial
+                    ng-if="!data.isUsingVappNetworkMapping"></failover-test-networks-partial>
+            </div>
+        </div>
+
+        <div class="form-group" ng-if="data.isVmFolderConfigurable">
+            <div class="col-xs-12">
+                <hr/>
+            </div>
+        </div>
+        <!-- VM folder configuration modal-->
+        <vm-folder-partial ng-if="data.isVmFolderConfigurable"></vm-folder-partial>
+
+
+        <div class="form-group" ng-if="data.isVmFolderConfigurable">
+            <div class="col-xs-12">
+                <!--ng-if="isFolderVMsettingsDisable" because of bug 21857-->
+                <button class="btn z-btn-default-sm vpg-wizard-vm-settings-btn"
+                        ng-hide="data.isFolderVMsettingsDisable"
+                        ng-click="handleFolderVMSettingsClicked()">
+                    <img src="assets/vpg_wizard/vm-settings-icon.png">
+                    {{::"CREATE_VPG_REPLICATION.ADVANCED_VM_SETTINGS" | translate }}
+                </button>
+            </div>
+        </div>
+        <!--Vapp network mapping-->
+        <vapp-network-mapping-partial ng-if="!data.isPublicCloud && data.isUsingVappNetworkMapping"></vapp-network-mapping-partial>
+
+        <div class="form-group" ng-show="!data.isPortal">
+            <div class="col-xs-12">
+                <hr class="recovery-hr"/>
+            </div>
+        </div>
+        <!--Recovery scripts-->
+        <recovery-script-pre-partial
+            ng-if="!data.isPortal && data.isPrePostScriptsEnabled"></recovery-script-pre-partial>
+        <recovery-script-post-partial
+            ng-if="!data.isPortal && data.isPrePostScriptsEnabled"></recovery-script-post-partial>
+
+    </form>
+</div>

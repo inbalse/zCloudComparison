@@ -1,0 +1,21 @@
+<base-modal-window class="modal-upgrade-vra" modal-title="{{ 'VRA_UPGRADE.TITLE' | translate }}" close="close"
+                   btns="buttons" loading="loading">
+
+    <form class="form-horizontal" autocomplete="off" name="forms.vraUpgrade">
+        <div class="upgrade-vra-grid-container" ng-if="isShowGrid">
+            <z-slick-grid data="vraUpgradeData"
+                          grid-id="vra-upgrade"
+                          custom-options="customOptions"
+                          on-selection="selectedItemsChange"
+                          hide-view-options="true"
+                          selected-items="selectedItems"></z-slick-grid>
+        </div>
+
+        <div class="form-group">
+            <div class="col-xs-12 control-label">
+                <pre>{{'VRA_UPGRADE.TOTAL_SYNC_SIZE' | translate}}{{totalDeltaSyncSize}}</pre>
+            </div>
+        </div>
+
+    </form>
+</base-modal-window>

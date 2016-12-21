@@ -1,0 +1,9 @@
+{
+    "VRA_EDIT": {
+        "TITLE": "Edit VRA",
+        "CREATE": "CREATE",
+        "GROUP_EXIST": "Group already exists",
+        "HOST": "Host:",
+        "VIB_LABEL": "Use Credentials to Connect to Host"
+    }
+}

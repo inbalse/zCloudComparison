@@ -1,0 +1,94 @@
+<div class="z-wizard-container-wide flr-wizard-file-step" ng-controller="flrDownloadFileController">
+    <div class="panel panel-default pull-left">
+        <div class="panel-heading">
+            <b class="panel-title" translate="FLR.DOWNLOAD.FILE.SELECT_FILES">
+            </b>
+        </div>
+        <div class="panel-body panel-body-left">
+            <div class="ui-tree tree-view-container">
+                <div ui-tree data-drag-enabled="false">
+                    <ol ui-tree-nodes="" ng-model="model.tree" id="tree-root">
+                        <li ng-repeat="node in model.tree" ui-tree-node ng-include="'flr-file-item.html'"></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default pull-right">
+        <div class="panel-heading">
+            <b class="panel-title" translate="FLR.DOWNLOAD.FILE.SELECTED_FILES">
+
+            </b>
+        </div>
+        <div class="panel-body">
+            <z-slick-grid id="flr-selected-files-grid"
+                          class="flr-selected-files-grid"
+                          grid-id="flr-selected-files-grid"
+                          grid="gridObj.grid"
+                          custom-options="model.options"
+                          data="model.selectedNodes"
+                          row-click="rowClick"
+                          hide-view-options="true"></z-slick-grid>
+        </div>
+        <div class="panel-footer">
+            <span>{{model.selectedNodes.length}} {{"FLR.DOWNLOAD.FILE.ITEM"  |translate}}{{model.selectedNodes.length > 1 ? "s" : ""}} {{"FLR.DOWNLOAD.FILE.SELECTED"  |translate}}</span>
+        </div>
+    </div>
+
+    <z-tooltip-directive>
+        <div class="flr-file-tooltip">
+            <h6 translate="FLR.DOWNLOAD.FILE.TOOLTIP.FILE_DETAILS"></h6>
+
+            <div class="form-horizontal">
+                <div class="flr-file-tooltip__row">
+                    <label class="flr-file-tooltip__label" translate="FLR.DOWNLOAD.FILE.TOOLTIP.NAME"></label>
+                    <span class="flr-file-tooltip__text"><span class="flr-wrap-text">{{node.name}}</span></span>
+                </div>
+                <div class="flr-file-tooltip__row" ng-show="node.isFile">
+                    <label class="flr-file-tooltip__label" translate="FLR.DOWNLOAD.FILE.TOOLTIP.SIZE"></label>
+                    <label>{{node.size | storageBytesToStringfilter}}</label>
+                </div>
+                <div class="flr-file-tooltip__row">
+                    <label class="flr-file-tooltip__label" translate="FLR.DOWNLOAD.FILE.TOOLTIP.CREATED"></label>
+                    <label>{{node.dateCreated}}</label>
+                </div>
+                <div class="flr-file-tooltip__row">
+                    <label class="flr-file-tooltip__label" translate="FLR.DOWNLOAD.FILE.TOOLTIP.MODIFIED"></label>
+                    <label>{{node.dateModified}}</label>
+                </div>
+                <div class="flr-file-tooltip__row">
+                    <label class="flr-file-tooltip__label" translate="FLR.DOWNLOAD.FILE.TOOLTIP.ACCESSED"></label>
+                    <label>{{node.dateAccessed}}</label>
+                </div>
+            </div>
+        </div>
+    </z-tooltip-directive>
+    <script type="text/ng-template" id="flr-file-item.html">
+        <div class="tree-view-item flr-wrap-text" id="{{ node.id }}" ng-mouseenter="mouseEnter($event,node)"
+             ng-mouseleave="mouseLeave(node)">
+
+            <span ng-if="!node.isFile" class="tree-view-icon" ng-click="expandCollapse(node)"
+                  ng-class="{'tree-view-expand' : node.collapsed, 'tree-view-collapse' : !node.collapsed}">
+                   </span>
+
+            <label class="z-checkbox">
+                <input type="checkbox" ng-model="node.selected" ng-click="toggleCheckbox(node)">
+                <span class="z-checkbox-container"></span>
+                <span class="icon"></span>
+            </label>
+
+            <span ng-if="!node.isFile" class="glyphicon"
+                  ng-class="{'glyphicon-folder-close': node.collapsed, 'glyphicon-folder-open': !node.collapsed}">
+            </span>
+            <span ng-if="node.isFile" class="glyphicon glyphicon-file"></span>
+            <span class="filename"
+                  ng-class="{'selected':node.selected, 'disabled':node.disabled, 'selectable': !node.disabled }">
+                {{node.name}}
+            </span>
+        </div>
+        <ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: node.collapsed}">
+            <li ng-repeat="node in node.nodes" ui-tree-node ng-include="'flr-file-item.html'">
+            </li>
+        </ol>
+    </script>
+</div>

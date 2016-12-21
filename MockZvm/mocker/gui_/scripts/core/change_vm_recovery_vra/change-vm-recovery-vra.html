@@ -1,0 +1,57 @@
+<base-modal-window modal-title="{{'CHANGE-VM-RECOVERY-VRA.TITLE' | translate}}" btns="buttons"
+                   close="handleCancel" loading="loading" help="vraChnangeRecoveryVmController">
+
+    <div class="container-fluid title-class">
+        <h5 class="recovery-title">{{'CHANGE-VM-RECOVERY-VRA.TEXT' | translate}}</h5>
+    </div>
+    <div class="grid-container" ng-if="isGridVisible">
+        <z-slick-grid id="changeVmRecoveryVra" grid-id="changeVmRecoveryVra"
+                      data="gridData"
+                      custom-options="customOptions" selected-items="selectedItems"
+                      on-selection="selectedChange" hide-view-options="true"></z-slick-grid>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-3">
+                <label>{{ "CHANGE-VM-RECOVERY-VRA.SELECT_HOST_TEXT" | translate }} </label>
+            </div>
+            <div class="col-xs-3">
+                <ui-select ng-disabled="!selectedItems.length" theme="select2"  ng-change="selectedChange()" ng-model="data.SelectedHost">
+                    <ui-select-match class="ui-select-match">{{$select.selected.DisplayName ?$select.selected.DisplayName : $select.selected.HostInfo.DisplayName}}</ui-select-match>
+                    <ui-select-choices class="ui-select-choices" repeat="item.HostInfo as item in data.AvailableHostList" class="{{getUnderlineClass(item)}}">
+                        <span ng-bind-html="((item && item.Recommended) ? item.HostInfo.DisplayName + ' (recommended host) ' :  item.HostInfo.DisplayName)"></span>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+            <div class="col-xs-6">
+
+            </div>
+        </div>
+        <div class="row" ng-show="data.ExplanationList.length">
+            <div class="col-xs-12">
+                <label>{{"CHANGE-VM-RECOVERY-VRA.EXPLANATION_TEXT"|translate}}</label>
+            </div>
+        </div>
+        <div class="row" ng-show="data.ExplanationList.length">
+            <div class="col-xs-12">
+                <ul role="menu" class="change-vm-recovery-vra__explanation-list">
+                    <li ng-repeat="item in data.ExplanationList track by $index">
+                        <label>{{item.Explanation}}</label>
+                        <span class="help-icon" uib-tooltip="{{getTooltip(item.VirtualMachines)}}"
+                        tooltip_placement="right">?</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row" ng-show="data.NotificationsList.length">
+            <div class="col-xs-12">
+                <ul role="menu" class="change-vm-recovery-vra__notification-list">
+                    <li ng-repeat="item in data.NotificationsList track by $index" class="notification-style">
+                        <span class="notification-icon"></span>
+                        <label>{{item}}</label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</base-modal-window>

@@ -1,0 +1,19 @@
+.recovery-execution-parameters {
+
+    .z-slick-grid-container {
+        position: relative;
+        height: 385px;
+    }
+
+    .recovery-edit-btn {
+        position: absolute;
+        right: 34px;
+        z-index: 4000;
+    }
+
+    .recovery-reverse-btn {
+        position: absolute;
+        right: 140px;
+        z-index: 4000;
+    }
+}

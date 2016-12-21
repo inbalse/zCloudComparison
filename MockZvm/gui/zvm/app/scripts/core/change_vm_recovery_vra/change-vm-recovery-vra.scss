@@ -1,0 +1,49 @@
+.change-vm-recovery-vra {
+
+  .modal-body {
+    background-color: white;
+    max-height: 500px;
+    min-height: 250px;
+      padding: 0 10px;
+  }
+  .modal-dialog {
+    width: 860px;
+  }
+
+  ul {
+    max-height: 90px;
+    overflow-y: auto;
+    min-height: 20px;
+  }
+
+  h5 {
+    display: inline-block;
+  }
+
+  .notification-style {
+    list-style: none;
+  }
+
+  .grid-container{
+      height: 158px;
+      margin-bottom: 30px;
+  }
+  .title-class {
+    text-align: center;
+  }
+
+  .notification-icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+    background-image: url('../assets/list_icons/warning-list-icon.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    float: left;
+  }
+}
+
+.select2-results .underline-text .select2-result-label{
+  text-decoration:underline;
+}

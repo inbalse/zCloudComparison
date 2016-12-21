@@ -1,0 +1,29 @@
+.nic-vcd-edit-modal {
+  .modal-dialog {
+    width: 660px;
+  }
+
+  .modal-body {
+    background-color: white;
+  }
+
+  .center-label {
+    text-align: center;
+  }
+
+  .info-label {
+    height: 200px;
+    width: 100%;
+    text-align: center;
+    label {
+      width: 380px;
+      padding-top: 60px;
+    }
+  }
+
+  hr {
+    border-top: 1px solid $gray-light;
+    margin-bottom: 4px;
+    margin-top: 4px;
+  }
+}

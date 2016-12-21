@@ -1,0 +1,22 @@
+.view-switch {
+    width: 80px;
+    height: 24px;
+    border: 1px solid #53585f;
+    background-image: url('../assets/view-switch/view-switch.png');
+    &:hover {
+        border-color: #4e7dac;
+    }
+    &.view-switch--grid {
+        background-position: center left;
+    }
+    &.view-switch--cards {
+        background-position:center  right;
+    }
+    a {
+        position: relative;
+        width: 50%;
+        height: 100%;
+        display: block;
+        float: left;
+    }
+}

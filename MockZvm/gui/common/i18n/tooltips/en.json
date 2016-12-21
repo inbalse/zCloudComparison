@@ -1,0 +1,177 @@
+{
+    "SITE_SETTINGS": {
+        "SITE_SETTINGS": "Site-wide settings used by Zerto Virtual Replication",
+        "SITE_SETTINGS_NO_PERMISSION": "You do not have the correct permissions to change the site settings",
+        "PERFORMANCE_TOOLTIPS": {
+            "BANDWIDTH_THROTTLING": "Maximum available bandwidth for disaster recovery",
+            "TIME_BASE_BANDWIDTH_THROTTLING": "Maximum bandwidth for disaster recovery during a specific period",
+            "DEFAULT_SCRIPT_EXECUTION_TIME": "Timeout for a script running before or after a failover, move, or test failover. Min: 300 sec | Max 6000 sec | No Timeout: 0 Sec",
+            "ENABLE_REGULATION_HELP": "For use only with Zerto support, when bandwidth problems occur."
+        },
+        "DISASTER_AND_RECOVERY_TOOLTIPS": {
+            "DEFAULT_TIMEOT": "Time period after which the commit policy is performed. A value of zero means the commit policy is automatically performed, without waiting for user interaction.",
+            "ENABLE_REPLICATE_TO_SELF": "The protected site is also used as the recovery site.",
+            "REPLICATION_PAUSE_TIME": "The default time to pause when synchronizing a VPG if continuing the synchronization will cause all the checkpoints in the journal to be removed."
+        },
+        "REPORTS_TOOLTIPS": {
+            "GRAPHICAL_SCALING":"Scaling used in the performance graphs",
+            "IOPS": "IO between the applications running on the virtual machines being protected and the VRA",
+            "THROUGHPUT": "The MBs for the applications running on the virtual machines being protected.",
+            "WANTRAFFIC": "Traffic between sites",
+            "RPO": "The time since the last checkpoint was written to the journal.",
+            "CPU": "Percentage of CPU used by the VRA",
+            "VRA_LOCAL_MEMORY": "Percentage of VRA memory used by protected volumes managed by the VRA",
+            "VRA_REMOTE_MEMORY": "Percentage of VRA memory used by recovery volumes managed by the VRA",
+            "SAMPLING_RATE":"How often to take resource samples to identify resource usage",
+            "SAMPLING_TIME":"When to take resource samples"
+        },
+        "EMAIL_SETTINGS_TOOLTIPS":{
+            "EMAIL_SETTINGS":"Define who will receive Zerto Virtual Replication alerts.",
+            "SMTP_SERVER_ADDRESS": "SMTP server address of the vCenter Server. The Zerto Virtual Manager must be able to reach this address.",
+            "SMTP_SERVER_PORT": "SMTP server port, if it was changed from the default, 25",
+            "SENDER": "Valid email address for the email sender",
+            "TO": "Valid email addresses that will receive the email. Use commas (,) or semicolons (;) to separate addresses.",
+            "TEST_EMAIL": "To test that email notification is set up correctly. An email with the subject ZVR Test Email is sent to the email address in the To field.",
+            "ENABLE_ALERTS": "Send email alerts.",
+            "BACKUP_REPORT": "Create and send email backup reports."
+        },
+        "CLOUD_SETTINGS": {
+            "MANAGE_STATIC_ROUTES":"Define a static route that will hop to a different cloud network, specifically for use by the Zerto Virtual Manager and VRAs in the cloud site.",
+            "VCD_SETTINGS":"Configure access to VMware vCloud Director and configure provider vDCs."
+        }
+    },
+    "MORE_ACTIONS": {
+        "EDIT_VPG": "Edit VPG settings",
+        "PAUSE": "Pause the protection of a VPG, to free up bandwidth.",
+        "RESUME": "Resume protecting the VPG.",
+        "STOP": "Stop the backup operation.",
+        "START_BACKUP": "Run backup jobs now.",
+        "DELETE_VPG": "Delete the VPG.",
+        "STOP_FOT": "Stop the failover test on the VPG.",
+        "SYNC": "Synchronize the VPG with the recovery site, for example, after rolling back a VM in the VPG to a VMware snapshot.",
+        "CLONE": "Create copies of the VPG VMs on the recovery site in the production network. The VMs on the protected site remain protected and alive.",
+        "STOP_FOT": "Stop Test"
+    },
+    "VRA_MORE_ACTION": {
+        "EDIT": "Edit the VRA group and network details for this VRA.",
+        "INSTALL": "Install the VRA",
+        "UNINSTALL": "Uninstall the VRA. You cannot uninstall a VRA with recovery VPGs.",
+        "UPGRADE": "Upgrade the VRA to the latest version.",
+        "CHANGE_HOST_PASSWORD": "Change the password used by the VRA to access the host."
+    },
+    "GLOBAL": {
+        "IOPS_CHART": "The IO per second between all the applications running on the virtual machines in the VPG and the VRA that sends a copy to the remote site for replication.",
+        "TIME_INFORMATION": "The time of the machine on which the Zerto Virtual Manager is installed. This time can be different from the time of the machine on which the vSphere Client console runs.",
+        "THROUGTPUT_CHART": "The MBs for all applications running on the virtual machines being protNd be less than the Target RPO Alert value specified for the VPG.",
+        "WANTRFFIC_CHART": "Traffic between sites",
+        "SITE_NAME": "The contact for this site",
+        "SITE_LOCATION": "The location of the site"
+    },
+    "EDIT_VRA": {
+        "VRA_GROUP": "Select a group or enter free text to create a new group for the VRA. If the old group is not used by any other VRA, it is automatically deleted.",
+        "HOST_ROOT_PASSWORD": "Host root password, required when installing a VRA on an ESXi 4.1 and 5.0 host",
+        "VRA_VIB": "Use credentials and not VIB to connect to the host"
+    },
+    "VPG_WIZARD": {
+        "REPLICATION_SLA": "General values that apply to the VPG",
+        "REPLICATION_WAN_TRAFFIC_COMPRESSION": "Whether the data is compressed before being transferred to the recovery site",
+        "BACKUP_REPOSITORY_NAME": "Name of the repository where the backups are written",
+        "BACKUP_RUN_JUB": "Time to start a backup job",
+        "BACKUP_RETENTION_PERIOD": "The period to keep backups. Over time the number of backups in the repository is diluted to save disk space.",
+        "RECOVERY_GUEST_CUSTOMIZATION": "The IP addresses configured for the VMs are applied when the VMs are powered on.",
+        "REPLICATION_HOST": "The default ESX/ESXi host in the recovery site that handles replicated data",
+        "REPLICATION_DATASTORE": "Default datastore to use for the recovered VM and its volumes",
+        "REPLICATION_STORAGE": "Default storage to use for the recovered VM and its volumes",
+        "RECOVERY_FAILOVER_NETWORK": "The default network used for failover. It should be the best network available.",
+        "RECOVERY_FOLDER": "Default folder to recover the VM",
+        "RECOVERY_SCRIPTS": "Optional scripts can be executed before or after a VPG test, move, or failover. The command to run must include the full path to the script on the Zerto Virtual Manager machine where it will run. Parameters are separated by spaces. If a timeout is not entered, the system default is used. Refer to the documentation for full details.",
+        "TEMP_DISK": "The recovery volume is marked as a temp data disk and data is not replicated to this disk after initial synchronization.",
+        "THIN": "Check to specify that the recovery volume is thin-provisioned."
+    },
+    "PAIR_SITES": {
+        "PAIR_IP_ADDRESS" : "Enter the IP address of the remote site running the Zerto Virtual Manager service. Pairing is a one time operation performed from either site."
+    },
+    "SUPPORT_TICKET": {
+        "SUBJECT": "Subject of the support ticket",
+        "TYPE": "Type of ticket, for example, problem or question",
+        "DESCRIPTION": "A short description of the support ticket you are submitting",
+        "SSP_EMAIL_ADDRESS": "The SSP email address that Zerto recognizes as a valid email address for opening tickets."
+    },
+    "CONFIGURE_CHECKPOINT": {
+        "LATEST_RB": "Recover the VPG VMs to the last checkpoint.",
+        "LATESTVSS_RB": "Recover the VPG VMs to the last VSS checkpoint when ZertoVssAgent is used to add checkpoints synchronized with VSS snapshots.",
+        "LATEST_MANUAL_CHECKPOINT_RB": "Recover the VPG VMs to the last manual checkpoint that was entered."
+    },
+    "JOURNAL_SETTINGS": {
+        "DATASTORE": "The datastore used for journal data for each virtual machine in the VPG. The default is the datastore volume used for recovery of each virtual machine.",
+        "DATASTORE_SELECT": "You must add a VM with its recovery datastore to the VPG to change the default journal datastore.",
+        "STORAGE": "The storage used for journal data for each virtual machine in the VPG. The default is the storage used for recovery of each virtual machine.",
+        "STORAGE_SELECT": "You must add a VM with its recovery storage to the VPG to change the default journal storage.",
+        "HARD_LIMIT": "The maximum size for the journal: Unlimited, as a percentage of the VM volumes or as a fixed size. Changing this value only affects VMs added to the VPG after the change.",
+        "SOFT_LIMIT": "The size for the journal that, when reached, triggers a warning. Changing this value only affects VMs added to the VPG after the change."
+    },
+    "LICENSE": {
+        "PAIR": "Address to connect to Zerto Virtual Replication on the peer site."
+    },
+    "GRID_COLUMNS": {
+        "PRIORITY": "Priority for transferring data to the recovery site of the VPG",
+        "VPG_NUMBER_VMS" : "VPG name + number of VMs protected in the VPG",
+        "PROVISIONED": "Amount of data provisioned",
+        "USED": "Amount of storage used",
+        "IO": "IO for the VPG",
+        "THROUGHPUT": "MB/second being sent over the WAN",
+        "ACTUAL_RPO": "The actual time between checkpoints being written for this VPG",
+        "LAST_TEST": "Date and time of the last test",
+        "VPG_NAME": "Name of the VPG",
+        "SOURCE_SITE": "Name of the source site",
+        "TARGET_SITE": "Name of the target site",
+        "COMMIT_POLICY": "Target site only supports auto-commit",
+        "KEEP_SOURCE_VMS_HEADER_COLUMN": "Keep the VMs at the source site after Move",
+        "FORCE_SHUTDOWN": "To enable the Move to continue, VMs that cannot be shut down gracefully, for example, VMs not running VM Tools, are forcibly powered off",
+        "REVERSE": "After recovery, the VPG definition will be updated to enable recovered virtual machines to be protected with recovery to the original site.",
+        "OPERATION": "Protection status, such as Protecting, Synchronizing, Error, etc.",
+        "CHECKPOINT": "Click to change the checkpoint used to test failover",
+        "ROLLBACK": "Roll back",
+        "STOP_FAILOVER_TEST": "Abort",
+        "STOP_CLONE": "Stop clone",
+        "STOP_BACKUP": "Stop Backup",
+        "STOP_TASK": "Stop task",
+        "RESUME": "Resume VPG",
+        "DELETE_VPG": "Delete VPG",
+        "EDIT_VPG": "Edit VPG",
+        "DELETE_VPG_DISABLED": "Cannot Delete",
+        "EDIT_VPG_DISABLED": "Cannot Edit",
+        "DELETE_VRA": "Uninstall VRA",
+        "EDIT_VRA": "Edit VRA",
+        "DELETE_VRA_DISABLED": "Cannot Uninstall",
+        "EDIT_VRA_DISABLED": "Cannot Edit",
+        "DELETE_REPOSITORY": "Delete Repository",
+        "EDIT_REPOSITORY": "Edit Repository",
+        "DELETE_REPOSITORY_DISABLED": "Cannot delete repository while a backup using this repository is running.",
+        "EDIT_REPOSITORY_DISABLED": "Cannot edit repository while a backup using this repository is running.",
+        "STATUS_ERROR": "Error",
+        "STATUS_NORMAL": "Normal",
+        "STATUS_WARNING": "Warning",
+        "STATUS_NOTAVAILABLE": "Not Available",
+        "EVENT_TYPE_ALL": "All",
+        "EVENT_TYPE_EVENTS": "Events",
+        "EVENT_TYPE_ALERTS": "Alerts",
+        "ALERT_ACKNOWLEDGED": "Acknowledged",
+        "ALERT_NOT_ACKNOWLEDGED": "Not acknowledged"
+    },
+    "CHART_TOOLTIPS": {
+        "RPO_CHART": "The time since the last checkpoint was written to the journal. This should be less than the Target RPO Alert value specified for the VPG.",
+        "WANTRAFFIC_CHERT": "Traffic between sites.",
+        "THROUGHPUT_CHART": "The MBs for all applications running on the virtual machines being protected. There can be a high IO rate with many small writes resulting in low throughput as well as a low IO rate with high throughput. Thus, both the IOPS and throughput values together provide a more accurate indication of performance.",
+        "IO_CHART": "The IO per second between all applications running on the virtual machines in the VPG and the VRA that sends a copy to the remote site for replication.",
+        "REMOTE_MEMORY_CHART": "com.zerto.view.skins.vra.VRAComponentSkin.RemoteMemory",
+        "LOCAL_MEMORY_CHART": "Percentage of VRA memory used by protected volumes managed by the VRA",
+        "CPU_CHART": "Percentage of CPU usage by the VRA"
+    },
+    "LOGIN": {
+        "VMWARE_LOGIN": "Login using the user name and password of the vCenter Server connected to the Zerto Virtual Manager.",
+        "SCVMM_LOGIN": "Login using the user name and password for the virtual machine where you installed Zerto Virtual Replication.",
+        "AWS_LOGIN": "Log in using the user name and password of the instance on AWS in which you installed the Zerto Cloud Appliance.",
+        "ZSSP_LOGIN": "Login using the ZORG name, user name, and password provided by your CSP."
+    }
+}

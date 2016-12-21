@@ -1,0 +1,42 @@
+//Cutting the text in the div
+
+.ellipsis {
+  font-size: 11px;
+  overflow: hidden;
+  height: 32px;
+  margin: 5px;
+  line-height: 16px;
+
+  &:before{
+    content: "";
+    float: left;
+  }
+
+  //this row code is problematic
+  //& > *:first-child {
+  //  float: right;
+  //  width: 100%;
+  //  margin-left: -5px;
+  //}
+
+  &:after {
+    box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    float: right;
+    position: relative;
+    top: -25px;
+    left: 100%;
+    margin-left: -3em;
+    padding-right: 5px;
+    text-align: right;
+    background-size: 100% 100%;
+  }
+}
+
+.line-ellipsis{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: block;
+}

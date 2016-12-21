@@ -1,0 +1,44 @@
+{
+    "VRA_LIST": {
+        "MORE": "MORE",
+        "PAIR_SITE_ROUTING": "Paired Site Routing",
+        "INSTALL_BUTTON": "NEW VRA",
+        "UNINSTALL_BUTTON": "UnInstall",
+        "UNINSTALL_HEADLINE": "Uninstall VRAs",
+        "EDIT": "Edit",
+        "UPGRADE": "Upgrade",
+        "CHANGE_PASSWORD": "Change Host Password",
+        "CHANGE_VM": "Change VM Recovery VRA",
+        "CHANGE_VM_RECOVERY_VRA_DISABLED" : "No protected virtual machines are being recovered to this VRA",
+        "CHANGE_VM_RECOVERY_VRA_ENABLED" : "Change the recovery host for a protected virtual machine",
+        "UNINSTALL_RECOVERY": "A selected VRA is on a recovery host. Change the recovery host in the VPG definition.",
+        "UNINSTALL_NORMALLY": "You are about to uninstall the selected VRAs.",
+        "UNINSTALL_GHOSTS": "One or more of the selected VRAs are ghost VRAs. They will be forcibly uninstalled.",
+        "UNINSTALL_CLUSTER": "One or more of the selected VRAs belong to a cluster. Zerto recommends installing a VRA on every host in the cluster. If virtual machines are moved to this host with vMotion or DRS, the VPG will enter an error state.",
+        "UNINSTALL_CLUSTER_HYPERV": "One or more of the selected VRAs belong to a cluster. Zerto recommends installing a VRA on every host in the cluster. If virtual machines are moved to this host with Live Migration or Dynamic Optimization, the VPG will enter an error state.",
+        "UNINSTALL_QUESTION": "Do you want to continue?",
+        "NOTE": "<br/> Note the following:<br/>",
+        "STATES_MAP": {
+            "0": "Outdated",
+            "1": "Outdated",
+            "2": "Upgrading",
+            "3": "Upgrade Failed",
+            "4": "Latest",
+            "NA": "NA"
+        },
+        "VRA_STATUS": {
+            "0": "Installed",
+            "1": "Unsupported ESX Version",
+            "2": "Not Installed",
+            "3": "Installing...",
+            "4": "Removing...",
+            "5": "Installation Error",
+            "6": "Root Password Changed",
+            "7": "Updating IP Settings",
+            "8": "Changing Recovery Host",
+            "9": "Host in maintenance mode",
+            "GHOST_VRA": "Ghost VRA"
+        },
+        "SHOW_ONLY_HOST_WITH_VRA_INSTALL": "Show only hosts with VRA installed"
+    }
+}

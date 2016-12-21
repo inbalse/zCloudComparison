@@ -1,0 +1,27 @@
+.z-arrow {
+  background-color: #656c74;
+  border: solid 2px #9da3af;
+  width: 5px;
+  height: 5px;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  transform: rotate(45deg);
+  z-index: 2;
+  position: absolute;
+  &.z-arrow-left {
+    border-top: 0;
+    border-right: 0;
+  }
+  &.z-arrow-right {
+    border-left: 0;
+    border-bottom: 0;
+  }
+  &.z-arrow-up {
+    border-right: 0;
+    border-bottom: 0;
+  }
+  &.z-arrow-down {
+    border-left: 0;
+    border-top: 0;
+  }
+}

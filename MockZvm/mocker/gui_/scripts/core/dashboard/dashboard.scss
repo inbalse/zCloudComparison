@@ -1,0 +1,424 @@
+.z-dashboard {
+    @extend .min-dims;
+    background-color: #e7e8ea;
+    padding: 15px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    .z-dashboard-container {
+        height: 100%;
+        width: 100%;
+        position: relative;
+
+        .z-dashboard-content {
+            position: absolute;
+            .z-dashboard-content-container {
+                background-color: #fff;
+                height: 100%;
+                padding: 10px;
+                position: relative;
+                h4.title {
+                    font-weight: bold;
+                    text-align: left;
+                    font-size: 12px;
+                    color: #000000;
+                    position: absolute;
+                    margin: 0;
+                    left: 15px;
+                    top: 15px;
+                }
+
+                .license-container {
+                    border: solid rgb(255, 187, 33);
+                }
+            }
+            .z-dashboard-content-container-heat-map {
+                padding-top: 50px;
+                .heatMapData {
+                    position: relative;
+                    height: 100%;
+                    top: 0;
+                    text-align: center;
+                }
+            }
+        }
+
+        .z-dashboard-tabs {
+            height: 30%;
+            width: 64%;
+            right: 0;
+            top: 0;
+            padding-left: 5px;
+            padding-bottom: 5px;
+            .z-dashboard-tab {
+                width: 20%;
+                border-right: solid 1px #e7e8ea;
+                height: 70%;
+                margin-top: 1%;
+                float: left;
+                text-align: center;
+                &:last-child {
+                    border-right: transparent;
+                }
+
+                h4 {
+                    font-size: 40px;
+                    color: #20477c;
+                    margin-bottom: 0;
+                    margin-top: -35px;
+                    font-weight: normal;
+                    top: 50%;
+                    position: relative;
+                }
+                label {
+                    font-size: 12px;
+                    display: block;
+                    position: relative;
+                    top: 50%;
+                }
+                span {
+                    font-size: 12px;
+                }
+            }
+        }
+        .z-dashboard-complex {
+            padding-left: 5px;
+            padding-top: 5px;
+            height: 70%;
+            width: 64%;
+            right: 0;
+            bottom: 0;
+
+            & > .z-dashboard-content-container {
+                background-color: transparent;
+            }
+            .z-dashboard-lists {
+                padding-left: 5px;
+                height: 100%;
+                left: 320px;
+                right: 0;
+                bottom: 0;
+                &.z-dashboard-lists-licence {
+                    top: 0;
+                    height: auto;
+                    bottom: 80px;
+                }
+                .status-widget-content {
+                    padding: 7px;
+                }
+                //if screen page smaller that 1430px returned default css options (static size)
+                @media screen and (min-width: 1430px) {
+                    //when screen size bigger that 1430px set width to responsive page
+                    width: 64%;
+                    left: 36%;
+                }
+
+                .z-dashboard-content-container {
+                    .z-dashboard-content-container-scroll {
+                        height: 100%;
+                        overflow-y: auto;
+                        overflow-x: hidden;
+                    }
+
+                }
+            }
+            .z-dashboard-license {
+                position: absolute;
+                left: 320px;
+                right: 0;
+                bottom: 0;
+                height: 70px;
+                padding-left: 5px;
+
+                //if screen page smaller that 1430px returned default css options (static size)
+                @media screen and (min-width: 1430px) {
+                    //when screen size bigger that 1430px set width to responsive page
+                    width: 64%;
+                    left: 36%;
+                }
+            }
+            .z-dashboard-pies {
+                padding-bottom: 5px;
+                padding-right: 5px;
+                width: 36%;
+                height: 55%;
+                top: 0;
+                left: 0;
+                min-width: 320px;
+
+                .z-dashboard-content-container {
+                    padding: 10px 0 10px 0;
+                }
+
+                .pie-side-container {
+                    height: 100%;
+                    width: 57%;
+                    float: left;
+                    padding-top: 20px;
+                    position: relative;
+
+                    .middle-pie-text {
+                        position: absolute;
+                        top: 50%;
+                        margin-top: -15px;
+                        left: 50%;
+                        margin-left: -25px;
+                        height: 50px;
+                        width: 50px;
+                        font-size: 11px;
+                        font-weight: bold;
+                        text-align: center;
+                        display: table;
+
+                        span {
+                            display: table-cell;
+                            vertical-align: middle;
+                            width: 100%;
+                            height: 100%;
+                            font-size: 9px;
+                            color: #000000;
+                        }
+                    }
+                }
+                .legend-side-container {
+                    position: relative;
+                    height: 100%;
+                    width: 43%;
+                    float: left;
+
+                    ul {
+                        list-style: none;
+                        padding: 0;
+                        height: 133px;
+                        top: 50%;
+                        margin: 0;
+                        position: relative;
+                        margin-top: -65px;
+                        li {
+                            position: relative;
+                            display: table;
+                            clear: both;
+                            .legend-square {
+                                height: 10px;
+                                width: 10px;
+                                top: 50%;
+                                margin-top: -5px;
+                                position: absolute;
+                                .first-legend-square {
+                                    height: 7px;
+                                    width: 10px;
+                                    position: absolute;
+                                }
+                                .second-legend-square {
+                                    position: absolute;
+                                    top: 7px;
+                                    height: 3px;
+                                    width: 10px;
+                                }
+                            }
+                            label {
+                                display: table-cell;
+                                font-weight: bold;
+                                font-size: 10px;
+                                line-height: 8px;
+                                padding-left: 15px;
+                                vertical-align: middle;
+                                color: #000000;
+                            }
+                        }
+                    }
+                }
+            }
+            .z-dashboard-sites {
+                padding-top: 5px;
+                padding-right: 5px;
+                width: 36%;
+                height: 45%;
+                bottom: 0;
+                left: 0;
+                min-width: 320px;
+
+                .z-dashboard-content-container {
+                    padding-top: 40px;
+                    padding-bottom: 20px;
+
+                    label {
+                        width: 100%;
+                        position: absolute;
+                        text-align: center;
+                        margin-bottom: 0;
+                        overflow: hidden;
+                        display: block;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                    }
+                    .this-site, .site-directions, .target-sites {
+                        height: 100%;
+                        position: relative;
+                        float: left;
+                        background: transparent no-repeat center;
+                        > label {
+                            bottom: 0;
+                        }
+                    }
+                    .this-site {
+                        background-image: url('../assets/dashboard/one-site.png');
+                    }
+
+                    .target-sites-single {
+                        background-image: url('../assets/dashboard/one-site.png');
+                    }
+                    .target-sites-multi {
+                        background-image: url('../assets/dashboard/multi-site.png');
+                    }
+                    .site-incoming, .site-outgoing {
+                        background: transparent no-repeat center bottom;
+                        label {
+                            top: 0px;
+                        }
+                    }
+                    .site-incoming {
+                        background-image: url('../assets/dashboard/remoteArrow.png');
+                    }
+                    .site-outgoing {
+                        background-image: url('../assets/dashboard/localArrow.png');
+                    }
+                    .this-site, .target-sites {
+                        width: 30%;
+                        background-size: 60%;
+                    }
+                    .site-directions {
+                        height: 60px;
+                        margin-top: -30px;
+                        top: 50%;
+                        width: 40%;
+                        .site-incoming, .site-outgoing {
+                            position: relative;
+                            width: 100%;
+                            height: 50%;
+                            background-size: contain;
+                        }
+                    }
+                }
+                .z-label-topology {
+                    font-size: 18px;
+                    font-weight: bold;
+                    padding: 10px;
+                    top: 10px;
+                    left: 15px;
+                }
+            }
+        }
+
+        .z-dashboard-graphs {
+            padding-right: 5px;
+            padding-top: 5px;
+            left: 0px;
+            bottom: 0px;
+            width: 36%;
+            height: 70%;
+            .z-dashboard-content-container {
+                padding-bottom: 30px;
+            }
+            .charts-row {
+                height: 33.33%;
+                position: relative;
+                margin-bottom: 10px;
+
+                &:last-child {
+                    overflow: hidden;
+                }
+            }
+
+            .charts-right-label {
+                float: right;
+                padding-right: 36px;
+                width: auto;
+            }
+        }
+        .z-dashboard-health {
+            padding-right: 5px;
+            padding-bottom: 5px;
+            height: 30%;
+            width: 36%;
+            left: 0;
+            top: 0;
+            text-align: center;
+        }
+
+        .status-widget {
+            .status-widget-content {
+
+                //padding: 7px;
+            }
+            min-height: 50px;
+            .status-widget-title {
+                font-size: 12px;
+                color: #000000;
+                font-weight: bold;
+                text-transform: uppercase;
+
+                &:hover, &:active {
+                    color: #20477c;
+                    text-decoration: underline;
+                }
+
+            }
+
+            .license-title {
+                font-size: 12px;
+                color: #000000;
+                font-weight: bold;
+            }
+
+            .license-message {
+                width: 70%;
+            }
+
+            h4 {
+                font-size: 12px;
+                color: #000000;
+                font-weight: bold;
+                text-transform: uppercase;
+            }
+            label {
+                width: 100%;
+                font-weight: bold;
+                margin: 0;
+            }
+
+            .show-all {
+                position: absolute;
+                right: 10px;
+
+                a {
+                    color: #607A9F;
+                    font-size: 10px;
+                    font-weight: bold;
+                }
+
+            }
+            .upgrade {
+                top: 6px;
+            }
+        }
+    }
+
+    .inline-content {
+        p {
+            display: inline;
+        }
+    }
+}
+
+z-heat-map {
+    display: block;
+    top: 5%;
+    position: relative;
+    overflow-y: auto;
+    max-height: 90%;
+}
+

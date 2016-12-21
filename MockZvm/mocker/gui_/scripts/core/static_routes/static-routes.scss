@@ -1,0 +1,56 @@
+.static-routes {
+  .angular-ui-tree-nodes .angular-ui-tree-nodes {
+    padding-left: 40px;
+    padding-right: 26px;
+  }
+  .modal-body {
+    background-color: white;
+    height: 360px;
+    padding: 10px 10px 32px 10px;
+  }
+
+  .modal-dialog {
+    width: 600px;
+  }
+
+  .static-routes-controls {
+      width: 200px;
+      text-align: left;
+      position: absolute;
+      top: 0px;
+      right: 0;
+  }
+
+  .static-routes-icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    top: 4px;
+    position: relative;
+    background-repeat: no-repeat;
+    &:hover {
+      cursor: pointer;
+    }
+    &.static-routes-remove {
+      background-image: url('../assets/tree_view/delete.png');
+      padding-bottom: 20px;
+    }
+    &.static-routes-edit {
+      background-image: url('../assets/tree_view/edit.png');
+    }
+    &.static-routes-add {
+      background-image: url('../assets/tree_view/expand.png');
+    }
+  }
+  .static-routes-edit-text {
+    width: 40%;
+  }
+  .static-routes-save {
+    width: 50px;
+  }
+}
+.add-static-route{
+  .modal-body {
+    background-color: white;
+  }
+}

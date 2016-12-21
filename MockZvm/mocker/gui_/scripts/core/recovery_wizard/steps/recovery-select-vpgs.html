@@ -1,0 +1,15 @@
+<div class="recovery-select-vpgs z-wizard-container-wide" ng-controller="recoverySelectVPGController" ng-cloak="">
+    <h5 class="recovery-title">{{recoverySelectTitle}}</h5>
+    <div class="z-slick-grid-container">
+        <z-slick-grid id="recovery-vpgs" grid-id="recovery-vpgs" class="recovery-grid"
+                      data="gridData" custom-options="customOptions" hide-view-options="true"
+                      view-by-values="viewByValues" group-by-values="groupByValues"
+                      selected-items="selectedItems" on-selection="selectedItemsChange"></z-slick-grid>
+    </div>
+    <div class="form-group">
+        <div class="col-xs-12 recovery-vpgs-sum">
+           <pre class="recovery-vpgs-sum-data">{{selectedDetails}}</pre>
+        </div>
+    </div>
+
+</div>

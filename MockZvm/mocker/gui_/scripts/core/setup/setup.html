@@ -1,0 +1,61 @@
+<div class="z-tabbed-view setup">
+    <h3 title="{{titleText}}">{{'SETUP_TABS.TITLE' | translate}}</h3>
+
+    <div class="btn-group z-white-btn-group">
+        <full-screen-button></full-screen-button>
+    </div>
+    <div name="tabset">
+        <ul class="nav nav-tabs">
+            <!--<li ng-repeat="tab in tabs" ng-class="{'active':tab.active}" ng-style="{'width':tab.width}">-->
+                <!--<a ui-sref="{{tab.route}}" border-arrow="up">{{tab.title}}</a>-->
+            <!--</li>-->
+            <li ng-class="{'active':tabs[0].active}" ng-style="{'width':tabs[0].width}" ng-show="tabs[0].visible" tooltip-placement="bottom" uib-tooltip="{{tabs[0].tooltip}}">
+                <a ui-sref="{{tabs[0].route}}" border-arrow="up">
+                    {{tabs[0].title}}
+
+                    <div class="tab-content pull-right" ng-if="NumberOfVras">
+                        <img src="assets/setup/subtab_green_v.png"/>
+                        <span>INSTALLED</span>
+                        <span class="separator">|</span>
+                        {{NumberOfVras}}
+                    </div>
+                    <div class="tab-content pull-right" ng-if="!NumberOfVras">
+                        <span class="title">NO INSTALLED VRAs</span>
+                    </div>
+                </a>
+            </li>
+            <li ng-class="{'active':tabs[1].active}" ng-style="{'width':tabs[1].width}" ng-show="tabs[1].visible" >
+                <a ui-sref="{{tabs[1].route}}" border-arrow="up">
+                    {{tabs[1].title}}
+
+                    <div class="tab-content pull-right" ng-if="NumberOfStorages">
+                        <img src="assets/setup/subtab_green_v.png"/>
+                        <span class="title">AVAILABLE</span>
+                        <span class="separator">|</span>
+                        {{NumberOfStorages}}
+                    </div>
+
+                    <div class="tab-content pull-right" ng-if="!NumberOfStorages">
+                        <span class="title">{{noStoragesText}}</span>
+                    </div>
+                </a>
+            </li>
+            <li ng-class="{'active':tabs[2].active}" ng-style="{'width':tabs[2].width}" >
+                <a ui-sref="{{tabs[2].route}}" border-arrow="up">
+                    {{tabs[2].title}}
+
+                    <div class="tab-content pull-right text-right" ng-if="NumberOfRepositories">
+                        {{NumberOfRepositories}}
+                        <span class="sub-title">Repositories</span>
+                        <!--<img src="assets/setup/repositories_tab_image.png"/>-->
+                    </div>
+
+                    <div class="tab-content pull-right" ng-if="!NumberOfRepositories">
+                        <span class="title">NO REPOSITORIES</span>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="z-tab-content" ui-view></div>
+</div>

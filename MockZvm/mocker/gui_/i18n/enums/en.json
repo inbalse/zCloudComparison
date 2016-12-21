@@ -1,0 +1,192 @@
+{
+
+    "ENUM": {
+        "PROTECTION_GROUP_PRIORITY": {
+            "HIGH": "High",
+            "MEDIUM": "Medium",
+            "LOW": "Low"
+        },
+        "RESTORE_POINT_RANG_TYPE": {
+            "NINE_MONTHS": "9 Months",
+            "ONE_MOTH": "1 Month",
+            "ONE_WEEK": "1 Week",
+            "ONE_YEAR": "1 Year",
+            "SIX_MONTHS": "6 Months",
+            "THREE_MONTHS": "3 Months"
+        },
+        "RETENTION_POLICY": {
+            "STANDARD": "Disaster Recovery",
+            "EXTENDED": "Extended Recovery"
+        },
+        "VPG_BACKUP_JOB_SUMMARY_STATUS": {
+            "RUNNING": "Running",
+            "SCHEDULED": "Scheduled",
+            "INACTIVE": "Inactive",
+            "Aborting": "Aborting"
+        },
+        "VPG_NUM_STATUS": {
+            "0": "Initializing",
+            "1": "Meeting SLA",
+            "2": "Not Meeting SLA",
+            "3": "RPO Not Meeting SLA",
+            "4": "History Not Meeting SLA",
+            "5": "Failing Over",
+            "6": "Moving",
+            "7": "Deleting",
+            "8": "Recovered"
+        },
+        "VRA_NUM_STATUS": {
+            "0": "Installed",
+            "1": "Unsupported ESX Version",
+            "2": "Not Installed",
+            "3": "Installing",
+            "4": "Removing",
+            "5": "Installation Error",
+            "6": "Host Password Changed",
+            "7": "Updating IP Settings",
+            "8": "Changing Recovery Host",
+            "9": "Host in maintenance mode",
+            "GHOST": "GHOST VRA"
+
+        },
+        "VPG_VISUAL_STATUS": {
+            "INITIALIZING": "Initializing",
+            "MEETING_SLA": "Meeting SLA",
+            "NOT_MEETING_SLA": "Not Meeting SLA",
+            "FAILING_OVER": "Failing Over",
+            "MOVING": "Moving",
+            "DELETING": "Deleting",
+            "HISTORY_NOT_MEETING_SLA": "History Not Meeting SLA",
+            "RPO_NOT_MEETING_SLA": "RPO Not Meeting SLA",
+            "RECOVERED": "Recovered"
+        },
+        "VPG_VISUAL_SUB_STATUS": {
+            "0": "",
+            "1": "Initial Sync",
+            "2": "Creating VPG",
+            "3": "Volume Initial Sync",
+            "4": "Syncing",
+            "5": "Recovery is possible.",
+            "6": "Delta syncing",
+            "7": "Needs configuration",
+            "8": "Error",
+            "9": "VPG has no VMs",
+            "10": "Site disconnection - no checkpoints",
+            "11": "Full syncing",
+            "12": "Delta syncing a volume",
+            "13": "Fully syncing a volume",
+            "14": "Committing Failover",
+            "15": "Failing over - before commit",
+            "16": "Rolling back Failover",
+            "17": "Promoting",
+            "18": "Committing Move",
+            "19": "Moving - before commit",
+            "20": "Rolling back Move",
+            "21": "Deleting the VPG",
+            "22": "VPG waiting to be removed",
+            "23": "Bitmap syncing",
+            "24": "Site disconnection",
+            "25": "User paused protection",
+            "26": "Zerto Virtual Manager paused protection",
+            "27": "Recovery storage profile error",
+            "28": "Rolling back",
+            "29": "Recovery storage error",
+            "30": "Journal storage error",
+            "31": "VM not protected",
+            "32": "Error - journal/recovery disks are missing",
+            "33": "VMs In Initial Sync"
+        },
+        "VPG_ENTITY_TYPE": {
+            "0": "vCenter",
+            "1": "vCenter",
+            "2": "vCD",
+            "3": "AWS",
+            "4": "SCVMM",
+            "5": "Azure"
+        },
+        "TASK_STATUS": {
+            "1": "In progress",
+            "2": "Waiting for user input",
+            "3": "Paused",
+            "4": "Failed",
+            "5": "Completed",
+            "6": "Cancelling"
+        },
+
+        "REPOSITORY_TYPE": {
+            "0": "Local",
+            "1": "SMB",
+            "2": "AWS"
+        },
+        "PRIORITY": {
+            "0": "Low",
+            "1": "Medium",
+            "2": "High"
+        },
+        "SCHEDULE_PERIOD_TYPE": {
+            "0": "Daily",
+            "1": "Weekly"
+        },
+        "DAYS": {
+            "1": "Monday",
+            "2": "Tuesday",
+            "3": "Wednesday",
+            "4": "Thursday",
+            "5": "Friday",
+            "6": "Saturday",
+            "0": "Sunday"
+        },
+        "REPLICATION_DESTINATION_TYPES": {
+            "0": "Datastore",
+            "1": "New volume",
+            "2": "RDM",
+            "3": "Preseeded volume",
+            "4": "vCD managed storage profile"
+        },
+        "REPLICATION_DESTINATION_STORAGE_TYPES": {
+            "0": "Storage",
+            "1": "New volume",
+            "2": "RDM",
+            "3": "Preseeded volume",
+            "4": "vCD managed storage profile"
+        },
+        "BACKUP_LAST_RUN_RESULT": {
+            "0": "Full Success",
+            "1": "Partial Backup",
+            "2": "Failed",
+            "3": "Aborted",
+            "4": ""
+        },
+        "BACKUP_RECOVERY_POLICY": {
+            "0": "Backup Disabled",
+            "1": "Backup Enabled"
+        },
+
+        "MOVE_NEXT_ACTION": {
+            "0": "Auto-Rollback",
+            "1": "Auto-Commit",
+            "2": "None"
+        },
+        "FAILOVER_SHUTDOWN_ACTION": {
+            "Yes": "Yes",
+            "No": "No",
+            "Force": "Force"
+        },
+        "TASKS_STATUS_FILTER": {
+            "0": "Running",
+            "1": "Completed",
+            "2": "Failed",
+            "3": "Waiting"
+
+        },
+        "RESOURCE_TYPE": {
+            "VCDOrganization": "vCD Organization",
+            "VCDOrganizationVirtualDatacenter": "vCD Organization Virtual Datacenter",
+            "VCenterDatastore": "vCenter Datastore",
+            "VCenterNetwork": "vCenter Network",
+            "VCenterResourcePool": "vCenter Resource Pool",
+            "BackupRepository": "Repository"
+
+        }
+    }
+}

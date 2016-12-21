@@ -1,0 +1,31 @@
+<base-modal-window modal-title="{{ 'RECOVERY_FOLDER_VM_SETTINGS.TITLE' | translate }}" close="close" btns="buttons"
+                   loading="loading">
+    <p class="text-center step-desc">{{"RECOVERY_FOLDER_VM_SETTINGS.RECOVERY_FOLDER_VM_SETTINGS_INFO" | translate }}</p>
+    <div>
+        <div class="btn-group z-white-btn-group pull-right">
+            <button type="button" class="btn btn-link" ng-click="handleEditSelectedClick()"
+                    ng-disabled="!selectedItems.length">{{"ADVANCED_VM_REPLICATION_SETTINGS.EDIT_SELECTED" | translate}}
+            </button>
+        </div>
+        <div class="grid-container">
+            <!--Bug 21858 requested to add add group by-->
+            <z-slick-grid grid="gridObj.recoveryFolderVmSettingsGrid" grid-id="recoveryFolderVmSettingsGrid"
+                          data="gridData"
+                          selected-group="selectedGroup" selected-items="selectedItems"
+                          group-by-values="groupByValues"
+                          custom-options="customOptions"
+                          class="advancedVmsSettingsGridStyle"
+                          on-selection="selectedItemsChange" hide-view-options="true"></z-slick-grid>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-offset-8 col-xs-4">
+                    <h5 class="pull-left">{{ "ADVANCED_VM_REPLICATION_SETTINGS.SELECTED_VMS" | translate }}
+                        {{selectedItems.length}} VMs</h5>
+                    <h5 class="pull-right">{{ "ADVANCED_VM_REPLICATION_SETTINGS.TOTAL_VMS" | translate }}
+                        {{gridData.length }} VMs</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</base-modal-window>

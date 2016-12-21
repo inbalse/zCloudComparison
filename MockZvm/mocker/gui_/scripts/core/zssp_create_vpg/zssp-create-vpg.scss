@@ -1,0 +1,77 @@
+.zssp-create-vpg {
+
+    .modal-content {
+        width: 630px;
+    }
+    .modal-body {
+        background-color: white;
+        padding-bottom: 5px;
+        min-height: 300px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .zssp-vms-grid {
+        height: 200px;
+        width: 100%;
+    }
+
+    .zssp-vcd-vapp-grid {
+        height: 200px;
+        width: 100%;
+    }
+
+    .vcd-ui-select-drop-down {
+        width: 100%;
+        position: relative;
+        float: left;
+
+        .select2-container {
+            .select2-choice {
+                height: 60px;
+                background-color: #F6F6F7;
+                .select2-chosen {
+                    color: #000000;
+                    font-weight: bold;
+                    box-shadow: none;
+                }
+                .select2-arrow b {
+                    width: 8px;
+                    height: 8px;
+                    border-bottom: 3px solid #989A9D;
+                    border-left: 3px solid #989A9D;
+                    top: 40%;
+                    left: 0;
+                }
+            }
+
+            p {
+
+                font-weight: bold;
+                font-size: 12px;
+                margin: 0;
+            }
+
+            .owner {
+                font-size: 10px;
+                label {
+                    font-weight: bold;
+                }
+            }
+            .select2-results {
+
+                .select2-result-label {
+                    height: 55px;
+                    border-bottom: 1px solid #a2a4a9;
+                    color: #444545;
+                    background-color: #F6F6F7;
+                }
+
+                .select2-result-label:hover {
+                    background-color: #dee6ec;
+                }
+            }
+        }
+    }
+
+}

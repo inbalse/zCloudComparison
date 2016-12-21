@@ -1,0 +1,59 @@
+<div class="z-tabbed-view monitoring">
+    <h3 title="{{'MONITORING_TOOLTIP_TEXT' | translate}}">{{'MONITORING_TITLE' | translate}}</h3>
+
+    <div class="btn-group z-white-btn-group">
+        <full-screen-button></full-screen-button>
+    </div>
+
+    <div name="tabset">
+        <ul class="nav nav-tabs">
+            <li ng-if="tabs[0].visible" ng-class="{'active':tabs[0].active, 'monitoring-alerts-tab-error': activeErrorsCount !== 0,
+            'monitoring-alerts-tab-waring': activeWarningsCount !== 0}">
+                <a ui-sref="{{tabs[0].route}}" border-arrow="up">
+                    {{tabs[0].title}}
+
+                    <div class="tab-content pull-right" ng-if="activeErrorsCount || activeWarningsCount">
+                        <span>{{'MONITORING_TABS.ACTIVE_ALERTS' | translate}}</span>
+                    </div>
+                    <div class="tab-content tab-alert pull-right" ng-if="activeErrorsCount">
+                        {{activeErrorsCount}}
+                        <span class="separator">|</span>
+                    </div>
+                    <div class="tab-content tab-warning pull-right" ng-if="activeWarningsCount">
+                        {{activeWarningsCount}}
+                    </div>
+
+
+                    <div class="tab-content pull-right" ng-if="activeErrorsCount + activeWarningsCount == 0">
+                        <span class="title">{{'MONITORING_TABS.NO_ACTIVE_ALERTS' | translate}}</span>
+                    </div>
+                </a>
+            </li>
+            <li ng-if="tabs[1].visible" ng-class="{'active':tabs[1].active}" >
+                <a ui-sref="{{tabs[1].route}}" border-arrow="up">
+                    {{tabs[1].title}}
+
+                    <div class="tab-content pull-right events-info-container">
+                        <span>{{eventsCount}}</span>
+                        <span class="separator">|</span> <span class="title">{{'MONITORING_TABS.EVENTS' | translate}}
+                        <small class="last-hours">{{'MONITORING_TABS.LAST_HOURS' | translate}}</small></span>
+                    </div>
+                </a>
+            </li>
+            <li ng-if="tabs[2].visible" ng-class="{'active':tabs[2].active}" >
+                <a ui-sref="{{tabs[2].route}}" border-arrow="up">
+                    {{tabs[2].title}}
+
+                    <div class="tab-content pull-right" ng-if="runningTasksCount">
+                        {{tasksText}}
+                        <span class="separator">|</span> <span class="title"></span>
+                    </div>
+                    <div class="tab-content pull-right" ng-if="!runningTasksCount">
+                        <span class="title">{{'MONITORING_TABS.NO_RUNNING_TASKS' | translate}}</span>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="z-tab-content" ui-view></div>
+</div>

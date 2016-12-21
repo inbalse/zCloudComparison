@@ -1,0 +1,7 @@
+<div ng-class="alertsStatusButtonClass" ng-click="handleAlertsStatusClicked()">
+    {{statusText}}
+    <img class="alertsStatusExpandButton" ng-src="{{ expandButton }}" ng-show="data.SummaryState.AlertTips.TotalNumberOfAlerts > 0" >
+</div>
+
+
+

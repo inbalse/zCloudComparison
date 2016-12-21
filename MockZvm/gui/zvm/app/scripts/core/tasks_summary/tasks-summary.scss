@@ -1,0 +1,147 @@
+.task-panel {
+    color: $brand-font-white;
+    pointer-events: none;
+
+    .modal-dialog {
+        width: 520px;
+        position: absolute;
+        bottom: 40px;
+        left: 140px;
+        pointer-events: all !important;
+    }
+
+    .row {
+        background-color: $brand-grey-content-bg;
+        padding: 5px;
+        margin-bottom: 1px;
+        height: 100%;
+
+        &:last-child {
+            height: 30px;
+            padding-top: 8px;
+        }
+    }
+
+    .z-btn-default-sm {
+        width: auto;
+        padding: 2px 4px 2px 4px;
+        min-width: 50px;
+    }
+
+    .h-middle {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        height: 30px;
+    }
+
+    .progress-div {
+        position: absolute;
+        left: 1px;
+        top: 5px;
+        width: 100%;
+
+        .progress {
+            margin: 0px;
+        }
+    }
+
+    @mixin iconBaseClass($path) {
+        width: 18px;
+        height: 18px;
+        position: absolute;
+        top: 6px;
+        left: 11px;
+        background-image: url($path);
+        background-repeat: no-repeat;
+    }
+    .successIconTask {
+        @include iconBaseClass("../assets/small_status_icons/small_icon_normal.png");
+    }
+    .failedIconTask {
+        @include iconBaseClass("../assets/small_status_icons/small_icon_error.png");
+    }
+    .waitingIconTask {
+        @include iconBaseClass("../assets/small_status_icons/small_icon_question.png");
+    }
+
+    @mixin button-icon-base-class($path, $pathHover, $pathClicked) {
+        background-image: url($path);
+        background-repeat: no-repeat;
+        background-position: center;
+        border: transparent;
+        background-color: transparent;
+        width: 20px;
+        height: 20px;
+        position: relative;
+        float: right;
+        top: 5px;
+
+        &:hover {
+            border: transparent;
+            background-image: url($pathHover);
+        }
+        &:active {
+            background-image: url($pathClicked);
+        }
+        &:focus {
+            outline: none;
+        }
+    }
+    .stop-btn {
+        @include button-icon-base-class('../assets/tasks/stop-button.png', '../assets/tasks/stop-red-btn.png', '../assets/tasks/stop-button-clicked.png');
+    }
+
+    .play-btn {
+        @include button-icon-base-class('../assets/tasks/play-button.png', '../assets/tasks/play-button-hover.png', '../assets/tasks/play-button-clicked.png');
+    }
+
+    .rollback-btn {
+        @include button-icon-base-class('../assets/tasks/roll-back.png', '../assets/tasks/roll-back-hover.png', '../assets/tasks/roll-back-clicked.png');
+    }
+
+    .commit-btn {
+        @include button-icon-base-class('../assets/tasks/commit-btn.png', '../assets/tasks/commit-btn-hover.png', '../assets/tasks/commit-btn-clicked.png');
+    }
+    .flr-btn {
+        width: 16px;
+        height: 16px;
+        display: block;
+        background: transparent url('../assets/tasks/tasks-flr-panel-sprite.png');
+        position: relative;
+        float: right;
+        border: none;
+        outline: none;
+        top:5px;
+        margin: 2px; //because flr height&width icons smaller then others icons.
+
+        &.browse-btn {
+            background-position: 0px 0px;
+        }
+        &.browse-btn:hover{
+            background-position:0px -16px;
+        }
+        &.browse-btn:active{
+            background-position:0px -32px;
+        }
+
+        &.unmount-btn {
+            background-position: 16px 0px;
+        }
+        &.unmount-btn:hover{
+            background-position: 16px -16px;
+        }
+        &.unmount-btn:active{
+            background-position: 16px -32px;
+        }
+    }
+    a {
+        color: $z-panel-link-color;
+        font-size: 11px;
+
+        &:hover {
+            color: $brand-font-white;
+            text-decoration: none;
+        }
+    }
+}

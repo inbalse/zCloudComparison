@@ -1,0 +1,32 @@
+$width: 550px;
+
+.supportTicketModal {
+  .modal-body{
+    background-color: white;
+    height:420px;
+  }
+
+  .modal-content{
+    width: $width;
+  }
+
+  .error-text{
+    background-color: #f2cfd0;
+    padding: 2px 2px 2px 2px;
+  }
+
+  .success-text{
+    background-color: #a1f27d;
+    padding: 2px 2px 2px 2px;
+  }
+
+  .supportTicketModal__tooltip-position{
+    top: 204px;
+    right: 55px;
+  }
+}
+
+.version-label{
+  position: absolute;
+  bottom: -50px;
+}

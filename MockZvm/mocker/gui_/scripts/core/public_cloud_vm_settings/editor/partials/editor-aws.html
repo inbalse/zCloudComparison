@@ -1,0 +1,153 @@
+<form class="form-horizontal" autocomplete="off" name="forms.vmsForm">
+    <div class="form-group">
+        <div class="col-xs-offset-2 col-xs-5 "><label class="col-xs-12 control-label center-label">{{'CREATE_VPG_RECOVERY.FAILOVER_RECOVERY'
+            | translate}}</label></div>
+        <div class="col-xs-5"><label class="col-xs-12 control-label center-label">{{'CREATE_VPG_RECOVERY.FAILOVER_TEST'
+            | translate}}</label></div>
+    </div>
+    <!---------- Pcns ---------------------------------------------->
+    <div class="form-group">
+        <div class="col-xs-2 "><label class="col-xs-12 control-label ">{{'CREATE_VPG_RECOVERY.VPC_NETWORK' |
+            translate}}</label></div>
+        <div class="col-xs-5">
+            <ui-select theme="select2"
+                       ng-model="$parent.vmObject.CloudVmSettings.FailoverSettings.Pcn"
+                       on-select="onFailoverPcnChanged()">
+                <ui-select-match class="ui-select-match" title="{{$select.selected.Pcn.Name}}">{{$select.selected.Pcn.Name}}</ui-select-match>
+                <ui-select-choices class="ui-select-choices"
+                                   repeat="item.Pcn as item in pcnList | filter: $select.search">
+                    <span ng-bind-html="item.Pcn.Name | highlight: $select.search"></span>
+                </ui-select-choices>
+            </ui-select>
+
+        </div>
+        <div class="col-xs-5">
+            <ui-select theme="select2"
+                       ng-model="$parent.vmObject.CloudVmSettings.FailoverTestSettings.Pcn"
+                       on-select="onFailoverTestPcnChanged()">
+                <ui-select-match class="ui-select-match" title="{{$select.selected.Pcn.Name}}">{{$select.selected.Pcn.Name}}</ui-select-match>
+                <ui-select-choices class="ui-select-choices"
+                                   repeat="item.Pcn as item in pcnList | filter: $select.search">
+                    <span ng-bind-html="item.Pcn.Name | highlight: $select.search"></span>
+                </ui-select-choices>
+            </ui-select>
+
+        </div>
+    </div>
+    <!---------- subnets ---------------------------------------------->
+    <div class="form-group">
+        <div class="col-xs-2"><label class="col-xs-12 control-label ">{{'CREATE_VPG_RECOVERY.SUBNET' |
+            translate}}</label></div>
+        <div class="col-xs-5">
+            <ui-select theme="select2"
+                       ng-model="$parent.vmObject.CloudVmSettings.FailoverSettings.Subnet"
+                       required="$parent.vmObject.CloudVmSettings.FailoverSettings.Pcn">
+                <ui-select-match class="ui-select-match" title="{{$select.selected.Name}}">{{$select.selected.Name}}</ui-select-match>
+                <ui-select-choices class="ui-select-choices"
+                                   repeat="item in subnetsFailoverList | filter: $select.search">
+                    <span ng-bind-html="item.Name | highlight: $select.search"></span>
+                </ui-select-choices>
+            </ui-select>
+
+        </div>
+        <div class="col-xs-5">
+            <ui-select theme="select2"
+                       ng-model="$parent.vmObject.CloudVmSettings.FailoverTestSettings.Subnet"
+                       required="$parent.vmObject.CloudVmSettings.FailoverTestSettings.Pcn">
+                <ui-select-match class="ui-select-match" title="{{$select.selected.Name}}">{{$select.selected.Name}}</ui-select-match>
+                <ui-select-choices class="ui-select-choices"
+                                   repeat="item in subnetsFailoverTestList | filter: $select.search">
+                    <span ng-bind-html="item.Name | highlight: $select.search"></span>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+    </div>
+    <!---------- security groups ---------------------------------------------->
+    <div class="form-group">
+        <div class="col-xs-2 "><label class="col-xs-12 control-label ">{{'CREATE_VPG_RECOVERY.SECURITY' |
+            translate}}</label>
+        </div>
+        <div class="col-xs-5">
+            <z-dropdown-multiselect options="securityGroupsFailover"
+                                    selected-model="vmObject.CloudVmSettings.FailoverSettings.SecurityGroups"
+                                    extra-settings="groupsExtraSettings" checkboxes="true"></z-dropdown-multiselect>
+        </div>
+        <div class="col-xs-5">
+            <z-dropdown-multiselect options="securityGroupsFailoverTest"
+                                    selected-model="vmObject.CloudVmSettings.FailoverTestSettings.SecurityGroups"
+                                    extra-settings="groupsExtraSettings" checkboxes="true"></z-dropdown-multiselect>
+        </div>
+    </div>
+    <!---------- instance family ---------------------------------------------->
+    <div class="form-group">
+        <div class="col-xs-2"><label class="col-xs-12 control-label ">{{'CREATE_VPG_RECOVERY.INSTANCE_FAMILY' |
+            translate}}</label></div>
+        <div class="col-xs-5">
+            <ui-select theme="select2" ng-change="familyInstanceFolChange($select.selected)"
+                       ng-model="$parent.vmObject.selectedFolInstanceFamily">
+                <ui-select-match class="ui-select-match" title="{{$select.selected.FamilyName}}">{{$select.selected.FamilyName}}</ui-select-match>
+                <ui-select-choices class="ui-select-choices" repeat="item in familyTypes | filter: $select.search">
+                    <span ng-bind-html="item.FamilyName | highlight: $select.search"></span>
+                </ui-select-choices>
+            </ui-select>
+
+        </div>
+        <div class="col-xs-5">
+            <ui-select theme="select2" ng-change="familyInstanceTestChange($select.selected)"
+                       ng-model="$parent.vmObject.selectedTestInstanceFamily">
+                <ui-select-match class="ui-select-match" title="{{$select.selected.FamilyName}}">{{$select.selected.FamilyName}}</ui-select-match>
+                <ui-select-choices class="ui-select-choices" repeat="item in familyTypes | filter: $select.search">
+                    <span ng-bind-html="item.FamilyName | highlight: $select.search"></span>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+    </div>
+    <!---------- instance type ---------------------------------------------->
+    <div class="form-group">
+        <div class="col-xs-2 "><label class="col-xs-12 control-label ">{{'CREATE_VPG_RECOVERY.INSTANCE_TYPE' |
+            translate}}</label></div>
+        <div class="col-xs-5">
+            <ui-select theme="select2"
+                       ng-model="$parent.vmObject.CloudVmSettings.FailoverSettings.PublicCloudInstanceTypeVisualObject"
+                       required="$parent.vmObject.selectedTestInstanceFamily">
+                <ui-select-match class="ui-select-match" title="{{$select.selected.Id.InstanceType}}">{{$select.selected.Id.InstanceType}}
+                </ui-select-match>
+                <ui-select-choices class="ui-select-choices" repeat="item in instanceFolList | filter: $select.search">
+                    <span ng-bind-html="item.Name | highlight: $select.search"></span>
+                </ui-select-choices>
+            </ui-select>
+
+        </div>
+        <div class="col-xs-5">
+            <ui-select theme="select2"
+                       ng-model="$parent.vmObject.CloudVmSettings.FailoverTestSettings.PublicCloudInstanceTypeVisualObject"
+                       required="$parent.vmObject.selectedTestInstanceFamily">
+                <ui-select-match class="ui-select-match" title="{{$select.selected.Id.InstanceType}}">{{$select.selected.Id.InstanceType}}
+                </ui-select-match>
+                <ui-select-choices class="ui-select-choices" repeat="item in instanceTestList | filter: $select.search">
+                    <span ng-bind-html="item.Name | highlight: $select.search"></span>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-xs-12">
+            <hr/>
+        </div>
+    </div>
+    <!---------- private ip's ---------------------------------------------->
+    <div class="form-group">
+        <div class="col-xs-2"><label class="col-xs-12 control-label ">{{'PUBLIC_CLOUD_NETWORK_SETTINGS.COMMON.PRIVATE_IP'
+            |
+            translate}}</label></div>
+        <div class="col-xs-5">
+            <input z-ip-field type='text' ng-model='vmObject.CloudVmSettings.FailoverSettings.PrimaryIp'
+                   ng-disabled="isBulk || FailoverPrivateIpDisabled"/>
+        </div>
+        <div class="col-xs-5">
+            <input z-ip-field type='text' ng-model='vmObject.CloudVmSettings.FailoverTestSettings.PrimaryIp'
+                   ng-disabled="isBulk || FailoverTestPrivateIpDisabled"/>
+        </div>
+    </div>
+</form>
+

@@ -1,0 +1,7 @@
+{
+    "JOURNAL_LIMIT_DIRECTIVE": {
+        "UNLIMITED_LABEL":           "Unlimited",
+        "GB_LABEL":                  "Size (GB)",
+        "PERCENTAGE_LABEL":          "Percentage"
+    }
+}

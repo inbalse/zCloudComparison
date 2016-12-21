@@ -1,0 +1,94 @@
+@mixin background-image-class($bgImage, $bgPos) {
+  width: 100%;
+  height: 100%;
+  background-image: url($bgImage);
+  background-repeat: no-repeat;
+  background-position: $bgPos;
+}
+
+//icon for priority cell (vpg/vm list)
+.protection-group-priority-0 {
+  @include background-image-class('../assets/list_icons/priority-low.png', center);
+}
+
+.protection-group-priority-1 {
+  @include background-image-class('../assets/list_icons/priority-midium.png', center);
+}
+
+.protection-group-priority-2 {
+  @include background-image-class('../assets/list_icons/priority-high.png', center);
+}
+
+//icon for remote site column(vcenter/hyperv)
+.remote-site-icon-0 {
+  @include background-image-class('../assets/list_icons/vc-icon.png', left center);
+  padding-left: 27px;
+}
+
+.remote-site-icon-1 {
+  @include background-image-class('../assets/list_icons/vc-icon.png', left center);
+  padding-left: 27px;
+}
+
+.remote-site-icon-2 {
+  @include background-image-class('../assets/list_icons/vcd-icon.png', left center);
+  padding-left: 27px;
+}
+
+.remote-site-icon-3 {
+  @include background-image-class('../assets/list_icons/aws-icon.png', left center);
+  padding-left: 27px;
+}
+
+.remote-site-icon-4 {
+  @include background-image-class('../assets/list_icons/hyperv-icon.png', left center);
+  padding-left: 27px;
+}
+
+.remote-site-icon-5 {
+  @include background-image-class('../assets/list_icons/azure_icon_gray.png', left center);
+  padding-left: 27px;
+}
+
+.use-ok-icon-false {
+  @include background-image-class('../assets/recovery_wizard/blackDash.png', center);
+}
+
+.use-ok-icon-true {
+  @include background-image-class('../assets/recovery_wizard/blueVSign.png', center);
+}
+
+.use-ok-icon-missing {
+  @include background-image-class('../assets/recovery_wizard/missing.png', center);
+}
+
+.use-icon-false {
+  @include background-image-class('../assets/recovery_wizard/blackDash.png', center);
+}
+
+.use-icon-true {
+  @include background-image-class('../assets/recovery_wizard/blackVSign.png', center);
+}
+
+//icon for zcm site list connected status
+.sites-list-status-connected-true {
+  @include background-image-class("../assets/list_icons/normal-list-icon.png", center);
+  padding-left: 20px;
+  background-position: left;
+}
+
+.sites-list-status-connected-false {
+  @include background-image-class("../assets/list_icons/error-list-icon.png", center);
+  padding-left: 20px;
+  background-position: left;
+}
+
+//in grid cell icon multi sites
+.multi-site-already-protected-icon {
+  background-image: url("../assets/multi_sites/multi_site_in_grid_icon.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+}

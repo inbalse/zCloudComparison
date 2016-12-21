@@ -1,0 +1,24 @@
+<base-modal-window modal-title="{{'SITE_SETTINGS.POLICIES.COMMIT' | translate}}" btns="buttons"
+                   close="handleCancel" loading="loading">
+    <div class="container-fluid">
+        <form class="form-horizontal" autocomplete="off">
+            <div class="form-group">
+                <div>
+                    <z-checkbox model="commitObj.reverseEnabled" z-disabled="!isReversePossible">
+                        {{'RECOVERY_WIZARD.EXECUTION_PARAMETERS.REVERSE_PROTECTION' | translate}}
+                    </z-checkbox>
+
+                    <a ng-show="commitObj.reverseEnabled && isReversePossible"
+                       ng-click="configureVpg()">{{reverseLabel}}</a>
+                </div>
+
+                <div ng-if="isMoveAction">
+                    <span class="tooltip-keep-source-vms-element" ng-if="keepSourceObj.isDisabled || !keepSourceObj.isKeepSourceAllowed"  uib-tooltip="{{keepSourceObj.infoMessage}}"></span>
+                    <z-checkbox model="keepSourceObj.keepSourceVMs" z-disabled="keepSourceObj.isDisabled || !keepSourceObj.isKeepSourceAllowed">
+                        {{'RECOVERY_WIZARD.EXECUTION_PARAMETERS.KEEP_SOURCE_VMS' | translate}}
+                    </z-checkbox>
+                </div>
+            </div>
+        </form>
+    </div>
+</base-modal-window>

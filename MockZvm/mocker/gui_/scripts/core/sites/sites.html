@@ -1,0 +1,16 @@
+<div class="z-tabbed-view">
+    <h3>{{'SITES' | translate}}</h3>
+
+    <div class="btn-group z-white-btn-group">
+        <full-screen-button></full-screen-button>
+    </div>
+
+    <div name="tabset">
+        <ul class="nav nav-tabs">
+            <li ng-repeat="tab in tabs track by $index" ng-class="{'active':tab.active}" ng-style="{'width':tab.width}">
+                <a ui-sref="{{tab.route}}" border-arrow="up">{{tab.title}}</a>
+            </li>
+        </ul>
+    </div>
+    <div class="z-tab-content" ui-view></div>
+</div>

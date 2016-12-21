@@ -1,0 +1,74 @@
+{
+    "RESTORE_WIZARD": {
+        "TITLE": "Restore from Zerto Backup",
+
+        "RESTORE_PLAN_STEP": {
+            "INFO": "Select Restore Plan",
+            "RESTORE_FROM_BACKUP": "Restore from backup",
+            "RESTORE_FROM_BACKUP_TOOLTIP": "<div>The VPG to restore. The VPG must still be available. If backups were saved to more than one repository, all the backups for the VPG from all available repositories are included.</div>",
+            "RESTORE_FROM_REPOSITORY": "Restore from repository",
+            "RESTORE_FROM_REPOSITORY_TOOLTIP": "<div>Restore the virtual machines from </div><div> a backup in the specified repository.</div>",
+            "VALIDATION_ERROR": "Select a restore plan",
+            "EXISTING": "Existing",
+            "DELETED": "Deleted"
+        },
+        "RESTORE_POINT_STEP": {
+            "INFO": "Select the restore point.",
+            "INFO_VPG": "Select the restore point for VPG {{vpgName}}.",
+            "SELECT_A": "Select a restore point to see details.",
+            "COLUMNS": {
+                "POINT_IN_TIME": "Point in Time",
+                "RESTORE_SITE": "Restore Site",
+                "BACKUP_STATUS": "Backup Status",
+                "VMS": "VMs",
+                "VOLUMES": "Volumes",
+                "REPOSITORY": "Repository",
+                "COMPRESSION": "Compression",
+                "ZORG": "ZORG",
+                "VM_NAME": "VM Name",
+                "VOLUMES_BACKUP": "# Volumes Backed Up"
+            },
+            "VALIDATION_ERROR": "Select a restore point"
+        },
+        "RESTORE_VM_SETTINGS_STEP": {
+            "INFO": "Configure VM, volume and NIC settings.",
+            "RESTORE_ON_HOST": "Restore on Host",
+            "RESTORE_ON_DATASTORE": "Restore on Datastore",
+            "RESTORE_ON_STORAGE": "Restore on Storage",
+            "POWER_ON": "Power On",
+            "APPLY_VPG_CONFIGURATION": "APPLY VPG CONFIGURATION",
+            "EDIT_SELECTED": "EDIT SELECTED",
+            "COLUMNS": {
+                "VM_NAME": "VM Name",
+                "RESTORED_VM_NAME": "Restored VM Name",
+                "HOST": "Host",
+                "DATASTORE": "Datastore",
+                "STORAGE": "Storage",
+                "BACKUP_STATUS": "Backup Status",
+                "VOLUMES": "# Volumes",
+                "POWER_ON": "Power On",
+                "ACTIONS": "Actions"
+            },
+            "VALIDATION_ERROR": "Default host and datastore are mandatory"
+        },
+        "RESTORE_SUMMARY_STEP": {
+            "TITLE": "Ready to restore",
+            "VPG_NAME_LABEL": "VPG Name",
+            "RESTORE_POINT_LABEL": "Restore Point",
+            "BACKUP_STATUS_LABEL": "Backup Status",
+            "BACKUP_STATUS_LABEL_SUFFIX":" backup",
+            "REPOSITORY_LABEL": "Repository",
+            "COMPRESSION_LABEL": "Compression",
+            "BUTTON_LABEL": "RESTORE"
+        },
+        "FILTERS": {
+            "VOLUMES": "Volumes",
+            "NICS": "NICs",
+            "DEFAULT": "Default"
+        },
+        "WARNINGS": {
+            "DEFAULTS_NOT_SELECTED_DESC": "Host is mandatory"
+        },
+        "EDIT_BULK_TITLE": "Configure VM Settings"
+    }
+}

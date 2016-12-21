@@ -1,0 +1,30 @@
+.edit-volumes{
+  .modal-body{
+    background-color: white;
+  }
+
+  .modal-dialog {
+    width: 680px;
+  }
+
+    .browse-icon-container {
+        position: relative;
+        height: 24px;
+        width: 26px;
+        top: 0;
+        left: 462px;
+        cursor: pointer;
+        background: url('../assets/repository_icons/browse-icon.png') no-repeat;
+    }
+
+    .preseeded-volume-path{
+        display: block;
+        padding-right: 30px;
+    }
+
+    .tooltip-invalid.bottom {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}

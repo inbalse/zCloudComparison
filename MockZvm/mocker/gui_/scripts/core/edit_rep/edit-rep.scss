@@ -1,0 +1,289 @@
+.rep-edit-modal {
+    .modal-dialog {
+
+    }
+
+    .modal-footer {
+        background-color: $modal-content-bg;
+        padding: 0;
+        margin-top: 7px;
+        margin-right: 2px;
+    }
+
+    .modal-content {
+        width: 540px;
+        height: 583px;
+
+        .modal-body {
+            margin: 9px 0 0 2px;
+            padding: 20px 20px;
+            height: 495px;
+            width: 520px;
+            background-color: white;
+        }
+
+        .modal-header {
+            h4 {
+                margin: 5px 0 0 8px;
+            }
+
+            .modal-buttons-header {
+                margin: 3px 8px;
+            }
+        }
+    }
+    .validate-border-true {
+        border: solid 1px red;
+    }
+
+    .validate-border-false {
+        border: none;
+    }
+
+    .btn-link {
+        color: #89b7c9;
+        font-size: 14px;
+    }
+
+    .z-btn-default {
+        min-width: 90px;
+        height: 33px;
+        border-radius: 0;
+        background-color: #616773;
+        color: #FFF;
+        box-sizing: none;
+        outline: none;
+        font-weight: normal;
+        font-size: 14px;
+    }
+
+    .repo-info-reachable {
+        background-color: #E9F4E3;
+        width: 176px;
+        height: 26px;
+        font-size: 12px;
+
+        .repo-text {
+            margin: -26px 0 0 33px;
+        }
+
+        .repo-icon {
+            margin-left: 5px;
+        }
+    }
+
+    .properties-label{
+        position: relative;
+        top: 28px;
+    }
+
+    .aws-free-space-info-container{
+        position: relative;
+        left: 207px;
+
+        .backup-free-space-box {
+            position: relative;
+            top: 13px;
+        }
+
+        .after-box-info{
+           position: relative;
+           left: 14px;
+    }
+        .info-label-aws{
+            position: relative;
+            left: 21px;
+        }
+    }
+
+    .bucket-cover-click-event{
+        position: absolute;
+        width: 267px;
+        height: 25px;
+        z-index: 1;
+    }
+
+    .location-label{
+        margin-bottom: 0;
+        position: absolute;
+    }
+
+    //remove x icon from password input in IE
+    z-password {
+        input::-ms-clear {
+            display: none;
+        }
+        input{
+            //space for eye icon
+            padding-right:28px !important;
+        }
+    }
+
+    .eye-padding-space {
+        padding-right:28px;
+    }
+
+    .eye-icon-container {
+        position: absolute;
+        height: 14px;
+        width: 22px;
+        top: 34px;
+        right: 12px;
+        cursor: pointer;
+        background-repeat: no-repeat;
+        background-image: url('../assets/repository_icons/eye.png');
+    }
+
+    .repo-info-unreachable {
+        background-color: #F1DDDE;
+        width: 176px;
+        height: 26px;
+        color: #B95559;
+        font-size: 12px;
+        .repo-text {
+            margin: -28px 0 0 33px;
+        }
+
+        .repo-icon {
+            margin-left: 5px;
+        }
+
+        img {
+            margin-top: 2px;
+        }
+    }
+
+    .repo-btn {
+        margin-left: 25px;
+    }
+
+    .repo-Input {
+        height: 31px;
+    }
+
+    .repo-label {
+        margin: 13px 0 0 5px;
+    }
+
+    .cancellation-bottom {
+        margin-bottom: 0;
+    }
+
+    .select2-repo-type-container {
+        .select2-container {
+            width: 266px;
+            margin: 8px 0 0 1px;
+
+            .select2-choice {
+                height: 31px;
+                line-height: 31px;
+
+                .select2-arrow b {
+                    top: 9px;
+                }
+            }
+        }
+    }
+
+    .pies-container {
+        padding-top: 10px;
+        height: 0;
+
+        .empty-pie-chart-container {
+            width: 73px;
+            height: 75px;
+            top: 12px;
+            left: 5px;
+            position: absolute;
+            background-repeat: no-repeat;
+            background-image: url('../assets/repository_icons/empty_pie.png');
+        }
+    }
+
+    .pie-info {
+        padding-left: 0px;
+    }
+
+    .backup-pie {
+        display: block;
+        margin: -7.5px -7.5px;
+    }
+
+    .backup-free-space-box {
+        position: relative;
+        top: 4px;
+        width: 8px;
+        height: 8px;
+        background-color: #add187;
+        display: block
+    }
+    .backup-used-space-box {
+        position: relative;
+        top: 4px;
+        width: 8px;
+        height: 8px;
+        background-color: #e1e1e5;
+        display: block
+    }
+
+    @mixin icon-rep-type-base($path) {
+        width: 27px;
+        height: 22px;
+        display: block;
+        position: absolute;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-image: url($path);
+        left: 0;
+        top: -2px;
+    }
+
+    .reptype-icon-0 {
+        @include icon-rep-type-base('../assets/repository_icons/local.png');
+        background-position: -4px center;
+    }
+
+    .reptype-icon-1 {
+        @include icon-rep-type-base('../assets/repository_icons/smb.png');
+    }
+
+    .reptype-icon-2 {
+        @include icon-rep-type-base('../assets/list_icons/aws-icon-trans.png');
+    }
+
+    .reptype-icon-match {
+        top: 4px;
+        left: -2px;
+    }
+
+    .bucket-loading-container {
+        top: -1px;
+        position: relative;
+
+        .loading {
+            position: absolute;
+            top: 4px;
+            width: 15px;
+            height: 15px;
+            right: 66px;
+            background-repeat: no-repeat;
+            background-image: url('../assets/repository_icons/loading-icon.gif');
+        }
+
+        input {
+            border-top: inherit;
+            background-color: inherit;
+        }
+    }
+
+
+    .in-load {
+        .select2-drop-active {
+            border-bottom: inherit;
+        }
+        .select2-drop{
+            box-shadow: none;
+            -webkit-box-shadow:none;
+        }
+    }
+}

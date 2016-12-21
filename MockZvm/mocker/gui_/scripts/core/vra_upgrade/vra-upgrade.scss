@@ -1,0 +1,35 @@
+.modal-upgrade-vra-modal {
+    .modal-body {
+        background-color: white;
+    }
+
+    .modal-content .modal-body {
+        margin-top: 10px;
+        padding: 35px 35px 1px 35px;
+    }
+
+    .modal-dialog {
+        width: 885px;
+    }
+
+    .checkbox-align {
+        margin-top: 4px;
+    }
+    .modal-footer {
+        background-color: #3c454f;
+        height: 33px;
+        margin-top: 10px;
+    }
+    .upgrade-vra-grid-container {
+        position: relative;
+        height: 380px;
+    }
+
+    .btn-link {
+        color: #89b7c9;
+        margin-top: -12px;
+    }
+    .z-btn-default {
+        margin-top: -12px;
+    }
+}

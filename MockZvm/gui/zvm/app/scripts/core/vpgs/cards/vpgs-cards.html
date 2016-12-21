@@ -1,0 +1,80 @@
+<div class="z-grid-inner-container vpgs-cards-component">
+    <div class="cards-component__container">
+        <div class="cards-controls">
+            <div class="row row--double-margin">
+                <div class="col-xs-8">
+                    <div class="col-xs-3">
+                        <input type="text" ng-model="vpgsCardsCtrl.search.term"
+                               ng-model-options="vpgsCardsCtrl.searchModelOptions" placeholder="Search"
+                               ng-change="vpgsCardsCtrl.onSearchChange()"/>
+                        <div class="search-icon"></div>
+                    </div>
+                    <div class="col-xs-3">
+                        <ui-select theme="select2" ng-model="vpgsCardsCtrl.groupBy"
+                                   ng-change="vpgsCardsCtrl.onGroupByChange()">
+                            <ui-select-match class="ui-select-match"
+                                             placeholder="Select or search a group in the list..."><span
+                                class="ui-select-placeholder">{{"GROUP_BY"|translate}}&nbsp;</span>{{$select.selected.text}}
+                            </ui-select-match>
+                            <ui-select-choices class="ui-select-choices"
+                                               repeat="group in vpgsCtrl.groupByValues | filter: $select.search">
+                                <span ng-bind-html="group.text | highlight: $select.search"></span>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="cards-control-sort-wrapper">
+                            <ui-select theme="select2"
+                                       ng-model="vpgsCardsCtrl.sortBy"
+                                       id="frequentSortSelect"
+                                       on-select="vpgsCardsCtrl.onSortByChange()">
+                                <ui-select-match class="ui-select-match" placeholder="{{::'SORT_BY'|translate}}"><span
+                                    class="ui-select-placeholder">{{::'SORT_BY'|translate}}&nbsp;</span>{{$select.selected.name}}
+                                </ui-select-match>
+                                <ui-select-choices class="ui-select-choices"
+                                                   group-by="vpgsCardsCtrl.groupByFn"
+                                                   group-filter="vpgsCardsCtrl.groupFilterFn"
+                                                   repeat="sort in vpgsCardsCtrl.sortItems | filter: $select.search">
+                                    <span ng-bind-html="sort.name | highlight: $select.search"></span>
+                                </ui-select-choices>
+                            </ui-select>
+
+                            <button class="cards-control-btn cards-control-sort-btn"
+                                    ng-class="{  'cards-control-sort-btn--desc' : !vpgsCardsCtrl.sort.sortAsc }"
+                                    type="button"
+                                    ng-click="vpgsCardsCtrl.toggleSortOrder()">
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <button class="cards-control-btn cards-control-filter-btn" type="button"
+                                ng-class="{ 'cards-control-filter-btn--active' : vpgsCardsCtrl.isFilterActive,
+                                'cards-control-filter-btn--open' : vpgsCardsCtrl.showFilters}"
+                                ng-click="vpgsCardsCtrl.toggleShowFilters()"></button>
+                    </div>
+                </div>
+
+            </div>
+            <div ng-show="vpgsCardsCtrl.showFilters">
+                <cards-filters filtered-columns="vpgsCardsCtrl.filters"
+                               columns="vpgsCardsCtrl.search.columns"
+                               items="vpgsCardsCtrl.getInitialItems()"
+                               on-filter-change="vpgsCardsCtrl.onFilterChange(filters)"
+                               class="cards-view-divider"></cards-filters>
+            </div>
+        </div>
+        <vpgs-cards-list
+            items="vpgsCardsCtrl.vpgsList"
+            card-type="'VPGCardComponentFactory'"
+            on-item-click="vpgsCardsCtrl.onClick"
+            on-selected-items-change="vpgsCtrl.selectedItemsChange"
+            on-action-click="vpgsCardsCtrl.onActionClick"
+            group-by="vpgsCardsCtrl.groupBy"
+            search="vpgsCardsCtrl.search"
+            filters="vpgsCardsCtrl.filters"
+            sort="vpgsCardsCtrl.sort"
+            selected-items="vpgsCtrl.selectedItems" watch-depth="reference"
+            class="cards-view-divider"
+        ></vpgs-cards-list>
+    </div>
+</div>

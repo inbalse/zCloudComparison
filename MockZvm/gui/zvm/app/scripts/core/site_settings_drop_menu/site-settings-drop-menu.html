@@ -1,0 +1,17 @@
+<div ng-click="handleButtonClick()" ng-class="buttonClass"></div>
+
+<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1"  ng-show="showMenu" ng-class="state" ng-mouseleave="handleMouseLeave($event)" border-arrow="up">
+    <li role="presentation"><a class="btn btn-link" role="menuitem" tabindex="-1" href="" ng-click="handleMenuItemClicked($event)">{{'SITE_SETTINGS_DROP.HELP'|translate}}</a></li>
+    <li role="presentation" class="divider"></li>
+    <li role="presentation"><a class="btn btn-link" role="menuitem" tabindex="-1" href="" ng-show="isVsphare" ng-click="handleMenuItemClicked($event)">{{'SITE_SETTINGS_DROP.OPEN_IN_BROWSER'|translate}}</a></li>
+    <li role="presentation"><a ng-if="isManageSiteEnabled" class="btn btn-link" help-icon="SITE_SETTINGS.SITE_SETTINGS" role="menuitem" ng-show="!isPortal" tabindex="-1" ng-click="handleMenuItemClicked($event)">{{'SITE_SETTINGS_DROP.SITE_SETTINGS'|translate}}</a>
+        <a ng-if="!isManageSiteEnabled" disabled="disabled" class="btn btn-link" help-icon="SITE_SETTINGS.SITE_SETTINGS_NO_PERMISSION" role="menuitem" ng-show="!isPortal" tabindex="-1" ng-click="handleMenuItemClicked($event)">{{'SITE_SETTINGS_DROP.SITE_SETTINGS'|translate}}</a></li>
+    <li role="presentation" class="divider"></li>
+    <li role="presentation"><a ng-disabled="!isManageSiteEnabled" class="btn btn-link" role="menuitem" tabindex="-1" href="" ng-show="!isPortal" ng-click="handleMenuItemClicked($event)">{{'SITE_SETTINGS_DROP.LICENSE'|translate}}</a></li>
+    <li role="presentation"><a class="btn btn-link" role="menuitem" tabindex="-1" href="" ng-disabled="!createSupportTicketEnabled" ng-click="handleMenuItemClicked($event)">{{'SITE_SETTINGS_DROP.SUBMIT_SUPPORT_TICKET'|translate}}</a></li>
+    <li role="presentation"><a ng-disabled="!isManageSiteEnabled" class="btn btn-link" role="menuitem" tabindex="-1" href="" ng-show="!isPortal" ng-click="handleMenuItemClicked($event)">{{'SITE_SETTINGS_DROP.REMOTE_SUPPORT'|translate}}</a></li>
+    <li role="presentation"><a class="btn btn-link" role="menuitem" tabindex="-1" href="" ng-show="!isPortal" ng-click="handleMenuItemClicked($event)">{{'SITE_SETTINGS_DROP.ABOUT'|translate}}</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="" ng-show="isVsphare" ng-click="handleMenuItemClicked($event)">{{'SITE_SETTINGS_DROP.REFRESH'|translate}}</a></li>
+    <li role="presentation" class="divider"></li>
+    <li role="presentation"><a class="btn btn-link" role="menuitem" tabindex="-1" href="" ng-click="handleMenuItemClicked($event)">{{'SITE_SETTINGS_DROP.LOG_OUT'|translate}}</a></li>
+</ul>

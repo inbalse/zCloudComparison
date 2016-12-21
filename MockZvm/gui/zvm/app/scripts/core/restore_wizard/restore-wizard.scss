@@ -1,0 +1,74 @@
+.restore-wizard-style {
+    .z-wizard-body {
+        padding-top: 15px;
+    }
+    .modal-header {
+        height: 35px;
+        h4 {
+            margin-top: 5px;
+        }
+    }
+    .modal-dialog {
+        width: 1080px;
+    }
+    .modal-body {
+        margin-top: 0px;
+        padding: 0px;
+    }
+    .modal-footer {
+        background-color: #3c454f;
+        height: 0px;
+        padding: 0px;
+        .z-btn-wizard-next {
+            margin-right: 0px;
+        }
+    }
+
+    z-wizard .z-wizard-hud ul {
+        list-style: none;
+        padding: 0px;
+        margin: 0px;
+        left: 50%;
+        position: absolute;
+        margin-left: -272px;
+    }
+    .restore-step-plan {
+        .help-icon {
+            top: 3px;
+        }
+    }
+
+    .restore-point-grid, .restore-point-details-grid {
+        height: 200px;
+    }
+    .restore-vms-settings-grid {
+        height: 240px;
+    }
+
+    .restore-button {
+        display: block;
+        margin: 50px auto 0 auto;
+        background-color: #418BB8;
+        color: #fff;
+        border: 0;
+        padding: 10px 21px;
+        font-size: 14px;
+        &:hover {
+            background-color: #5FAAD7;
+        }
+        &:focus{
+            background-color: #4481A6;
+        }
+    }
+}
+
+.ui-select-choices-group{
+    .deleted-vpg {
+        color: red;
+    }
+    hr{
+        margin: 0;
+    }
+}
+
+

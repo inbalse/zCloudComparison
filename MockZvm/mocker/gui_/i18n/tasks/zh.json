@@ -1,0 +1,6 @@
+{
+    "NO_RUNNING_TASKS":                 "No Running Tasks",
+    "RUNNING_TASKS":                    "Running Tasks",
+    "TASK_AWAITING_INPUT":              "Task awaiting input",
+    "TASK_SUMMARY_TITLE":               "TASKS"
+}

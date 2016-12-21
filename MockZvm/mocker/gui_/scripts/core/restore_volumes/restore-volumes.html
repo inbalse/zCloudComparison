@@ -1,0 +1,15 @@
+<base-modal-window modal-title="{{title}}" btns="buttons"
+                   close="handleCancel" loading="loading" help="restoreVolumes">
+    <div ng-controller="restoreVolumesController">
+        <div class="btn-group">
+            <button class="btn btn-link  pull-right" ng-disabled="selectedItems.length === 0"
+                    ng-click="handleEditSelectedClick()">{{'RESTORE_VOLUMES.EDIT_SELECTED' | translate}}
+            </button>
+        </div>
+        <z-slick-grid class="restore-volume-grid" grid-id="restore-volume-grid" id="restoreVolumesGrid"
+                      data="item.Volumes"
+                      custom-options="restoreVolumesOptions" on-selection="onSelection" selected-items="selectedItems"
+                      grid="gridObj.grid"></z-slick-grid>
+
+    </div>
+</base-modal-window>

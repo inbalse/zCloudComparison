@@ -1,0 +1,15 @@
+{
+  "IFRAME":
+  {
+    "WARNING": "Warning!",
+    "TEXT1": "Access to tabs managed by a Zerto Virtual Manager (ZVM) require a security certificate for the browser.",
+    "TEXT2": "If the ZVM running on site gui_localat Zerto already has a certificate, ",
+    "DISMISS": "Dismiss",
+    "TEXT3": " this alert, otherwise ",
+    "ZVMLINK": "open the ZVM UI",
+    "TEXT4": " and add a certificate.",
+    "LEARN": "Learn ",
+    "HOWLINK": "how to add the certificate"
+  }
+
+}

@@ -1,0 +1,11 @@
+{
+    "VRA_UPGRADE": {
+        "TITLE": "Upgrade VRAs",
+        "TEXT_ALERT_MODAL":" You are about to upgrade {{vraCount}} VRAs to {{latestVersion}}. Continue? ",
+        "TOTAL_SYNC_SIZE":"Total delta sync size: ",
+        "BUTTONS":{
+            "UPGRADE":"UPGRADE SELECTED VRAs",
+            "CANCEL":"CANCEL"
+        }
+    }
+}

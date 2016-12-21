@@ -1,0 +1,33 @@
+<div class="z-wizard-container-wide flr-wizard-summary" ng-controller="flrWizardSummaryController">
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <b class="panel-title" translate="FLR.DOWNLOAD.SUMMARY.FILES_TO_RESTORE">
+                        </b>
+                    </div>
+                    <div class="panel-body">
+                        <z-slick-grid class="flr-summary-files-grid" id="flr-summary-files-grid"
+                                      grid-id="flr-summary-files-grid" grid="grid"
+                                      custom-options="summaryModel.options" data="fileModel.selectedNodes"
+                                      hide-view-options="true" row-click="rowClick"></z-slick-grid>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-xs-12">
+                <z-checkbox model="summaryModel.compressed" z-disabled="summaryModel.isCompressedDisabled">
+                    {{'FLR.DOWNLOAD.SUMMARY.RESTORE_AS'|translate}}
+                </z-checkbox>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <button ng-click="download()" class="btn btn-download" translate="FLR.DOWNLOAD.SUMMARY.DOWNLOAD"></button>
+        </div>
+    </div>
+
+</div>

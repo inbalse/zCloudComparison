@@ -1,0 +1,36 @@
+.flot-legend{
+        &:hover{
+            cursor: pointer;
+        }
+//        position: absolute;
+//        bottom: -2px;
+//        left: 50%;
+//        margin-left: -20px;
+//        width: 200px;
+        height:20px;
+        .rect {
+            float: left;
+            width: 10px;
+            height: 10px;
+            margin-right: 4px;
+        }
+        .legend-text{
+            float:left;
+            margin-right: 10px;
+            line-height: 16px;
+            max-width: 200px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            width: auto;
+
+            position: relative;
+            top: -4px;
+
+        }
+        .legend-alpha{
+            opacity: 0.3;
+        }
+
+
+}

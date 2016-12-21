@@ -1,0 +1,45 @@
+<base-modal-window modal-title="{{selectedVmsCount}}"
+                   close="close"
+                   btns="buttons"
+                   loading="loading()" help="editVmController">
+    <div class="container-fluid">
+        <form class="form-horizontal" name="forms.editVcdVmForm">
+            <div class="row">
+                <div class="form-group" ng-if="isStorageProfileEnabled">
+                    <label class="col-xs-4 control-label">{{'EDIT_VM.STORAGE_PROFILE' | translate}}</label>
+
+                    <div class="col-xs-8">
+                        <ui-select theme="select2"
+                                   ng-model="$parent.vm.StorageProfile.VCDStorageProfile"
+                                   required>
+                            <ui-select-match class="ui-select-match">{{$select.selected.DisplayName}}</ui-select-match>
+                            <ui-select-choices
+                                class="ui-select-choices"
+                                repeat="item in data.potentialVirtualDatacenterStorageProfiles | filter: $select.search">
+                                <span ng-bind-html="item.DisplayName | highlight: $select.search"></span>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-xs-4 control-label">{{'EDIT_VM.JOURNAL_SIZE_HARD_LIMIT' | translate}}</label>
+
+                    <div class="col-xs-8">
+                        <journal-limit required value="vm.JournalHardLimit"
+                                       is-sla-custom="data.isSlaCustom"></journal-limit>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 control-label">{{'EDIT_VM.JOURNAL_SIZE_WARNING_THRESHOLD' |
+                        translate}}</label>
+
+                    <div class="col-xs-8">
+                        <journal-limit required value="vm.JournalWarningThreshold"
+                                       is-sla-custom="data.isSlaCustom"></journal-limit>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</base-modal-window>

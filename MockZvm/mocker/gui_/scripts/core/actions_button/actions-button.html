@@ -1,0 +1,55 @@
+<div ng-class="actionsButtonClass" ng-click="handleActionsButtonClick()"
+     ng-mouseenter="handleMouseOver()" ng-mouseleave="handleMouseOut()">
+    <img src="assets/actionsIcon.png" class="icon-style"> <span class="label-span">{{'ACTIONS_BUTTON.ACTIONS' | translate}}</span>
+    <img class="actionButtonExpandButton" ng-src="{{ expandButton }}" ng-show="isExpandButtonShow">
+</div>
+<!--class="actionButtonMenuClass"-->
+<div class="actionButtonMenuClass" ng-class="{ showActionsButtonMenu:showActionsButtonMenu}"
+     ng-mouseleave="handleActionButoonMenuMouseLeave($event)"
+     border-arrow="down">
+    <ul class="action-buttons">
+        <li ng-class="{'enabled':data.SummaryState.IsGeneralCreateVPGEnabled}">
+            <a ng-disabled="!data.SummaryState.IsGeneralCreateVPGEnabled"
+               ng-click="!data.SummaryState.IsGeneralCreateVPGEnabled || handleMenuItemClicked($event,'createVPG')"
+               translate="ACTIONS_BUTTON.CREATE_VPG"></a>
+            <span><label translate="ACTIONS_BUTTON.CREATE_VPG_TEXT"></label></span>
+        </li>
+
+        <li ng-class="{'enabled':data.SummaryState.IsGeneralInsertCheckpointEnabled}">
+            <a ng-disabled="!data.SummaryState.IsGeneralInsertCheckpointEnabled"
+               ng-click="!data.SummaryState.IsGeneralInsertCheckpointEnabled || handleMenuItemClicked($event,'setCheckpoint')"
+               translate="ACTIONS_BUTTON.SET_CHECKOUT">
+            </a>
+            <span><label translate="ACTIONS_BUTTON.SET_CHECKOUT_TEXT"></label></span>
+        </li>
+
+        <li ng-class="{'enabled': data.SummaryState.AreThereAnyVpgs && !isPortal, 'disabled': isPortal || !data.SummaryState.AreThereAnyVpgs}" ng-if="!isPortal">
+            <a ng-click="(isPortal || !data.SummaryState.AreThereAnyVpgs) || handleMenuItemClicked($event,'flr')"
+               translate="ACTIONS_BUTTON.RESTORE_FILE"
+               ng-disabled="isPortal || !data.SummaryState.AreThereAnyVpgs"></a>
+            <span><label translate="ACTIONS_BUTTON.RESTORE_FILE_TEXT"></label></span>
+        </li>
+
+        <li ng-class="{'enabled':data.SummaryState.IsGeneralRestoreEnabled, 'disabled' : !data.SummaryState.IsGeneralRestoreEnabled}">
+            <a class="arrow_box_left"
+               ng-disabled="!data.SummaryState.IsGeneralRestoreEnabled"
+               ng-click="!data.SummaryState.IsGeneralRestoreEnabled || handleMenuItemClicked($event,'restore')"
+               translate="ACTIONS_BUTTON.RESTORE">
+            </a>
+            <span>
+                <label translate="ACTIONS_BUTTON.RESTORE_TEXT"></label>
+            </span>
+        </li>
+
+        <li ng-class="{'enabled':data.SummaryState.IsGeneralMoveEnabled, 'disabled' : !data.SummaryState.IsGeneralMoveEnabled}">
+            <a class="arrow_box_right"
+               ng-disabled="!data.SummaryState.IsGeneralMoveEnabled"
+               ng-click="!data.SummaryState.IsGeneralMoveEnabled || handleMenuItemClicked($event,'move')"
+               translate="ACTIONS_BUTTON.MOVE">
+            </a>
+            <span>
+                <label translate="ACTIONS_BUTTON.MOVE_TEXT"></label>
+            </span>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,197 @@
+.flr-download {
+    .z-wizard-body {
+        padding-top: 15px;
+        min-height: 405px;
+    }
+    .modal-dialog {
+        width: 1024px;
+    }
+    .modal-body {
+        margin-top: 10px;
+        padding: 2px 10px;
+    }
+    .modal-footer {
+        background-color: #3c454f;
+        height: 0;
+        padding: 0;
+        .z-btn-wizard-next {
+            margin-right: 0;
+        }
+    }
+    z-wizard .z-wizard-hud ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        position: relative;
+    }
+
+    .flr-popup-grid-cell-ellipsis {
+        white-space: normal;
+        height: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .flr-browse-container, .flr-browsed-content {
+        position: relative;
+        height: 300px;
+        float: left;
+    }
+    .flr-browse-container, .flr-browsed-content {
+        width: 50%;
+        height: 320px;
+    }
+    .flr-browse-container {
+        padding-right: 10px;
+    }
+
+    .flr-browsed-content {
+        padding-left: 10px;
+        z-slick-grid {
+            padding-top: 0;
+        }
+    }
+
+    .flr-wizard-file-step {
+        .z-btn-default-sm {
+            height: 26px;
+            &:hover {
+                border-color: #3c454f;
+            }
+        }
+        .mount-form {
+            width: 48%;
+        }
+        .panel {
+            width: 48%;
+            height: 300px;
+            .panel-body {
+                height: 230px;
+                overflow-y: auto;
+                overflow-x: auto;
+            }
+            .panel-body-left {
+                height: 270px;
+            }
+        }
+        .ui-tree {
+            border: 0;
+            .tree-view-item:not(#root) {
+                //padding-left: 5px;
+                &:hover {
+                    cursor: pointer;
+                    background-color: #e8f4fb;
+                }
+            }
+            .angular-ui-tree-nodes {
+                li {
+                    min-width: 220px;
+                }
+                .angular-ui-tree-nodes {
+                    padding-left: 40px;
+                }
+            }
+        }
+
+        .flr-selected-files-grid {
+            padding-top: 0;
+        }
+
+        .z-checkbox {
+            margin: 0;
+            .z-checkbox-container {
+                width: 12px;
+                height: 12px;
+                border-color: #A3A7AC;
+                top: 2px;
+                &::after {
+                    width: 9px;
+                    height: 6px;
+                    border-color: #A3A7AC;
+                }
+            }
+        }
+    }
+    .flr-wizard-summary {
+        .panel {
+            width: 100%;
+            margin-bottom: 0;
+        }
+        .flr-summary-files-grid {
+            width: 100%;
+            height: 200px;
+            padding-top: 0;
+        }
+        .btn-download {
+            display: block;
+            margin: 0 auto;
+            background-color: #418BB8;
+            color: #fff;
+            border: 0;
+            padding: 10px 21px;
+            font-size: 14px;
+            margin-top: 20px;
+            &:hover {
+                background-color: #5FAAD7;
+            }
+        }
+    }
+
+    .glyphicon {
+        color: #A3A7AC;
+        &:hover {
+            cursor: pointer;
+        }
+        &.icon-left {
+            margin-right: 5px;
+        }
+    }
+}
+
+.flr-file-tooltip {
+    position: absolute;
+    left: 50px;
+    padding: 40px 7px 7px 15px;
+    background-color: #fff;
+    border: 1px solid #53585f;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    z-index: 2;
+    min-width: 220px;
+    display:table;
+
+    h6 {
+        position: absolute;
+        width: 100%;
+        height: 29px;
+        left: 0;
+        top: 0;
+        color: #fff;
+        background-color: #53585f;
+        padding: 7px;
+        margin: 0;
+    }
+    .form-group {
+        margin-bottom: 0;
+    }
+}
+
+.flr-file-tooltip__row {
+    display: table-row;
+}
+
+.flr-file-tooltip__label {
+    padding: 0 5px 5px 0;
+    display: table-cell;
+}
+
+.flr-file-tooltip__text {
+    display: table-cell;
+}
+
+.flr-wrap-text {
+    max-width: 600px;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

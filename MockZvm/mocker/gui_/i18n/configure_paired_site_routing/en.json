@@ -1,0 +1,9 @@
+{
+    "CONFIGURE_PAIRED_SITE_ROUTING": {
+        "TITLE": "Configure Paired Site Routing",
+        "ADDRESS": "Address",
+        "SUBNET_MASK": "Subnet Mask",
+        "GATEWAY": "Gateway",
+        "ENABLE": "Enable Paired Site Routing"
+    }
+}

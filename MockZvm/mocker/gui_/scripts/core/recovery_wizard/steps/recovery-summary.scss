@@ -1,0 +1,398 @@
+.recovery-summary {
+
+    .summary-text {
+        width: 100%;
+        text-align: center;
+        p {
+            text-align: center;
+            width: 600px;
+            display: inline-table;
+        }
+    }
+    .summary-topology {
+        border: 2px solid #e2e4e5;
+        height: 250px;
+        margin-bottom: 15px;
+        background: transparent url('../assets/recovery_wizard/topology.png') no-repeat center;
+    }
+
+    .failover-red-button {
+        display: block;
+        margin: 0 auto;
+        background-color: #CF000A;
+        color: #fff;
+        border: 0;
+        padding: 10px 11px;
+        font-size: 14px;
+        &:hover {
+            background-color: #F83A44;
+        }
+        &:focus {
+            background-color: #B43339;
+        }
+    }
+
+    //-------------------- TOPOLOGY ----------------------//
+
+    $folder-path: '../assets/recovery_wizard/topology-icons/';
+
+    $position: absolute;
+    $site-top: 270px;
+    $site-center: 542px;
+    $left-from-center: 135px;
+
+    $side-arrows-size: 73px;
+    $side-arrows-top: 203px;
+
+    $middle-arrows-height: 49px;
+    $middle-arrows-width: 24px;
+    $middle-arrows-top: 217px;
+
+    $arrows-position-center: 559px;
+    $arrows-left-from-center: 50px;
+
+    $side-double-arrows-height: 79px;
+    $side-double-arrows-width: 81px;
+
+    .topology {
+        border: 2px solid #e2e4e5;
+        padding: 10px;
+        margin: 20px;
+        height: 245px;
+        width: 1055px;
+
+        .local-site-position {
+            position: $position;
+            left: $site-center;
+        }
+
+        .middle-site-position {
+            position: $position;
+            left: $site-center;
+            top: $site-top;
+        }
+
+        .right-site-position {
+            position: $position;
+            left: $site-center + $left-from-center;
+            top: $site-top;
+        }
+
+        .left-site-position {
+            position: $position;
+            left: $site-center - $left-from-center;
+            top: $site-top;
+        }
+
+        //SITES
+        .topology-site-type-0 {
+            background-image: url($folder-path + 'site-type-vc.png');
+        }
+        .topology-site-type-1 {
+            background-image: url($folder-path + 'site-type-vc.png');
+        }
+        .topology-site-type-2 {
+            background-image: url($folder-path + 'site-type-vcd.png');
+        }
+        .topology-site-type-3 {
+            background-image: url($folder-path + 'site-type-aws.png');
+        }
+        .topology-site-type-4 {
+            background-image: url($folder-path + 'site-type-hyperv.png');
+        }
+        .topology-site-type-5 {
+            background-image: url($folder-path + 'site-type-azure.png');
+        }
+        .topology-site-type-6 {
+            background-image: url($folder-path + 'site-type-multiple.png');
+        }
+
+        .site {
+            width: 60px;
+            height: 60px;
+            display: inline-block;
+        }
+
+        $label-top: 331px;
+        $label-width: 120px;
+        $label-center: 513px;
+        $label-left-from-center: 137px;
+
+        //SITES NAME
+        .local-label {
+            position: $position;
+            left: $label-center;
+            top: 183px;
+            display: inline-block;
+            text-align: center;
+            width: $label-width;
+            label {
+                display: block;
+                position: $position;
+                margin: 0;
+                right: 42px;
+                font-size: 10px;
+            }
+        }
+
+        .middle-label {
+            position: $position;
+            left: $label-center;
+            top: $label-top;
+            display: inline-block;
+            text-align: center;
+            width: $label-width;
+        }
+
+        .right-label {
+            position: $position;
+            left: $label-center + $label-left-from-center;
+            top: $label-top;
+            display: inline-block;
+            text-align: center;
+            width: $label-width;
+        }
+
+        .left-label {
+            position: $position;
+            left: $label-center - $label-left-from-center;
+            top: $label-top;
+            display: inline-block;
+            text-align: center;
+            width: $label-width;
+        }
+
+        //ARROWS
+        .topology-arrow-right-0 {
+            background-image: url($folder-path + 'side-arrows-outgoing.png');
+            position: $position;
+            top: $side-arrows-top;
+            left: $arrows-position-center + $arrows-left-from-center;
+        }
+
+        .topology-arrow-middle-0 {
+            background-image: url($folder-path + 'middle-direction-outgoing.png');
+            position: $position;
+            top: $middle-arrows-top;
+            left: $arrows-position-center;
+        }
+
+        .topology-arrow-left-0 {
+            background-image: url($folder-path + 'side-arrows-outgoing.png');
+            position: $position;
+            top: $side-arrows-top;
+            left: $arrows-position-center - $arrows-left-from-center * 2;
+            transform: rotate(90deg);
+            z-index: 1;
+        }
+
+        .topology-arrow-right-1 {
+            background-image: url($folder-path + 'side-arrows-incoming.png');
+            position: $position;
+            top: $side-arrows-top;
+            left: $arrows-position-center + $arrows-left-from-center;
+        }
+
+        .topology-arrow-middle-1 {
+            background-image: url($folder-path + 'middle-direction-incoming.png');
+            position: $position;
+            top: $middle-arrows-top;
+            left: $arrows-position-center;
+        }
+
+        .topology-arrow-left-1 {
+            background-image: url($folder-path + 'side-arrows-incoming.png');
+            position: $position;
+            top: $side-arrows-top;
+            left: $arrows-position-center - $arrows-left-from-center * 2;
+            transform: rotate(90deg);
+            z-index: 1;
+        }
+
+        .topology-arrow-2 {
+            background-image: url($folder-path + 'self-direction.png');
+            position: $position;
+            top: 132px;
+            left: 480px;
+            height: 28px;
+            width: 55px;
+        }
+
+        .topology-arrow-right-3 {
+            background-image: url($folder-path + 'double-side-arrows.png');
+            position: $position;
+            top: $side-arrows-top;
+            left: $arrows-position-center + $arrows-left-from-center;
+        }
+
+        .topology-arrow-middle-3 {
+            background-image: url($folder-path + 'two-middle-direction.png');
+            position: $position;
+            top: $middle-arrows-top;
+            left: $arrows-position-center;
+        }
+
+        .topology-arrow-left-3 {
+            background-image: url($folder-path + 'double-side-arrows.png');
+            position: $position;
+            top: $side-arrows-top;
+            left: $arrows-position-center - $arrows-left-from-center * 2;
+            transform: rotate(90deg);
+            z-index: 1;
+        }
+
+        .side-arrows {
+            height: $side-arrows-size;
+            width: $side-arrows-size;
+        }
+
+        .middle-arrows {
+            height: $middle-arrows-height;
+            width: $middle-arrows-width;
+        }
+
+        .double-arrow {
+            height: $side-double-arrows-height;
+            width: $side-double-arrows-width;
+        }
+
+        .arrows-hovering {
+            opacity: 0.6;
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+
+        //ARROW TEXT
+        .self-arrows-info-position {
+            position: $position;
+            top: 138px;
+            left: 448px;
+        }
+
+        .right-single-arrows-info-position {
+            position: $position;
+            top: 214px;
+            left: 652px;
+        }
+
+        .left-single-arrows-info-position {
+            position: $position;
+            top: 214px;
+            left: 460px;
+        }
+
+        .middle-single-arrows-info-position {
+            position: $position;
+            top: 225px;
+            left: 535px;
+        }
+
+        .right-double-arrows-info-position {
+            .outgoing {
+                position: $position;
+                top: 210px;
+                left: 649px;
+            }
+            .incoming {
+                position: $position;
+                top: 248px;
+                left: 617px;
+            }
+        }
+
+        .left-double-arrows-info-position {
+            .outgoing {
+                position: $position;
+                top: 210px;
+                left: 471px;
+            }
+            .incoming {
+                position: $position;
+                top: 248px;
+                left: 505px;
+            }
+        }
+
+        .middle-double-arrows-info-position {
+            .outgoing {
+                position: $position;
+                top: 227px;
+                left: 527px;
+            }
+            .incoming {
+                position: $position;
+                top: 227px;
+                left: 585px;
+            }
+        }
+
+        .topology-text {
+            color: #7e8184;
+            font-size: 11px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: block;
+            white-space: nowrap;
+            cursor: default;
+        }
+    }
+
+    //TOOLTIP CLASSES POSITION
+    .top-side {
+        top: -17px;
+        right: 63px;
+    }
+
+    .middle-side {
+        top: -32px;
+        right: -56px;
+    }
+
+    .right-side {
+        top: -42px;
+        left: 43px;
+    }
+
+    .left-side {
+        top: 80px;
+        right: 15px;
+        transform: rotate(-90deg);
+    }
+
+    .recovery-topology-tooltip {
+        position: $position;
+        height: 68px;
+        width: 135px;
+        border: 1px solid #8e9297;
+        box-shadow: 1px 1px 5px #7e8184;
+        padding: 8px 0 8px 12px;
+        background-color: white;
+        z-index: 2;
+
+        p {
+            color: #a2a2a3;
+            margin: 0;
+            span {
+                color: black;
+            }
+        }
+    }
+
+    button {
+        display: block;
+        margin: 0 auto;
+        background-color: #418BB8;
+        color: #fff;
+        border: 0;
+        padding: 10px 21px;
+        font-size: 14px;
+        &:hover {
+            background-color: #5FAAD7;
+        }
+        &:focus {
+            background-color: #4481A6;
+        }
+    }
+}

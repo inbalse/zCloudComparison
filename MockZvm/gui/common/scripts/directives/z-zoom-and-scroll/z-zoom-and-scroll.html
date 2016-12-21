@@ -1,0 +1,28 @@
+<div class="z-scroll-button z-scroll-button--up"
+     ng-show="zScrollAndZoomHelperService.hasScroll"
+     ng-class="{'z-scroll-button--in-scroll':zScrollAndZoomHelperService.inScrollTop}"
+     ng-click="scrollTop()"></div>
+<div class="z-fader z-fader--top" ng-show="zScrollAndZoomHelperService.hasScroll"></div>
+<div class="z-zoom">
+    <button class="z-zoom_button z-zoom_button-plus"
+            ng-disabled="zScrollAndZoomHelperService.zoomIndex==0"
+            ng-click="zScrollAndZoomHelperService.zoomOut()">+
+    </button>
+    <button class="z-zoom_button z-zoom_button-reset"
+            ng-disabled="zScrollAndZoomHelperService.zoomIndex==0"
+            ng-click="zScrollAndZoomHelperService.zoomReset()">&#183;</button>
+    <button class="z-zoom_button  z-zoom_button-minus"
+            ng-disabled="zScrollAndZoomHelperService.zoomIndex==zScrollAndZoomHelperService.zoomValues.length-1"
+            ng-click="zScrollAndZoomHelperService.zoomIn()">-
+    </button>
+</div>
+
+<div class="z-zoom-container"
+     ng-style="{zoom:zScrollAndZoomHelperService.zoomValues[zScrollAndZoomHelperService.zoomIndex]}"
+     ng-transclude>
+</div>
+<div class="z-fader z-fader--bottom" ng-show="zScrollAndZoomHelperService.hasScroll"></div>
+<div class="z-scroll-button z-scroll-button--down"
+     ng-show="zScrollAndZoomHelperService.hasScroll"
+     ng-class="{'z-scroll-button--in-scroll':zScrollAndZoomHelperService.inScrollBottom}"
+     ng-click="scrollBottom()"></div>

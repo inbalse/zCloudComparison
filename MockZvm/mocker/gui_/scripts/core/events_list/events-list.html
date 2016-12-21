@@ -1,0 +1,32 @@
+<div class="grid-controller events-list" ng-controller="eventsListController">
+    <div class="btn-group z-white-btn-group">
+        <button class="btn btn-link inline-site-settings" type="button" ng-click="handleSiteSettingsClick()">{{'VPG_LIST.MORE_BUTTON.SITE_SETTINGS'
+            | translate}}</button>
+        <span class="inline-site-settings">|</span>
+        <button type="button" class="btn btn-link" ng-click="exportEvents()">{{"ALERTS_LIST.EXPORT" | translate}}
+        </button>
+        <span>|</span>
+    </div>
+
+    <div class="btn-group events-list-filters">
+        <ui-select theme="select2" class="event-type-filter" data-ng-model="$parent.eventType" search-enabled="false">
+            <ui-select-match class="ui-select-match">
+                <span class="ui-select-placeholder">{{"TYPE"|translate}}:&nbsp;</span>
+                {{$select.selected.label}}
+            </ui-select-match>
+            <ui-select-choices class="ui-select-choices" repeat="item.value as item in types">
+                <span ng-bind-html="item.label | highlight: $select.search"></span>
+            </ui-select-choices>
+        </ui-select>
+
+        <button type="button" class="btn btn-link custom-float" ng-click="handleResetClick()">{{"ALERTS_LIST.RESET" | translate}}</button>
+        <button type="button" class="btn btn-link custom-float" ng-click="handleApplyClick()">{{"ALERTS_LIST.APPLY" | translate}}</button>
+
+        <input type="daterange" ng-model="eventsDateRange" ng-change="rangeFilterChange()"
+               ranges="{{eventsDateRangeList}}" format="DD/MM/YYYY" class="pull-right btn btn-link">
+
+    </div>
+    <z-slick-grid id="events-list" grid-id="events-list" data="data"
+                  custom-options="customOptions" row-click="rowClick" hide-create-view="true"
+                  group-by-values="groupByValues"></z-slick-grid>
+</div>

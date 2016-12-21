@@ -1,0 +1,166 @@
+.flr-wizard {
+    .z-wizard-body {
+        padding-top: 15px;
+        min-height: 405px;
+    }
+    .modal-dialog {
+        width: 1024px;
+    }
+    .modal-body {
+        margin-top: 10px;
+        padding: 2px 10px;
+    }
+    .modal-footer {
+        background-color: #3c454f;
+        height: 0;
+        padding: 0;
+        .z-btn-wizard-next {
+            margin-right: 0;
+        }
+    }
+    z-wizard .z-wizard-hud ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        position: relative;
+    }
+    .z-slick-grid-coflr-wizard-summarytainer {
+        position: relative;
+        height: 305px;
+    }
+    .flr-vm-grid, .flr-volume-grid {
+        height: 300px;
+    }
+    .flr-restorepoint-message {
+        margin-bottom: 7.5px;
+    }
+    .flr-restorepoint-filters {
+        height: 27px;
+        width: 50%;
+        .auto-cp {
+            .icon {
+                @include z-checkbox-icon-base('../assets/checkpoint/auto-cp.png');
+            }
+        }
+
+        .user-cp {
+            .icon {
+                @include z-checkbox-icon-base('../assets/checkpoint/user-cp.png')
+            }
+        }
+
+        .vss-cp {
+            .icon {
+                @include z-checkbox-icon-base('../assets/checkpoint/vss-cp.png')
+            }
+        }
+
+        .offsite-cp {
+            .icon {
+                @include z-checkbox-icon-base('../assets/checkpoint/offsite-cp.png');
+                width: 20px;
+            }
+        }
+    }
+    .flr-restorepoint_grid-container {
+        width: 50%;
+
+        .cp-list-auto {
+            padding-left: 20px;
+            @include z-image-icon('../assets/checkpoint/auto-cp.png', left center);
+        }
+
+        .cp-list-user {
+            padding-left: 20px;
+            @include z-image-icon('../assets/checkpoint/user-cp.png', left center);
+        }
+
+        .cp-list-vss {
+            padding-left: 20px;
+            @include z-image-icon('../assets/checkpoint/vss-cp.png', left center);
+        }
+        .cp-list-offsite {
+            padding-left: 20px;
+            @include z-image-icon('../assets/checkpoint/offsite-cp.png', left center);
+        }
+
+        .flr-checkpoints_jump-to {
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 2;
+            .jump-to_label {
+                margin-top: 4px;
+            }
+
+            input {
+                display: inline-block;
+                width: 100px;
+                &:focus {
+                    outline: none;
+
+                }
+            }
+            .daterangepicker {
+
+                &.dropdown-menu {
+                    &.show-calendar {
+                        width: 294px;
+                    }
+                }
+            }
+        }
+    }
+    .flr-restorepoint_details {
+        width: 50%;
+        padding: 0 10px;
+        .flr-restorepoint_details--container {
+            height: 100%;
+            border-left: 1px solid #ccc;
+            padding: 35px 25px;
+
+            label {
+                width: 100%;
+                top: 50%;
+                transform: translateY(-50%);
+                position: absolute;
+                text-align: center;
+            }
+        }
+    }
+    .flr-restorepoint_grid-container, .flr-restorepoint_details {
+        position: relative;
+        height: 290px;
+        float: left;
+
+        .flr-restorepoint_total-checkpoints {
+            margin-top: 3px;
+        }
+    }
+
+    .btn-mount {
+        display: block;
+        background-color: #418BB8;
+        color: #fff;
+        border: 0;
+        padding: 10px 21px;
+        font-size: 14px;
+        margin: 85px auto 0;
+        &:hover {
+            background-color: #5FAAD7;
+        }
+    }
+    .step-desc {
+        font-size: 12px;
+    }
+    .flr-wizard-mount-summary {
+        .form-group {
+            label {
+                padding-left: 40px;
+            }
+            div {
+                padding-left: 40px;
+            }
+        }
+    }
+}

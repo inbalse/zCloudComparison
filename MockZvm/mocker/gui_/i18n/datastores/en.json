@@ -1,0 +1,6 @@
+{
+    "DATASTORE":{
+        "EXPORT":     "EXPORT",
+        "SHOW_ZERTO": "Show only used by Zerto"
+    }
+}

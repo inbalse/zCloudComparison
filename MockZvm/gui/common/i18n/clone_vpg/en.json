@@ -1,0 +1,12 @@
+{
+    "CLONE_VPG": {
+        "TITLE": ": Offsite Clone",
+        "INFO": "Configuration to clone ",
+        "CONFIGIRE_CHECKPOINT_TITLE": "Using the checkpoint",
+        "CONFIGIRE_CHECKPOINT_BUTTON": "SELECT A CHECKPOINT",
+        "RECOVERY_DATASTORE": "Recovery Datastore",
+        "RECOVERY_STORAGE": "Recovery Storage",
+        "CLONE_BUTTON": "CLONE",
+        "ABORT_CLONE_WARNING": "You are about to abort the Offsite Clone operation."
+    }
+}

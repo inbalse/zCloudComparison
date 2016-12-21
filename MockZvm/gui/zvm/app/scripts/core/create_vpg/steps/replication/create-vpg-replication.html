@@ -1,0 +1,386 @@
+<div class="z-wizard-container create-vpg-replication" ng-controller="createVPGReplicationController" ng-cloak="">
+    <form class="form-horizontal z-form" novalidate name="forms.replicationForm">
+        <p class="text-center step-desc">{{"CREATE_VPG_REPLICATION.REPLICATION_INFO" | translate }}</p>
+
+        <!--Start: Replicate To Section-->
+        <div class="form-group">
+            <label class="col-xs-3 control-label"><b>{{ "CREATE_VPG_REPLICATION.REPLICATE_TO" | translate }}</b></label>
+            <div class="col-xs-9">
+                <!-- Start: Recovery Site-->
+                <div class="form-group">
+                    <label class="col-xs-4 control-label">{{"CREATE_VPG_REPLICATION.RECOVERY_SITE" + (data.isReverse ?
+                        "_REVERSE" : "") | translate }}</label>
+                    <div class="col-xs-8">
+                        <ui-select ng-show="!data.isEdit && (data.initialSitesInfo.TargetSites.length > 1)"
+                                   theme="select2"
+                                   id="recoveryList"
+                                   ng-model="$parent.data.targetSite"
+                                   required=""
+                                   ng-disabled="data.isZssp"
+                                   z-wizard-validator="recoverySite"
+                                   data-placement="top"
+                                   on-select="handleTargetSiteChange()">
+                            <ui-select-match class="ui-select-match">
+                                <div class="select2-text-icon-container">
+                                    <div
+                                        class="recovery-site-type-icon {{data.selectedTargetSiteIcon}}-img recovery-site-match"></div>
+                                    {{$select.selected.OwnersId.DisplayName}}
+                                </div>
+                            </ui-select-match>
+                            <ui-select-choices class="ui-select-choices"
+                                               ui-disable-choice="!item.IsConnected"
+                                               repeat="item in data.initialSitesInfo.TargetSites | filter: $select.search">
+                                <div class="select2-text-icon-container">
+                                    <div
+                                        class="recovery-site-type-icon {{(item.VirtualizationProviderType === enums.VpgEntityType.Aws) ? 'aws' : (item.VirtualizationProviderType === enums.VpgEntityType.Azure ? 'azure' : (item.VirtualizationProviderType === enums.VpgEntityType.HyperV) ? 'hyperv' : 'vmware') }}-img recovery-site-choice"></div>
+                                    <span title="{{item.IsConnected ? null : 'CREATE_VPG_REPLICATION.SITE_IS_DISCONNECTED' | translate}}" ng-bind-html="item.OwnersId.DisplayName | highlight: $select.search"></span>
+                                </div>
+                            </ui-select-choices>
+                        </ui-select>
+                        <div class="label-and-icon-container" ng-show="data.isEdit || (data.initialSitesInfo.TargetSites.length === 1)">
+                            <div class="recovery-site-type-icon {{data.selectedTargetSiteIcon}}-img recovery-site-choice"></div>
+                            <label class="control-label no-padding-top">{{data.targetSite.OwnersId.DisplayName}}</label>
+                        </div>
+                    </div>
+                </div>
+                <!-- End: Recovery Site-->
+
+                <!--Start: Site Type-->
+                <div class="form-group" ng-show="showSiteType">
+                    <label class="col-xs-4 control-label">{{ "CREATE_VPG_REPLICATION.SITE_TYPE" | translate }}</label>
+                    <div class="col-xs-8">
+                        <ui-select ng-show="!data.isEdit"
+                                   theme="select2"
+                                   id="recoveryTypeList"
+                                   on-select="handleSiteTypeChange()"
+                                   ng-model="$parent.data.targetSiteType"
+                                   ng-required="true"
+                                   ng-disabled="!data.targetSite" z-wizard-validator="siteType" data-placement="top">
+                            <ui-select-match class="ui-select-match">
+                                <div class="select2-text-icon-container">
+                                    <div
+                                        class="recovery-site-type-icon {{$select.selected.type}}-match {{$select.selected.type}}-img"></div>
+                                    {{$select.selected.type}}
+                                </div>
+                            </ui-select-match>
+                            <ui-select-choices class="ui-select-choices"
+                                               repeat="item in data.potentialSiteTypes | filter: $select.search">
+                                <div class="select2-text-icon-container">
+                                    <div class="recovery-site-type-icon {{item.type}}-img {{item.type}}-choice"></div>
+                                    <span ng-bind-html="item.type | highlight: $select.search"></span></div>
+                            </ui-select-choices>
+                        </ui-select>
+                        <div class="label-and-icon-container" ng-show="data.isEdit">
+                            <div class="recovery-site-type-icon {{data.targetSiteType.type}}-img recovery-site-choice"></div>
+                            <label class="control-label no-padding-top">{{data.targetSiteType.type}}</label>
+                        </div>
+                    </div>
+                </div>
+                <!--End: Site Type-->
+
+                <!--Start: Zorg List-->
+                <div class="form-group" ng-if="data.isShowZertoOrganizationList">
+                    <label class="col-xs-4 control-label">{{ "CREATE_VPG_REPLICATION.ZORG" | translate }}</label>
+                    <div class="col-xs-8">
+                        <ui-select id="zorgList"
+                                   theme="select2"
+                                   ng-model="$parent.data.selectedZORG"
+                                   ng-required="true"
+                                   z-wizard-validator="zorg"
+                                   on-select="handleZertoOrganizationChange()"
+                                   data-placement="top">
+                            <ui-select-match class="ui-select-match">{{$select.selected.OrganizationName}}
+                            </ui-select-match>
+                            <ui-select-choices class="ui-select-choices"
+                                               repeat="item in data.potentialZertoOrganizations | filter: $select.search">
+                                <span
+                                    ng-bind-html="getTrustedHtmlItem(item.OrganizationName) | highlight: $select.search"></span>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                </div>
+                <!--End: Zorg List-->
+
+                <!--Start: Horizontal Row-->
+                <div class="row">
+                    <div class="col-xs-12">
+                        <hr/>
+                    </div>
+                </div>
+                <!--Start: Horizontal Row-->
+            </div>
+        </div>
+        <!--End: Replicate To Section-->
+
+        <!--Start: VC Stuff-->
+        <div class="form-group" ng-if="data.showHostAndStorage">
+            <label class="col-xs-3 control-label"><b>{{ "CREATE_VPG_REPLICATION.DEFAULT_RECOVERY_SERVERS" | translate
+                }}</b></label>
+            <div class="col-xs-9">
+                <!--Start: Default Host-->
+                <div class="form-group">
+                    <label help-icon="VPG_WIZARD.REPLICATION_HOST" class="col-xs-4 control-label">{{
+                        "CREATE_VPG_REPLICATION.HOST" | translate }}</label>
+                    <div class="col-xs-8">
+                        <ui-select id="hostList"
+                                   theme="select2"
+                                   ng-model="$parent.data.selectedTargetHost"
+                                   z-wizard-validator="targetHost"
+                                   data-placement="top"
+                                   on-select="handleTargetHostChange()"
+                                   ng-disabled="!data.potentialTargetHosts">
+                            <ui-select-match class="ui-select-match">{{$select.selected.ComputeResource.DisplayName}}
+                            </ui-select-match>
+                            <ui-select-choices class="ui-select-choices"
+                                               repeat="item in data.potentialTargetHosts | filter: $select.search">
+                                <span
+                                    ng-bind-html="item.ComputeResource.DisplayName | highlight: $select.search"></span>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                </div>
+                <!--End: Default Host-->
+
+                <!--Start: Default Datastore-->
+                <div class="form-group">
+                    <label help-icon="{{data.datastoreOrStorageTooltip}}" class="col-xs-4 control-label">{{data.storageLabel}}</label>
+                    <div class="col-xs-8">
+                        <ui-select id="dataStoresList"
+                                   theme="select2"
+                                   ng-model="$parent.data.selectedTargetDatastore"
+                                   on-select="handleTargetDatastoreChange()"
+                                   z-wizard-validator="dataStore"
+                                   data-placement="top"
+                                   ng-disabled="!data.computeResources.Datastores">
+                            <ui-select-match class="ui-select-match">{{$select.selected.Datastore.DisplayName}}
+                            </ui-select-match>
+                            <ui-select-choices class="ui-select-choices" ui-disable-choice="!item.IsEnabled"
+                                               repeat="item.Datastore as item in data.computeResources.Datastores | filter: $select.search">
+                                <span ng-bind-html="item.Datastore.DisplayName | highlight: $select.search"></span>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                </div>
+                <!--End: Default Datastore-->
+            </div>
+        </div>
+        <!--End: VC Stuff -->
+
+        <!--Start: vCD Stuff -->
+        <div class="form-group" ng-if="data.showVcdStuff">
+            <label class="col-xs-3 control-label"><b>{{ "CREATE_VPG_REPLICATION.DEFAULT_RECOVERY_SETTINGS" |
+                translate}}</b></label>
+            <div class="col-xs-9">
+                <!--Start: VCD Virtual DataCenter-->
+                <div class="form-group">
+                    <label class="col-xs-4 control-label">{{ "CREATE_VPG_REPLICATION.RECOVERY_ORG_VDC" | translate
+                        }}</label>
+                    <div class="col-xs-8">
+                        <ui-select id="orgVdcList"
+                                   theme="select2"
+                                   ng-model="$parent.data.targetOrgvDC"
+                                   ng-required="true"
+                                   z-wizard-validator="orgVdc"
+                                   data-placement="top"
+                                   ng-disabled="!data.vcdVirtualDataCenters"
+                                   on-select="handleTargetVdcChange()">
+                            <ui-select-match class="ui-select-match">
+                                {{$select.selected.VirtualDatacenter.DisplayName}}
+                            </ui-select-match>
+                            <ui-select-choices class="ui-select-choices"
+                                               repeat="item in data.vcdVirtualDataCenters | filter: $select.search">
+                                <span
+                                    ng-bind-html="item.VirtualDatacenter.DisplayName | highlight: $select.search"></span>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                </div>
+                <!--End: VCD Virtual DataCenter-->
+
+                <!--Start: Horizontal Row-->
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <hr/>
+                    </div>
+                </div>
+                <!--End: Horizontal Row-->
+            </div>
+        </div>
+        <!-- vCD stuff end -->
+
+        <!--Start: SLA-->
+        <div class="form-group" ng-show="data.targetSiteType">
+            <label help-icon="VPG_WIZARD.REPLICATION_SLA" class="col-xs-3 control-label"><b>{{
+                "CREATE_VPG_REPLICATION.SLA" | translate }}</b></label>
+
+            <div class="col-xs-9">
+                <!--Start: Service Profile-->
+                <div class="form-group" ng-if="data.selectedServiceProfile">
+                    <label class="col-xs-4 control-label">{{ "CREATE_VPG_REPLICATION.SERVICE_PROFILE" |
+                        translate}}</label>
+
+                    <div class="col-xs-8">
+                        <ui-select theme="select2"
+                                   id="serviceProfileList"
+                                   ng-model="$parent.data.selectedServiceProfileIdentifier"
+                                   on-select="handleSelectedServiceProfileChange()"
+                                   required="">
+                            <ui-select-match class="ui-select-match">{{$select.selected.Name}}</ui-select-match>
+                            <ui-select-choices class="ui-select-choices"
+                                               repeat="item.Identifier as item in data.potentialServiceProfiles | filter: $select.search">
+                                <span title="{{item.Description}}"
+                                      ng-bind-html="item.Name | highlight: $select.search"></span>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                </div>
+                <!--End: Service Profile-->
+
+                <!--Start: Journal History-->
+                <div class="form-group">
+                    <label class="col-xs-4 control-label">{{ "CREATE_VPG_REPLICATION.JOURNAL_HISTORY" |
+                        translate}}</label>
+
+                    <div class="col-xs-2" ng-if="data.isSlaCustom">
+                        <div name="journalStepper"
+                             z-wizard-validator
+                             data-placement="top"
+                             scriptTimeOutValid
+                             z-stepper
+                             class="align-to-left"
+                             ng-model="data.defaultJournal.value"
+                             min="data.journalMinMaxValue.min"
+                             max="data.journalMinMaxValue.max"
+                             ng-change="handleJournalValueChanged()">
+                        </div>
+                    </div>
+
+                    <div class="col-xs-3" ng-if="data.isSlaCustom">
+                        <ui-select theme="select2"
+                                   search-enabled="false"
+                                   ng-model="$parent.data.defaultJournal.type"
+                                   on-select="handleJournalTypeChange()"
+                                   required="">
+                            <ui-select-match class="ui-select-match">{{$select.selected.label}}</ui-select-match>
+                            <ui-select-choices class="ui-select-choices"
+                                               repeat="item.value as item in data.defaultJournalHistoryCollection">
+                                <span ng-bind-html="item.label"></span>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+
+                    <div class="col-xs-3" ng-if="data.isSlaCustom && !data.isPublicCloud">
+                        <button type="button"
+                                class="btn z-btn-default-sm col-xs-12"
+                                ng-disabled="!forms.replicationForm.journalStepper.$valid"
+                                ng-click="handleAdvancedJournalSettingsClicked()">{{
+                            "CREATE_VPG_REPLICATION.ADVANCED_JOURNAL_SETTINGS_BUTTON" | translate }}
+                        </button>
+                    </div>
+
+                    <label class="col-xs-8 control-label journal-history-label" ng-if="!data.isSlaCustom">{{data.minimalJournalLenghtInMinutes
+                        | convertMinToHoursOrDaysFilter}}</label>
+                </div>
+                <!--End: Journal History-->
+
+                <!--Start: RPO Alert-->
+                <div class="form-group">
+                    <label class="col-xs-4 control-label">{{ "CREATE_VPG_REPLICATION.IPO_ALERT" | translate }}</label>
+                    <!--values drop dawn-->
+                    <div class="col-xs-2" ng-if="data.isSlaCustom">
+                        <ui-select theme="select2"
+                                   search-enabled="false"
+                                   ng-model="$parent.data.RPOAlertLabel"
+                                   on-select="handleRPOAlertValueChange()"
+                                   required="">
+                            <ui-select-match class="ui-select-match">{{$select.selected.label}}</ui-select-match>
+                            <ui-select-choices class="ui-select-choices"
+                                               repeat="item in data.RPOAlertValuesOptions">
+                                <span ng-bind-html="item.label"></span>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                    <!--types drop down-->
+                    <div class="col-xs-6" ng-if="data.isSlaCustom">
+                        <ui-select theme="select2"
+                                   search-enabled="false"
+                                   ng-model="$parent.data.RPOAlert"
+                                   on-select="handleRPOAlertTypeChange()"
+                                   required="">
+                            <ui-select-match class="ui-select-match">{{$select.selected.label}}</ui-select-match>
+                            <ui-select-choices class="ui-select-choices"
+                                               repeat="item in data.RPOAlertTypeOptions">
+                                <span ng-bind-html="item.label"></span>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+
+                    <label class="col-xs-8 control-label rpo-lable" ng-if="!data.isSlaCustom">{{data.RPOThressholdInSeconds
+                        | convertFormatSecondsFilter}}</label>
+                </div>
+                <!--End: RPO Alert-->
+
+                <!--Start: Test Reminder-->
+                <div class="form-group">
+                    <label class="col-xs-4 control-label">{{ "CREATE_VPG_REPLICATION.TEST_REMINDER" | translate
+                        }}</label>
+
+                    <div ng-if="data.isSlaCustom" class="col-xs-8">
+                        <ui-select theme="select2"
+                                   search-enabled="false"
+                                   ng-model="data.selectedTestPeriod"
+                                   on-select="handleTestPeriodChange()"
+                                   required="">
+                            <ui-select-match class="ui-select-match">{{$select.selected.label}}</ui-select-match>
+                            <ui-select-choices class="ui-select-choices"
+                                               repeat="item.value as item in data.defaultTestPeriodCollection">
+                                <span ng-bind-html="item.label"></span>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                    <label ng-if="!data.isSlaCustom" class="col-xs-8 control-label test-interval-label">{{data.selectedTestPeriod
+                        | testPeriodFilter}}</label>
+                </div>
+                <!--End: Test Reminder-->
+
+                <!--Start: Horizontal Row-->
+                <div class="form-group" ng-if="!data.selectedServiceProfile">
+                    <div class="col-xs-12">
+                        <hr/>
+                    </div>
+                </div>
+                <!--End: Horizontal Row-->
+            </div>
+        </div>
+        <!--End: SLA-->
+
+        <!--Start: Wan Compression & Advanced VM Setting-->
+        <div class="form-group" ng-show="data.targetSiteType && !data.isPublicCloud">
+            <label class="col-xs-3 control-label"><b>{{ "CREATE_VPG_REPLICATION.ADVANCED" | translate }}</b></label>
+
+            <!--Start: Wan Compression-->
+            <div class="col-xs-6">
+                <z-checkbox class="wan-compression-chk"
+                            ng-show="data.isCompressionConfigurable"
+                            help-icon="VPG_WIZARD.REPLICATION_WAN_TRAFFIC_COMPRESSION"
+                            model="data.wanCompression"
+                            change="handleCompressionChanged()">{{
+                    "CREATE_VPG_REPLICATION.WAN_COMRESSION_CHECKBOX" | translate }}
+                </z-checkbox>
+            </div>
+            <!--End: Wan Compression-->
+
+            <!--Start: Advanced VM Settings-->
+            <div class="col-xs-3">
+                <button class="btn z-btn-default-sm vpg-wizard-vm-settings-btn"
+                        ng-disabled="data.isVCDTargetNotComplete"
+                        ng-click="handleAdvancedVMSettingsClicked()">
+                    <img src="assets/vpg_wizard/vm-settings-icon.png">
+                    {{ "CREATE_VPG_REPLICATION.ADVANCED_VM_SETTINGS" | translate }}
+                </button>
+            </div>
+            <!--End: Advanced VM Settings-->
+        </div>
+        <!--End: Wan Compression & Advanced VM Setting-->
+    </form>
+</div>

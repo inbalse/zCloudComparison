@@ -1,0 +1,55 @@
+<script id="usage-report-input.html" type="text/ng-template">
+    <table>
+        <tr>
+            <td>
+                <div class="btn-group">
+                    <div class="dropdown zerto">
+                        <button class="btn btn-link" type="button" id="dropdownMenu1" data-toggle="dropdown"
+                                ng-disabled="!month">
+                            {{ 'REPORTS_VIEW.EXPORT' | translate }}
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-white pull-right" role="menu" aria-pledby="dropdownMenu1">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" ng-click="export('csv')">{{'REPORTS_VIEW.TO_CSV'
+                                | translate }}</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" ng-click="export('zip')">{{'REPORTS_VIEW.TO_ZIP'
+                                | translate }}</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+</script>
+
+<script id="usage-report-form.html" type="text/ng-template">
+    <form class="form-horizontal">
+        <div class="col-xs-4">
+            <div class="form-group">
+                <label class="col-xs-4 control-label">{{ 'REPORTS_VIEW.YEAR' | translate }}</label>
+
+                <div class="col-xs-8">
+                    <ui-select theme="select2" ng-model="$parent.year" ng-change="getMonths(year)"
+                               search-enabled="false">
+                        <ui-select-match class="ui-select-match">{{$select.selected}}</ui-select-match>
+                        <ui-select-choices class="ui-select-choices" repeat="item in years | filter: $select.search">
+                            <span ng-bind-html="item | highlight: $select.search"></span>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-4 control-label">{{ 'REPORTS_VIEW.MONTH' | translate }}</label>
+
+                <div class="col-xs-8">
+                    <ui-select theme="select2" ng-model="$parent.month" search-enabled="false">
+                        <ui-select-match class="ui-select-match">{{$select.selected.text}}</ui-select-match>
+                        <ui-select-choices class="ui-select-choices" repeat="item in months | filter: $select.search">
+                            <span ng-bind-html="item.text | highlight: $select.search"></span>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+            </div>
+        </div>
+    </form>
+</script>

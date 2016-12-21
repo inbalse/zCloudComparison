@@ -1,0 +1,9 @@
+<input type="text" ng-model="ngModel" ng-change="onChange()" maxlength="21" placeholder="{{pHolder}}" ng-disabled="elementDisabled"/>
+<div class="button-container">
+    <button class="arrow-up" type="button" ng-disabled="isOverMax() || elementDisabled" ng-click="increment()">
+        <img src="assets/grid_icons/arrow-up-stepper.png">
+    </button>
+    <button class="arrow-down" type="button" ng-disabled="isOverMin() || elementDisabled" ng-click="decrement()">
+        <img src="assets/grid_icons/arrow-down-stepper.png">
+    </button>
+</div>

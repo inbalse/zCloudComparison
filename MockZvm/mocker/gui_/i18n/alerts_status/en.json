@@ -1,0 +1,13 @@
+{
+    "ALERTS_STATUS": {
+        "ALERTS": "ALERTS",
+        "NO_ALERTS": "SITE IS OK",
+        "ONE_ALERT": "1 ALERT",
+        "SEE_ALERTS": "See all alerts >>",
+        "HEALTHY": "Healthy",
+        "ALERTS_WIDGET_TITLE": "Alerts",
+        "SITE": "Site",
+        "DESC": "Description"
+    }
+}
+

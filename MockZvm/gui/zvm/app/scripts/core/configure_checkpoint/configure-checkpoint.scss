@@ -1,0 +1,87 @@
+$create-checkpoint-width: 688px;
+
+.configure-checkpoint {
+    .modal-dialog {
+        width: $create-checkpoint-width;
+        height: 510px
+    }
+    .modal-body {
+        background-color: white;
+        padding-bottom: 5px;
+    }
+    .z-slick-grid-container-checkpoints {
+        position: relative;
+        height: 380px;
+
+        .z-slickgrid .z-grid-select-header-cell span.pseudo-checkbox {
+            visibility: hidden;
+        }
+    }
+
+    .cp-label {
+        color: #a7a7a7;
+    }
+
+    .sep {
+        border-top: 1px solid #ccced2;
+        padding-top: 6px;
+    }
+
+    .cp-list-auto {
+        padding-left: 20px;
+        @include z-image-icon('../assets/checkpoint/auto-cp.png', left center);
+    }
+
+    .cp-list-user {
+        padding-left: 20px;
+        @include z-image-icon('../assets/checkpoint/user-cp.png', left center);
+    }
+
+    .cp-list-vss {
+        padding-left: 20px;
+        @include z-image-icon('../assets/checkpoint/vss-cp.png', left center);
+    }
+
+    .auto-cp {
+        .icon {
+            @include z-checkbox-icon-base('../assets/checkpoint/auto-cp.png');
+        }
+    }
+
+    .user-cp {
+        .icon {
+            @include z-checkbox-icon-base('../assets/checkpoint/user-cp.png')
+        }
+    }
+
+    .vss-cp {
+        .icon {
+            @include z-checkbox-icon-base('../assets/checkpoint/vss-cp.png')
+        }
+    }
+
+    .jump-to {
+        padding-left: 80px;
+        float: right;
+        .jump-to_label {
+            margin-top: 4px;
+        }
+
+        input {
+            display: inline-block;
+            width: 100px;
+            &:focus {
+                outline: none;
+
+            }
+        }
+        .daterangepicker {
+
+            &.dropdown-menu {
+                &.show-calendar {
+                    width: 294px;
+                }
+            }
+        }
+    }
+}

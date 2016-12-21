@@ -1,0 +1,121 @@
+<base-modal-window modal-title="{{'RESTORE_EDIT_NIC.TITLE' | translate}}" btns="buttons"
+                   close="handleCancel" loading="loading" help="restoreEditNIC">
+    <div class="z-wizard-container-narrow">
+        <form class="form-horizontal" autocomplete="off" name="forms.restoreEditNic">
+            <div class="form-group">
+                <label class="col-xs-5 control-label">{{'EDIT_NIC.NIC_NAME' | translate}}</label>
+
+                <div class="col-xs-7">
+                    <input type="text" ng-model="item.DisplayName">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-5 control-label">{{'EDIT_NIC.NETWORK' | translate}}</label>
+
+                <div class="col-xs-7">
+                    <ui-select theme="select2" search-enabled="false" ng-model="$parent.item.VCenterVNicRestoreConfiguration.Network">
+                        <ui-select-match class="ui-select-match">{{$select.selected.DisplayName}}</ui-select-match>
+                        <ui-select-choices class="ui-select-choices"
+                            repeat="item in potentials.Networks | filter: $select.search">
+                            <span ng-bind-html="item.DisplayName | highlight: $select.search"></span>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-7 col-xs-offset-5">
+                    <z-checkbox model="item.VCenterVNicRestoreConfiguration.IsNewMacAddress" use-indeterminate="true">
+                        {{'EDIT_NIC.NEW_MAC' |
+                        translate}}
+                    </z-checkbox>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-12">
+                    <hr/>
+                </div>
+            </div>
+            <div ng-show="item.VCenterVNicRestoreConfiguration.IsIPConfigurationEnabled">
+                <div ng-hide="isBulk">
+                    <div class="form-group">
+                        <label class="col-xs-5 control-label">{{'EDIT_NIC.CHANGE_IP' |
+                            translate}}</label>
+
+                        <div class="col-xs-7">
+                            <ui-select theme="select2" search-enabled="false"
+                                       ng-model="$parent.item.VCenterVNicRestoreConfiguration.IPConfiguration.Type"
+                                       ng-required="item.VCenterVNicRestoreConfiguration.IsIPConfigurationEnabled">
+                                <ui-select-match class="ui-select-match">{{$select.selected.label}}</ui-select-match>
+                                <ui-select-choices class="ui-select-choices"
+                                    repeat="item.value as item in changeVnicIPConfList | filter: $select.search">
+                                    <span ng-bind-html="item.label | highlight: $select.search"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-5 control-label">{{'EDIT_NIC.IP_ADDRESS' |
+                            translate}}</label>
+
+                        <div class="col-xs-7">
+                            <input z-ip-field type='text'
+                                   ng-model='item.VCenterVNicRestoreConfiguration.IPConfiguration.StaticIP'
+                                   ng-required="isRequired"
+                                   ng-disabled="isDisabled"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-5 control-label">{{'EDIT_NIC.SUBNET' |
+                            translate}}</label>
+
+                        <div class="col-xs-7">
+                            <input z-ip-field type='text'
+                                   ng-model='item.VCenterVNicRestoreConfiguration.IPConfiguration.SubnetMask'
+                                   ng-required="isRequired"
+                                   ng-disabled="isDisabled"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-5 control-label">{{'EDIT_NIC.GATEWAY' | translate}}</label>
+
+                        <div class="col-xs-7">
+                            <input z-ip-field type='text'
+                                   ng-model='item.VCenterVNicRestoreConfiguration.IPConfiguration.Gateway'
+                                   ng-required="isRequired"
+                                   ng-disabled="isDisabled"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <hr/>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-5 control-label">{{'EDIT_NIC.PREFERRED_DNS' |
+                        translate}}</label>
+
+                    <div class="col-xs-7"><input type="text" z-ip-field
+                                                 ng-model="item.VCenterVNicRestoreConfiguration.IPConfiguration.PrimaryDns"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-5 control-label">{{'EDIT_NIC.ALTER_DNS' |
+                        translate}}</label>
+
+                    <div class="col-xs-7"><input type="text" z-ip-field
+                                                 ng-model="item.VCenterVNicRestoreConfiguration.IPConfiguration.SecondaryDns"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-5 control-label">{{'EDIT_NIC.DNS_SUFFIX' |
+                        translate}}</label>
+
+                    <div class="col-xs-7"><input type="text"
+                                                 ng-model="item.VCenterVNicRestoreConfiguration.IPConfiguration.DnsSuffix"/>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</base-modal-window>

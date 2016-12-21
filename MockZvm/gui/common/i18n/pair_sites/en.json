@@ -1,0 +1,9 @@
+{
+"PAIR_SITES":{
+        "ADDRESS":                 "Remote Site ZVM IP Address",
+        "PORT":                    "Port",
+        "PAIR":                    "PAIR",
+        "CANCEL":                  "CANCEL",
+        "TITLE":                   "Add Site"
+    }
+}

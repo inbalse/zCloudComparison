@@ -1,0 +1,35 @@
+<base-modal-window modal-title="{{::'REMOTE_SUPPORT.TITLE' | translate}}" close="close" btns="buttons" loading="loading" help="remoteSupportController">
+    <form class="form-horizontal" autocomplete="off" name="forms.remoteSupport">
+
+        <div class="form-group old-settings">
+            <div ng-if="remoteSupportInfo.oldTimeFrame === 0" class="col-xs-12">
+                {{::'REMOTE_SUPPORT.EXISTING_TIME_FRAME' | translate}} {{remoteSupportInfo.endDate}}
+            </div>
+            <div ng-if="remoteSupportInfo.oldTimeFrame === 1" class="col-xs-12">
+                {{::'REMOTE_SUPPORT.EXISTING_CASE_NUMBER' | translate}} {{remoteSupportInfo.oldCaseNumber}}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label help-icon="REMOTE_SUPPORT.ALLOW_REMOTE" class="col-xs-6">{{::'REMOTE_SUPPORT.ALLOW_REMOTE' | translate}}</label>
+
+            <div class="col-xs-6">
+                <ui-select theme="select2" name="timeFrame" ng-model="$parent.remoteSupportInfo.timeFrame" required class="pull-left" search-enabled="false">
+                    <ui-select-match class="ui-select-match">{{$select.selected.name}}</ui-select-match>
+                    <ui-select-choices class="ui-select-choices" repeat="item.id as item in timeFrames | filter: $select.search">
+                        <span ng-bind-html="item.name | highlight: $select.search"></span>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+
+        <div class="form-group" ng-if="remoteSupportInfo.timeFrame === 1">
+            <label help-icon="REMOTE_SUPPORT.CASE_NUMBER" class="col-xs-6">{{::'REMOTE_SUPPORT.CASE_NUMBER' | translate}}</label>
+            <div class="col-xs-6">
+                <input type="text" ng-maxlength="10" required name="caseNumber" ng-model="remoteSupportInfo.caseNumber"/>
+                <span class="z-asterisk">*</span>
+            </div>
+        </div>
+    </form>
+
+</base-modal-window>

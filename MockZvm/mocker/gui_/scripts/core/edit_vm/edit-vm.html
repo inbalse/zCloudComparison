@@ -1,0 +1,78 @@
+<base-modal-window modal-title="{{data.selectedVmsTitle}}" close="close" btns="buttons" help="editVmController">
+    <div class="container-fluid">
+        <form class="form-horizontal">
+            <div class="row">
+
+                <div class="form-group">
+                    <label class="col-xs-5 control-label">{{'EDIT_VM.RECOVERY_HOST' | translate}}</label>
+
+                    <div class="col-xs-7">
+                        <ui-select theme="select2"
+                                   ng-model="representativeVm.TargetHost"
+                                   on-select="handleTargetHostChanged()"
+                                   required="">
+                            <ui-select-match class="ui-select-match">{{$select.selected.ComputeResource.DisplayName}}
+                            </ui-select-match>
+                            <ui-select-choices
+                                class="ui-select-choices"
+                                repeat="item.ComputeResource as item in data.potentialTargetHosts | filter: $select.search">
+                                <span
+                                    ng-bind-html="item.ComputeResource.DisplayName | highlight: $select.search"></span>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-5 control-label">{{ recoveryTextLabel }}</label>
+
+                    <div class="col-xs-7">
+                        <ui-select theme="select2" ng-model="$parent.representativeVm.TargetDatastore" required="">
+                            </option>
+                            <ui-select-match class="ui-select-match">{{$select.selected.Datastore.DisplayName}}
+                            </ui-select-match>
+                            <ui-select-choices class="ui-select-choices" ui-disable-choice="!item.IsEnabled"
+                                               repeat="item.Datastore as item in potentialResrouce.Datastores | filter: $select.search">
+                                <span ng-bind-html="item.Datastore.DisplayName | highlight: $select.search"></span>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label help-icon="JOURNAL_SETTINGS.HARD_LIMIT" class="col-xs-5 control-label">{{'EDIT_VM.JOURNAL_SIZE_HARD_LIMIT' | translate}}</label>
+
+                    <div class="col-xs-7">
+                        <journal-limit required value="representativeVm.JournalHardLimit"
+                                       is-sla-custom="data.isSlaCustom"></journal-limit>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label help-icon="JOURNAL_SETTINGS.SOFT_LIMIT" class="col-xs-5 control-label">{{'EDIT_VM.JOURNAL_SIZE_WARNING_THRESHOLD' | translate}}</label>
+
+                    <div class="col-xs-7">
+                        <journal-limit required value="representativeVm.JournalWarningThreshold"
+                                       is-sla-custom="data.isSlaCustom"></journal-limit>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-5 control-label" for="">{{ journalTextLabel }}</label>
+
+                    <div class="col-xs-7">
+                        <ui-select theme="select2"
+                                   ng-model="$parent.representativeVm.JournalDatastores[0]"
+                                   required="">
+                            <ui-select-match class="ui-select-match">{{$select.selected.Datastore.DisplayName}}
+                            </ui-select-match>
+                            <ui-select-choices class="ui-select-choices" ui-disable-choice="!item.IsEnabled"
+                                               repeat="item.Datastore as item in data.potentialJournalDatastores | filter: $select.search">
+                                <span ng-bind-html="item.Datastore.DisplayName | highlight: $select.search"></span>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</base-modal-window>

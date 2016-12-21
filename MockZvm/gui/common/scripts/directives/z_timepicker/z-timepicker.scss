@@ -1,0 +1,34 @@
+z-timepicker {
+    display: block;
+    text-align: center;
+    position: relative;
+    width: 100%;
+    height: 26px;
+
+    div:first-child,div:last-child {
+        text-align: center;
+        width: 45%;
+        height: 26px;
+
+    }
+
+    #minutes,#hours {
+        float: left;
+    }
+
+    #colons {
+        height: 26px;
+        width: 5px;
+        display: inline-block;
+        float: left;
+        margin-left: 1px;
+        margin-right: 1px;
+
+        div {
+            position: relative;
+            width: 5px;
+            float: left;
+            line-height: 26px;
+        }
+    }
+}

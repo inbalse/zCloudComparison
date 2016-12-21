@@ -1,0 +1,45 @@
+.base-static-window.license {
+
+  .tooltip-inner{
+    background-color: red;
+  }
+
+  .license-form {
+    left: 30px;
+    top: 125px;
+    position: absolute;
+    width: 615px;
+
+    .sub-label{
+      padding-left: 33px;
+    }
+  }
+
+  .center-container{
+    width: 670px;
+    height: 372px;
+
+    margin-left: -335px;
+    margin-top: -192px;
+  }
+
+
+  input[type="text"]{
+    &[disabled="disabled"] {
+      opacity: 0.5;
+    }
+  }
+
+  label{
+    &[disabled="disabled"] {
+      opacity: 0.5;
+    }
+  }
+
+  .preloader{
+    background-image: url("../assets/preloader.gif");
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}

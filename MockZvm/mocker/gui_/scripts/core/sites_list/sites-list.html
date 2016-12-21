@@ -1,0 +1,26 @@
+<div class="sites-list-controller z-grid-outer-container vpg-list" ng-controller="sitesListController">
+    <div class="z-grid-container-header">
+        <h3 title="{{'SITE_LIST_TOOLTIP_TEXT' | translate}}">{{"SITE_LIST_TITLE" | translate}}</h3>
+
+        <div class="btn-group z-white-btn-group">
+            <button class="btn btn-link inline-site-settings" type="button" ng-click="handleSiteSettingsClick()">{{'VPG_LIST.MORE_BUTTON.SITE_SETTINGS'
+                | translate}}</button>
+            <span class="inline-site-settings">|</span>
+            <button type="button" class="btn btn-link pair-btn" ng-disabled="!isPairEnabled" ng-click="handlePairSitesClick()">{{"SITE_LIST.PAIR" |
+                translate}}
+            </button>
+            <span>|</span>
+            <button type="button" class="btn btn-link unpair-btn" ng-click="handleUnpairSitesClick()"
+                    ng-disabled="selectedItems.length === 0 || !isUnPairEnabled" >{{"SITE_LIST.UNPAIR" | translate}}
+            </button>
+            <full-screen-button></full-screen-button>
+            <span class="pull-right">|</span>
+        </div>
+    </div>
+    <div class="z-grid-inner-container">
+        <z-slick-grid id="sites-list" grid-id="sites-list" data="data" column-defs="columnDefs" grid="gridObj.grid"
+                      custom-options="customOptions" selected-group="selectedGroup" selected-items="selectedItems"
+                      view-by-values="viewByValues" group-by-values="groupByValues" on-selection="selectedItemsChange"></z-slick-grid>
+
+    </div>
+</div>

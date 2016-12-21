@@ -1,0 +1,10 @@
+{
+    "MONITORING_TABS": {
+        "ACTIVE_ALERTS":"ACTIVE ALERTS",
+        "NO_ACTIVE_ALERTS":"NO ACTIVE ALERTS",
+        "EVENTS":"EVENTS",
+        "LAST_HOURS":"In last 24 hours",
+        "RUNNING_TASKS":"RUNNING TASKS",
+        "NO_RUNNING_TASKS":"NO RUNNING TASKS"
+    }
+}

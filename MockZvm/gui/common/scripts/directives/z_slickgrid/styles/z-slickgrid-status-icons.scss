@@ -1,0 +1,144 @@
+//icons fo task list status
+@mixin tasks-list-icon-base($path) {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url($path);
+  height: 100%;
+}
+
+@mixin background-image-class($bgImage, $bgPos) {
+  width: 100%;
+  height: 100%;
+  background-image: url($bgImage);
+  background-repeat: no-repeat;
+  background-position: $bgPos;
+}
+
+//in progress
+.tasks-list-status-1 {
+  @include tasks-list-icon-base("../assets/tasks/progress_icon.gif");
+}
+
+//waiting for input
+.tasks-list-status-2 {
+  @include tasks-list-icon-base("../assets/tasks/question.png");
+}
+
+//paused
+.tasks-list-status-3 {
+  @include tasks-list-icon-base("../assets/tasks/pause_status_icon.png");
+}
+
+//Failed
+.tasks-list-status-4 {
+  @include tasks-list-icon-base("../assets/tasks/red_icon.png");
+}
+
+//Completed
+.tasks-list-status-5 {
+  @include tasks-list-icon-base("../assets/tasks/green_icon.png");
+}
+
+//Cancelling
+.tasks-list-status-6 {
+  @include tasks-list-icon-base("../assets/tasks/green_icon.png");
+}
+
+//icon for alertStatus cell (vpg/vm list)
+.vra-status-normal {
+  @include background-image-class('../assets/list_icons/normal-list-icon.png', left center);
+  padding-left: 27px;
+}
+
+.vra-status-warning {
+  @include background-image-class('../assets/list_icons/warning-list-icon.png', left center);
+  padding-left: 27px;
+}
+
+.vra-status-warning-blue {
+  @include background-image-class('../assets/list_icons/dark-warning-list-icon.png', left center);
+  padding-left: 27px;
+}
+
+.vra-status-error {
+  @include background-image-class('../assets/list_icons/error-list-icon.png', left center);
+  padding-left: 27px;
+}
+
+.vra-status-not-installed {
+  @include background-image-class('../assets/list_icons/error-bw-icon.png', left center);
+  padding-left: 27px;
+}
+
+.vra-status-updating-ip-settings {
+  @include background-image-class('../assets/tasks/progress_icon.gif', left center);
+  padding-left: 27px;
+}
+
+
+
+.protection-group-alert-status-0 {
+  @include background-image-class('../assets/list_icons/normal-list-icon.png', center);
+}
+
+.protection-group-alert-status-1 {
+  @include background-image-class('../assets/list_icons/warning-list-icon.png', center);
+}
+
+.protection-group-alert-status-2 {
+  @include background-image-class('../assets/list_icons/error-list-icon.png', center);
+}
+
+.protection-group-alert-status-8 {
+  @include background-image-class("list_icons/recovered_list_icon.png", center);
+}
+
+//Good
+.change-host-validation-status-0 {
+  @include background-image-class('../assets/list_icons/normal-list-icon.png', center);
+}
+
+//Bad
+.change-host-validation-status-1 {
+  @include background-image-class('../assets/list_icons/error-list-icon.png', center);
+}
+
+//Natural
+.change-host-validation-status-2 {
+  //empty
+}
+
+//Warning
+.change-host-validation-status-3 {
+  @include background-image-class('../assets/list_icons/warning-list-icon.png', center);
+}
+
+//icon for event list
+.events-list-level-status-0 {
+  @include background-image-class('../assets/alerts/calendar.png', center);
+}
+
+.events-list-level-status-1 {
+  @include background-image-class('../assets/alerts/alert-event.png', center);
+}
+
+//icon for alertStatus cell (site list - should be loaded state in future)
+.sites-list-status-0 {
+  @include background-image-class("../assets/list_icons/normal-list-icon.png", center);
+}
+
+.sites-list-status-1 {
+  @include background-image-class("../assets/list_icons/warning-list-icon.png", center);
+}
+
+.sites-list-status-2 {
+  @include background-image-class("../assets/list_icons/error-list-icon.png", center);
+}
+
+.sites-list-status-3 {
+  @include background-image-class("../assets/modal/help-icon.png", center); //pic should be design by 5ive
+}
+
+.sites-list-status-4 {
+  @include background-image-class("../assets/modal/help-icon.png", center); //pic should be design by 5ive
+}

@@ -1,0 +1,44 @@
+<base-modal-window modal-title="{{vpgName}} {{ 'CLONE_VPG.TITLE' | translate}}" btns="buttons"
+                   close="handleCancel" loading="loading" help="cloneVpgController">
+    <form class="form-horizontal" name="forms.form">
+        <div class="container-fluid">
+            <div class="form-group">
+                <label class="control-label col-xs-12">
+                    {{ 'CLONE_VPG.INFO' | translate }} {{vpgName}}
+                </label>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-12">
+                    <b>{{ 'CLONE_VPG.CONFIGIRE_CHECKPOINT_TITLE' | translate }}</b>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-xs-12">
+                    {{ data.checkpoint.TimeStamp | zDateFilter }}
+                </label>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-offset-8 col-xs-4">
+                    <button class="btn z-btn-default" ng-click="handleConfigureCheckpointClick()">{{ 'CLONE_VPG.CONFIGIRE_CHECKPOINT_BUTTON' |
+                        translate }}
+                    </button>
+                </div>
+            </div>
+            <div class="form-group" ng-if="isDatastoreRequired">
+                <div class="col-xs-12">
+                    <b>{{ textLabel }}</b>
+                </div>
+            </div>
+            <div class="form-group" ng-if="isDatastoreRequired">
+                <div class="col-xs-12">
+                    <ui-select theme="select2" ng-model="$parent.data.datastore" required>
+                        <ui-select-match class="ui-select-match">{{$select.selected.Datastore.DisplayName}}</ui-select-match>
+                        <ui-select-choices class="ui-select-choices" ui-disable-choice="!item.IsEnabled" repeat="item.Datastore as item in datastores | filter: $select.search">
+                            <span ng-bind-html="item.Datastore.DisplayName | highlight: $select.search"></span>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+            </div>
+        </div>
+    </form>
+</base-modal-window>

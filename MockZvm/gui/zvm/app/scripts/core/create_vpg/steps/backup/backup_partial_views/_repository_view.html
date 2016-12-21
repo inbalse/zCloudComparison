@@ -1,0 +1,62 @@
+<div class="form-group" ng-class="{'blocked-view' : !data.isBackupEnabled }">
+    <label help-icon="VPG_WIZARD.BACKUP_REPOSITORY_NAME" class="col-xs-2 control-label"><b>{{:: 'CREATE_VPG_BACKUP.TARGET_REP' | translate}}</b>
+    </label>
+
+    <div class="col-xs-3">
+        <ui-select theme="select2" name="repository"
+                   ng-model="$parent.data.backupTargetIdentifier"
+                   z-wizard-validator="repository" data-placement="bottom"
+                   required ng-disabled="!data.isBackupEnabled" ng-change="handleChangeRepository()">
+
+            <ui-select-match class="ui-select-match">{{$select.selected.DisplayName}}</ui-select-match>
+            <ui-select-choices class="ui-select-choices"
+                               repeat="item.Identifier.Identifier as item in data.potentialBackupTargets | filter: $select.search">
+                <span ng-bind-html="item.DisplayName | highlight: $select.search"></span>
+            </ui-select-choices>
+        </ui-select>
+    </div>
+    <div class="col-xs-7" ng-hide="!data.isSlaCustom">
+        <div class="form-group">
+            <div class="col-xs-2">
+                <z-pie-chart class="backup-pie" data="pieData" pie-width="87" pie-height="87"></z-pie-chart>
+            </div>
+            <div class="col-xs-5 vertical-separator">
+                <div class="form-group">
+                    <div class="col-xs-1"><span class="backup-free-space-box"/></div>
+                    <div class="col-xs-6">{{:: 'CREATE_VPG_BACKUP.FREE_SPACE' | translate}}</div>
+                    <div class="col-xs-5" ng-show="data.backupTargetDetails.FreeSpace">
+                        {{data.backupTargetDetails.FreeSpace | mbToStringConvertorFilter}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-1"><span class="backup-used-space-box"/></div>
+                    <div class="col-xs-6">{{:: 'CREATE_VPG_BACKUP.USED_SPACE' | translate}}</div>
+                    <div class="col-xs-5" ng-show="data.backupTargetDetails.Capacity">
+                        {{data.backupTargetDetails.Capacity - data.backupTargetDetails.FreeSpace | mbToStringConvertorFilter}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-1"></div>
+                    <div class="col-xs-6">{{:: 'CREATE_VPG_BACKUP.CAPACITY' | translate}}</div>
+                    <div class="col-xs-5" ng-show="data.backupTargetDetails.Capacity">
+                        {{data.backupTargetDetails.Capacity | mbToStringConvertorFilter}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-5 vertical-line-right">
+                <div class="form-group">
+                    <div class="col-xs-3">{{:: 'CREATE_VPG_BACKUP.TYPE' | translate}}</div>
+                    <div class="col-xs-9">{{data.backupTargetDetails.RepositoryTypeText}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-3">{{:: 'CREATE_VPG_BACKUP.PATH' | translate}}</div>
+                    <div class="col-xs-9 overflowEllipsis" title="{{data.backupTargetDetails.PathText}}">
+                        {{data.backupTargetDetails.PathText}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

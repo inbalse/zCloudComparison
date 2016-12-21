@@ -1,0 +1,59 @@
+@mixin datastore-icon-base($path) {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url($path);
+  height: 100%;
+}
+
+@mixin background-image-class($bgImage, $bgPos) {
+  width: 100%;
+  height: 100%;
+  background-image: url($bgImage);
+  background-repeat: no-repeat;
+  background-position: $bgPos;
+}
+
+//DatastoreAlertStatusVisualObject
+//Error
+.datastore-alert-status-0 {
+  @include datastore-icon-base("../assets/list_icons/error-list-icon.png");
+}
+
+//Normal
+.datastore-alert-status-1 {
+  @include datastore-icon-base("../assets/list_icons/normal-list-icon.png");
+}
+
+//Warning
+.datastore-alert-status-2 {
+  @include datastore-icon-base("../assets/list_icons/warning-list-icon.png");
+}
+
+//NotAvailable
+.datastore-alert-status-3 {
+  @include datastore-icon-base("../assets/list_icons/warning-list-icon.png");
+}
+
+.checkbox-true {
+  @include background-image-class('../assets/grid_icons/checkbox-true.png', center);
+  display: block;
+}
+
+.checkbox-false {
+  @include background-image-class('../assets/grid_icons/checkbox-false.png', center);
+  display: block;
+}
+
+.checkbox-disabled{
+  opacity: 0.3;
+}
+
+.radiobutton-true {
+  @include background-image-class('../assets/grid_icons/radio-true.png', center);
+  display: block;
+}
+
+.radiobutton-false {
+  @include background-image-class('../assets/grid_icons/radio-false.png', center);
+  display: block;
+}

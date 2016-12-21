@@ -1,0 +1,110 @@
+<div id="z-debug" class="z-debug">
+    <uib-tabset>
+        <uib-tab ng-click="tabClicked('Log')" heading="Log">
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <div class="col-xs-4">
+                        <button ng-click="toggleLogs()" title="Toggle logging" type="button" class="btn btn-block"
+                                ng-class="{'btn-success':!logging,'btn-danger':logging}">
+                            {{!logging ? 'Enable logs':'Disable logs'}}
+                        </button>
+                    </div>
+                    <div class="col-xs-2">
+                        <button ng-click="clear()" type="button" class="btn btn-block btn-default">Clear</button>
+                    </div>
+                    <div class="col-xs-3">
+                        <button ng-click="copy($event)" ng-disabled="disableCopy" type="button"
+                                class="btn btn-block btn-primary">
+                            Copy to clipboard
+                        </button>
+                    </div>
+                    <div class="col-xs-3">
+                        <button ng-click="downloadLog()" type="button" class="btn btn-block btn-default">Download log
+                        </button>
+                    </div>
+                </div>
+                <div class="form-group" ng-show="disableCopy">
+                    <div class="col-xs-12">
+                        Copy to clipboard enabled in IE browsers only
+                    </div>
+                </div>
+            </div>
+            <div class="z-debug-container log-tab" ng-if="isGridRender && !isScale">
+                <z-slick-grid grid-id="z-debugger-logs" data="gridData" grid="gridObj.grid"
+                              hide-view-options="true" hide-create-view="true" custom-options="customOptions"
+                              row-click="rowClick">
+                </z-slick-grid>
+            </div>
+            <div ng-if="isScale">
+                </br><b>You are using scale environment. Logs available through browser console only.</b>
+            </div>
+        </uib-tab>
+        <uib-tab ng-click="tabClicked('Rest')" heading="Rest">
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <form>
+                        <div class="col-xs-12">
+                            <div class="input-group">
+                                <div class="input-group-addon">URL</div>
+                                <input type="text" placeholder="(End point)" ng-model="restObj.url"/></div>
+                        </div>
+                        <div class="col-xs-12">
+                            <input class="rest-method" type="radio" ng-model="restObj.method" value="GET">GET
+                            <input class="rest-method" type="radio" ng-model="restObj.method" value="POST">POST
+                            <input class="rest-method" type="radio" ng-model="restObj.method" value="DELETE">DELETE
+                            <input class="rest-method" type="radio" ng-model="restObj.method" value="UPDATE">UPDATE
+                        </div>
+                        <div class="col-xs-2">
+                            <input type="submit" class="btn btn-block btn-default" ng-click="submit()" value="Submit"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <label>
+                Result
+            </label>
+            <div class="z-debug-container rest-tab">
+                <textarea readonly>{{restResult}}</textarea>
+            </div>
+        </uib-tab>
+        <uib-tab ng-click="tabClicked('Settings')" heading="Settings">
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <div class="col-xs-6">
+                        <button type="button" ng-disabled="!updater._isPaused" class="btn btn-block btn-primary"
+                                ng-click="resume()">
+                            Resume updating
+                        </button>
+                    </div>
+                    <div class="col-xs-6">
+                        <button type="button" ng-disabled="updater._isPaused" class="btn btn-block btn-primary"
+                                ng-click="pause()">
+                            Pause updating
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-6"><label>Option</label></div>
+                    <div class="col-xs-6"><label>Value</label></div>
+                </div>
+            </div>
+            <div class="z-debug-container settings-tab">
+                <div class="options-table container-fluid">
+                    <div class="row" ng-repeat="(key, value) in tweaks">
+                        <div class="col-xs-6">{{key}}</div>
+                        <div class="col-xs-6"><input type="text" ng-model="tweaks[key]"
+                                                     ng-model-options="{ updateOn: 'blur' }"
+                                                     ng-change="tweakChanged(key, value)" tweak-parser/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </uib-tab>
+    </uib-tabset>
+    <button type="button" draggable dragged-element="#z-debug" horizontal-only class="btn btn-default btn-xs drag">Drag
+    </button>
+    <button type="button" class="close" aria-label="Close" ng-click="close()"><span aria-hidden="true">&times;</span>
+    </button>
+</div>

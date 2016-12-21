@@ -1,0 +1,30 @@
+<div class="default-query">
+    <button class="btn btn-link" type="button" id="queryDropDown" data-toggle="dropdown"
+            ng-click="checkPersonalQuery()">
+        {{'VPG_LIST.QUERY_BUTTON.QUERY' | translate}}
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu dropdown-white pull-right fix-dropdown-position" role="menu"
+        aria-labelledby="queryDropDown">
+
+        <li role="presentation">
+            <a role="menuitem" tabindex="-1" href="javascript:void(0);" class="btn btn-link"
+               ng-disabled="personalQueryMissing" ng-click="runPersonalQuery()">{{'VPG_LIST.QUERY_BUTTON.RUN_PERSONAL' |
+                translate}}</a>
+        </li>
+
+        <li role="presentation" class="divider"></li>
+
+        <li role="presentation">
+            <a role="menuitem" tabindex="-1" href="javascript:void(0);" class="btn btn-link"
+               ng-click="saveCurrentQuery()">{{'VPG_LIST.QUERY_BUTTON.SAVE_AS_PERSONAL'
+                | translate}}</a>
+        </li>
+
+        <li role="presentation">
+            <a role="menuitem" tabindex="-1" href="javascript:void(0);" class="btn btn-link"
+               ng-click="runDefaultQuery()">{{'VPG_LIST.QUERY_BUTTON.BACK_TO_DEFAULT'
+                | translate}}</a>
+        </li>
+    </ul>
+</div>

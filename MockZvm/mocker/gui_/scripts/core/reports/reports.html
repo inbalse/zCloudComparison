@@ -1,0 +1,73 @@
+<div class="min-dims reports-container">
+    <div class="reports-header"><!-- Header -->
+        <div class="reports-header-container">
+            <div class="reports-header-column" id="report-types">
+                <div class="dropdown zerto-reports"><!-- dropdown START -->
+                    <div class="btn zerto-reports-button"
+                            id="dropdownMenu1" data-toggle="dropdown">
+                        <span class="icon recovery-report"></span>
+
+                        <p>{{current}}<span class="help-icon" uib-tooltip="{{currentTooltip}}" tooltip-placement="right" tooltip-append-to-body="true">?</span></p>
+                        <span class="glyphicon glyphicon-chevron-down pull-right"></span>
+                    </div>
+
+                    <ul class="dropdown-menu zerto-reports-dropdown-menu" role="menu">
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" ui-sref="{{menuItems[0].route}}"
+                               ng-click="handleDropdownClick($event)" ng-show="!isPublicCloud">
+                                <span class="icon recovery-report"></span>
+                                <p help-icon="{{menuItems[0].tooltip}}">{{menuItems[0].title}}</p>
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" ui-sref="{{menuItems[1].route}}"
+                               ng-click="handleDropdownClick($event)">
+                                <span class="icon recovery-report"></span>
+                                <p help-icon="{{menuItems[1].tooltip}}">{{menuItems[1].title}}</p>
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" ui-sref="{{menuItems[2].route}}"
+                               ng-click="handleDropdownClick($event)">
+                                <span class="icon recovery-report"></span>
+                                <p help-icon="{{menuItems[2].tooltip}}">{{menuItems[2].title}}</p>
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" ui-sref="{{menuItems[3].route}}"
+                               ng-click="handleDropdownClick($event)">
+                                <span class="icon recovery-report"></span>
+                                <p help-icon="{{menuItems[3].tooltip}}">{{menuItems[3].title}}</p>
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" ui-sref="{{menuItems[4].route}}"
+                               ng-click="handleDropdownClick($event)" ng-show="isCloudLicense && !isPublicCloud">
+                                <span class="icon recovery-report"></span>
+                                <p help-icon="{{menuItems[4].tooltip}}">{{menuItems[4].title}}</p>
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" ui-sref="{{menuItems[5].route}}"
+                               ng-click="handleDropdownClick($event)" ng-show="!isPublicCloud">
+                                <span class="icon recovery-report"></span>
+                                <p help-icon="{{menuItems[5].tooltip}}">{{menuItems[5].title}}</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- dropdown END -->
+            </div>
+            <div class="reports-header-column" id="reports-form">
+            </div>
+            <div class="reports-header-column" id="reports-inputs">
+            </div>
+        </div>
+    </div>
+    <!-- body -->
+    <div class="reports-body">
+        <div ui-view class="reports-body-container full-height">
+
+        </div>
+    </div>
+</div>

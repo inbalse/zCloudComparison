@@ -1,0 +1,15 @@
+journal-limit {
+    display: block;
+    input[type='number'] {
+        height: 26px;
+    }
+}
+
+.journal-size-hard-limit-stepper{
+    padding-right: 0;
+    margin-left: 1px;
+}
+
+.journal-size-hard-limit-label{
+    margin-left: 10px;
+}

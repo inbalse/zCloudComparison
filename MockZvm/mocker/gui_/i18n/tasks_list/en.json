@@ -1,0 +1,13 @@
+{
+    "TASK_LIST": {
+        "ROLLBACK": "Rollback",
+        "STOP_FAILOVER_TEST": "Stop failover test",
+        "COMMIT": "Commit",
+        "RESUME_VPG": "Resume VPG",
+        "STOP_BACKUP": "Stop Backup",
+        "STOP_CLONE": "Stop clone",
+        "STOP_TASK": "Stop task",
+        "BROWSE": "Browse",
+        "UNMOUNT": "Unmount disk"
+    }
+}

@@ -1,0 +1,12 @@
+<div class="zertoTasks" ng-click="openSummary()" ng-class="tasksBackground" ng-mouseenter="tasksBackground = 'withBackground'" ng-mouseleave="tasksBackground = 'noBackground'">
+    <div ng-class="tasksIconClass"></div>
+    <div class="container">
+        <span>{{runningText}}</span>
+        <div class='secondTextContainer' >
+            <span ng-class="secondTextStyle">{{pendingText}}</span>
+            <div class="progressContainer"><uib-progressbar ng-show="showProgress" value="TaskSummary.LastCommandTask.StateAndProgress.Progress" class="slimNoValueProgressBar"></uib-progressbar></div>
+            <img class="tasksExpandButton" ng-src="{{ expandButton }}" ng-show="tasksBackground === 'withBackground'">
+        </div>
+    </div>
+
+</div>

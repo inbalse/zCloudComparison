@@ -1,0 +1,33 @@
+{
+    "CREATE_VPG_NICS": {
+        "COLUMNS": {
+            "VM_NAME": "VM Name",
+            "NIC_NAME": "NIC Name",
+            "PROTECTED_NETWORK": "Protected Network",
+            "FAILOVER_NETWORK": "Failover Network",
+            "FAILOVER_IP": "Failover IP",
+            "TEST_NETWORK": "Test Network",
+            "TEST_IP": "Test IP",
+            "CONNECTED_TO_ORG_VDC_NETWORK": "Connected to Org vDC Network",
+            "F_CONNECTED_TO_ORG_VDC_NETWORK": "Connected",
+            "T_CONNECTED_TO_ORG_VDC_NETWORK": "Connected",
+            "USE_PRIMARY_NIC": "Use Primary Network",
+            "F_USE_PRIMARY_NIC": "Primary",
+            "T_USE_PRIMARY_NIC": "Primary",
+            "NETWORK": "Network",
+            "IP": "IP",
+            "MAC_ADDRESS":"MAC Address",
+            "FAILOVER_MAC_ADDRESS":"MAC Address",
+            "TEST_MAC_ADDRESS":"MAC Address",
+            "VCD_NETWORK":  "Network",
+            "IP_ADDRESS": "IP Address"
+        },
+        "VIEWS":{
+            "LIVE":"Live",
+            "TEST":"Test"
+        },
+        "NICS_INFO":"NIC details to use for the recovered virtual machines.",
+        "NICS_TABLE_ERROR": "NICs data is missing"
+    }
+
+}

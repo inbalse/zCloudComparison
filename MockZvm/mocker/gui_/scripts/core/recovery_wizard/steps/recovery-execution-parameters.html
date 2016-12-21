@@ -1,0 +1,16 @@
+<div class="recovery-execution-parameters z-wizard-container-wide" ng-controller="recoveryExecutionParametersController" ng-cloak="">
+
+    <h5 class="recovery-title">{{'RECOVERY_WIZARD.TITLE_EXECUTION_PARAMETERS' | translate}}</h5>
+    <button type="button" class="btn btn-link recovery-edit-btn" ng-disabled="editRecoveryDisabled" ng-show="showEdit" ng-click="editRecovery()">
+        {{'EDIT_NIC.EDIT_BUTTON' | translate}}
+    </button>
+    <button type="button" class="btn btn-link recovery-reverse-btn" ng-show="showReverseAll()" ng-click="reselectReverse()"
+            uib-tooltip="{{'RECOVERY_WIZARD.EXECUTION_PARAMETERS.REVERSE_ALL_TOOLTIP' | translate}}">
+        {{'RECOVERY_WIZARD.EXECUTION_PARAMETERS.REVERSE_ALL' | translate}}
+    </button>
+    <div class="z-slick-grid-container">
+        <z-slick-grid id="recovery-execution-parameters" grid-id="{{gridId}}" class="execution-parameters-grid"
+                      data="gridData" grid="gridObj.grid" selected-items="selectedItems" row-click="rowClick"
+                      custom-options="customOptions" on-selection="selectedItemsChange" hide-view-options="true"></z-slick-grid>
+    </div>
+</div>

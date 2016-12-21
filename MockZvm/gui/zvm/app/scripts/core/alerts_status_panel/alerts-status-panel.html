@@ -1,0 +1,13 @@
+<base-modal-window modal-title="{{'ALERTS_STATUS.ALERTS' | translate}}" loading="false" close="hidePanel" help="alertsStatusPanelController">
+    <div class="container-fluid">
+        <div ng-repeat="alert in alertsList track by $index" class="row">
+            <div class="col-xs-1"><div class="alert-icon-{{alert.AlertLevel}}"></div></div>
+            <div class="col-xs-3"><label class="ellipsis">{{alert.SiteName}}</label></div>
+            <div class="col-xs-8"><label class="ellipsis" ng-bind-html="alert.Description"></label></div>
+        </div>
+
+        <div class="row">
+            <a href="" class="pull-right inline-alerts-and-tasks-links" ng-click="handleSeeAllAlertsClicked()" ng-bind-html="'ALERTS_STATUS.SEE_ALERTS' | translate"></a>
+        </div>
+    </div>
+</base-modal-window>

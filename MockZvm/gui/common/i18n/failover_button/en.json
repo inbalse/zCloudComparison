@@ -1,0 +1,7 @@
+{
+    "FAILOVER_COMPONENT": {
+        "LIVE": "LIVE",
+        "TEST": "TEST",
+        "FAILOVER": "FAILOVER"
+    }
+}

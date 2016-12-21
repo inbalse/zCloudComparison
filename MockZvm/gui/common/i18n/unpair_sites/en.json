@@ -1,0 +1,9 @@
+{
+    "UNPAIR_SITES": {
+        "TITLE": "Unpair Sites",
+        "UNPAIR": "UNPAIR",
+        "UNPAIR_SITES_KEEP_DISKS": "Keep disks to use for preseeding if the VMs are reprotected.",
+        "UNPAIR_MESSAGE_WITH_VPGS": "Unpairing this site from site {{site}} will delete all VPGs, protected or recovered between the sites.",
+        "UNPAIR_MESSAGE_NO_VPGS": "You are about to unpair the site with site {{site}}."
+    }
+}

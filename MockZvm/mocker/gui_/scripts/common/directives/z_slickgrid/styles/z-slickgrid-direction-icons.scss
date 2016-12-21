@@ -1,0 +1,27 @@
+@mixin background-image-class($bgImage, $bgPos) {
+  width: 100%;
+  height: 100%;
+  background-image: url($bgImage);
+  background-repeat: no-repeat;
+  background-position: $bgPos;
+}
+
+//icon for direction cell (vpg/vm list)
+.protection-group-state-visual-0 {
+  @include background-image-class('../assets/list_icons/protected-direction.png', center);
+}
+
+.protection-group-state-visual-1 {
+  @include background-image-class('../assets/list_icons/recovery-direction.png', center);
+}
+
+.protection-group-state-visual-2 {
+  @include background-image-class('../assets/list_icons/self-direction.png', center);
+}
+
+.protection-group-state-multi-visual-0 {
+  @include background-image-class('../assets/list_icons/multisite-local.png', center);
+}
+.protection-group-state-multi-visual-1 {
+  @include background-image-class('../assets/list_icons/multisite-remote.png', center);
+}

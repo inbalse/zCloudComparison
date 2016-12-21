@@ -1,0 +1,124 @@
+.recovery-wizard {
+    .z-wizard-body {
+        padding-top: 15px;
+        min-height: 470px;
+    }
+    .modal-dialog {
+        width: 1180px;
+    }
+    .modal-body {
+        margin-top: 0;
+        padding: 0;
+    }
+    .modal-footer {
+        background-color: #3c454f;
+        height: 0;
+        padding: 0;
+        .z-btn-wizard-next {
+            margin-right: 0;
+        }
+    }
+
+    @mixin recovery-wizard-header($url) {
+        height: 35px;
+        padding-left: 35px;
+        background: transparent url($url) no-repeat left 3px;
+        h4 {
+            margin-top: 5px;
+        }
+    }
+    &.recovery-wizard-failover {
+        .modal-header {
+            @include recovery-wizard-header('../assets/recovery_wizard/type-failover-live.png');
+        }
+        .modal-content {
+            border-color: #cf000a;
+        }
+    }
+    &.recovery-wizard-failovertest {
+        .modal-header {
+            @include recovery-wizard-header('../assets/recovery_wizard/type-failover-test.png');
+        }
+    }
+    &.recovery-wizard-move {
+        .modal-header {
+            @include recovery-wizard-header('../assets/recovery_wizard/type-move.png');
+        }
+        .modal-content {
+            border-color: #418bb8;
+        }
+    }
+    &.recovery-wizard-restore {
+        .modal-header {
+            @include recovery-wizard-header('../assets/recovery_wizard/type-restore.png');
+        }
+        .modal-content {
+            border-color: #418bb8;
+        }
+    }
+
+    z-wizard .z-wizard-hud ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        left: 50%;
+        position: absolute;
+        margin-left: -223px;
+    }
+
+    h4, h5 {
+        text-align: center;
+    }
+
+    .z-wizard-body {
+        padding: 0 25px 10px;
+        padding-top: 15px;
+    }
+    .z-wizard-container {
+        padding: 0;
+    }
+
+    .not-available {
+        text-align: center;
+    }
+
+    .reverse-protection-info {
+        background-color: white;
+        border: none;
+        padding: 0;
+        margin: 0;
+        line-height: 1.428571429;
+        word-break: normal;
+        word-wrap: break-word;
+    }
+
+    .z-inline-editor-commit-policy {
+        p {
+            margin-bottom: 5px;
+        }
+        .stepper-label{
+            margin-left: 3px;
+        }
+        .stepper-with-min{
+            margin-right:20px;
+        }
+    }
+    .z-inline-editor-checkbox {
+        min-width: 100%;
+        z-checkbox .z-checkbox-container {
+            margin-right: 0;
+        }
+    }
+    .reverse-protection-edit {
+        padding-left: 5px;
+        margin-left: 5px;
+        border-left: 1px solid #ccc;
+        text-transform: uppercase;
+    }
+
+    .reverse-protection-na {
+        padding-left: 5px;
+        margin-left: 5px;
+        display: none;
+    }
+}

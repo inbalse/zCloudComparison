@@ -1,0 +1,27 @@
+<div class="topology-tab">
+    <div class="grid-controls">
+        <!--<div class="topology-tab-search">-->
+        <!--<input type="text" ng-model="searchKey" placeholder="Search" ng-change="handleSearch()"/>-->
+
+        <!--<div class="search-icon"></div>-->
+        <!--</div>-->
+        <div class="topology-tab-group">
+            <ui-select theme="select2" ng-model="$parent.selectedGroup" ng-change="handleOrder()">
+                <ui-select-match class="ui-select-match" placeholder="Group by:"><span
+                    class="ui-select-placeholder" translate="GROUP_BY">&nbsp;</span>{{$select.selected.text}}
+                </ui-select-match>
+                <ui-select-choices class="ui-select-choices" repeat="group in groupByValues | filter: $select.search">
+                    <span ng-bind-html="group.text | highlight: $select.search"></span>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+        <button class="topology-tab-refresh" ng-click="handleRefresh()"></button>
+
+    </div>
+    <div class="z-scroll-and-zoom">
+        <div class="vpg-sites-svg">
+        </div>
+    </div>
+    <div class="vpg-sites-tooltip"></div>
+</div>
+

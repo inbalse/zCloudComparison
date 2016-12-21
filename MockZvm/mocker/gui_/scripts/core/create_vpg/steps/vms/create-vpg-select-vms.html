@@ -1,0 +1,50 @@
+<div class="z-wizard-container-wide create-vpg-select-vms" ng-controller="createVPGSelectVMsController" ng-cloak="">
+    <div class="container-fluid">
+
+        <!-- VC Title -->
+        <div class="row" ng-if="isShowVcTitle">
+            <div class="col-xs-12 text-center">
+                <p class="selectVMsTitle step-desc">{{:: "CREATE_VPG_SELECT_VMS.VC_TITLE" | translate }}</p>
+            </div>
+        </div>
+
+        <!-- VCD Title -->
+        <div class="row" ng-if="isShowVcdTitle">
+            <div class="col-xs-12 text-center">
+                <p class="selectVMsTitle step-desc">{{:: "CREATE_VPG_SELECT_VMS.VCD_TITLE" | translate }}</p>
+            </div>
+        </div>
+
+        <!-- Reverse Title-->
+        <div class="row" ng-if="data.isReverse">
+            <div class="col-xs-12 text-center">
+                <p class="selectVMsTitle step-desc">{{:: "CREATE_VPG_SELECT_VMS.REVERSE_TITLE" | translate }}</p>
+            </div>
+        </div>
+
+        <!-- Radio buttons to change source type -->
+        <div ng-include="partialViews[0].path"
+             ng-if="partialViews[0].isIncluded"></div>
+
+        <div class="row">
+            <div class="col-xs-12 bottom-space">
+                <hr/>
+            </div>
+        </div>
+
+        <!-- VCD type stuff -->
+        <div ng-include="partialViews[1].path"
+             ng-if="partialViews[1].isIncluded"></div>
+
+        <!-- VC type stuff -->
+        <div ng-include="partialViews[2].path"
+             ng-if="partialViews[2].isIncluded"></div>
+
+
+        <div class="filtered-out-vms">
+            <span>{{:: "CREATE_VPG_SELECT_VMS.FILTERED_OUT_TEXT" | translate}}</span>
+            <a href="https://www.zerto.com/myzerto/knowledge-base/00000237/" target="_blank">{{:: "CREATE_VPG_SELECT_VMS.FILTERED_OUT_LINK" | translate}}</a>
+        </div>
+
+    </div>
+</div>

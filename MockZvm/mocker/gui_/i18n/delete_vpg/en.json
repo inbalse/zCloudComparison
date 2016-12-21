@@ -1,0 +1,14 @@
+{
+    "DELETE_VPG":{
+        "PENDING_REMOVE_TITLE": "Warning",
+        "PENDING_REMOVE_STATE": "The VPG cannot be deleted now. Either retry the deletion or forcibly delete the VPG: {{vpgNAme}}, which requires a manual cleanup of disks in the recovery site.",
+        "INFO_MESSAGE": "Do you want to delete the recovery disks at the peer site when deleting the VPG : {{vpgNAme}} ? If kept, these disks can be used later for preseeding, if the VMs in the VPG are reprotected.",
+        "KEEP_DISKS_CHECKBOX": "Keep the recovery disks at the peer site.",
+        "TITLE": "Delete VPG",
+        "PORTAL_DELETE_WARNING": "You are about to delete the VPG : {{vpgNAme}} and the recovery disks on the peer site.",
+        "FORCE_DELETE_BUTTON": "FORCE DELETE",
+        "RETRY_DELETE_BUTTON": "RETRY DELETE",
+        "INFO_MESSAGE_PLAIN": "You are about to delete the VPG : {{vpgNAme}}.",
+        "WARNING_MESSAGE_BEFORE_DELETE_VPG_INSTEAD_VM": "This action will delete the VPG and not just the VM from the VPG. To delete the VM from the VPG you have to edit the VPG."
+    }
+}

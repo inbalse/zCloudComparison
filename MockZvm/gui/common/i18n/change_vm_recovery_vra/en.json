@@ -1,0 +1,18 @@
+{
+    "CHANGE-VM-RECOVERY-VRA": {
+        "TITLE": "Change VM Recovery VRA",
+        "TEXT": "Select the virtual machines to change their recovery host.",
+        "SELECT_HOST_TEXT": "Select the replacement host ",
+        "EXPLANATION_TEXT": "One or more virtual machines cannot be transferred to the selected host",
+
+        "COLUMNS":{
+            "DIRECTION": "Direction",
+            "VM_NAME": "VM Name",
+            "VPG_NAME": "VPG Name",
+            "ZORG": "ZORG",
+            "VM_SIZE": "VM Size GB",
+            "NUMBER_OF_VOLUMES": "# of Volumes",
+            "VM_HW_VERSION": "VM HW Version"
+        }
+    }
+}

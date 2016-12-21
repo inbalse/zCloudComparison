@@ -1,0 +1,20 @@
+{
+    "CREATE_CHECKPOINT": {
+        "TABLE_LABEL": "Select VPGs",
+        "NAME_LABEL": "Enter a name for the checkpoint",
+        "SAVE": "SAVE",
+        "CANCEL": "CANCEL",
+        "TITLE": "Add Checkpoint",
+        "LOCAL_FILTER": "Local Site",
+        "SELF_FILTER": "Self Protected",
+        "REMOTE_FILTER": "Remote Site",
+        "SHOW_ALL_FILTER": "Show All",
+        "GRID": {
+            "DIR": "Direction",
+            "NAME": "VPG Name",
+            "PROTECTED": "Protected Site Name",
+            "RECOVERY": "Recovery Site Name"
+        },
+        "INSERT_CHECKPOINT_PERMISSION_FAILED": "You do not have the correct permissions to insert a checkpoint"
+    }
+}

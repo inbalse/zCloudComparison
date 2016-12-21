@@ -1,0 +1,39 @@
+.events-list {
+    .event-type-filter {
+        float: left;
+        width: 111px;
+
+    }
+
+    .event-type-label {
+        width: 45px;
+    }
+    .description-ellipsis {
+        white-space: normal;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    .events-list-filters {
+        position: absolute;
+        left: 378px;
+        z-index: 2;
+        input[type="daterange"] {
+            width: 180px;
+            border: 1px solid #767C83;
+            margin-left: 10px;
+            padding: 4px 20px 4px 5px;
+            color: #494F5A;
+            height: 26px;
+            background: #F6F6F7 url('../assets/alerts/calendar.png') no-repeat 157px center;
+            &:hover {
+                text-decoration: none;
+                background-color: #dddddf;
+            }
+        }
+        .custom-float{
+            float: right;
+        }
+    }
+}
+

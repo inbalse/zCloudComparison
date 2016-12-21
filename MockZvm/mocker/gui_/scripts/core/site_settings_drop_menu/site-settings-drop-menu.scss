@@ -1,0 +1,55 @@
+@mixin siteSettingsButtonBase($path) {
+  background-image: url($path);
+  width: 37px;
+  height: 29px;
+}
+
+.siteSettingsButtonUp {
+  @include siteSettingsButtonBase('../assets/menuUp.png');
+}
+
+.siteSettingsButtonSelected {
+  @include siteSettingsButtonBase('../assets/menuSelected.png');
+}
+
+.siteSettingsMenu {
+  -webkit-transition: all linear 0.5s;
+  -moz-transition: all linear 0.5s;
+  -o-transition: all linear 0.5s;
+  transition: all linear 0.5s;
+  display: none;
+
+  .z-arrow {
+    width: 10px;
+    height: 10px;
+    right: 10%;
+    margin-right: -5px;
+    top: -7px;
+  }
+}
+
+.siteSettingsMenu.ng-hide-add, .siteSettingsMenu.ng-hide-remove {
+  display: block !important;
+}
+
+.siteSettingsMenu.ng-hide-add.ng-hide-add-active,
+.siteSettingsMenu.ng-hide-remove {
+  opacity: 0;
+}
+
+.siteSettingsMenu.ng-hide-add,
+.siteSettingsMenu.ng-hide-remove.ng-hide-remove-active {
+  opacity: 1;
+}
+
+.siteSettingsMenu {
+  display: inline-block;
+  position: absolute;
+  left: -154px;
+  top: 40px;
+  z-index: 1000;
+}
+
+.dropdown-menu > li > a {
+    text-align: left;
+}

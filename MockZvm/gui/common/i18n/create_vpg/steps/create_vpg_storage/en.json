@@ -1,0 +1,19 @@
+{
+    "CREATE_VPG_STORAGE": {
+        "APPLY_VPG_DEFAULT": "Apply VPG Default",
+        "EDIT_SELECTED": "EDIT SELECTED",
+        "IMPORT": "Import",
+        "STORAGE_INFO": "Specify the storage requirements for recovered VMs.",
+        "VOLUMES": "Volumes",
+        "TOTAL_VOLUME_PROVISIONED_SIZE": "Total Volume Provisioned Size",
+        "GRID": {
+            "VM_NAME": "VM Name",
+            "RECOVERY_VOLUME_LOCATION": "Recovery Volume Location",
+            "PROTECTED_VOLUME_LOCATION":"Protected Volume Location",
+            "PROVISIONED": "Provisioned",
+            "TEMP_DATA": "Temp Data",
+            "THIN": "Thin",
+            "RECOVERY_VOLUME_LOCATION_IS_EMPTY": "Recovery volume location is empty"
+        }
+    }
+}

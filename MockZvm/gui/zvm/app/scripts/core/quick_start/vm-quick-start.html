@@ -1,0 +1,26 @@
+<div ng-controller="vmViewController" class="v-sphere-view">
+    <div ng-switch on="vmContextInfo.IsBannedVirtualMachine">
+        <div class="not-protected-content" ng-switch-when="false">
+            <h4>{{"V_SPHERE_TAB.TITLE" | translate}}</h4>
+
+            <h5>{{"V_SPHERE_TAB.TO_PROTECT_VM" | translate}}</h5>
+
+            <p>{{"V_SPHERE_TAB.VPG_DESCRIPTION" | translate}}</p>
+
+            <ul>
+                <li>
+                    <a class="add" ng-click="addToVPG()">{{"V_SPHERE_TAB.ADD" | translate}}</a>
+                </li>
+                <li>
+                    <a class="create" ng-click="protect()">{{"V_SPHERE_TAB.PROTECT" | translate}}</a>
+                </li>
+                <li>
+                    <a class="protect" ng-click="createVpg()">{{"V_SPHERE_TAB.CREATE" | translate}}</a>
+                </li>
+            </ul>
+        </div>
+        <div class="host-without-vra-installed-content" ng-switch-when="true">
+           {{vmContextInfo.BannedVirtualMachineReason}}
+        </div>
+    </div>
+</div>

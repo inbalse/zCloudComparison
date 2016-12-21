@@ -1,0 +1,148 @@
+<div class="status-tab">
+
+    <!--left-->
+    <div class="status-tab-side status-tab-side-charts" ng-controller="vpgChartsController">
+        <div class="charts-row">
+            <div class="flot-placeholder" id="rpoChart" ng-non-bindable></div>
+            <span class='chart-title'>{{'GRAPHS.RPO' | translate}}</span>
+            <span class='main-value'>{{rpoMainValue}}</span>
+            <div class="flot-x-axis"><div class="flot-x-axis-left">4 Hours</div><div class="flot-x-axis-middle">2 Hours</div><div class="flot-x-axis-right">Now</div></div>
+        </div>
+        <div class="charts-row">
+            <div class="flot-placeholder" id="iopsChart" ng-non-bindable></div>
+            <span class='chart-title'>{{'GRAPHS.IOPS' | translate}}</span>
+            <span class='main-value'>{{IposMainValue}}</span>
+            <div class="flot-x-axis"><div class="flot-x-axis-left">4 Hours</div><div class="flot-x-axis-middle">2 Hours</div><div class="flot-x-axis-right">Now</div></div>
+        </div>
+        <div class="charts-row">
+            <div class="flot-placeholder" id="thorughChart" ng-non-bindable></div>
+            <span class='chart-title'>{{'GRAPHS.THROUGHPUT' | translate}}</span>
+            <span class='main-value'>{{throughMainValue}}</span>
+            <div class="flot-x-axis"><div class="flot-x-axis-left">4 Hours</div><div class="flot-x-axis-middle">2 Hours</div><div class="flot-x-axis-right">Now</div></div>
+        </div>
+        <div class="charts-row">
+            <div class="flot-placeholder" id="wanChart" ng-non-bindable></div>
+            <span class='chart-title'>{{'GRAPHS.WANTRAFFIC' | translate}}</span>
+            <span class='main-value'>{{wanMainValue}}</span>
+            <div class="flot-x-axis"><div class="flot-x-axis-left">4 Hours</div><div class="flot-x-axis-middle">2 Hours</div><div class="flot-x-axis-right">Now</div></div>
+        </div>
+    </div>
+    <!--middle-->
+    <div class="status-tab-middle">
+        <div class="status-widget journal-data" uib-tooltip="{{ActualFailSafeHistory}}" tooltip-placement="bottom">
+            <div class="col-xs-12">
+                <h4>{{'VPG_DETAILS.STATUS.JOURNAL' | translate}}</h4>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 center-content"><label>{{journalSLAinMinutes | convertMinToHoursOrDaysFilter}}</label></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <z-ring-chart class="ring-chart" data="ringData" pie-width="110" pie-height="110"
+                                  color-range="ringColors"></z-ring-chart>
+                    <div ng-style="{'margin-top': historyFormatted !== 'NA' ? '-16px' : '-8px'}" class="ring-chart-text">{{historyFormatted}}<br/>
+                        <span ng-if="historyFormatted !== 'NA'">{{timeFrame}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 recovery-checkpoint">
+                    <label>{{'VPG_DETAILS.STATUS.EARLY_RECOVERY' | translate}} : </label>
+                    <label>{{recoveryTime}}</label>
+                </div>
+            </div>
+        </div>
+        <div class="status-widget status-widget-alerts">
+            <h4>{{'VPG_DETAILS.STATUS.OFFSITE_BACKUP' | translate}}</h4>
+
+            <div class="row backup-vpg" ng-show="!isBackupEnabled">
+                <div class="col-xs-12">
+                    <label>{{'VPG_DETAILS.STATUS.DISABLED' | translate}}</label>
+                </div>
+            </div>
+            <div class="row backup-vpg" ng-show="isBackupEnabled">
+                <div class="col-xs-6">
+                    <img ng-show="showFailedImage" class="pull-right"
+                         src="assets/backup/backup-failed.png"/>
+                    <img ng-show="showSucessImage" class="pull-right"
+                         src="assets/backup/backup-sucess.png"/>
+                </div>
+                <div class="col-xs-6">
+                    <label>{{backupLastDate}}</label>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!--right-->
+    <div class="status-tab-side status-tab-side-lists">
+        <div class="status-widget status-widget-alerts">
+            <h4 ng-if="vpgData.State.AlertTips.Alerts.length > 0">{{ 'VPG_DETAILS.TITLES.ACTIVE_ALERTS' |
+                translate}}</h4>
+            <h4 ng-if="vpgData.State.AlertTips.Alerts.length === 0">{{ 'VPG_DETAILS.TITLES.NO_ACTIVE_ALERTS' |
+                translate}}</h4>
+
+            <div ng-repeat="alert in vpgData.State.AlertTips.Alerts track by $index" class="global-list-item alerts-list-item">
+                <div class="col col-1 alert-icon alert-icon-{{alert.AlertLevel}} line-ellipsis">
+                    {{alert.SiteName}}
+                </div>
+                <div class="col col-2 line-ellipsis" uib-tooltip-html="alert.Description"
+                     tooltip-append-to-body="true" ng-bind-html="alert.Description">
+                </div>
+            </div>
+
+        </div>
+        <div class="status-widget recent-tasks" ng-controller="vpgStatusTasksController">
+            <h4 ng-if="TaskItems.length > 0">{{ 'VPG_DETAILS.STATUS.TASKS' | translate}}</h4>
+            <h4 ng-if="TaskItems.length === 0">{{ 'VPG_DETAILS.STATUS.NO_TASKS' | translate}}</h4>
+
+
+            <div ng-repeat="task in TaskItems track by $index" class="global-list-item tasks-list-item"
+                 ng-class="{'tasks-list-item-show-buttons': (task.showLeftButton || task.showRightButton)}">
+                <div class="col col-1 line-ellipsis">{{task.Started}}</div>
+                <div class="col col-2 line-ellipsis">
+                    <span uib-tooltip="{{task.TaskTypeName}}"
+                          tooltip-append-to-body="true" ng-bind="task.TaskTypeName"></span>
+                </div>
+                <div class="col col-3 col-progress" ng-if="task.showProgress">
+                    <label class="progress-label">{{task.StateAndProgress.Progress}}%</label>
+                    <uib-progressbar value="task.StateAndProgress.Progress" animate="true"
+                                 class="vpg-status-tasks-progress"></uib-progressbar>
+
+                </div>
+                <div class="col col-3" ng-if="task.showProgressCandy">
+                    <uib-progressbar max="100" value="100"
+                                 class="progress-striped active"></uib-progressbar>
+                </div>
+                <div class="col col-4 tasks-buttons-in-view">
+                    <button uib-tooltip="{{task.leftButtonTooltip}}" ng-show="task.showLeftButton" ng-click="taskAction(task,task.leftButtonEvent)"
+                            ng-class="task.leftButtonClass" title="{{task.leftLabel}}">
+                    </button>
+                    <button uib-tooltip="{{task.rightButtonTooltip}}" ng-show="task.showRightButton" ng-click="taskAction(task,task.rightButtonEvent)"
+                            ng-class="task.rightButtonClass" title="{{task.rightLabel}}">
+                    </button>
+                </div>
+            </div>
+
+        </div>
+        <div class="status-widget">
+            <h4 ng-if="vpgActivity.Events.length > 0">{{"VPG_DETAILS.TITLES.EVENTS"|translate}}</h4>
+            <h4 ng-if="vpgActivity.Events.length === 0">{{"VPG_DETAILS.TITLES.NO_EVENTS"|translate}}</h4>
+
+
+            <div ng-repeat="event in vpgActivity.Events track by $index"
+                 class="global-list-item events-list-item">
+                <div class="col col-1">{{event.TimeStamp | date : 'dd/MM/yyyy HH:mm'}}</div>
+                <div class="col col-2 line-ellipsis" uib-tooltip="{{event.EventType}}"
+                     tooltip-append-to-body="true" ng-bind="event.EventType"></div>
+                <div class="col col-3"><label uib-tooltip="{{event.Description}}"
+                                              class="line-ellipsis">{{event.Description}}</label>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+

@@ -1,0 +1,44 @@
+<div class="z-tabbed-view offsite-backup">
+    <h3 title="{{'OFFSITE_BACKUP_TOOLTIP_TEXT' | translate}}">{{'OFFSITE_TITLE' | translate}}</h3>
+
+    <div class="btn-group z-white-btn-group">
+        <full-screen-button></full-screen-button>
+    </div>
+
+    <div name="tabset">
+        <ul class="nav nav-tabs">
+            <li ng-class="{'active':tabs[0].active}" ng-style="{'width':tabs[0].width}" style="margin-left:16%">
+                <a ui-sref="{{tabs[0].route}}" border-arrow="up">
+                    <label>{{tabs[0].title}}</label>
+
+                    <div class="tab-content pull-right">
+                        {{dataVPGs.BackupEnabled}}
+                        <small>{{'OFF_SITE.BACKUP_ENABLED' | translate}}</small>
+                    </div>
+                    <div class="tab-content pull-right">
+                        {{dataVPGs.VpgBackupJobInfoSummaryVisualObjects.length}}<span class="separator">|</span>
+                        <small>{{'OFF_SITE.VPGS' | translate}}</small>
+                    </div>
+
+
+                </a>
+            </li>
+            <li ng-class="{'active':tabs[1].active}" ng-style="{'width':tabs[1].width}">
+                <a ui-sref="{{tabs[1].route}}" border-arrow="up">
+                    <label>{{tabs[1].title}}</label>
+
+                    <div class="tab-content pull-right">
+                        {{dataVMs.BackupEnabled}}
+                        <small>{{'OFF_SITE.BACKUP_ENABLED' | translate}}</small>
+                    </div>
+                    <div class="tab-content pull-right">
+                        {{dataVMs.VmBackupJobInfoSummaryVisualObjects.length}}<span class="separator">|</span>
+                        <small>{{'OFF_SITE.VMS' | translate}}</small>
+                    </div>
+
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="z-tab-content" ui-view></div>
+</div>

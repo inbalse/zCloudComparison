@@ -1,0 +1,273 @@
+<div class="vpg-details-parameters" ng-hide="loading">
+    <!--GENERAL-->
+    <div class="row">
+        <div class="col-xs-1">
+            <div class="vpg-details-parameters-title vpg-details-parameters-title-general"></div>
+        </div>
+        <div class="col-xs-3">
+            <ul>
+                <li>
+                    <b>{{"VPG_DETAILS.PARAMETERS.TYPE" | translate }} </b>{{ "ENUM.VPG_ENTITY_TYPE." +
+                    vpgData.Entities.Source | translate }} to {{ "ENUM.VPG_ENTITY_TYPE." + vpgData.Entities.Target |
+                    translate }}
+                </li>
+                <li>
+                    <b>{{ "CREATE_VPG_SUMMARY.PRIORITY" | translate }} </b>
+                    <priority-indicator priority="vpgData.VpgConfiguration.Configuration.Priority"></priority-indicator>
+                    {{ "ENUM.PRIORITY." + vpgData.VpgConfiguration.Configuration.Priority | translate }}
+                </li>
+            </ul>
+        </div>
+        <div class="col-xs-4">
+            <ul>
+                <li>
+                    <b>{{"VPG_DETAILS.PARAMETERS.USED_DATA_PROTECTED_DATA" | translate}} </b>{{vpgData.Summary.NumberOfUsedMB
+                    | mbToStringConvertor}} / {{vpgData.Summary.NumberOfProvisionedMB | mbToStringConvertor}}
+                </li>
+                <li>
+                    <b>{{"VPG_DETAILS.PARAMETERS.RECOVERY_STORAGE" | translate}} </b>
+                    {{vpgData.Summary.RecoveryStorageSizeInMB | mbToStringConvertor}}
+                </li>
+            </ul>
+        </div>
+        <div class="col-xs-4">
+            <ul>
+                <li ng-if="vpgData.VpgConfiguration.Configuration.ServiceProfile">
+                    <b>{{"CREATE_VPG_SUMMARY.ZORG" | translate}}</b>{{showZertoOrg ? zorgName : ' NA'}}
+                </li>
+                <li ng-if="vpgData.VpgConfiguration.Configuration.ServiceProfile">
+                    <b>{{"CREATE_VPG_SUMMARY.SERVICE_PROFILE" | translate}}</b>{{vpgData.VpgConfiguration.Configuration.ServiceProfile.Name}}
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <hr/>
+        </div>
+    </div>
+    <!--REPLICATION-->
+    <div class="row">
+        <div class="col-xs-1">
+            <div class="vpg-details-parameters-title vpg-details-parameters-title-replication"></div>
+        </div>
+        <div class="col-xs-3">
+            <ul>
+                <li>
+                    <b>{{"CREATE_VPG_SUMMARY.TARGET_RPO" | translate}} </b>{{vpgData.VpgConfiguration.Configuration.RPOThressholdInSeconds
+                    | convertFormatSecondsFilter}}
+                </li>
+                <li ng-if="isVcd">
+                    <b>{{'VPG_DETAILS.PARAMETERS.RECOVERY_ORG_DC' | translate}} </b>{{vpgData.VpgConfiguration.RecoveryVappSettings.VCDVappSettings.TargetVirtualDatacenter.DisplayName}}
+                </li>
+
+                <li ng-if="!isPublicCloud && !isVcd">
+                    <b>{{'VPG_DETAILS.PARAMETERS.RECOVERY_HOST' | translate}} </b>{{vpgData.VpgConfiguration.Defaults.TargetComputeResource.DisplayName}}
+                </li>
+
+                <li ng-if="!isPublicCloud && !isVcd">
+                    <b>{{ textLabel }}</b>{{vpgData.VpgConfiguration.Defaults.TargetDatastore.DisplayName}}
+                </li>
+
+            </ul>
+        </div>
+        <div class="col-xs-4">
+            <ul>
+                <li>
+                    <b>{{"VPG_DETAILS.PARAMETERS.JOURNAL_HISTORY" | translate}} </b>{{journalSLAinMinutes | convertMinToHoursOrDaysFilter}}
+                </li>
+                <li ng-if="!isPublicCloud && !isVcd">
+                    <b>{{ jornalSizeLabel }} </b>{{vpgData.VpgConfiguration.Configuration.ManageJournalSettings.JournalDatastore
+                    | journalDatastoreGridLabelOrAutoFilter}}
+                </li>
+                <li ng-if="!isPublicCloud">
+                    <b>{{"VPG_DETAILS.PARAMETERS.JOURNAL_SIZE_HARD_LIMIT" | translate}} </b>{{vpgData.VpgConfiguration.Configuration.ManageJournalSettings.JournalHardLimitPerVM
+                    | journalHardLimitGridLabelFilter}}
+                </li>
+                <li ng-if="!isPublicCloud">
+                    <b>{{"VPG_DETAILS.PARAMETERS.JOURNAL_SIZE_WARNING_THRESHOLD" | translate}} </b>{{vpgData.VpgConfiguration.Configuration.ManageJournalSettings.JournalWarningThresholdPerVM
+                    | journalHardLimitGridLabelFilter}}
+                </li>
+            </ul>
+        </div>
+        <div class="col-xs-4">
+            <ul>
+                <li ng-if="!isPublicCloud">
+                    <b>{{"CREATE_VPG_SUMMARY.WAN_COMPRESSION" | translate}} </b>{{vpgData.VpgConfiguration.Configuration.WanCompression
+                    | booleanToString}}
+                </li>
+                <li ng-if="isSourceVcd && copyNatAvailable && copyNatOption">
+                    <b>{{"VPG_DETAILS.PARAMETERS.COPY_NAT_RULES" | translate}} </b>{{copyNatOptionLabel}}
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <hr/>
+        </div>
+    </div>
+    <!--RECOVERY-->
+    <div class="row">
+        <div class="col-xs-1">
+            <div class="vpg-details-parameters-title vpg-details-parameters-title-recovery"></div>
+        </div>
+        <div class="col-xs-3">
+            <ul>
+                <li>
+                    <b>{{"VPG_DETAILS.PARAMETERS.LAST_TEST" | translate}} </b>{{vpgData.Summary.LastTest ?
+                    (vpgData.Summary.LastTest.TestEndTime | date : 'dd/MM/yyyy HH:mm') :
+                    "VPG_DETAILS.TABS.NOT_PERFORMED" | translate }}
+                </li>
+                <li>
+                    <b>{{"CREATE_VPG_SUMMARY.TEST_REMINDER" | translate}} </b>{{vpgData.VpgConfiguration.Configuration.MaxTestIntervalInMinutes
+                    | testPeriodFilter}}
+                </li>
+            </ul>
+        </div>
+        <div class="col-xs-4">
+            <ul>
+                <li ng-if="!isVcdToVcd && !isPublicCloud">
+                    <b>{{"CREATE_VPG_SUMMARY.FAILOVER_NETWORK" | translate}} </b>
+                    <span class="ellipsis">{{vpgData.VpgConfiguration.Defaults.FailoverNetwork.DisplayName}}{{vpgData.VpgConfiguration.Defaults.FailoverVCDVAppNetwork.NetworkName}}</span>
+                </li>
+                <li ng-if="!isVcdToVcd && !isPublicCloud">
+                    <b>{{"CREATE_VPG_SUMMARY.FAILOVER_TEST_NETWORK" | translate}} </b>
+                    <span class="ellipsis">{{vpgData.VpgConfiguration.Defaults.TestNetwork.DisplayName}}{{vpgData.VpgConfiguration.Defaults.TestVCDVAppNetwork.NetworkName}}</span>
+                </li>
+
+                <!--wait for BE-->
+                <li ng-if="isPublicCloud">
+                    <p class="container-ellipsis">
+                        <b>{{isAws ? "VPG_DETAILS.PARAMETERS.FAILOVER_MOVE_PCN" :
+                            "VPG_DETAILS.PARAMETERS.FAILOVER_MOVE_VNET" | translate}}</b>
+                        <span>{{vpgData.VpgConfiguration.Defaults.RecoveryCloudSettings.CloudVpgFailoverCloudSettings.Pcn.Name}}</span>
+                    </p>
+                </li>
+                <li ng-if="isPublicCloud">
+                    <p class="container-ellipsis">
+                        <b>{{"VPG_DETAILS.PARAMETERS.FAILOVER_MOVE_SUBNET" | translate}}</b>
+                        <span>{{vpgData.VpgConfiguration.Defaults.RecoveryCloudSettings.CloudVpgFailoverCloudSettings.Subnet.Name}}</span>
+                    </p>
+                </li>
+                <li ng-if="isPublicCloud">
+                    <p class="container-ellipsis">
+                        <b>{{isAws ? "VPG_DETAILS.PARAMETERS.FAILOVER_TEST_PCN" :
+                            "VPG_DETAILS.PARAMETERS.FAILOVER_TEST_VNET" | translate}}</b>
+                        <span>{{vpgData.VpgConfiguration.Defaults.RecoveryCloudSettings.CloudVpgFailoverTestCloudSettings.Pcn.Name}}</span>
+                    </p>
+                </li>
+                <li ng-if="isPublicCloud">
+                    <p class="container-ellipsis">
+                        <b>{{"VPG_DETAILS.PARAMETERS.FAILOVER_TEST_SUBNET" | translate}}</b>
+                        <span>{{vpgData.VpgConfiguration.Defaults.RecoveryCloudSettings.CloudVpgFailoverTestCloudSettings.Subnet.Name}}</span>
+                    </p>
+                </li>
+                <li ng-if="isPublicCloud">
+                    <p class="container-ellipsis">
+                        <b>{{"VPG_DETAILS.PARAMETERS.FAILOVER_INSTANCE" | translate}}</b>
+                    <span>
+                        {{failoverInstance}}
+                    </span>
+                    </p>
+                </li>
+                <li ng-if="isPublicCloud">
+                    <p class="container-ellipsis">
+                        <b>{{"VPG_DETAILS.PARAMETERS.FAILOVER_TEST_INSTANCE" | translate}}</b>
+                        <span>{{testInstance}}</span>
+                    </p>
+                </li>
+                <!--wait for BE-->
+            </ul>
+        </div>
+        <div class="col-xs-4">
+            <ul>
+                <li ng-show="!isScvmm && !isPublicCloud && !isVcd && vpgData.ConfigurationFlags.IsVmFolderConfigurable">
+                    <b>{{"CREATE_VPG_SUMMARY.RECOVERY_FOLDER" | translate}}</b>{{vpgData.VpgConfiguration.Defaults.TargetFolder.DisplayName}}
+                </li>
+
+                <!--wait for BE-->
+                <div ng-if="isPublicCloud">
+                    <li class="aws-network-settings" ng-if="AwsFailoverGroupsCount > 1">
+                        <b class="aws-network-settings-label">{{"VPG_DETAILS.PARAMETERS.FAILOVER_MOVE_SECURITY_GROUPS" | translate}}</b>
+                        <span class="aws-network-settings-info">{{AwsFailoverGroupsBuilder}}</span><a
+                        class="aws-network-settings-link" href="javascritp:void(0)"
+                        ng-click="AwsGroupsShow('failover')"></a>
+                    </li>
+                    <li ng-if="!AwsFailoverGroupsCount || AwsFailoverGroupsCount <= 1">
+                        <p class="container-ellipsis">
+                            <b>{{"VPG_DETAILS.PARAMETERS.FAILOVER_MOVE_SECURITY_GROUPS" | translate}}</b>
+                            <span>{{AwsFailoverGroupsBuilder}}</span>
+                        </p>
+                    </li>
+
+                    <li class="aws-network-test-settings" ng-if="AwsFailoverTestGroupsCount > 1">
+                        <b class="aws-network-settings-label">{{"VPG_DETAILS.PARAMETERS.FAILOVER_TEST_SECURITY_GROUPS" |
+                            translate}}</b><span
+                        class="aws-network-settings-info">{{AwsFailoverTestGroupsBuilder}}</span><a
+                        class="aws-network-settings-link" href="javascritp:void(0)" ng-click="AwsGroupsShow()"></a>
+                    </li>
+                    <li ng-if="!AwsFailoverTestGroupsCount || AwsFailoverTestGroupsCount <= 1">
+                        <p class="container-ellipsis">
+                            <b>{{"VPG_DETAILS.PARAMETERS.FAILOVER_TEST_SECURITY_GROUPS" | translate}}</b>
+                            <span>{{AwsFailoverTestGroupsBuilder}}</span>
+                        </p>
+                    </li>
+                </div>
+                <!--wait for BE-->
+                <li ng-if="isVcd">
+                    <b>{{"VPG_DETAILS.PARAMETERS.GUEST_CUSTOMIZATION" | translate}} </b>{{!vpgData.VpgConfiguration.RecoveryVappSettings.VCDVappSettings.DisableGuestCustomization
+                    | booleanToString}}
+                </li>
+                <li>
+                    <b>{{"VPG_DETAILS.PARAMETERS.PRE_POST_SCRIPTS" | translate}} </b>{{(vpgData.VpgConfiguration.Configuration.ScriptingSettings
+                    && vpgData.VpgConfiguration.Configuration.ScriptingSettings.UseScripts) ?
+                    ('VPG_DETAILS.PARAMETERS.DEFINED' | translate) : ('VPG_DETAILS.PARAMETERS.NOT_DEFINED' |
+                    translate)}}
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <hr/>
+        </div>
+    </div>
+    <!--BACKUP-->
+    <div class="row">
+        <div class="col-xs-1">
+            <div class="vpg-details-parameters-title vpg-details-parameters-title-backup"></div>
+        </div>
+        <div class="col-xs-3">
+            <ul>
+                <li ng-class="RetentionPolicy == 0 ? 'aligned-recovery-policy-text' : ''">
+                    <b>{{"VPG_DETAILS.PARAMETERS.RECOVERY_POLICY" | translate}} </b>{{"ENUM.BACKUP_RECOVERY_POLICY." +
+                    RetentionPolicy | translate}}
+                </li>
+                <li ng-if="RetentionPolicy">
+                    <b>{{"VPG_DETAILS.PARAMETERS.BACKUP_STATUS" | translate}} </b>{{vpgData.Summary.VpgBackupJobStatus |
+                    vpgBackupJobStatusEnum : RetentionPolicy}}
+                </li>
+            </ul>
+        </div>
+        <div class="col-xs-4">
+            <ul ng-if="RetentionPolicy">
+                <li>
+                    <b>{{"VPG_DETAILS.PARAMETERS.BACKUP_SCHEDULE" | translate}} </b>{{vpgData.VpgConfiguration.Configuration.Backup.Scheduler.RunningTime
+                    | summaryRunJobFilter}}
+                </li>
+                <li>
+                    <b>{{"VPG_DETAILS.PARAMETERS.RESTORE_POINT_RANGE" | translate}} </b>{{vpgData.VpgConfiguration.Configuration.Backup.DeleteBackup.RestorePointRange
+                    | restorePointRangeEnum : RetentionPolicy}}
+                </li>
+            </ul>
+        </div>
+        <div class="col-xs-4">
+            <ul ng-if="RetentionPolicy">
+                <li>
+                    <b>{{"VPG_DETAILS.PARAMETERS.BACKUPS_REPOSITORY" | translate}} </b>{{vpgData.Summary.BackupRepository}}
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

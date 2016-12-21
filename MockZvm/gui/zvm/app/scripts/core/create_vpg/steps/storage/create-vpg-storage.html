@@ -1,0 +1,26 @@
+<div class="z-wizard-container-wide" ng-controller="createVPGStorageController" ng-cloak="">
+    <p class="text-center step-desc">{{::"CREATE_VPG_STORAGE.STORAGE_INFO" | translate }}</p>
+    <div class="btn-group z-white-btn-group pull-right">
+        <button type="button" ng-show="::!data.isPublicCloud" class="btn btn-link" ng-click="editSelectedClick()"
+                ng-disabled="data.editSelectedDisabled">
+            {{::'CREATE_VPG_STORAGE.EDIT_SELECTED'|translate}}
+        </button>
+    </div>
+
+    <z-slick-grid class="storage-volumes-grid"
+                  id="create-vpg-storage-step"
+                  data="data.gridObj.data"
+                  custom-options="data.gridObj.customOptions"
+                  group-by-values="data.gridObj.groupByValues"
+                  grid-id="{{data.gridObj.id}}"
+                  selected-items="data.selectedItems"
+                  on-selection="selectedItemsChange"
+                  hide-view-options="true"
+                  grid="data.gridObj.grid"
+                  row-click="rowClick">
+    </z-slick-grid>
+    <div class="storage-volumes-bottom">
+        <div class="col-xs-3">{{::"CREATE_VPG_STORAGE.VOLUMES" | translate }}:&nbsp;{{ data.gridObj.data.length }}</div>
+        <div class="col-xs-4">{{::"CREATE_VPG_STORAGE.TOTAL_VOLUME_PROVISIONED_SIZE" | translate }}:&nbsp;{{ data.volumesTotalSize | mbToStringConvertorFilter }}</div>
+    </div>
+</div>

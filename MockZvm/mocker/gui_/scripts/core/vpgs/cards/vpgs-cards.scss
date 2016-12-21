@@ -1,0 +1,20 @@
+.z-grid-inner-container.vpgs-cards-component {
+    height: 100%;
+}
+
+.cards-control-sort-wrapper {
+    .ui-select-choices-group-label {
+        font-weight: bold;
+        font-size: 1.1em;
+    }
+
+    .ui-select-choices-group {
+        > ul {
+            padding: 2.5px 0;
+
+            > li {
+                padding-left: 5px;
+            }
+        }
+    }
+}

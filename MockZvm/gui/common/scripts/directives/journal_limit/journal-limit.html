@@ -1,0 +1,20 @@
+<div class="row" ng-show="isSlaCustom">
+    <div
+        ng-class="{'col-xs-12':value.Type == settings.dataProvider[0].type, 'col-xs-5':value.Type != settings.dataProvider[0].type}">
+        <ui-select theme="select2" ng-model="$parent.value.Type" search-enabled="false">
+            <ui-select-match class="ui-select-match">{{$select.selected.label}}</ui-select-match>
+            <ui-select-choices class="ui-select-choices" repeat="item.type as item in settings.dataProvider | filter: $select.search">
+                <span ng-bind-html="item.label | highlight: $select.search"></span>
+            </ui-select-choices>
+        </ui-select>
+    </div>
+    <div class="col-xs-5 journal-size-hard-limit-stepper" ng-if="value.Type != settings.dataProvider[0].type">
+        <div z-stepper required ng-model="value.Limit" min="settings.min" max="settings.max"></div>
+    </div>
+    <div class="col-xs-1 journal-size-hard-limit-label" ng-if="value.Type != settings.dataProvider[0].type"><label
+        class="control-label">{{settings.sign}}</label>
+    </div>
+</div>
+<div class="col-xs-12" ng-show="!isSlaCustom">
+    <label class="control-label">{{ value.Limit ? value.Limit + ' ' + settings.sign : 'Unlimited'}}</label>
+</div>

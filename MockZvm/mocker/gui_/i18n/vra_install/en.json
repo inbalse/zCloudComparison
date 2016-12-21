@@ -1,0 +1,26 @@
+{
+    "VRA_INSTALL": {
+        "TITLE":            "Configure and Install VRA",
+        "INSTALL":          "INSTALL",
+        "CANCEL":           "CANCEL",
+        "HOST":             "Host",
+        "HOST_DETAILS":     "Host Details",
+        "HOST_PASS":        "Host Root Password",
+        "DATASTORE":        "Datastore",
+        "STORAGE":          "Storage",
+        "NETWORK":          "Network",
+        "AMOUNT":           "VRA RAM",
+        "VRAGROUP":         "VRA Group",
+        "VRANETWORK":       "VRA Network Details",
+        "CONFIGURATION":    "Configuration",
+        "ADDRESS":          "Address",
+        "SUBNET":           "Subnet Mask",
+        "GATEWAY":          "Default Gateway",
+        "FAIL_TITLE":       "VRA Install",
+        "FAIL_DESC":        "Install VRA','VRA cannot be installed, there are no available hosts.",
+        "REMOVE_VM":        "Click OK to replace the existing VM with a new VRA VM, or abort the installation.",
+        "VRA_RAM_TOOLTIP":  "The amount of memory to allocate to the VRA, which determines the maximum buffer size for the VRA for buffering data to be sent from protected VMs and received by recovery site VRAs.",
+        "VIB_SUPPORTED":    "Use credentials to connect to host",
+        "GB":               "GB"
+    }
+}

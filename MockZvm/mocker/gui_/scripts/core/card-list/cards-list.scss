@@ -1,0 +1,295 @@
+.cards-component__container {
+    position: relative;
+    outline: none;
+    height: 100%;
+    overflow: hidden;
+    .cards-controls {
+        input[type="text"] {
+            height: 26px;
+        }
+
+        .cards-control-btn {
+            width: 26px;
+            height: 26px;
+            border: 1px solid #767c83;
+            background: #f6f6f7 no-repeat center;
+            float: left;
+            margin-right: 14px;
+            &.cards-control-sort-btn {
+                position: absolute;
+                right: 1px;
+                top: 0;
+                margin: auto;
+                width: 22px;
+                height: 26px;
+                background: #f6f6f7 url('../assets/sort-button-sprite.png') no-repeat 0 2px;
+                &.cards-control-sort-btn--desc {
+                    background-position: -22px 2px;
+                }
+            }
+            &:hover {
+                background-color: #dee6ec;
+            }
+            .active {
+                background-color: #fcfcc2;
+            }
+        }
+        .cards-control-sort-wrapper {
+            padding-right: 22px;
+            position: relative;
+
+            //.select2-drop {
+            //    width: 150px;
+            //}
+        }
+
+        .cards-control-filter-btn {
+            background-image: url('../assets/vpg-card/vpg-cards-filter-t.png');
+            position: relative;
+            &.cards-control-filter-btn--active {
+                background-color: #fcfcc2;
+            }
+            &.cards-control-filter-btn--open {
+                &:before {
+                    position: absolute;
+                    content: '';
+                    width: 0;
+                    height: 0;
+                    border-right: 10px solid transparent;
+                    border-left: 10px solid transparent;
+                    border-bottom: 10px solid #c1c9ce;
+                    top: 27px;
+                    left: 2px;
+                    pointer-events: none;
+                }
+                &:after {
+                    position: absolute;
+                    content: '';
+                    width: 0;
+                    height: 0;
+                    border-right: 8px solid transparent;
+                    border-left: 8px solid transparent;
+                    border-bottom: 8px solid #fff;
+                    top: 30px;
+                    left: 4px;
+                    pointer-events: none;
+                }
+            }
+        }
+
+        .cards-control-clear-btn {
+            position: absolute;
+            right: 26px;
+            top: 53px;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        .cards-control-add-btn {
+            position: relative;
+            height: 26px;
+            display: inline-block;
+            line-height: 26px;
+            width: 55px;
+            .cards-active-filter__arrow {
+                top: 8px;
+                right: 10px;
+            }
+
+            &[aria-expanded="true"] {
+                .cards-active-filter__arrow {
+                    transform: rotate(135deg);
+                    top: 11px;
+                }
+            }
+        }
+
+        .cards-control-add-menu {
+            padding: 5px;
+            max-height: 180px;
+            overflow-y: scroll;
+        }
+        .dropdown-menu.dropdown-white a:hover {
+            color: #000;
+        }
+
+        .row {
+            margin-bottom: 10px;
+        }
+    }
+
+    .cards-active-filter__arrow {
+        width: 7px;
+        height: 7px;
+        transform: rotate(-45deg);
+        border-bottom: 2px solid #84878e;
+        border-left: 2px solid #84878e;
+        position: absolute;
+        right: 35px;
+        top: 9px;
+
+    }
+
+    .cards-active-filter {
+        width: 100%;
+        height: 26px;
+        position: relative;
+
+        .cards-filter-container {
+            height: 100%;
+            line-height: 100%;
+            //padding-top: 4px;
+
+            .dropdown {
+                height: 100%;
+                .dropdown-toggle {
+                    height: 100%;
+                }
+
+            }
+        }
+
+        .cards-active-filter__field {
+            border: 1px solid #767c83;
+            display: block;
+            position: absolute;
+            left: 0;
+            right: 26px;
+            top: 0;
+            bottom: 0;
+            padding: 0 0 0 5px;
+            background-color: #f6f6f7;
+            &:hover {
+                cursor: pointer;
+                background-color: #dddddf;
+            }
+
+            &.cards-active-filter__field--open {
+                + .cards-active-filter__arrow {
+                    transform: rotate(135deg);
+                    top: 11px;
+                }
+            }
+
+            &.cards-active-filter__field--active {
+                background-color: #fcfcc2;
+            }
+        }
+
+        .cards-active-filter__clear {
+            position: absolute;
+            width: 26px;
+            height: 26px;
+            border: 0;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            text-align: center;
+            &:hover {
+                cursor: pointer;
+                text-decoration: none;
+                color: #000;
+            }
+        }
+    }
+
+    .cards-view-component {
+        @media (max-width: 1365px) {
+            .cards-view-component__cell {
+                max-width: 33.33%;
+                height: 174px;
+            }
+        }
+        @media (min-width: 1366px) and (max-width: 1919px) {
+            .cards-view-component__cell {
+                max-width: 25%;
+                height: 174px;
+            }
+        }
+        @media (min-width: 1920px) {
+            .cards-view-component__cell {
+                max-width: 20%;
+                height: 192px;
+            }
+        }
+        &.cards-view-component--scroll {
+            .Grid__cell {
+                padding-right: 27px;
+            }
+        }
+
+        .cards-view-component__row {
+            padding: 0 2px;
+            display: flex;
+        }
+
+        .cards-view-component__cell {
+            width: 100%;
+            &:not(:last-child) {
+                margin-right: 16px;
+            }
+        }
+
+        .cards-list__groupby-container {
+            width: 100%;
+            height: 25px;
+            background: #dedede;
+            color: #222;
+
+            .cards-list__groupby-header {
+                line-height: 25px;
+                padding-left: 5px;
+                position: relative;
+                font-family: Verdana, Arial, sans-serif;
+                font-size: 11px;
+            }
+            .cards-list__groupby-toggle {
+                top: 6px;
+                width: 13px;
+                height: 14px;
+                display: block;
+                position: absolute;
+                right: 10px;
+                cursor: pointer;
+
+                &.cards-list__groupby-toggle--collapsed {
+                    background: url("../assets/grid_icons/collapse.png") no-repeat;
+                }
+
+                &.cards-list__groupby-toggle--expanded {
+                    background: url("../assets/grid_icons/expand.png") no-repeat;
+                }
+            }
+            .cards-view-component__row {
+                margin-bottom: 16px;
+            }
+
+            .cards-list__groupby-name, .cards-list__groupby-value, .cards-list__groupby-count {
+                display: inline-block;
+            }
+            .cards-list__groupby-name {
+                margin-right: 10px;
+            }
+            .cards-list__groupby-value {
+                margin-right: 5px;
+                .protection-group-state-visual {
+                    width: 25px;
+                    height: 12px;
+                    display: inline-block;
+                    vertical-align: text-bottom;
+                }
+            }
+
+        }
+    }
+
+    .cards-view-divider {
+        padding-top: 10px;
+        margin-top: 10px;
+        border-top: 2px solid #c1c9ce;
+        display: block;
+    }
+}
+
+

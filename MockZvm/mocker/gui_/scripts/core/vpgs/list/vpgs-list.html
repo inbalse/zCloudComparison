@@ -1,0 +1,13 @@
+<div class="z-grid-inner-container">
+    <z-slick-grid id="vpgs-list" grid-id="{{::vpgsListCtrl.gridObj.id}}" data="vpgsListCtrl.data"
+                  view-by-values="vpgsListCtrl.viewByValues" grid="vpgsListCtrl.gridObj.grid" grid-render-complete="vpgsCtrl.gridItemsChanged"
+                  group-by-values="vpgsCtrl.groupByValues" selected-items="vpgsCtrl.selectedItems" on-selection="vpgsCtrl.selectedItemsChange"
+                  custom-options="vpgsListCtrl.customOptions" selected-group="selectedGroup" row-click="vpgsListCtrl.rowClick" set-selected-group="vpgsListCtrl.setSelectedGroup"
+                  set-sort-column="vpgsListCtrl.setSortColumn" set-filters="vpgsListCtrl.setFilters"
+                  on-mouse-enter="vpgsListCtrl.onMouseEnter" on-mouse-leave="vpgsListCtrl.onMouseLeave"
+    ></z-slick-grid>
+
+    <div ng-if="vpgsListCtrl.cellStatusHovered">
+        <alerts-tooltip parent="vpgsListCtrl.tooltipData.node" alert-tips="vpgsListCtrl.tooltipData.alertTips" watch-depth="reference"></alerts-tooltip>
+    </div>
+</div>

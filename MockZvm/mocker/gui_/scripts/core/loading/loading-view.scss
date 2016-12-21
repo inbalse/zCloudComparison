@@ -1,0 +1,14 @@
+.loading {
+  .center-container {
+    width: 500px;
+    height: 170px;
+    margin-left: -250px;
+    margin-top: -85px;
+    .loader {
+      position: absolute;
+      bottom: 20px;
+      text-align: center;
+      width: 100%;
+    }
+  }
+}

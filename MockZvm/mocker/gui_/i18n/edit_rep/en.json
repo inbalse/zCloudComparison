@@ -1,0 +1,31 @@
+{
+    "EDIT_REP": {
+        "TITLE_NEW": "New Repository",
+        "TITLE_EDIT": "Edit Repository",
+        "REP_NAME": "Repository Name",
+        "REP_TYPE": "Repository Type",
+        "REP_PATH": "Path",
+        "CAPACITY": "Capacity",
+        "FREE_SPACE": "Free Space",
+        "USED_SPACE": "Used Space",
+        "USER": "Username",
+        "PASSWORD": "Password",
+        "VALIDATE": "VALIDATE",
+        "DEFAULT": "Set as default repository",
+        "COMPRESS": "Enable compression",
+        "VALIDATE_SUCCESS": "Validation succeeded.",
+        "VALIDATE_FAILED": "Validation failed. ",
+        "VALIDATE_CREATE": "Create new folder {0} for the repository?",
+        "PATH_CHANGE": "You are about to change the repository path. If the new path does not contain the backups, the actual retention period of the VPGs will be initialized. The backup files will remain intact in their location. You can move them to the new location.",
+        "ALERT_CHECKBOX": "This is the same repository with new path/IP",
+        "GENERAL":"General",
+        "LOCATION":"Location",
+        "PROPERTIES":"Properties",
+        "REPOSITORY_REACHABLE":"Repository reachable",
+        "REPOSITORY_UNREACHABLE":"Repository unreachable",
+        "ACCESS_KEY": "Access key",
+        "SECRET_KEY": "Secret Key",
+        "BUCKET": "Bucket",
+        "BUCKET_PLACEHOLDER": "Loading information from S3"
+    }
+}

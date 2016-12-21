@@ -1,0 +1,205 @@
+.recent-tasks {
+
+    @mixin base-vpg-status-tasks-progress {
+        height: 6px;
+        margin-top: 5px;
+        background-color: #e7f0f5;
+        border-radius: 0;
+        .progress-bar {
+            background-color: #20477c;
+        }
+    }
+    .vpg-status-tasks-progress {
+        @include base-vpg-status-tasks-progress;
+    }
+
+    .progress-striped {
+        @include base-vpg-status-tasks-progress;
+    }
+
+    .progress-label {
+        color: #20477c;
+        padding-right: 0;
+    }
+
+    .task-row-height {
+        height: 22px;
+
+    }
+
+}
+
+.tasks-buttons-in-list {
+    @mixin button-icon-base-class($path, $pathHover, $pathClicked) {
+        background-image: url($path);
+        background-repeat: no-repeat;
+        background-position: center;
+        border: transparent;
+        background-color: transparent;
+        width: 20px;
+        height: 20px;
+
+        position: absolute;
+        display: block;
+        margin-left: -3px;
+
+        top: 50%;
+        margin-top: -6px;
+
+        &:hover {
+            border: transparent;
+            background-image: url($pathHover);
+        }
+        &:active {
+            background-image: url($pathClicked);
+        }
+        &:focus {
+            outline: none;
+        }
+    }
+
+    .flr-btn {
+        width: 16px;
+        height: 16px;
+        display: block;
+        background: transparent url('../assets/tasks/tasks-flr-grid-sprite.png');
+        position: absolute;
+        border: none;
+        outline: none;
+
+
+        &.browse-btn {
+            right: 22px !important; //because flr height&width icons smaller then others icons.
+            background-position: 0px 0px;
+        }
+        &.browse-btn:hover{
+            background-position: 0px -16px;
+        }
+        &.browse-btn:active{
+            background-position: 0px -32px;
+        }
+
+        &.unmount-btn {
+            right : 5px !important; //because flr height&width icons smaller then others icons.
+            background-position: -16px 0px;
+        }
+        &.unmount-btn:hover{
+            background-position: -16px -16px;
+        }
+        &.unmount-btn:active{
+            background-position: -16px -32px;
+        }
+    }
+
+    .stop-btn {
+        @include button-icon-base-class('../assets/tasks/stop-btn-list.png', '../assets/tasks/stop-btn-list-hover.png', '../assets/tasks/stop-btn-list-clicked.png');
+    }
+
+    .play-btn {
+        @include button-icon-base-class('../assets/tasks/play-button-list.png', '../assets/tasks/play-button-list.png', '../assets/tasks/play-button-list.png');
+        margin-top: -2px;
+    }
+
+    .rollback-btn {
+        @include button-icon-base-class('../assets/tasks/rollback-btn-list.png', '../assets/tasks/rollback-btn-list-hover.png', '../assets/tasks/rollback-btn-list-clicked.png');
+    }
+
+    .commit-btn {
+        @include button-icon-base-class('../assets/tasks/commit-btn-list.png', '../assets/tasks/commit-btn-list-hover.png', '../assets/tasks/commit-btn-list-clicked.png');
+    }
+}
+
+.tasks-buttons-in-view {
+    @mixin button-icon-base-class($path, $pathHover, $pathClicked) {
+        background-image: url($path);
+        background-repeat: no-repeat;
+        background-position: center;
+        border: transparent;
+        background-color: transparent;
+        width: 6px;
+        height: 6px;
+
+        position: absolute;
+        display: block;
+        margin-left: -3px;
+
+        top: 50%;
+        margin-top: -6px;
+
+        &:hover {
+            border: transparent;
+            background-image: url($pathHover);
+        }
+        &:active {
+            background-image: url($pathClicked);
+        }
+        &:focus {
+            outline: none;
+        }
+    }
+    .stop-btn {
+        @include button-icon-base-class('../assets/tasks/stop-btn-txt.png', '../assets/tasks/stop-btn-txt-hover.png', '../assets/tasks/stop-btn-txt-clicked.png');
+        width: 50px;
+        height: 18px;
+        margin-top: -9px;
+    }
+
+    .abort-btn {
+        @include button-icon-base-class('../assets/tasks/abort-btn-txt.png', '../assets/tasks/abort-btn-txt-hover.png', '../assets/tasks/abort-btn-txt-clicked.png');
+        width: 52px;
+        height: 18px;
+        margin-top: -12px;
+    }
+    .play-btn {
+        @include button-icon-base-class('../assets/tasks/play-btn-txt.png', '../assets/tasks/play-btn-txt-hover.png', '../assets/../assets/tasks/play-btn-txt-clicked.png');
+        width: 63px;
+        height: 18px;
+        margin-top: -9px;
+    }
+
+    .rollback-btn {
+        @include button-icon-base-class('../assets/tasks/rollback-btn-list.png', '../assets/tasks/rollback-btn-list-hover.png', '../assets/tasks/rollback-btn-list-clicked.png');
+        width: 20px;
+        height: 20px;
+        margin-top: -10px;
+        margin-left: 18px;
+    }
+
+    .commit-btn {
+        @include button-icon-base-class('../assets/tasks/commit-btn-list.png', '../assets/tasks/commit-btn-hover.png', '../assets/tasks/commit-btn-list-clicked.png');
+        width: 20px;
+        height: 20px;
+        margin-top: -10px;
+    }
+
+    .flr-btn {
+        width: 16px;
+        height: 16px;
+        display: block;
+        background: transparent url('../assets/tasks/tasks-flr-grid-sprite.png');
+        position: absolute;
+        border: none;
+        outline: none;
+
+        &.browse-btn {
+            background-position: 0px 0px;
+        }
+        &.browse-btn:hover{
+            background-position: 0px -16px;
+        }
+        &.browse-btn:active{
+            background-position: 0px -32px;
+        }
+
+        &.unmount-btn {
+            left: 26px;
+            background-position: -16px 0px;
+        }
+        &.unmount-btn:hover{
+            background-position: -16px -16px;
+        }
+        &.unmount-btn:active{
+            background-position: -16px -32px;
+        }
+    }
+}

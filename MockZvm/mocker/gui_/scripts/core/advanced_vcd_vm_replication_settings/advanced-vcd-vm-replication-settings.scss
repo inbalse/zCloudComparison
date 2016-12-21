@@ -1,0 +1,42 @@
+.advanced-vcd-vm-replication-settings {
+
+    .modal-body {
+        background-color: white;
+        height: 500px;
+    }
+
+    .modal-dialog {
+        width: 860px;
+    }
+
+    .advancedVcdVmReplicationSettingsController {
+        height: 100%;
+    }
+
+    .advancedVcdVmsSettingsGridStyle {
+        display: block;
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    .advanced-vcd-grid-container{
+       height: 430px;
+    }
+
+    .step-desc {
+        padding: 10px;
+    }
+
+    h5 {
+        display: inline-block;
+    }
+
+    .control-label {
+        padding-top: 4px;
+    }
+
+    .z-white-btn-group {
+        z-index: 2;
+    }
+}

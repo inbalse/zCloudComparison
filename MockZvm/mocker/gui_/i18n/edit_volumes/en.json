@@ -1,0 +1,20 @@
+{
+    "EDIT_VOLUMES": {
+        "TITLE": "Edit Volumes",
+        "PRE_SEED": "Volume Source",
+        "DATASTORE": "Datastore",
+        "STORAGE": "Storage",
+        "RAW_DISK": "Raw Disk",
+        "EXISTING_DISK": "Existing Disk",
+        "BROWSE": "BROWSE",
+        "TEMP_DISK": "Temp Data disk",
+        "THIN_PROVISIONING": "Thin provisioning",
+        "PATH": "Path",
+        "WARNING_TITLE": "Warning",
+        "WARNING_DESCRIPTION": "The protected volume is thin provisioned. Are you sure you want the recovery volume to be thick provisioned?",
+        "PATH_PLACE_HOLDER": "Folder-A/Sub-Folder-B/Filename.vmdk",
+        "PATH_SCVMN_PLACE_HOLDER": "Folder-A/Sub-Folder-B/Filename.vhd(vhdx)",
+        "EMPTY_DATASTORE_TOOLTIP_ERROR" : "Datastore is empty",
+        "EMPTY_STORAGE_TOOLTIP_ERROR" : "Storage is empty"
+    }
+}

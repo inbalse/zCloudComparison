@@ -1,0 +1,14 @@
+{
+    "REMOTE_SUPPORT": {
+        "TITLE": "Remote Support",
+        "SAVE": "Save",
+        "CANCEL": "Cancel",
+        "ALLOW_REMOTE": "Allow remote log collection",
+        "SPECIFIC_CASE": "Only for a specific case",
+        "DAYS": "For the next {{num}} days",
+        "NEVER": "Never",
+        "CASE_NUMBER": "Case number",
+        "EXISTING_TIME_FRAME": "Remote log collection is currently allowed until ",
+        "EXISTING_CASE_NUMBER": "Remote log collection is currently allowed for case "
+    }
+}

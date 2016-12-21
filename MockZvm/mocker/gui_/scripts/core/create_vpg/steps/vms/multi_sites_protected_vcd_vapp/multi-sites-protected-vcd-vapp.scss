@@ -1,0 +1,32 @@
+.multi-site-protected-vcd-vapp-window {
+
+    .modal-dialog {
+        width: 860px;
+    }
+    .modal-body {
+        background-color: white;
+        height: 500px;
+    }
+    .window-info-title {
+        width: 100%;
+        text-align: center;
+        padding-bottom: 15px;
+    }
+
+    .select-vms-grid-container {
+        height: 410px;
+    }
+
+    .selected-vms-details {
+        padding: 18px 8px 8px 8px;
+        right: 8px;
+        position: absolute;
+    }
+
+    .custom-grid-filter-container{
+        width: 200px;
+        position: absolute;
+        right: 445px;
+        z-index: 10;
+    }
+}

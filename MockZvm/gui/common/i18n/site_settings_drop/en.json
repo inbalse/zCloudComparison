@@ -1,0 +1,14 @@
+{
+    "SITE_SETTINGS_DROP": {
+        "HELP": "Help",
+        "OPEN_IN_BROWSER": "Open Interface in Browser",
+        "SITE_SETTINGS": "Site Settings",
+        "LICENSE": "License",
+        "SUBMIT_SUPPORT_TICKET": "Submit Support Ticket",
+        "REMOTE_SUPPORT": "Remote Support",
+        "ABOUT": "About",
+        "LOG_OUT": "Log Out",
+        "REFRESH":  "Refresh"
+    }
+
+}

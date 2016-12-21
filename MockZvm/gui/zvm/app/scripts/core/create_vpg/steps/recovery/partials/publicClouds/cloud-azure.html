@@ -1,0 +1,156 @@
+<label class="control-label"><b>{{::'CREATE_VPG_RECOVERY.TITLE' | translate}}</b></label>
+
+<div class="form-group">
+    <div class="col-xs-offset-2 col-xs-5 text-center">{{::'CREATE_VPG_RECOVERY.FAILOVER_RECOVERY' |translate}}</div>
+    <div class="col-xs-5 text-center">{{::'CREATE_VPG_RECOVERY.FAILOVER_TEST' | translate}}</div>
+</div>
+<!------------------ PCN ---------------->
+<div class="form-group">
+    <label class="col-xs-2 control-label">{{::'CREATE_VPG_RECOVERY.VNET' | translate}}</label>
+    <div class="col-xs-5">
+        <ui-select theme="select2" required z-wizard-validator="pcnFailover" data-placement="top"
+                   ng-model="$parent.awsData.awsFailoverPcn"
+                   on-select="onFailoverPcnChanged()">
+            <ui-select-match class="ui-select-match" title="{{$select.selected.Pcn.Name}}">{{$select.selected.Pcn.Name}}</ui-select-match>
+            <ui-select-choices class="ui-select-choices"
+                               repeat="item.Pcn as item in awsData.awsPotentialPcns | filter: $select.search">
+                <span ng-bind-html="item.Pcn.Name | highlight: $select.search"></span>
+            </ui-select-choices>
+        </ui-select>
+    </div>
+
+    <div class="col-xs-5">
+        <ui-select theme="select2" required z-wizard-validator="pcnTest" data-placement="top"
+                   ng-model="$parent.awsData.awsFailoverTestPcn"
+                   on-select="onFailoverTestPcnChanged()">
+            <ui-select-match class="ui-select-match" title="{{$select.selected.Pcn.Name}}">{{$select.selected.Pcn.Name}}</ui-select-match>
+            <ui-select-choices class="ui-select-choices"
+                               repeat="item.Pcn as item in awsData.awsPotentialPcns | filter: $select.search">
+                <span ng-bind-html="item.Pcn.Name | highlight: $select.search"></span>
+            </ui-select-choices>
+        </ui-select>
+
+    </div>
+</div>
+<!------------------ subnet ---------------->
+<div class="form-group">
+    <label class="col-xs-2 control-label">{{::'CREATE_VPG_RECOVERY.SUBNET' | translate}}</label>
+    <div class="col-xs-5">
+        <ui-select theme="select2" required z-wizard-validator="subnetFailover" data-placement="top"
+                   ng-model="$parent.awsData.failoverPcnData.subnet"
+                   on-select="onFailoverSubnetChanged()">
+            <ui-select-match class="ui-select-match" title="{{$select.selected.Name}}">{{$select.selected.Name}}</ui-select-match>
+            <ui-select-choices class="ui-select-choices"
+                               repeat="item in awsData.failoverPcnData.subnetsList | filter: $select.search">
+                <span ng-bind-html="item.Name | highlight: $select.search"></span>
+            </ui-select-choices>
+        </ui-select>
+    </div>
+
+    <div class="col-xs-5">
+        <ui-select theme="select2" required z-wizard-validator="subnetTest" data-placement="top"
+                   ng-model="$parent.awsData.failoverTestPcnData.subnet"
+                   on-select="onFailoverTestSubnetChanged()">
+            <ui-select-match class="ui-select-match" title="{{$select.selected.Name}}">{{$select.selected.Name}}</ui-select-match>
+            <ui-select-choices class="ui-select-choices"
+                               repeat="item in awsData.failoverTestPcnData.subnetsList | filter: $select.search">
+                <span ng-bind-html="item.Name | highlight: $select.search"></span>
+            </ui-select-choices>
+        </ui-select>
+
+    </div>
+</div>
+<!------------------ security group ---------------->
+<div class="form-group">
+    <label class="col-xs-2 control-label">{{::'CREATE_VPG_RECOVERY.NETWORK_SECURITY_GROUP' | translate}}</label>
+    <div class="col-xs-5">
+        <ui-select theme="select2" required
+                   ng-model="$parent.awsData.failoverPcnData.securityGroups[0]"
+                   on-select="securityGroupEvents.onItemSelect()">
+            <ui-select-match class="ui-select-match" title="{{$select.selected.Name}}">{{$select.selected.Name}}</ui-select-match>
+            <ui-select-choices class="ui-select-choices"
+                               repeat="item in awsData.failoverPcnData.securityGroupsList | filter: $select.search">
+                <span ng-bind-html="item.Name | highlight: $select.search"></span>
+            </ui-select-choices>
+        </ui-select>
+
+    </div>
+    <div class="col-xs-5">
+        <ui-select theme="select2" required
+                   ng-model="$parent.awsData.failoverTestPcnData.securityGroups[0]"
+                   on-select="securityTestGroupEvents.onItemSelect()">
+            <ui-select-match class="ui-select-match" title="{{$select.selected.Name}}">{{$select.selected.Name}}</ui-select-match>
+            <ui-select-choices class="ui-select-choices"
+                               repeat="item in awsData.failoverTestPcnData.securityGroupsList | filter: $select.search">
+                <span ng-bind-html="item.Name | highlight: $select.search"></span>
+            </ui-select-choices>
+        </ui-select>
+    </div>
+</div>
+<!------------------ Instance Family ---------------->
+<div class="form-group">
+    <label class="col-xs-2 control-label">{{::'CREATE_VPG_RECOVERY.INSTANCE_FAMILY' | translate}}</label>
+    <div class="col-xs-5">
+        <ui-select theme="select2" required
+                   ng-model="$parent.awsData.selectedFolInstanceFamily"
+                   on-select="onSelectedFolInstanceFamily()">
+            <ui-select-match class="ui-select-match" title="{{$select.selected.FamilyName}}">{{$select.selected.FamilyName}}</ui-select-match>
+            <ui-select-choices class="ui-select-choices"
+                               repeat="item in awsData.familyTypes | filter: $select.search">
+                <span ng-bind-html="item.FamilyName | highlight: $select.search"></span>
+            </ui-select-choices>
+        </ui-select>
+    </div>
+
+    <div class="col-xs-5">
+        <ui-select theme="select2" required
+                   ng-model="$parent.awsData.selectedTestInstanceFamily"
+                   on-select="onSelectedTestInstanceFamily()">
+            <ui-select-match class="ui-select-match" title="{{$select.selected.FamilyName}}">{{$select.selected.FamilyName}}</ui-select-match>
+            <ui-select-choices class="ui-select-choices"
+                               repeat="item in awsData.familyTypes | filter: $select.search">
+                <span ng-bind-html="item.FamilyName | highlight: $select.search"></span>
+            </ui-select-choices>
+        </ui-select>
+    </div>
+</div>
+<!------------------ Instance Size ---------------->
+<div class="form-group">
+    <label class="col-xs-2 control-label">{{::'CREATE_VPG_RECOVERY.INSTANCE_SIZE' | translate}}</label>
+    <div class="col-xs-5">
+        <ui-select theme="select2" required z-wizard-validator="instanceFailover" data-placement="top"
+                   on-select="onAwsFailoverInstanceTypeDefaultsChanged()"
+                   ng-model="$parent.awsData.selectedFailoverInstanceType">
+            <ui-select-match class="ui-select-match" title="{{$select.selected.Id.InstanceType}}">
+                {{$select.selected.Id.InstanceType}}
+            </ui-select-match>
+            <ui-select-choices class="ui-select-choices"
+                               repeat="item in awsData.instanceFolList | filter: $select.search">
+                <span ng-bind-html="item.Name | highlight: $select.search"></span>
+            </ui-select-choices>
+        </ui-select>
+    </div>
+    <div class="col-xs-5">
+        <ui-select theme="select2" required z-wizard-validator="instanceTest" data-placement="top"
+                   on-select="onAwsTestInstanceTypeDefaultsChanged()"
+                   ng-model="$parent.awsData.selectedTestInstanceType">
+            <ui-select-match class="ui-select-match" title="{{$select.selected.Id.InstanceType}}">
+                {{$select.selected.Id.InstanceType}}
+            </ui-select-match>
+            <ui-select-choices class="ui-select-choices"
+                               repeat="item in awsData.instanceTestList | filter: $select.search">
+                <span ng-bind-html="item.Name | highlight: $select.search"></span>
+            </ui-select-choices>
+        </ui-select>
+    </div>
+</div>
+<!------------------ Advanced vm settings ---------------->
+<div class="form-group" ng-show="!data.isPortal">
+    <div class="col-xs-12">
+        <button class="btn z-btn-default-sm vpg-wizard-vm-settings-btn" ng-hide="vmSettingsDisabled"
+                ng-click="handlePublicCloudVmSettings()">
+            <img src="assets/vpg_wizard/vm-settings-icon.png">
+            {{::'CREATE_VPG_RECOVERY.ADVANCED_SETTINGS' | translate}}
+        </button>
+    </div>
+</div>

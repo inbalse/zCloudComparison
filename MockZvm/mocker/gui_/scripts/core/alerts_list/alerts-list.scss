@@ -1,0 +1,50 @@
+.alerts-list-controller {
+    .chck-display-acknowledged {
+        position: absolute;
+        left: 386px;
+        top: 11px;
+    }
+
+    @mixin z-alerts-image-icon($bgImage) {
+        width: 100%;
+        height: 100%;
+        background-image: url($bgImage);
+        background-repeat: no-repeat;
+        background-position: center 4px;
+        background-color: transparent;
+    }
+
+    .alerts-list-level-status-0 {
+        @include z-alerts-image-icon("../assets/list_icons/warning-list-icon.png");
+    }
+
+    .alerts-list-level-status-1 {
+        @include z-alerts-image-icon("../assets/list_icons/error-list-icon.png");
+    }
+
+    .alerts-list-level-status-2 {
+        @include z-alerts-image-icon("../assets/list_icons/error-list-icon.png");
+    }
+    .alerts-list-level-status-8 {
+        @include z-alerts-image-icon("../assets/list_icons/recovered_list_icon.png");
+    }
+
+    .alerts-list-dismiss-status-false {
+        @include z-alerts-image-icon("../assets/alerts/dismiss.png");
+        opacity: 0.4;
+    }
+
+    .alerts-list-dismiss-status-true {
+        @include z-alerts-image-icon("../assets/alerts/dismiss.png");
+    }
+
+    .grid-view-selector {
+        display: none;
+    }
+
+    .description-ellipsis {
+        white-space: normal;
+        height: 100%;
+        overflow: hidden;
+    }
+}

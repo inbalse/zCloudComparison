@@ -1,0 +1,269 @@
+$width: 768px;
+
+.siteSettingsModal {
+    .ng-invalid {
+        border-color: red;
+    }
+    .modal-dialog {
+        width: $width;
+    }
+
+    .modal-footer {
+        background-color: $modal-content-bg;
+        padding: 0;
+        margin-top: 7px;
+    }
+
+    .btn-link {
+        color: #89b7c9;
+    }
+
+    .modal-body {
+        padding: 0;
+        background-color: white;
+    }
+
+    .modal-content {
+        .site-settings-container {
+            padding-left: 185px;
+            position: relative;
+
+            .site-settings-container__site-tabs--disabled {
+                height: 38px;
+                width: 100%;
+                display: block;
+                padding: 10px 5px 0 15px;
+                color: #ffffff;
+                text-decoration: none;
+                opacity: 0.5;
+            }
+        }
+        .site-settings-side {
+            background-color: $brand-grey-content-bg;
+            position: absolute;
+            left: 0;
+            height: 100%;
+            width: 185px;
+        }
+
+        .site-settings-main {
+            min-height: 473px;
+            .form-horizontal {
+                padding: 20px;
+
+                .warning-bandwidth-disable {
+                    position: absolute;
+                    top: 20px;
+                    left: 292px;
+                    height: 16px;
+                    width: 16px;
+                    background-image: url("../assets/alerts/monitoring_warning_icon.png");
+                }
+            }
+        }
+
+        .license-usages-grid {
+            height: 152px;
+            padding-top: 0;
+        }
+        .versions-grid {
+            height: 386px;
+            width: 507px;
+            padding-top: 0;
+        }
+
+        .site-tabs {
+            list-style: none;
+            margin: 0;
+            padding: 10px 0;
+            li {
+                a {
+                    height: 38px;
+                    width: 100%;
+                    display: block;
+                    padding: 10px 5px 0 15px;
+                    color: #ffffff;
+                    text-decoration: none;
+                    &:hover {
+                        background-color: #ffffff;
+                        color: #161616;
+                        cursor: pointer;
+                        span {
+                            color: #161616;
+                        }
+                    }
+                    &.active {
+                        background-color: #ffffff;
+                        color: #161616;
+                        cursor: pointer;
+                        span {
+                            color: #161616;
+                        }
+                    }
+                    span {
+                        font-weight: bold;
+                        color: #E46168;
+                    }
+                }
+
+            }
+
+        }
+    }
+
+
+    .performance__advanced-setting-container{
+        min-height: 211px;
+    }
+
+    .performance-advanced-setting-container__title-container {
+        background-image: url("../assets/alerts/monitoring_warning_icon.png");
+        background-repeat : no-repeat;
+        color: #000000;
+        padding-bottom: 5px;
+    }
+
+    .performance-advanced-setting-container__title{
+        margin-left: 22px;
+    }
+
+    .performance__io-throttling-separator{
+        margin-top: 20px;
+        padding-top: 5px;
+        border-top: 1px solid #CCCED2;
+        padding-bottom: 5px;
+        font-size: 16px;
+        color: #000000;
+    }
+
+    .performance__hide-setting-link{
+        top: 15px;
+        position: relative;
+    }
+
+    .performance__io-throttling-title{
+        margin-left: 5px;
+    }
+
+    .performance__io-throttling-congestion{
+        margin-left: 0;
+    }
+
+    .performance__regulation-checkbox-container{
+        margin: 5px 0 15px 0;
+    }
+
+    .mb-sec-label {
+        position: relative;
+        top: 3px;
+        left: -8px;
+    }
+
+    .bandwidth-title {
+        left: 22px;
+    }
+
+    .performance-sec-span {
+        padding: 0;
+        top: 4px;
+
+    }
+
+    .time-based-checkbox {
+        margin: 0;
+    }
+
+    .settings-button {
+        width: 100%;
+        background-color: #80838a;
+        border: 0;
+        color: #fff;
+        line-height: 1.4;
+        &:hover {
+            background-color: #9da3af;
+            color: #fff;
+        }
+        &:focus {
+            background-color: #616773;
+            color: #fff;
+        }
+    }
+    .settings-button-extended {
+        padding: 7px 15px;
+    }
+    .send-test-mail-button {
+        padding: 7px;
+    }
+
+    .gridStyle {
+        border: 1px solid rgb(212, 212, 212);
+        background-color: #ffffff;
+
+        .ngHeaderContainer {
+            background-color: $brand-grey-content-bg;
+            color: #ffffff;
+            font-size: 12px;
+            font-weight: normal;
+        }
+        .ngRow {
+            background-color: #ffffff;
+        }
+        .ngCellText {
+            border-bottom: 1px solid rgb(212, 212, 212);
+        }
+        .ngRow:last-child {
+            .ngCellText {
+                border-bottom: 0;
+            }
+        }
+    }
+    .form-title-without-border {
+        margin-top: 0;
+        padding-top: 0;
+        border-top: 0;
+    }
+
+    .colons {
+        height: 26px;
+        width: 5px;
+        display: inline-block;
+        float: left;
+        margin-left: 1px;
+        margin-right: 1px;
+
+        div {
+            position: relative;
+            width: 5px;
+            float: left;
+            line-height: 26px;
+        }
+    }
+
+    z-timepicker {
+        #hours {
+            width: 48%;
+            float: left;
+        }
+
+        #minutes {
+            width: 48%;
+            float: right;
+        }
+
+        #colons {
+            float: none;
+            width: auto;
+
+            div{
+                float: none;
+                width: auto;
+            }
+        }
+    }
+
+}
+
+
+
+
+

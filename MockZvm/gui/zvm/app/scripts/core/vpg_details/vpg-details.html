@@ -1,0 +1,142 @@
+<div class="z-tabbed-view vpg-view non-symmetric-view">
+    <h3>{{"VPG_DETAILS.VPG" | translate}}: {{ vpgData.VpgConfiguration.Name }}</h3>
+
+    <div class="btn-group z-white-btn-group">
+        <button type="button" class="btn btn-link" ng-click="handleEditVPGClick()" ng-disabled="!isUpdateEnabled">
+            {{"VPG_DETAILS.EDIT"|translate}}
+        </button>
+        <span>|</span>
+
+        <div class="btn-group">
+            <div class="dropdown zerto">
+                <button class="btn btn-link" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                    {{"MORE" |translate}}
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu dropdown-white pull-right" role="menu" aria-labelledby="dropdownMenu1">
+
+                    <li role="presentation"><a help-icon="MORE_ACTIONS.PAUSE" role="menuitem" class="btn btn-link"
+                                               ng-disabled="!isPauseEnabled"
+                                               ng-click="handlePauseClick()"
+                                               tabindex="-1"
+                                               href="javascript:void(0);">{{'VPG_DETAILS.PAUSE' | translate}}</a></li>
+
+                    <li role="presentation"><a help-icon="MORE_ACTIONS.SYNC" help-icon-position="left" role="menuitem" class="btn btn-link"
+                                               tabindex="-1" ng-disabled="!isForceSyncEnabled"
+                                               href="javascript:void(0);" ng-click="forceSync()"
+                                               >{{'VPG_DETAILS.FORCE_SYNC' | translate}}</a>
+                    </li>
+                    <li role="presentation" class="divider" ng-show="!isPortal"></li>
+                    <li role="presentation" ng-show="!isPortal"><a help-icon="MORE_ACTIONS.START_BACKUP" role="menuitem"
+                                                                   class="btn btn-link"
+                                                                   ng-disabled="!isRunBackupEnabled"
+                                                                   tabindex="-1"
+                                                                   href="javascript:void(0);"
+                                                                   ng-click="handleRunBackupClick()"
+                                                                   >{{'VPG_DETAILS.RUN_BACKUP' | translate}}</a>
+                    </li>
+                    <li role="presentation" class="divider" ng-show="!isPortal"></li>
+                    <li role="presentation" ng-show="!isPortal"><a help-icon="MORE_ACTIONS.CLONE" help-icon-position="left" role="menuitem"
+                                                                   class="btn btn-link" ng-disabled="!isCloneEnabled"
+                                                                   tabindex="-1" href="javascript:void(0);"
+                                                                   ng-click="handleCloneButtonClick()"
+                                                                   >{{'VPG_DETAILS.OFFSITE_CLONE' | translate}}</a>
+                    </li>
+                    <li role="presentation" class="divider"></li>
+                    <li role="presentation"><a help-icon="MORE_ACTIONS.DELETE_VPG" role="menuitem" class="btn btn-link"
+                                               ng-disabled="!isDeleteEnabled"
+                                               tabindex="-1"
+                                               href="javascript:void(0);" ng-click="handleDeleteClick()"
+                                               >{{'VPG_DETAILS.DELETE' | translate}}</a>
+                    </li>
+                    <!-- <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);"
+                                                ng-click="handleStopCloneButtonClick()">{{"VPG_DETAILS.STOP_OFFSITE_CLONE"|translate}}</a>
+                     </li>-->
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div name="tabset">
+        <ul class="nav nav-tabs">
+            <li ng-class="{'active':tabs[0].active}"
+                ng-style="{'width':tabs[0].width}">
+                <a class="vpg-status-tab vpg-status-tab-state-{{vpgData.State.Status}}"
+                   ng-class="{'sub-status-exists': vpgData.subStatusObj.subStatusExists, 'sub-status-two-lines':vpgData.subStatusObj.showSecondLine || vpgData.subStatusObj.showSubStatusProgress}" ui-sref="{{tabs[0].route}}"
+                   border-arrow="up">{{vpgData.statusText}}
+                    <div class="sub-status-container">
+                        <div class="sub-status-text">{{vpgData.subStatusObj.subStatusText}}
+                            <span class="help-icon" ng-show="vpgData.subStatusObj.showHelpIcon"
+                                  uib-tooltip="{{vpgData.subStatusObj.helpIconText}}"
+                                  tooltip-placement="right" tooltip-append-to-body="true">?</span>
+                            <span class="sub-status-action" ng-show="vpgData.subStatusObj.showLink"
+                                  ng-click="vpgData.subStatusObj.linkFunction()">{{vpgData.subStatusObj.linkText}}</span>
+                        </div>
+                        <div class="sub-status-second-line" ng-show="vpgData.subStatusObj.showSecondLine">
+                            {{vpgData.subStatusObj.secondLineText}}<span class="sub-status-action"
+                                                                         ng-click="vpgData.subStatusObj.secondlinkFunction()">{{vpgData.subStatusObj.secondLink}}</span>
+                        </div>
+                        <uib-progressbar value="vpgData.subStatusObj.progressValue"
+                                     ng-show="vpgData.subStatusObj.showSubStatusProgress"
+                                     animate="true" class="sub-status-progress"></uib-progressbar>
+                    </div>
+                </a>
+
+                <div class="vpg-status-tab-icon"></div>
+            </li>
+            <li ng-class="{'active':tabs[1].active}" ng-style="{'width':tabs[1].width}">
+                <a ui-sref="{{tabs[1].route}}" border-arrow="up">
+                    <label ng-bind="tabs[1].title"></label>
+
+                    <div class="tab-content tab-content-protected protected-storage-part pull-right">
+                        <p>
+                            <span ng-bind="ProvisionedPreffix"></span>
+                            <span class="recovery-storage-suffix" ng-bind="ProvisionedSuffix"></span>
+                        </p>
+                        <small translate="VPG_DETAILS.TABS.PROTECTED"></small>
+                    </div>
+                    <div class="tab-content protected-vms-part pull-right">
+                        <p class="protected-vms-value" ng-bind="vpgData.Summary.NumberOfVms"></p>
+                        <small translate="VPG_DETAILS.TABS.VMS_LABEL"></small>
+                    </div>
+                </a>
+            </li>
+            <li ng-class="{'active':tabs[2].active}" ng-show="!isPortal || isPortalAllowVpgSiteDetails" ng-style="{'width':tabs[2].width}">
+                <a class="vpg-topology-tab" ui-sref="{{tabs[2].route}}" border-arrow="up">
+                    <label ng-bind="tabs[2].title"></label>
+
+                    <div class="topology-tab-container topology-tab-container-direction-{{vpgData.Direction}}">
+                        <div class="topology-tab-item topology-tab-type-{{vpgData.Entities.Source}} source-site">
+                            <small ng-bind="vpgData.SitesInfo.SourceSiteName"></small>
+                        </div>
+                        <div ng-hide="vpgData.Direction == enums.ProtectionGroupStateVisual.SelfProtected"
+                             class="topology-tab-item topology-tab-type-{{vpgData.Entities.Target}} target-site">
+                            <small ng-bind="vpgData.SitesInfo.TargetSiteName"></small>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li ng-class="{'active':tabs[3].active}" ng-style="{'width':tabs[3].width}">
+                <a ui-sref="{{tabs[3].route}}" border-arrow="up">
+                    <label ng-bind="tabs[3].title"></label>
+
+                    <div class="tab-content tab-content-latest-test pull-right" uib-tooltip="{{lastTestTooltip}}" ng-class="{'tab-content-3-parts':vpgData.VpgConfiguration.Configuration.ServiceProfile , 'tab-content-2-parts':!vpgData.VpgConfiguration.Configuration.ServiceProfile}">
+                        <small translate="VPG_DETAILS.TABS.LATEST_TEST"></small>
+                        <p> {{lastTestText}}</p>
+                    </div>
+                    <div class="tab-content pull-right tab-content-sp-name" uib-tooltip="{{vpgData.VpgConfiguration.Configuration.ServiceProfile.Name}}" ng-class="{'tab-content-3-parts':vpgData.VpgConfiguration.Configuration.ServiceProfile , 'tab-content-2-parts':!vpgData.VpgConfiguration.Configuration.ServiceProfile}"
+                         ng-if="vpgData.VpgConfiguration.Configuration.ServiceProfile">
+                        <small translate="VPG_DETAILS.TABS.PROFILE"></small>
+                        <p>{{vpgData.VpgConfiguration.Configuration.ServiceProfile.Name | uppercase}}</p>
+                    </div>
+                    <div class="tab-content tab-content-priority pull-right" >
+                        <small translate="VPG_DETAILS.TABS.PRIORITY"></small>
+                        <p>{{"ENUM.PRIORITY." + vpgData.VpgConfiguration.Configuration.Priority | translate |
+                            uppercase}}</p>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="z-tab-content" ui-view>
+    </div>
+</div>

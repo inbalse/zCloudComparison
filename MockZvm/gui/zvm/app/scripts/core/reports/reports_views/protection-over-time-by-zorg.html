@@ -1,0 +1,65 @@
+<div class="col-50 full-height protection-over-time-charts">
+    <div class="chart-container" id="used-chart-container">
+        <span>Used Journal ({{ selectedSitesTitle }})</span>
+        <div id="journalChart" class="flot-placeholder"></div>
+        <div class="charts-title used-chart-title">Data (GB)</div>
+        <z-flot-legend items="usedLegend" click-func="showHideUsedLine(item)" class="used-legend"/>
+    </div>
+    <div class="chart-container" id="vms-chart-container">
+        <span>{{ selectedSitesTitle }}</span>
+        <div id="vmsChart" class="flot-placeholder"></div>
+        <div class="charts-title vms-chart-title">VMs</div>
+        <z-flot-legend items="vmsLegend" click-func="showHideVmsLine(item)" class="vms-legend"/>
+    </div>
+</div>
+
+<div class="col-50 full-height protection-over-time-grid">
+    <z-slick-grid id="protected-by-zorg-report-grid" data="data" custom-options="customOptions"
+                  grid-id="protected-by-grid" class="protected-by-zorg-report-grid" hide-view-options="true"></z-slick-grid>
+</div>
+
+<script id="protection-over-time-by-zorg-input.html" type="text/ng-template">
+    <table>
+        <tr>
+            <td>
+                <button class="btn btn-link" ng-click="applyFilter()">{{ 'REPORTS_VIEW.APPLY' | translate
+                    }}
+                </button>
+                <button type="button" class="btn btn-link" ng-click="resetFilter()">{{ 'REPORTS_VIEW.RESET' |
+                    translate }}
+                </button>
+            </td>
+        </tr>
+    </table>
+</script>
+
+<script id="protection-over-time-by-zorg-form.html" type="text/ng-template">
+    <form class="form-horizontal">
+        <div class="col-xs-4">
+            <div class="form-group pull-left">
+                <input type="daterange" ng-model="reportDateRange" class="pull-right btn btn-link" format="DD/MM/YYYY"/>
+            </div>
+        </div>
+        <div class="col-xs-8">
+            <div class="form-group">
+                <label class="col-xs-4  control-label">{{ 'REPORTS_VIEW.PROTECTED_SITE' | translate }}</label>
+
+                <div class="col-xs-8">
+                    <z-dropdown-multiselect options="sites" ng-required selected-model="selectedSites" extra-settings="sitesExtraSettings" checkboxes="true"></z-dropdown-multiselect>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-4 control-label">{{ 'REPORTS_VIEW.RESOLUTION' | translate }}</label>
+
+                <div class="col-xs-8">
+                    <ui-select theme="select2" ng-model="$parent.selectedResolution">
+                        <ui-select-match class="ui-select-match">{{$select.selected.text}}</ui-select-match>
+                        <ui-select-choices class="ui-select-choices" repeat="item.value as item in resolutions | filter: $select.search">
+                            <span ng-bind-html="item.text | highlight: $select.search"></span>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+            </div>
+        </div>
+    </form>
+</script>

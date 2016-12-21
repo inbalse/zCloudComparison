@@ -1,0 +1,15 @@
+{
+    "ZSSP_VPG":
+    {
+        "VCDVAPP_ERROR":       "Select at least one vApp",
+        "ALL_SITES_PROTECTED": "All VMs that can be protected are already protected.",
+        "ORG_VDC":             "Org vDC",
+        "RESOURCE_POOL" :      "Resource Pool",
+        "VC_VM_ERROR":         "Select VMs",
+        "VC_VAPP_ERROR":       "Select at least one vApp",
+        "SELECT_VMS":          "Select at least one vApp or VM",
+        "SWITCH":              "Advanced Configuration",
+        "WARNING":             "Warning",
+        "WARNING_TEXT":         "The portal is currently not available. Wait a few minutes and refresh the portal or contact your cloud provider for assistance."
+    }
+}

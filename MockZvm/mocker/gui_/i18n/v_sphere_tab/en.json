@@ -1,0 +1,11 @@
+{
+    "V_SPHERE_TAB": {
+        "TITLE": "Not protected by Zerto",
+        "TO_PROTECT_VM": "To protect this VM, add it to a VPG.",
+        "TO_PROTECT_VAPP": "To protect this vApp, create a VPG.",
+        "VPG_DESCRIPTION": "A Virtual Protection Group (VPG) is a set of related VMs that are replicated to a recovery site. VPGs can be configured to meet your replication needs.",
+        "ADD": "Add to an existing VPG",
+        "PROTECT": "Protect as a standalone VM",
+        "CREATE": "Create a VPG"
+    }
+}

@@ -1,0 +1,11 @@
+$width: 550px;
+
+.pairSitesStyle {
+  .modal-dialog{
+    width: $width;
+  }
+
+  .modal-body{
+    background-color: white;
+  }
+}

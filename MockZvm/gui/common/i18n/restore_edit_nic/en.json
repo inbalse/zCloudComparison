@@ -1,0 +1,10 @@
+{
+    "RESTORE_EDIT_NIC": {
+        "TITLE": "Edit NIC",
+        "NIC_NAME": "NIC Name",
+        "NETWORK": "Network",
+        "NEW_MAC": "New MAC",
+        "IP_ADDRESS": "IP Address",
+        "PREFERRED_DNS_SERVER": "Preferred DNS Server"
+    }
+}

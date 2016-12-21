@@ -1,0 +1,35 @@
+<script id="resource-reports-input.html" type="text/ng-template">
+    <table>
+        <tr>
+            <td>
+                <div class="btn-group">
+                    <div class="dropdown zerto">
+                        <button class="btn btn-link" type="button" id="dropdownMenu1"
+                                ng-disabled="!uiEnabled" ng-click="export()">
+                            {{ 'REPORTS_VIEW.EXPORT' | translate }}
+                        </button>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+</script>
+
+<script id="resource-reports-form.html" type="text/ng-template">
+    <div class="container-fluid">
+        <div class="row">
+            <form class="form-horizontal">
+                <div class="col-xs-4">
+                    <div class="form-group pull-left">
+                        <input type="daterange" ng-model="reportDateRange" ng-change="rangeFilterChange()"
+                               class="pull-right btn btn-link" format="DD/MM/YYYY"
+                               ng-disabled="!uiEnabled">
+                    </div>
+                    <div ng-show="showStatusMessage">
+                        {{ 'REPORTS_VIEW.RESOURCE_NOTHING_TO_SHOW' | translate }}
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</script>

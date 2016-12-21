@@ -1,0 +1,114 @@
+4b7f31b3664548bac736c5c64eaa6a39fa4fe6c3 [html5] added default injections to unitests
+e46f395c77d81968f969d8920753d1bd73b6e6fb added some details to main view, final stage
+e2cb1e31d9945a2029c2e7a882704ef15cc1c9e8 html5_main_view_info added some stuff to main view (stage 1)
+3bfefa24211bed228a48639e26a1f48f7e513580 [html5] removed jshint errors
+29e9a3ecf27b694c392c639a57c43bf254f02d16 add resolutions to the bower file for now
+a6b7deaf36b2fbbb2c1cd94dec0095e8d0e041d4 fixed unitests
+e049a08ca61243d488f25280e308ddbd43407051 renamed files to comply with accepted name style
+14aa7bd95a4ea35d430f884cf6ed767ef60a28c5 Merge branch 'html5' of ssh://172.18.0.20/home/zerto/src into html5
+77d643312919a795b337b4b5df70bdde12f4fed2 fixed minification in build
+a6b0b7d939bec64ff8ce445e8b1b50e3d507308c remove mock data
+96290bdd33a18031cf938a0c39611caab56c5a9e fix conflicts and alerts position
+902ec84460a5193f8f5abdfd6e2f30b43679c5ac Merge branch 'task2076' of ssh://zgit/home/zerto/src into html5
+57a078e2f4ed266a689ebbbdaa37d52ced6e001d add translations add progress bar align tasks and actions
+7d7cd3d65fa4265ad16c163b4ed06f3fb8e0de80 insert tranaction to failover , change positioning css
+9dc37da54b092eb6fbce0e3b2c1d542f999c4ccf removed redundant css
+d8888c8c6bca2420f17fd2662703da1f98c62a32 update
+56df94a0c6d7fa51e0200a1b75fab82db144758c Merge branch 'html5' of ssh://zgit/home/zerto/src into html5-2187
+18f8baac60fb74a683b5c62dadc295c357fd92a3 added actions_button component
+74218bca76e4781b590864aa1adee12d56ef4b40 Merge branch 'html5' of ssh://zgit/home/zerto/src into task2076
+eb1ed8599ff04bf1b92d50f99f327da029fb586a ~ to x
+4f0cae7e99cb4c09cd588c8f9986b9ccf68f6b94 merge
+188036b2c2f7aee22bfbaf64f5d15d753988ab4d Merge branch 'html5' of ssh://zgit/home/zerto/src into task2074
+4c4c25610379cae57d1d77f5f35716158c13bf14 i18n
+d2c726da7983e6f94605d2066dd270bb925c68e4 change icons
+9977fd9e8348b5d50fd1ed0bca636b1904b1e0ad [html5] fixed relative css path changed a folder name
+fa6d4534b1ae0ebf68c93536ae6a399f16be3fb8 Merge branch 'html5' of ssh://zgit/home/zerto/src into html5
+bec906b7b198a0dfec68f733b89b60cc5f41c34c fix folder names
+206a069d5ee6f5b716823d0abf1a0993edf1d02d renaming files
+4746561c3379b27bc1bfedf974158fd7d7338ad4 [html5] Merge branch 'html5' of ssh://zgit/home/zerto/src into html5
+00025eb8e1c452a10576e70cf705a77000c2e628 [html5] Added site settings drop down component
+6a37f51f0fd246000e737ab6e3bd14c0273bc697 fixed image url
+8a8c38962e234ef7f07ce490dfeb74af6f7ab0c4 fixed image url
+396f1de5b8c33826ac42cd8ab4c27e720271e0b4 Merge branch 'html5' of ssh://172.18.0.20/home/zerto/src into html5
+3d58dd51c46ece488e84b826ad5facdc2053c912 upadted grunt build task fixed image urls
+0f2d818c3dd33c577f6704c3d0bc2dbf59758a8d Merge branch 'task2076' of ssh://zgit/home/zerto/src into html5
+991dcc0841cb5219e4690158bc6c26bf61171012 use tweaks
+a9ff7eb9d53dcee67a87d4b6afb24f66305a40a9 jshint dont check camel case add task icons add taskEnum filter with test add new modules change directive of mini tasks
+423c1e135fe4c881b1eb976cedb813bf7bc8fc6a Merge branch 'html5' of ssh://zgit/home/zerto/src into html5
+0e814465dc5f5917a0d2d158ebf1a2d7fcf75466 [html5] Added new directive called border directive Added the site settings behaviour + all of the window (no BL atm) Some components are missing so there are place holders in place
+5bbaf12ec251b251d7339d66beb1d5ad09d43bbe added failover button tests
+1b1c2b4b6963b174d9d2e9a3c77d7d49ff07d4b6 Merge branch 'html5' of ssh://zgit/home/zerto/src into task2076
+a82c1ccccf5acb054c9d5a0262fac18b567e8726 change using directive
+5fce5c38273fbf6712a6bbc047f172748e972a22 change actions position
+00d33787fda1cede9cd0e77993364cb1002ad2aa Merge branch 'html5' of ssh://172.18.0.20/home/zerto/src into html5
+ecadef21d9f6b66dfa553c0d6d0f109ee552bfc2 Added failover button. With connection to the main frame. And states.
+f6c4e3410068f4b65dc5d1cb195f665e5ab7f824 change icons with class styles add unit tests to the directive
+cc4400518a0f4736be7fffeee8c49c79c02f04c2 added base64 polyfill (btoa atob functions for IE)
+fe4a86486198d51ded16a035164cd31dbc78743f Merge branch 'html5' of ssh://zgit/home/zerto/src into task2076
+85f625954eb126df7b79b9f468a74ec090e9cd7a fixed unitest after inserting tweaksService
+d43a2be734151eda78fc300cdbd894285759ba30 Merge branch 'html5' of ssh://172.18.0.20/home/zerto/src into html5
+55b61e63e03e2aa89d4531f449b2245382ce6057 removed ng-html2js-preprocessor, added directive unitest
+66d7f9fd1b04ce58b604cdf449000cdf3f905f56 [html5] changes to the ut
+6e33d972f3ac6c34e8d56f6a18f55cda2d0b16f1 Merge branch 'html5' of ssh://zgit/home/zerto/src into html5
+13220fa0f19771541cc8cd0b8ab530a4dd691113 [html5] 1. Added a theme page that shows the current themes for componets 2. Added modal window theme and base component for the team to reuse 3. Added the site settings popup 4. Added style for all the buttons 5. Added style for text inputs 6. Added style for radio and checkboxes 7. Cleared the base styles used mixins and extends.
+8a01cfa9009d3131b5aacd76e58bcae7412896c8 add tweaks factory
+97ac16ead4de760a3fb134568c7a820adca02d0b Merge branch 'html5' of ssh://zgit/home/zerto/src into html5
+10cdc88d4f0282b785bfb69bdcaf277e51be8a90 Merge branch 'html5' of ssh://zgit/home/zerto/src into task2076
+b82fac424baa5389ef59b5e3e3239f620e0dd645 fixed auto updater, fixed unitests
+4f709070829f9feccd737ce065a86a696f120af8 Merge remote-tracking branch 'origin/site_version2' into karlite
+1ff39e296f0ed41cc6188eb0db4c3e0bb7d0d1c6 added controller test
+aeb657566e3aa776417f8787d78390ae58560138 Merge branch 'html5' of ssh://zgit/home/zerto/src into task2076
+dbc940fe56619b52710c3112b4da2646e2bb03ba added login unit test
+8df412bcc095c90a43773ebb0288afc77b3ef043 fixed login and saving session id in cookies
+27763a86f87c35a0f64f496c0d01a13d2957850c temporary amf workaround
+fdd6f25db4c77ad16971b0cb08018c0bdb7f6662 task 2076 Small Tasks Component
+3f26329b02f6a59e9906bca24abf9bd9d79e3c72 Merge branch 'html5' of ssh://zgit/home/zerto/src into html5
+e2f2ee030e53edb396d1019d8057644b7046f7a1 add tasks js
+13498a48099c49ae8bfa57cb8a72e8ebc06121c8 service generator modifications
+c410a771f2dd046b92ea7357985a5bd3e040de7d Merge branch 'html5' of ssh://zgit/home/zerto/src into html5
+49e5524254906f1d7718e5d4287532158227e5f8 fixed proper hint for promise result
+ff81c861c63bc496d9e52bee5ecfb605706369ac removed toastr on success
+51c598ea3a7f76bb9914b04ed19ae2b49c960f63 Merge branch 'html5' of ssh://zgit/home/zerto/src into html5
+3ebcee239ac00c952c656bf1d246619b8a1ac36c change to directive
+c76b086a00ad69f8f523c87624d1c77beb8b33b0 added time and summary minimal model
+8e49d917a3f5de7599de2a9675cb982bd00370a1 added session id to amf header
+38b65f5ff6acf76833b28e4feaed08a007e5c16f fixed jshint warnings
+27bf233eb7b6cbad0d90bf51cf32695b41d23e5a added jshint ignore to auto generated code
+f93025217041bb10373937c20cd22a1cbfe6abd0 Merge branch 'html5' of ssh://172.18.0.20/home/zerto/src into html5
+70f793d88d6f6b104dbcf81a235eb273404f0ca6 fixed crlf bug on gen script
+61a860c52ff846d1dad58e24ec74f0d1f9ec93f7 Merge branch 'html5' of ssh://zgit/home/zerto/src into html5
+d3e0dad63857ad9d67e2cb7fa15bca17999b0057 [html5] failover comp
+ed13a4099c974f707dbbcf4ce07dc13fa64e7183 fixed anugluar verison
+73369d278d8c12eda5415581622c17af78bf5c6c [html5] Failover button to separate component (view only)
+9eed3903b583da5cad05bc02c998d089085cc057 [html5] Adding the static tabs for ZVM gui Adding stubs of components Progress of the navigation
+e8841b7310f3361cdc1c5b554d8e44a21eb1f588 [html5] Adding navigation tabs to ZCM HTML5 GUI
+f799cc454913bf1623a383b839bc04495d9d0076 [html5] HTML login screen desing
+af1d27c4cbe67145eb80b759e50b6e610fd7d79e fixed merge conflict
+3563a224cf866be597f43ee9f39fcb90488a30c1 Merge branch 'html5' of ssh://172.18.0.20/home/zerto/src into html5
+255c67b356c6ffe98e1d0cef69bdf6607c959ae8 [html5] HTML5 progress
+1020c102635ba75c08c848213f62b1c769a09ea8 added gen stubs from wsdl script
+a0259d55a48266e697ed7b8c8949c649a0e05271 [html5] [html5] HTML5 progress
+35bcb24ddcc2ab830b264b66e4026ce2871a6e42 Merge branch 'html5' of ssh://zgit/home/zerto/src into html5
+f7215c41e54b3d4df5f1d318b2967a8fd6d2e900 HTML5 progress
+6e11928d701ea092e1b14500acb45998d6f128de separated grunt file
+2092b7bf6553eff2a4885358011e023242b6e859 fixed amf to handle faults
+c5cd697f4fa74a473ef14ba0d48dabc560b61f8c added amf service
+4c86fa196ef46ff11276d64daef5f601ee5edec7 change dependencies
+0de5dab3fb8c72c3843856828c59d23e8689fa45 fixed scss bug
+0ca286bd620d9c24347a4d8a3c0a7811e983d1ef updated grunt jshint version
+eda19d295828015dcb3483e076804903dfaaec4f fixed another jshint warning
+ebafcbb1bcaa6e7ee4343ee2fcf4f4864d17031e fixed angular ui bug
+dba50e77fb2a0ac4778d237bafaf9423f491339f fixed some jshint warnings
+1c84dc77246cccb3acefb6529d6b53c845446834 Merge branch 'html5' of ssh://172.18.0.20/home/zerto/src into html5
+33dc5b8b9eb63ddf3ee8184c7230439afdc36b7e fixed jshint stuff
+2340a34325673b60d90c23b2c366ec36f2bd8ae9 adding css from ZCM Adding stubs for login and main view adding the zertoServiceFactory
+592508f25410d456e1f1df7878263b3f2a9ec47c Merge branch 'html5' of ssh://zgit/home/zerto/src into html5
+3c74b549aa9b14afbfec73c2ed612ef8633cba8b added toastr and other dependen.
+a15b65d9fa393102a7c6d8e089591fb96cdc83e2 Merge branch 'html5' of ssh://172.18.0.20/home/zerto/src into html5
+9e000dbf7e0cbf786166622f0bea4bf71e4d9019 adding html stuff
+2e9722b7ace7135f48277e966bdb8adea1999b3a fixed running tests, added grunt task to run tests
+2c868895a6db3571c812f756049c07ea84d1710e adding ui router
+6a2cf259f8a11d16e2964f2d62096294f1c3e0fa Changing dependencies json files.
+0a2a328095e378e88e9ec348f07127d8f33ebc9b updated grunt file and stuff around
+3c1910d4d44129f481b6b483def787f099daa9f1 zvm js initial commit

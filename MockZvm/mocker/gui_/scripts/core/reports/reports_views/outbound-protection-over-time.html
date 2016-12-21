@@ -1,0 +1,51 @@
+<div class="full-height outbound-protection-over-time-charts">
+    <div class="chart-container">
+        <div class="outbound-chart-title">Data (GB)</div>
+        <div id="outboundChart" class="flot-placeholder"></div>
+        <z-flot-legend items="legend" click-func="showHideLine(item)" class="over-time-legend" />
+    </div>
+</div>
+
+<script id="outbound-protection-over-time-input.html" type="text/ng-template">
+    <table>
+        <tr>
+            <td>
+                <button class="btn btn-link" ng-click="applyFilter()">{{ 'REPORTS_VIEW.APPLY' | translate
+                    }}
+                </button>
+                <button type="button" class="btn btn-link" ng-click="resetFilter()">{{ 'REPORTS_VIEW.RESET' |
+                    translate }}
+                </button>
+            </td>
+        </tr>
+    </table>
+</script>
+
+<script id="outbound-protection-over-time-form.html" type="text/ng-template">
+    <div class="container-fluid">
+        <div class="row">
+            <form class="form-horizontal">
+                <div class="col-xs-4">
+                    <div class="form-group pull-left">
+                        <input type="daterange" ng-model="reportDateRange" class="pull-right btn btn-link" format="DD/MM/YYYY">
+                    </div>
+                </div>
+                <div class="col-xs-8">
+                    <div class="form-group">
+                        <label class="col-xs-4  control-label">{{ 'REPORTS_VIEW.RECOVERY_SITE' | translate}}</label>
+
+                        <div class="col-xs-8">
+                            <ui-select theme="select2" ng-model="$parent.selectedSites">
+                                <ui-select-match class="ui-select-match">{{$select.selected.text}}</ui-select-match>
+                                <ui-select-choices class="ui-select-choices" repeat="item.value as item in sites | filter: $select.search">
+                                    <span ng-bind-html="item.text | highlight: $select.search"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</script>

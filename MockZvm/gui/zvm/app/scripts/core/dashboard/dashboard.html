@@ -1,0 +1,259 @@
+<div class="z-dashboard">
+    <div class="z-dashboard-container">
+        <div class="z-dashboard-content z-dashboard-health">
+            <div class="z-dashboard-content-container z-dashboard-content-container-heat-map">
+                <h4 class="title">{{'DASH_BOARD.HEALTH' | translate}}</h4>
+
+                <div class="heatMapData">
+                    <z-heat-map data="mapData"></z-heat-map>
+                </div>
+            </div>
+        </div>
+
+        <div class="z-dashboard-content z-dashboard-graphs">
+            <div class="z-dashboard-content-container">
+                <div class="status-widget charts-row">
+                    <div id="iopsChart" class="flot-placeholder"></div>
+                    <span class='chart-title' tooltip-append-to-body="true" uib-tooltip="{{'GRAPHS.OUTGOING' | translate}}">{{'GRAPHS.IOPS' | translate}}</span>
+                    <span class='main-value'>{{IposMainValue}}</span>
+
+                    <div class="flot-x-axis">
+                        <div class="flot-x-axis-left">4 Hours</div>
+                        <div class="flot-x-axis-middle">2 Hours</div>
+                        <div class="flot-x-axis-right">Now</div>
+                    </div>
+                </div>
+                <div class="status-widget charts-row">
+                    <div id="thorughChart" class="flot-placeholder"></div>
+                    <span class='chart-title' tooltip-append-to-body="true" uib-tooltip="{{'GRAPHS.OUTGOING' | translate}}">{{'GRAPHS.THROUGHPUT' | translate}}</span>
+                    <span class='main-value'>{{throughMainValue}}</span>
+
+                    <div class="flot-x-axis">
+                        <div class="flot-x-axis-left">4 Hours</div>
+                        <div class="flot-x-axis-middle">2 Hours</div>
+                        <div class="flot-x-axis-right">Now</div>
+                    </div>
+                </div>
+                <div class="status-widget charts-row">
+                    <div id="wanChart" class="flot-placeholder"></div>
+                    <span class='chart-title' tooltip-append-to-body="true" uib-tooltip="{{'GRAPHS.OUTGOING' | translate}}">{{'GRAPHS.WANTRAFFIC' | translate}}</span>
+                    <span class='main-value'>{{wanMainValue}}</span>
+
+                    <div class="flot-x-axis">
+                        <div class="flot-x-axis-left">4 Hours</div>
+                        <div class="flot-x-axis-middle">2 Hours</div>
+                        <div class="flot-x-axis-right">Now</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="z-dashboard-content z-dashboard-tabs">
+            <div class="z-dashboard-content-container">
+                <h4 class="title">{{'DASH_BOARD.STATUS' | translate}}</h4><br/>
+
+                <div class="z-dashboard-tab">
+                    <h4 ng-bind="numOfVpgs"></h4>
+                    <label>VPGs</label>
+                </div>
+                <div class="z-dashboard-tab">
+                    <h4 ng-bind="numOfVms"></h4>
+                    <label>VMs</label>
+                </div>
+                <div class="z-dashboard-tab">
+                    <h4 id="dashboardProtectedSize">{{protected}}<span>{{sizeType}}</span></h4>
+                    <label>{{'DASH_BOARD.PROTECTED' | translate}}</label>
+                </div>
+                <div class="z-dashboard-tab">
+                    <h4 id="dashboardAvgRpo"><span>{{underAbove}}</span>{{avrgRpo}}<span>{{avrgRpoUnits}}</span></h4>
+                    <label>Average RPO</label>
+                </div>
+                <div class="z-dashboard-tab">
+                    <h4 id="dashboardCompression">{{compression}}<span ng-show="isCompressionNotNa">%</span></h4>
+                    <label>{{'DASH_BOARD.COMPRESSION' | translate}}</label>
+                </div>
+            </div>
+        </div>
+        <div class="z-dashboard-content z-dashboard-complex">
+            <div class="z-dashboard-content-container">
+                <div class="z-dashboard-content z-dashboard-pies">
+                    <div class="z-dashboard-content-container">
+                        <h4 class="title">{{'DASH_BOARD.VPG_STATUS' | translate}}</h4>
+
+                        <div class="pie-side-container">
+                            <div class="middle-pie-text"><span>{{pieMiddleText}}</span></div>
+                            <z-status-chart class="z-status-pie" data="statusPieData"></z-status-chart>
+                        </div>
+                        <div class="legend-side-container">
+                            <ul>
+                                <li ng-repeat="legend in legendData track by $index" ng-if="legend.visible"
+                                    ng-style="legend.height">
+                                    <div class="legend-square">
+                                        <div class="first-legend-square" ng-style="legend.color"></div>
+                                        <div class="second-legend-square" ng-style="legend.outerColor"></div>
+                                    </div>
+                                    <label>{{legend.legendText}}</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="z-dashboard-content z-dashboard-sites">
+                    <div class="z-dashboard-content-container">
+                        <h4 class="title">{{'DASH_BOARD.SITE_TOPOLOGY' | translate}}</h4>
+
+                        <div class="this-site">
+                            <label>{{localSite}} ({{'DASH_BOARD.THIS_SITE' | translate}})</label>
+                        </div>
+                        <div class="site-directions">
+                            <div class="site-incoming">
+                                <label>{{incomingVpgs}} {{'DASH_BOARD.INCOMING' | translate}}</label>
+                            </div>
+
+                            <div class="site-outgoing">
+                                <label>{{outgoingVpgs}} {{'DASH_BOARD.OUTGOING' | translate}}</label>
+                            </div>
+                        </div>
+                        <div class="target-sites"
+                             ng-class="{'target-sites-single': !showMultiSites, 'target-sites-multi':showMultiSites}">
+                            <label ng-if="showMultiSites">{{'DASH_BOARD.MULTI_SITES' | translate}} ({{numConnectedPeers}})</label>
+                            <label ng-if="!showMultiSites">{{'DASH_BOARD.ONE_SITE' | translate}}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="z-dashboard-content z-dashboard-lists"
+                     ng-class="{'z-dashboard-lists-licence':showTrialLicense}">
+                    <div class="z-dashboard-content-container">
+                        <div class="z-dashboard-content-container-scroll">
+                            <div class="container-fluid">
+                                <!------------- ALERTS ----------------------------------------------------------------->
+                                <div class="row status-widget status-widget-alerts">
+
+                                    <div class="col-xs-12 status-widget-content">
+                                        <div class="show-all"><a ng-click="gotToAlerts()" href="">SHOW ALL</a></div>
+                                        <div ng-if="alertsList.length !== 0">
+                                            <a ng-click="gotToAlerts()" href="" class="status-widget-title">{{'VPG_DETAILS.TITLES.ACTIVE_ALERTS'
+                                                |
+                                                translate}}</a>
+                                        </div>
+                                        <div ng-if="alertsList.length === 0">
+                                            <a ng-click="gotToAlerts()" href="" class="status-widget-title">{{'VPG_DETAILS.TITLES.NO_ACTIVE_ALERTS'
+                                                |
+                                                translate}}</a>
+                                        </div>
+
+                                        <div ng-repeat="alert in alertsList track by $index"
+                                             class="global-list-item alerts-list-item">
+                                            <div
+                                                class="col col-1 alert-icon alert-icon-{{alert.AlertLevel}} line-ellipsis">
+                                                {{alert.SiteName}}
+                                            </div>
+                                            <div class="col col-2 line-ellipsis"
+                                                 uib-tooltip-html="alert.Description"
+                                                 tooltip-append-to-body="true" ng-bind-html="alert.Description">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--------------- TASKS ------------------------------------------------------------>
+                                <div class="row status-widget recent-tasks" ng-controller="dashboardTasksController">
+                                    <div class="col-xs-12 status-widget-content">
+                                        <div class="show-all"><a ng-click="gotToTasks()" href="">SHOW ALL</a></div>
+                                        <div ng-if="TaskItems.length !== 0">
+                                            <a ng-click="gotToTasks()" href="" class="status-widget-title">{{
+                                                'VPG_DETAILS.STATUS.TASKS' |
+                                                translate}}</a>
+                                        </div>
+                                        <div ng-if="TaskItems.length === 0">
+                                            <a ng-click="gotToTasks()" href="" class="status-widget-title">{{
+                                                'VPG_DETAILS.STATUS.NO_TASKS' |
+                                                translate}}</a>
+                                        </div>
+                                        <div ng-repeat="task in TaskItems track by $index"
+                                             class="global-list-item tasks-list-item"
+                                             ng-class="{'tasks-list-item-show-buttons': (task.showLeftButton || task.showRightButton)}">
+                                            <div class="col col-1 line-ellipsis">{{task.Started}}</div>
+                                            <div class="col col-2 line-ellipsis">
+                                            <span uib-tooltip="{{task.tooltip}}"
+                                                  tooltip-append-to-body="true" ng-bind-html="task.entities"></span>
+                                            </div>
+                                            <div class="col col-3 col-progress" ng-if="task.showProgress">
+                                                <label
+                                                    class="progress-label">{{task.StateAndProgress.Progress}}%</label>
+                                                <uib-progressbar value="task.StateAndProgress.Progress" animate="true"
+                                                             class="vpg-status-tasks-progress"></uib-progressbar>
+
+                                            </div>
+                                            <div class="col col-3" ng-if="task.showProgressCandy">
+                                                <uib-progressbar max="100" value="100"
+                                                             class="progress-striped active"></uib-progressbar>
+                                            </div>
+                                            <div class="col col-4 tasks-buttons-in-view">
+                                                <button ng-show="task.showLeftButton"
+                                                        uib-tooltip="{{task.leftButtonTooltip}}"
+                                                        ng-click="taskAction(task,task.leftButtonEvent)"
+                                                        ng-class="task.leftButtonClass" title="{{task.leftLabel}}">
+                                                </button>
+                                                <button ng-show="task.showRightButton"
+                                                        uib-tooltip="{{task.rightButtonTooltip}}"
+                                                        ng-click="taskAction(task,task.rightButtonEvent)"
+                                                        ng-class="task.rightButtonClass" title="{{task.rightLabel}}">
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--------------- EVENTS ------------------------------------------>
+                                <div class="row status-widget">
+                                    <div class="col-xs-12 status-widget-content">
+                                        <div class="show-all"><a ng-click="gotToEvents()" href="">SHOW ALL</a></div>
+                                        <div ng-if="dashboardEvents.Events.length !== 0">
+                                            <a ng-click="gotToEvents()" class="status-widget-title"
+                                               href="">{{"VPG_DETAILS.TITLES.EVENTS"|translate}}</a>
+                                        </div>
+                                        <div ng-if="dashboardEvents.Events.length === 0">
+                                            <a ng-click="gotToEvents()" class="status-widget-title"
+                                               href="">{{"VPG_DETAILS.TITLES.NO_EVENTS"|translate}}</a>
+                                        </div>
+                                        <div ng-repeat="event in dashboardEvents.Events track by $index"
+                                             class="global-list-item events-list-item">
+                                            <div class="col col-1">{{event.TimeStamp | date : 'dd/MM/yyyy HH:mm'}}</div>
+                                            <div class="col col-2 line-ellipsis"
+                                                 uib-tooltip-html="event.EventType"
+                                                 tooltip-append-to-body="true"
+                                                 ng-bind="event.EventType"></div>
+                                            <div class="col col-3">
+                                                <label class="inline-content  line-ellipsis"
+                                                       uib-tooltip-html="event.Description"
+                                                       tooltip-append-to-body="true"
+                                                       class="line-ellipsis" ng-bind-html="event.Description"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="z-dashboard-content z-dashboard-license" ng-show="showTrialLicense">
+                    <div class="z-dashboard-content-container license-container">
+                        <div class="container-fluid">
+                            <div class="row status-widget">
+                                <div class="col-xs-12 global-list-item status-widget-content">
+                                    <div class="col col-1 license-title">{{'DASH_BOARD.TRIAL_LICENSE' | translate}}
+                                    </div>
+                                    <div class="col col-2 line-ellipsis license-message"
+                                         uib-tooltip-html="dashboardData.LicenseMessage"
+                                         tooltip-append-to-body="true"
+                                         ng-bind-html="dashboardData.LicenseMessage"></div>
+                                    <div class="show-all upgrade"><a ng-click="handleUpgradeClick()" href="">{{'DASH_BOARD.UPDATE'
+                                        | translate}}</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

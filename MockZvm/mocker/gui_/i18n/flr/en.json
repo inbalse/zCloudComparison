@@ -1,0 +1,82 @@
+{
+    "FLR": {
+        "DOWNLOAD": {
+            "FILE": {
+                "TITLE" : "FILE/FOLDER",
+                "SELECT_FILES": "Select files or folders to restore",
+                "SELECTED_FILES": "Selected files and folders",
+                "ITEM": "item",
+                "SELECTED": "selected",
+                "TOTAL_SIZE": "total size:",
+                "TOOLTIP": {
+                    "FILE_DETAILS": "File details:",
+                    "NAME": "Name:",
+                    "SIZE": "Size:",
+                    "CREATED": "Created:",
+                    "MODIFIED": "Modified:",
+                    "ACCESSED": "Accessed:"
+                },
+                "NO_FILES_ERROR": "No file was chosen"
+            },
+            "SETTINGS": {
+                "SETTINGS": "SETTINGS",
+                "TITLE": "Selected disk for download.",
+                "VM": "Virtual Machine:",
+                "POINT": "Checkpoint:",
+                "VOLUME": "Mounted disk:",
+                "CP_TAG": "Tag:"
+            },
+            "SUMMARY": {
+                "FILES_TO_RESTORE": "Files/Folders To Restore",
+                "DESTINATION": "Destination:",
+                "RESTORE_AS": "Restore files as a compressed zip file",
+                "PLACEHOLDER_ZIP_PREFIX": "Zip file prefix",
+                "ADD_NOTE": "Add note:",
+                "DOWNLOAD": "START DOWNLOAD",
+                "SUMMARY_TITLE": "DOWNLOAD"
+            }
+        },
+        "WIZARD": {
+            "MOUNT": {
+                "TITLE": "Selected settings for mount.",
+                "VM": "Restore VM:",
+                "POINT": "Checkpoint:",
+                "VOLUME": "Restore disk:",
+                "MOUNT": "Mount",
+                "START_MOUNT": "START MOUNT",
+                "MOUNT_TITLE": "MOUNT",
+                "PREPARE_RESTORE_POINT_LABEL": "Preparing to mount the disk based on the specified checkpoint.",
+                "PREPARE_RESTORE_POINT_TEXT": "This may take several minutes. When complete, return to the File and Folder Restore wizard by clicking the folder icon in a Tasks area (for example in the MONITORING > TASKS tab).",
+                "MOUNT_ERROR": "FLR is not available"
+            },
+            "RESTORE_POINT": {
+                "TITLE": "Select checkpoint.",
+                "OFFSITE_BACKUPS": "Offsite backups",
+                "CHECKPOINTS": "Checkpoints:",
+                "TOTAL_CHECKPOINTS": "Total Checkpoints:",
+                "CHECKPOINT_TITLE": "CHECKPOINT",
+                "AUTO": "Auto",
+                "VSS": "VSS",
+                "TAGGED": "Tagged",
+                "USER": "User",
+                "POINT_DETAILS": "Details of selected point in time:",
+                "SOURCE": "Source:",
+                "TIME": "Time:",
+                "CHECKPOINT_NAME": "Checkpoint name:",
+                "CHECKPOINT_TYPE": "Type:",
+                "NONE_SELECTED": "Select checkpoint",
+                "SHOW": "Show",
+                "NAME": "Name:"
+            },
+            "VM": {
+                "VM_TITLE": "VM",
+                "TITLE": "Select the VM where the file/folder to restore is located.",
+                "NONE_SELECTED": "Select a VM"
+            },
+            "VOLUMES": {
+                "TITLE": "Select disk to mount.",
+                "VOLUMES_TITLE" : "DISK"
+            }
+        }
+    }
+}

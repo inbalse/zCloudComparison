@@ -1,0 +1,10 @@
+{
+    "RECOVERY_FOLDER_VM_SETTINGS": {
+            "TITLE": "Advanced VM Recovery Settings",
+            "RECOVERY_FOLDER_VM_SETTINGS_INFO":"Specify specific settings for the VM, overriding the default settings.",
+            "GRID":{
+                "VM_NAME":"VM Name",
+                "RECOVERY_FOLDER":"Recovery Folder"
+            }
+    }
+}

@@ -1,0 +1,48 @@
+<div class='full-height vpg-performance-charts'>
+    <div class="chart-container">
+        <span>{{'GRAPHS.RPO' | translate}}</span>
+        <div id="rpoChart" class="flot-placeholder"></div>
+    </div>
+    <div class="chart-container">
+        <span>{{'GRAPHS.IOPS' | translate}}</span>
+        <div id="iopsChart" class="flot-placeholder"></div>
+    </div>
+    <div class="chart-container">
+        <span>{{'GRAPHS.THROUGHPUT' | translate}}</span>
+        <div class="flot-placeholder" id="throughChart"></div>
+    </div>
+    <div class="chart-container">
+        <span>{{'GRAPHS.WANTRAFFIC' | translate}}</span>
+        <div class="flot-placeholder" id="wanChart"></div>
+    </div>
+</div>
+
+<script id="vpg-performance-input.html" type="text/ng-template">
+    <table>
+        <tr>
+            <td>
+                <button class="btn btn-link" ng-click="apply()">{{'REPORTS_VIEW.APPLY' | translate}}</button>
+                <button class="btn btn-link" ng-click="init()">{{'REPORTS_VIEW.RESET' | translate}}</button>
+            </td>
+        </tr>
+    </table>
+</script>
+
+<script id="vpg-performance-form.html" type="text/ng-template">
+    <form class="form-horizontal">
+        <div class="col-xs-4">
+            <div class="form-group">
+                <label class="col-xs-2  control-label">{{ 'REPORTS_VIEW.VPG' | translate }}</label>
+
+                <div class="col-xs-10">
+                    <z-dropdown-multiselect options="vpgsAvaliable" width="198" selected-model="selectedVpgs"
+                                            extra-settings="vpgsExtraSettings" checkboxes="true">
+                    </z-dropdown-multiselect>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <z-flot-legend items="legend" click-func="showHideChartLines(item)" class="vpg-performance-legend"></z-flot-legend>
+        </div>
+    </form>
+</script>

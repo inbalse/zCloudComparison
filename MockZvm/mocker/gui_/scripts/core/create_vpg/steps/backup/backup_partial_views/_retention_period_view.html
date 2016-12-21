@@ -1,0 +1,104 @@
+<div class="form-group"  ng-class="{ 'blocked-view': !data.isBackupEnabled }">
+    <label help-icon="VPG_WIZARD.BACKUP_RETENTION_PERIOD" class="col-xs-2 control-label"><b>{{:: 'CREATE_VPG_BACKUP.RETENTION_PERIOD'| translate}}</b></label>
+
+    <div class="col-xs-3">
+        <ui-select theme="select2" name="retentionPeriod" ng-show="data.isSlaCustom" search-enabled="false" ng-change="handleChangeRestorePointRange()"
+                   ng-model="$parent.data.backup.DeleteBackup.RestorePointRange"
+                   required
+                   ng-disabled="!data.isBackupEnabled">
+            <ui-select-match class="ui-select-match">{{$select.selected.label}}</ui-select-match>
+            <ui-select-choices class="ui-select-choices" repeat="item.value as item in retentionList">
+                <span ng-bind-html="item.label"></span>
+            </ui-select-choices>
+        </ui-select>
+        <label ng-show="!data.isSlaCustom" class="control-label">{{restorePointRangeLabel}}</label>
+    </div>
+</div>
+
+<div class="form-group"
+     ng-class="{ 'blocked-view': !data.isBackupEnabled }">
+    <label help-icon="VPG_WIZARD.BACKUP_RUN_JUB" class="col-xs-2 control-label"><b>{{:: 'CREATE_VPG_BACKUP.JOB_EVERY' | translate}}</b></label>
+
+    <div class="col-xs-3">
+        <div class="form-group">
+            <!----- run job every --------->
+            <div class="col-xs-6">
+                <ui-select theme="select2" name="everyDay" ng-show="data.isSlaCustom" search-enabled="false"
+                           ng-model="$parent.backupObj.dayOfWeek" ng-change="dayOfWeekChange()"
+                           required
+                           ng-disabled="!data.isBackupEnabled">
+                    <ui-select-match class="ui-select-match">{{$select.selected.label}}</ui-select-match>
+                    <ui-select-choices class="ui-select-choices" repeat="item.value as item in everyList">
+                        <span ng-bind-html="item.label"></span>
+                    </ui-select-choices>
+                </ui-select>
+
+                <label ng-if="!data.isSlaCustom" class="control-label">{{runEvery}}</label>
+            </div>
+            <span class="at-pos">{{:: 'CREATE_VPG_BACKUP.AT' | translate}}</span>
+
+            <div class="col-xs-5 no-padding">
+                <z-timepicker
+                    ng-model="data.backup.Scheduler.RunningTime.RunningTimeOfDayInMinutes"
+                    required="true"
+                    disabled="!data.isBackupEnabled">
+                </z-timepicker>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="form-group" ng-show="data.isSlaCustom"
+     ng-class="{ 'blocked-view': !data.isBackupEnabled }">
+    <label class="col-xs-2 control-label"><b>{{:: 'CREATE_VPG_BACKUP.RETRIES' | translate}}</b></label>
+
+    <div class="col-xs-3">
+        <z-checkbox
+            model="data.backup.Scheduler.Retry.ShouldRetryOnFailure"
+            z-disabled="!data.isBackupEnabled">
+            {{:: 'CREATE_VPG_BACKUP.AUTOMATIC' | translate}}
+        </z-checkbox>
+    </div>
+
+    <div class="col-xs-3">
+        <div class="form-group">
+            <label class="col-xs-7 control-label">{{:: 'CREATE_VPG_BACKUP.ATTEMPTS' | translate}}</label>
+            <div class="col-xs-4">
+                <div name="journalStepper"
+                     z-wizard-validator="retryTimes"
+                     data-placement="top"
+                     scriptTimeOutValid
+                     z-stepper
+                     element-disabled="!data.isBackupEnabled || !data.backup.Scheduler.Retry.ShouldRetryOnFailure"
+                     ng-model="data.backup.Scheduler.Retry.RetryTimes"
+                     ng-required="data.backup.Scheduler.Retry.ShouldRetryOnFailure"
+                     min="1"
+                     max="9999">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-4">
+        <div class="form-group">
+            <label class="col-xs-6 control-label backup-wait-label">{{:: 'CREATE_VPG_BACKUP.WAIT' | translate}}</label>
+
+            <div class="col-xs-4">
+                <div name="journalStepper"
+                     z-wizard-validator="retryMinutes"
+                     data-placement="top"
+                     scriptTimeOutValid
+                     z-stepper
+                     element-disabled="!data.isBackupEnabled || !data.backup.Scheduler.Retry.ShouldRetryOnFailure"
+                     ng-required="data.backup.Scheduler.Retry.ShouldRetryOnFailure"
+                     ng-model="data.backup.Scheduler.Retry.RetryIntervalInMinutes"
+                     min="1"
+                     max="9999"
+                     p-holder="{{:: 'CREATE_VPG_RECOVERY.TIMEOUT' | translate}}">
+                </div>
+            </div>
+
+            <label class="col-xs-2 control-label backup-wait-label">{{:: 'CREATE_VPG_BACKUP.MINUTES' | translate}}</label>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+.z-inline-dropdown {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 3;
+
+    .z-inline-dropdown__container {
+        height: 25px;
+    }
+
+    .z-inline-dropdown__ellipsis {
+        overflow: hidden;
+        word-break: break-all;
+        display: block;
+        text-overflow: ellipsis;
+    }
+}
+
+.z-inline-dropdown__loading-indicator{
+    height: 100%;
+    top: 3px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-image: url("../assets/tasks/progress_icon.gif");
+}
+

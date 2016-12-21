@@ -1,0 +1,282 @@
+.reports-container {
+    $width: 100%;
+    $reportsHeaderHeight: 92px;
+
+    padding: $reportsHeaderHeight+10 15px 10px 15px;
+    height: 100%;
+    color: #444545;
+
+    h4 {
+        display: inline-block;
+    }
+
+    .recovery-report {
+        background-image: url("../assets/reports/drop-down-item-icon.png");
+    }
+
+    .reports-header {
+        height: $reportsHeaderHeight;
+        position: absolute;
+        left: 0;
+        top: 5px;
+        width: 100%;
+        padding: 0 15px;
+        .reports-header-column {
+            height: 100%;
+            position: relative;
+            float: left;
+            padding: 7px
+        }
+        .reports-header-container {
+            height: 100%;
+            //            background-color: #fff;
+
+            #report-types {
+                width: 37%;
+                border-right: 5px solid #E6E8E9;
+                .icon {
+                    width: 46px;
+                    height: 40px;
+                    display: inline-block;
+                }
+                .zerto-reports-button {
+                    width: $width;
+                    height: 60px;
+                    background-color: #f6f6f7;
+                    border: 1px solid #a2a4a9;
+                    padding: 0;
+                    outline: none;
+                    .glyphicon {
+                        margin-right: 10px;
+                        line-height:60px;
+                        display: inline-block;
+
+                    }
+
+                    .icon {
+                        left: 14px;
+                        top: 14px;
+                        position: absolute;
+                    }
+
+                    p {
+                        left: 70px;
+                        top: 19px;
+                        position: absolute;
+                        font-size: 16px;
+                        display: inline-block;
+                    }
+
+                    text-align: left;
+                }
+                .zerto-reports-dropdown-menu {
+                    width: $width;
+                    background-color: #f6f6f7;
+                    border: 1px solid #a2a4a9;
+                    padding: 0;
+
+                    a {
+                        padding: 0;
+                        height: 60px;
+                        border-bottom: 1px solid #a2a4a9;
+                        color: #444545;
+                        &:hover {
+                            background-color: #ededed;
+                            color: #444545;
+                        }
+                    }
+
+                    .icon {
+                        position: relative;
+                        left: 14px;
+                        top: 14px
+                    }
+                    p {
+                        position: relative;
+                        left: 20px;
+                        top: -5px;
+                        font-size: 16px;
+                        display: inline-block;
+                    }
+                }
+            }
+            #reports-form {
+                width: 55%;
+                border-right: 5px solid #E6E8E9;
+            }
+            #reports-inputs {
+                width: 8%;
+                table {
+                    width: 100%;
+                    height: 100%;
+                    td {
+                        vertical-align: top;
+                        text-align: left;
+                    }
+                }
+            }
+        }
+    }
+
+    .reports-body {
+        height: 100%;
+        .chart-container {
+            width: 100%;
+
+            position: relative;
+            border-bottom: 10px solid #E6E8E9;
+            padding: 5px;
+            overflow:hidden;
+            &:last-child {
+                border-bottom-color: #fff;
+            }
+
+            .flot-placeholder{
+                padding-bottom: 10px;
+            }
+        }
+    }
+
+    .full-height {
+        height: 100%;
+    }
+
+    .col-50 {
+        width: 50%;
+        position: relative;
+        float: left;
+    }
+
+    .protection-over-time-charts {
+        border-right: 10px solid #E6E8E9;
+        .chart-container {
+            background-color: #fff;
+            height: 50%;
+            padding-left:20px;
+        }
+
+        .charts-title{
+            position: absolute;
+            margin-bottom: 20px;
+            top: 50%;
+            margin-top: -25px;
+            transform: rotate(270deg);
+        }
+
+        #used-chart-container{
+            padding-bottom:48px;
+            .used-chart-title{
+                left: -10px;
+            }
+        }
+        #vms-chart-container{
+            padding-bottom: 51px;
+            border-bottom: 0;
+            .vms-chart-title{
+                left: 8px;
+            }
+        }
+
+        .vms-legend{
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            margin-left: -20px;
+            width:400px;
+        }
+        .used-legend{
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            margin-left: -20px;
+            width:400px;
+        }
+    }
+    .protection-over-time-grid, .recovery-report-grid-container {
+        background-color: #fff;
+        padding: 5px;
+        .protected-by-zorg-report-grid,.recovery-report-grid {
+            height: 100%;
+            padding-top: 0;
+        }
+    }
+
+    .outbound-protection-over-time-charts {
+        background-color: #fff;
+        .chart-container {
+            height: 100%;
+            padding-bottom: 30px;
+        }
+        .over-time-legend{
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            margin-left: -50px;
+            width: 200px;
+        }
+
+        .outbound-chart-title{
+            position: absolute;
+            left: -10px;
+            margin-bottom: 20px;
+            top: 50%;
+            margin-top: -25px;
+            transform: rotate(270deg);
+        }
+    }
+
+    .vpg-performance-legend {
+        margin-right: 15px;
+        left: 8px;
+        position: absolute;
+        top: 12px;
+        width:100%;
+    }
+
+    .vpg-performance-charts {
+        .chart-container {
+            width: 100%;
+            height: 25%;
+            background-color: #fff;
+            float: left;
+            padding-bottom: 12px;
+            margin-bottom: 0;
+            text-align: center;
+            > span{
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                top:10px;
+                font-weight: bold;
+                text-align: center;
+                font-size: 16px;
+                color: #000000;
+                z-index: 2;
+            }
+        }
+
+    }
+
+}
+@mixin icon-base($path) {
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-image: url($path);
+    height: 100%;
+    padding-left: 17px;
+}
+.recovery-report-status-0 {
+    @include icon-base("../assets/list_icons/small-arrow.png");
+}
+.recovery-report-status-1 {
+    @include icon-base("../assets/list_icons/normal-list-icon.png");
+}
+.recovery-report-status-2 {
+    @include icon-base("../assets/list_icons/error-list-icon.png");
+}
+.recovery-report-status-3 {
+    @include icon-base("../assets/list_icons/normal-list-icon.png");
+}
+.recovery-report-status-4 {
+    @include icon-base("../assets/list_icons/error-list-icon.png");
+}

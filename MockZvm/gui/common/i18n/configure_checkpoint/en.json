@@ -1,0 +1,18 @@
+{
+    "CONFIGURE_CHECKPOINT": {
+        "TITLE": ": Checkpoints",
+        "INFO": "Select the VPG recovery point for the ",
+        "LATEST": "Latest",
+        "LATEST_TAGGED": "Latest Tagged Checkpoint",
+        "LATEST_VSS": "Latest VSS",
+        "SELECT_FROM": "Select from all available checkpoints",
+        "TOTAL_CHECKPOINTS": "Total Checkpoints:",
+        "JUMP_TO": "Jump to:",
+        "FILTER":{
+            "SHOW": "Show",
+            "AUTO": "Auto",
+            "VSS": "VSS",
+            "TAGGED": "Tagged"
+        }
+    }
+}

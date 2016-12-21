@@ -1,0 +1,19 @@
+{
+    "TASK_SUMMARY": {
+        "ROLLBACK":             "Rollback",
+        "COMMIT":               "Commit",
+        "WAITING":              " - Waiting for user input",
+        "CLONE":                "Clone",
+        "FOT_STOP":             "Stop failover test",
+        "CLONE_STOP":           "Abort clone",
+        "RESUME":               "Resume",
+        "ROLLBACK_WARN":        "You are about to roll back the operation. Do you want to continue?",
+        "CLONE_WARN":           "You are about to abort the Offsite Clone operation.",
+        "BACKUP_WARN":          "You are about to stop this backup run. VMs that were already backed up in this run will remain in the repository.<br/>Stopping the operation will NOT remove any backed up volumes from the repository.<br/>Are you sure you want to stop this run?",
+        "STOP_BACKUP":          "Stop Backup",
+        "FLR_DOWNLOAD":         "TBD - Download File",
+        "FLR_MOUNTING":         "TBD -  - Mounting Volume ...",
+        "FLR_UN_MOUNT":         "Unmount warning",
+        "FLR_UN_MOUNT_WARN":    "Are you sure you want to unmount disk {{disk}} ?"
+    }
+}

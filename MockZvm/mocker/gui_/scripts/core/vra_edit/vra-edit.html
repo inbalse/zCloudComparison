@@ -1,0 +1,98 @@
+<base-modal-window modal-title="{{ 'VRA_EDIT.TITLE' | translate }}" close="close" btns="buttons"
+                   loading="loading" help="vraEditController">
+    <form class="form-horizontal" autocomplete="off" name="forms.vraForm">
+
+        <div class="form-group">
+            <label class="col-xs-5 control-label">{{'VRA_EDIT.HOST' | translate}}</label>
+
+            <div class="col-xs-7">
+                <label class="control-label">{{vraEditObject.host}}</label>
+            </div>
+        </div>
+
+        <!-- vib -->
+        <div class="form-group" ng-if="vraEditObject.vibSupported">
+            <div class="col-xs-1">
+                <z-checkbox model="vraEditObject.useCredentials"></z-checkbox>
+            </div>
+            <label help-icon="EDIT_VRA.VRA_VIB" class="col-xs-11 vib-label">{{'VRA_EDIT.VIB_LABEL' | translate}}</label>
+        </div>
+
+        <div class="form-group" ng-if="vraEditObject.hostCredentialsRequired">
+            <label help-icon="EDIT_VRA.HOST_ROOT_PASSWORD" class="col-xs-5 control-label">{{'VRA_INSTALL.HOST_PASS' | translate}}</label>
+            <div class="col-xs-6">
+                <z-password model="vraEditObject.password" show-text="vraEditObject.showPasswordText" z-disabled="!vraEditObject.useCredentials" focus="false" required="vraEditObject.useCredentials"></z-password>
+            </div>
+            <div class="col-xs-1">
+                <z-checkbox z-disabled="!vraEditObject.useCredentials" model="vraEditObject.showPasswordText">
+                </z-checkbox>
+            </div>
+
+            <div class="col-xs-6">
+                <label class="password-label">{{'VRA_CHANGE_PASSWORD.LABEL_BOTTOM_TEXT' | translate}}</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label help-icon="EDIT_VRA.VRA_GROUP" for="groupList" class="col-xs-5 control-label">{{'VRA_INSTALL.VRAGROUP' | translate}}</label>
+
+            <div class="col-xs-7">
+                <ui-select theme="select2" id="groupList" ng-model="$parent.vraEditObject.vraGroup">
+                    <ui-select-match class="ui-select-match">{{$select.selected}}</ui-select-match>
+                    <ui-select-choices class="ui-select-choices" repeat="item in vragroups | filter: $select.search">
+                        <span ng-bind-html="item | highlight: $select.search"></span>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+
+        <!-- ADD GROUP -->
+        <div class="form-group">
+            <label class="col-xs-5"></label>
+            <div class="col-xs-5">
+                <input name="createInput" type="text" ng-model="vraEditObject.newGroup" collection="vragroups"
+                       placement="left" error-message="{{'VRA_EDIT.GROUP_EXIST' | translate}}" z-unique-valid
+                       placeholder="New group"/>
+            </div>
+            <div class="col-xs-2">
+                <button class="btn btn-primary create-group-btn" ng-click="createNewGroup(vraEditObject.newGroup)"
+                        ng-disabled="!vraEditObject.newGroup || forms.vraForm.createInput.$invalid">{{'VRA_EDIT.CREATE' | translate}}</button>
+            </div>
+        </div>
+
+        <h4 class="form-h4">{{'VRA_INSTALL.VRANETWORK' | translate}}</h4>
+        <div class="form-group">
+            <label for="confList" class="col-xs-5 control-label">{{'VRA_INSTALL.CONFIGURATION' | translate}}</label>
+
+            <div class="col-xs-7">
+                <ui-select theme="select2" id="confList" ng-model="$parent.vraEditObject.networkType" search-enabled="false">
+                    <ui-select-match class="ui-select-match">{{$select.selected.label}}</ui-select-match>
+                    <ui-select-choices class="ui-select-choices" ui-disable-choice="item.isDisabled" repeat="item.value as item in networkTypes | filter: $select.search">
+                        <span ng-bind-html="item.label | highlight: $select.search"></span>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="address" class="col-xs-5 control-label">{{'VRA_INSTALL.ADDRESS' | translate}}</label>
+
+            <div class="col-xs-7">
+                <input type="text" z-ip-field id="address" ng-model="vraEditObject.Ip" ng-disabled="isNetworkDisabled" ng-required="!isNetworkDisabled">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="subnet" class="col-xs-5 control-label">{{'VRA_INSTALL.SUBNET' | translate}}</label>
+
+            <div class="col-xs-7">
+                <input type="text" z-ip-field id="subnet" ng-model="vraEditObject.NetMask" ng-disabled="isNetworkDisabled" ng-required="!isNetworkDisabled">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="gateway" class="col-xs-5 control-label">{{'VRA_INSTALL.GATEWAY' | translate}}</label>
+
+            <div class="col-xs-7">
+                <input type="text" z-ip-field id="gateway" ng-model="vraEditObject.DefaultGw" ng-disabled="isNetworkDisabled" ng-required="!isNetworkDisabled">
+            </div>
+        </div>
+    </form>
+</base-modal-window>

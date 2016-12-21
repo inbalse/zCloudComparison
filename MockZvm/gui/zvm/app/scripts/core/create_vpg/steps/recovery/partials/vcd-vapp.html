@@ -1,0 +1,41 @@
+<div class="form-group">
+    <div class="col-xs-6">
+        <z-checkbox help-icon="VPG_WIZARD.RECOVERY_GUEST_CUSTOMIZATION"
+                    model="recovery.guestCustomization" change="onGuestCustomizationChanged()">
+            {{::"CREATE_VPG_RECOVERY.VCD_GUEST_CUSTOMIZATION" | translate }}
+        </z-checkbox>
+    </div>
+    <div class="col-xs-6"
+         ng-if="data.copyNatServiceAvailable">
+        <div class="form-group">
+            <div class="col-xs-12">
+                <z-checkbox model="data.enableCopyNatServiceDropDown" change="onToggleCopyNatRulesCheckbox()">{{::"CREATE_VPG_RECOVERY.COPY_NAT_RULES" |
+                    translate }}
+                </z-checkbox>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-12" ng-if="data.enableCopyNatServiceDropDown">
+                <div class="form-group">
+                    <label class="col-xs-12">{{::"CREATE_VPG_RECOVERY.COPY_NAT_RULES_LABEL"
+                        | translate }}</label>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <ui-select theme="select2" search-enabled="false"
+                                   on-select="onCopyNatRulesChanged()"
+                                   ng-model="$parent.data.copyNatRuleOption"
+                                   required>
+                            <ui-select-match class="ui-select-match">{{$select.selected.label}}
+                            </ui-select-match>
+                            <ui-select-choices class="ui-select-choices"
+                                               repeat="item.value as item in data.copyNatRulesCollection">
+                                <span ng-bind-html="item.label"></span>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

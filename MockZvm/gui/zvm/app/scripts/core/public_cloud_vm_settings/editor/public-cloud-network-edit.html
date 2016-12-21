@@ -1,0 +1,7 @@
+<base-modal-window modal-title="{{'PUBLIC_CLOUD_NETWORK_SETTINGS.COMMON.EDIT_VM_SETTINGS' | translate}}"
+                   close="close" btns="buttons" loading="loading">
+    <div class="container-fluid">
+        <div ng-if="data.isAws" ng-include="partials.aws"></div>
+        <div ng-if="data.isAzure" ng-include="partials.azure"></div>
+    </div>
+</base-modal-window>

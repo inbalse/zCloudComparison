@@ -1,0 +1,29 @@
+<div class="grid-controller tasks-list-controller" ng-controller="tasksListController" >
+    <div class="btn-group z-white-btn-group">
+        <button class="btn btn-link inline-site-settings" type="button" ng-click="handleSiteSettingsClick()">{{'VPG_LIST.MORE_BUTTON.SITE_SETTINGS'
+            | translate}}</button>
+        <span class="inline-site-settings">|</span>
+        <button type="button" class="btn btn-link" ng-click="export()">{{'EXPORT' | translate}}</button>
+        <span>|</span>
+    </div>
+
+    <div class="tasks-list-filters">
+        <ui-select theme="select2" search-enabled="false" ng-model="$parent.selectedTime" class="time-dropdown" ng-change="changeTimeFilter()" >
+            <ui-select-match class="ui-select-match" placeholder="Select time">{{$select.selected.label}}</ui-select-match>
+            <ui-select-choices class="ui-select-choices" repeat="time.value as time in timeList">
+                <span ng-bind-html="time.label"></span>
+            </ui-select-choices>
+        </ui-select>
+
+        <z-dropdown-multiselect options="statusList" class="status-dropdown" ng-required selected-model="selectedStatuses" extra-settings="statusExtraSettings" checkboxes="true"></z-dropdown-multiselect>
+    </div>
+
+
+    <z-slick-grid id="tasks-list" grid-id="tasks-list"
+                  data="data"
+                  grid="gridObj.grid"
+                  group-by-values="groupByValues"
+                  custom-options="customOptions"
+                  hide-create-view="true"
+                  row-click="rowClick"></z-slick-grid>
+</div>

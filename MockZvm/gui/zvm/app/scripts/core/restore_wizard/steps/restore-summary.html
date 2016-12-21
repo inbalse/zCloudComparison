@@ -1,0 +1,21 @@
+<div class="z-wizard-container-narrow" ng-controller="restoreSummaryController" ng-cloak="">
+    <h5 class="restore-title">{{'RESTORE_WIZARD.RESTORE_SUMMARY_STEP.TITLE' | translate}}</h5>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12">
+                <ul class="list-unstyled">
+                    <li><b>{{'RESTORE_WIZARD.RESTORE_SUMMARY_STEP.VPG_NAME_LABEL' | translate}}:</b>      {{data.selectedProtectionGroup.DisplayName}}</li>
+                    <li><b>{{'RESTORE_WIZARD.RESTORE_SUMMARY_STEP.RESTORE_POINT_LABEL' | translate}}:</b> {{data.selectedItems[0].PointInTime.display}}</li>
+                    <li><b>{{'RESTORE_WIZARD.RESTORE_SUMMARY_STEP.BACKUP_STATUS_LABEL' | translate}}:</b> {{data.selectedItems[0].Status}}{{'RESTORE_WIZARD.RESTORE_SUMMARY_STEP.BACKUP_STATUS_LABEL_SUFFIX' | translate}}</li>
+                    <li><b>{{'RESTORE_WIZARD.RESTORE_SUMMARY_STEP.REPOSITORY_LABEL' | translate}}:</b>    {{data.selectedItems[0].RepositoryName}}</li>
+                    <li><b>{{'RESTORE_WIZARD.RESTORE_SUMMARY_STEP.COMPRESSION_LABEL' | translate}}:</b>   {{data.selectedItems[0].Compressed | booleanToString}}</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <button class="restore-button" ng-click="handleRestoreClick()">{{'RESTORE_WIZARD.RESTORE_SUMMARY_STEP.BUTTON_LABEL' | translate}}</button>
+            </div>
+        </div>
+    </div>
+</div>

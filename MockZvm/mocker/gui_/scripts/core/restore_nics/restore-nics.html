@@ -1,0 +1,14 @@
+<base-modal-window modal-title="{{title}}" btns="buttons"
+                   close="handleCancel" loading="loading" help="restoreNics">
+
+    <div class="btn-group">
+        <button class="btn btn-link pull-right" ng-disabled="selectedItems.length == 0"
+                ng-click="handleEditSelectedClick()">{{'RESTORE_NICS.EDIT_SELECTED' | translate}}
+        </button>
+    </div>
+
+    <z-slick-grid class="restore-nics-grid" grid-id="restoreNicsGrid" id="restoreNicsGrid"
+                  data="item.VNics" on-selection="onSelection" selected-items="selectedItems"
+                  custom-options="restoreNicsOptions" grid="gridObj.grid"></z-slick-grid>
+
+</base-modal-window>

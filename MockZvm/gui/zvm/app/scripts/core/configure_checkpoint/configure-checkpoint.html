@@ -1,0 +1,103 @@
+<base-modal-window modal-title="{{title}}" btns="buttons" close="handleCancel" loading="loading"
+                   help="configureCheckpoint">
+    <div class="container-fluid">
+        <form class="form-horizontal" autocomplete="off">
+            <div class="form-group">
+                <label class="control-label col-xs-10">{{ "CONFIGURE_CHECKPOINT.INFO" | translate
+                    }}{{currentTitleInfo}}</label>
+
+                <div class="col-xs-2">
+                    <button class="btn z-btn-reload pull-right" ng-click="handleRefreshButtonClicked()"></button>
+                </div>
+            </div>
+
+            <!-- radio buttons-->
+
+            <div class="form-group">
+                <div class="col-xs-6">
+                    <z-radio ng-click="typeClick(data.type)" help-icon="CONFIGURE_CHECKPOINT.LATEST_RB"
+                             z-disabled="!latest" value="1" model="data.type">{{"CONFIGURE_CHECKPOINT.LATEST" |
+                        translate}}
+                    </z-radio>
+                </div>
+                <label class="col-xs-6 control-label cp-label">{{ latest.TimeStamp | zDateFilter }}</label>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-6">
+                    <z-radio ng-click="typeClick(data.type)"
+                             help-icon="CONFIGURE_CHECKPOINT.LATEST_MANUAL_CHECKPOINT_RB" z-disabled="!latestManual"
+                             value="2" model="data.type">{{"CONFIGURE_CHECKPOINT.LATEST_TAGGED" | translate}}
+                    </z-radio>
+                </div>
+                <label class="col-xs-6 control-label cp-label" ng-hide="!latestManual">{{latestManual.Tag}}
+                    ({{latestManual.TimeStamp | zDateFilter}})</label>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-6">
+                    <z-radio ng-click="typeClick(data.type)" help-icon="CONFIGURE_CHECKPOINT.LATESTVSS_RB"
+                             z-disabled="!latestVSS" value="3" model="data.type">{{"CONFIGURE_CHECKPOINT.LATEST_VSS" |
+                        translate}}
+                    </z-radio>
+                </div>
+                <label class="col-xs-6 control-label cp-label">{{ latestVSS.TimeStamp | zDateFilter}}</label>
+            </div>
+
+            <!-- user filter -->
+
+            <div class="form-group sep">
+                <div class="col-xs-12">
+                    <z-radio on-click="manualFilterClick" z-disabled="!checkpoints" value="4" model="data.type">
+                        {{"CONFIGURE_CHECKPOINT.SELECT_FROM" | translate}}
+                    </z-radio>
+                </div>
+            </div>
+
+
+            <div class="form-group checkboxes-filters-container">
+                <div class="col-xs-1">
+                    <label class="control-label">{{ "CONFIGURE_CHECKPOINT.FILTER.SHOW" | translate }}</label>
+                </div>
+                <div class="col-xs-2">
+                    <z-checkbox change="userFilterClick()" model="filter.showRegular" class="auto-cp"
+                                z-disabled="data.type !== 4">{{ "CONFIGURE_CHECKPOINT.FILTER.AUTO" | translate }}
+                    </z-checkbox>
+                </div>
+                <div class="col-xs-2">
+                    <z-checkbox change="userFilterClick()" model="filter.showVSS" class="vss-cp"
+                                z-disabled="data.type !== 4">{{ "CONFIGURE_CHECKPOINT.FILTER.VSS" | translate }}
+                    </z-checkbox>
+                </div>
+                <div class="col-xs-2">
+                    <z-checkbox change="userFilterClick()" model="filter.showManual" class="user-cp"
+                                z-disabled="data.type !== 4">{{ "CONFIGURE_CHECKPOINT.FILTER.TAGGED" | translate }}
+                    </z-checkbox>
+                </div>
+                <div class="col-xs-5" ng-hide="::dateOptions.oneDateOnly">
+                    <div class="jump-to">
+                        <label class="jump-to_label" for="jump_to">Jump to date:</label>
+                        <input id="jump_to" type="daterange" class="pull-right btn btn-link" parent-element="true"
+                               single-date-picker="true" min-date="{{dateOptions.minDate}}"
+                               max-date="{{dateOptions.maxDate}}" ng-model="dateOptions.range"
+                               ng-change="onDateChange()"/>
+                    </div>
+                </div>
+            </div>
+
+            <!-- slick grid -->
+            <div ng-if="!loading" class="z-slick-grid-container-checkpoints">
+                <z-slick-grid grid-id="configureCheckpointGrid"
+                              grid="gridObj.grid"
+                              data="filteredCheckpoints"
+                              custom-options="customOptions"
+                              selected-items="selectedItems"
+                              grid-render-complete="gridRenderCompleted"
+                              on-selection="selectedItemsChange">
+                </z-slick-grid>
+            </div>
+
+            <div>
+                <label class="pull-right">{{::'FLR.WIZARD.RESTORE_POINT.TOTAL_CHECKPOINTS' | translate}} {{filteredCheckpoints.length}}</label>
+            </div>
+        </form>
+    </div>
+</base-modal-window>

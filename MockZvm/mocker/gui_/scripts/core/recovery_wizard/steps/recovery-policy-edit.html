@@ -1,0 +1,27 @@
+<base-modal-window modal-title="{{title}}" close="close" btns="buttons" loading="loading">
+    <div class="container-fluid" ng-controller="recoveryEditController">
+        <form class="form-horizontal" autocomplete="off" name="forms.recoveryForm" >
+            <div class="form-group">
+                <div class="col-xs-6 "><label class="control-label ">{{'RECOVERY_WIZARD.EDIT_POLICY.COMMIT_POLICY' | translate}}</label></div>
+                <div class="col-xs-6">
+                    <ui-select theme="select2" ng-model="$parent.oneVpg.commitPolicyObj.defaultAction" required="" name="commitPolicy"
+                               search-enabled="false" ng-change="changePolicy()">
+                        <ui-select-match class="ui-select-match">{{$select.selected.label}}</ui-select-match>
+                        <ui-select-choices class="ui-select-choices" repeat="item.value as item in commitValues">
+                            <span ng-bind-html="item.label | highlight: $select.search"></span>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+            </div>
+            <div class="form-group" ng-show="showDefaultTime">
+                <div class="col-xs-6 "><label class="control-label ">{{'RECOVERY_WIZARD.EDIT_POLICY.DEFAULT_TIME' | translate}}</label></div>
+                <div class="col-xs-6">
+                    <input ng-model="oneVpg.commitPolicyObj.defaultTimeout" ng-required="oneVpg.commitPolicyObj.defaultAction !== 'None'"
+                           name="defaultTimeoutMinutes" min="0"
+                           ng-disabled="commitPolicySelected === 'None'" type="number"
+                           max="{{maxDefaultTimeoutMinutes}}"/>
+                </div>
+            </div>
+        </form>
+    </div>
+</base-modal-window>

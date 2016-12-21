@@ -1,0 +1,76 @@
+<div class="row">
+    <div class="col-xs-12">
+        <div ng-class="{'selected-vms-edit-mode-arrow' : !isVappDropdownEnabled}">
+
+            <!-- left side of VCD type -->
+            <div class="panel panel-default pull-left">
+                <div class="panel-heading" ng-hide="data.isReverse">
+                    <b ng-if=":: !data.isEditMode" class="panel-title">{{:: "CREATE_VPG_SELECT_VMS.UNPROTECTED_VAPPS" | translate }}</b>
+                    <b ng-if=":: data.isEditMode" class="panel-title">{{:: "CREATE_VPG_SELECT_VMS.VAPPS" | translate }}</b>
+                </div>
+                <div class="panel-body" ng-class="{potentialsVMsGrid_VCDMODE: isGridInVcdMode}">
+
+                    <z-slick-grid ng-if="!isExpand" ng-hide="data.isReverse"
+                                  data="data.localVCDVapps"
+                                  custom-options="potentialVcdVappColumnOptions"
+                                  grid-id="{{data.potentialVcdVappGridId}}"
+                                  grid="gridObj.potentialsVcdVappGrid"
+                                  selected-items="checkedPotentialVcdVapp"
+                                  hide-view-options="true"
+                                  class="availableVMsGridStyle"
+                                  on-selection="gridVcdVappSelectionChangeEvent">
+                    </z-slick-grid>
+
+                    <!-- grid definition when multi site panel closed -->
+                    <z-slick-grid ng-if="isExpand" ng-hide="data.isReverse"
+                                  data="data.localVCDVapps"
+                                  custom-options="potentialVcdVappColumnOptions"
+                                  grid-id="{{data.potentialVcdVappGridId}}"
+                                  grid="gridObj.potentialsVcdVappGrid"
+                                  selected-items="checkedPotentialVcdVapp"
+                                  hide-view-options="true"
+                                  class="availableVMsGridStyle all-protected-panel-expand-potentials-grid"
+                                  on-selection="gridVcdVappSelectionChangeEvent">
+                    </z-slick-grid>
+
+                    <p ng-show="data.isReverse">
+                        {{:: "CREATE_VPG_SELECT_VMS.REVERSE_DESC1" | translate}}
+                        <br>
+                        {{:: "CREATE_VPG_SELECT_VMS.REVERSE_DESC2" | translate}}
+                    </p>
+                </div>
+            </div>
+
+            <!--  multi site panel closed -->
+            <div ng-include="partialViews[3].path"></div>
+
+
+            <!-- right side of VCD type -->
+            <div class="panel panel-default pull-right">
+                <div class="panel-heading">
+                    <b class="panel-title">
+                        {{:: "CREATE_VPG_SELECT_VMS.SELECTED_VMS" | translate }}
+                    </b>
+                </div>
+                <div class="panel-body" ng-class="{potentialsVMsGrid_VCDMODE: isGridInVcdMode}">
+                    <z-slick-grid data="data.selectedVcdVappVMs"
+                                  z-wizard-grid-validator="selectedVms"
+                                  data-placement="top"
+                                  custom-options="vcdVappVmsColumnOptions"
+                                  grid-id="selectedVcdVappsVMsGrid"
+                                  class="selectVMsGridStyle"
+                                  hide-view-options="true">
+                    </z-slick-grid>
+                </div>
+                <div class="panel-footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <label class="col-xs-5">{{:: "CREATE_VPG_SELECT_VMS.VMS" | translate }}:&nbsp;{{data.selectedVcdVappVMs.length}}</label>
+                            <label class="col-xs-7">{{:: "CREATE_VPG_SELECT_VMS.TOTAL_VM_PROVISIONED_SIZE" | translate}}:&nbsp;{{ vcdVMsSize | mbToStringConvertorFilter}}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

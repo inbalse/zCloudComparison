@@ -1,0 +1,48 @@
+{
+  "SERVICE_PROFILES": {
+    "LIST_TITLE": "Service Profiles",
+    "TOOLTIP": "Define and manage service profiles. A service profile is a structured service offering with specific SLA parameters.",
+    "SETDEFAULT": "SET AS DEFAULT",
+    "NAME": "Profile Name",
+    "POLICY": "Recovery Policy",
+    "TARGET_RPO": "Target RPO",
+    "JOURNAL": "Journal History",
+    "JOURNAL_SIZE_HARD": "Journal Size Hard Limit",
+    "JOURNAL_SIZE_WARNING": "Journal Size Warning Threshold",
+    "TEST_FREQ": "Test Frequency Reminder",
+    "DESCRIPTION": "Description",
+    "RETENTION": "Retention Period",
+    "BACKUP": "Backup Schedule",
+    "DELETE": "You are about to remove service profile {0}. VPGs defined with this profile will continue to use the original specification. New VPGs cannot use the profile.",
+    "DELETE_LAST": "Service profile {0} cannot be removed. You must have at least one service profile.",
+    "DELETE_DEFAULT": "You are about to remove the default service profile {0}. Another service profile will be set as the default profile. VPGs defined with this profile continue to use the original specification.",
+    "SERVICE_EDIT":
+    {
+      "TITLE_ADD": "Add Service Profile",
+      "TITLE_EDIT": "Edit Service Profile",
+      "NAME": "Name",
+      "POLICY": "Recovery Policy",
+      "HELP_POLICY": "The type of recovery configured: Either Disaster or Extended Recovery.",
+      "DR_POLICY": "DR Policy",
+      "TARGET_RPO_ALERT": "Target RPO Alert",
+      "HELP_ALERT": "The maximum desired time in seconds between each automatic checkpoint being written to journal.",
+      "JOURNAL_HISTORY": "Default Journal History",
+      "HELP_JOURNAL_HISTORY": "The time for which all write commands are saved in the journal. When specifying a checkpoint to recover to, the checkpoint must still be in the journal.",
+      "JOURNAL_HARD": "Journal Size Hard Limit",
+      "HELP_HARD_LIMIT": "The default maximum size allowed for each journal. This value can be changed for each virtual machine.",
+      "JOURNAL_THRESHOLD": "Journal Size Warning Threshold",
+      "HELP_JOURNAL_THRESHOLD": "The size of journal that triggers a warning that the journal is nearing its hard limit",
+      "TEST": "Test Frequency Reminder",
+      "HELP_TEST": "The time recommended between testing the integrity of the VPG. A warning is issued if a test is not done within this time frame.",
+      "BACKUP": "Backup Policy",
+      "PERIOD": "Retention Period",
+      "HELP_PERIOD": "The amount of time the backups are saved.",
+      "SCHEDULE": "Scheduled Occurrences",
+      "DAILY": "Daily",
+      "WEEKLY": "Weekly",
+      "ERROR_NAME": "The same name already exists.",
+      "EDIT_WARNING": "VPGs defined to use this service profile continue to use the original specification.",
+      "LIMIT_ERROR": "The journal size hard limit must be larger than journal warning threshold."
+    }
+  }
+}

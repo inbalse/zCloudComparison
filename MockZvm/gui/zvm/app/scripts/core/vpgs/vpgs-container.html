@@ -1,0 +1,90 @@
+<div class="vpgs-list-controller z-grid-outer-container vpg-list">
+    <div class="z-grid-container-header">
+        <h3 title="{{'VPG_LIST_TOOLTIP_TEXT' | translate}}">{{"VPG_LIST.VPG_LIST" | translate}}</h3>
+        <view-switch grid-state="main.vpgs.list" cards-state="main.vpgs.cards"></view-switch>
+        <div class="status-filter-area">
+            <div class="status-filter">
+                <z-checkbox z-disabled="!vpgsCtrl.statusFilter.normalCount" change="vpgsCtrl.checkboxChanged()"
+                            model="vpgsCtrl.statusFilter.showNormal"></z-checkbox>
+                <img class="status-icon" src="assets/list_icons/normal-list-icon.png"/>
+                <label>{{vpgsCtrl.statusFilter.normalCount}}</label>
+            </div>
+            <div class="status-filter">
+                <z-checkbox z-disabled="!vpgsCtrl.statusFilter.warningCount" change="vpgsCtrl.checkboxChanged()"
+                            model="vpgsCtrl.statusFilter.showWarning"></z-checkbox>
+                <img class="status-icon" src="assets/list_icons/warning-list-icon.png"/>
+                <label>{{vpgsCtrl.statusFilter.warningCount}}</label>
+            </div>
+            <div class="status-filter">
+                <z-checkbox z-disabled="!vpgsCtrl.statusFilter.errorCount" change="vpgsCtrl.checkboxChanged()"
+                            model="vpgsCtrl.statusFilter.showError"></z-checkbox>
+                <img class="status-icon" src="assets/list_icons/error-list-icon.png"/>
+                <label>{{vpgsCtrl.statusFilter.errorCount}}</label>
+            </div>
+        </div>
+        <div class="btn-group z-white-btn-group">
+            <div class="btn-group">
+                <div class="dropdown zerto">
+                    <button class="btn btn-link inline-site-settings" type="button" ng-click="vpgsCtrl.handleSiteSettingsClick()">{{'VPG_LIST.MORE_BUTTON.SITE_SETTINGS'
+                        | translate}}</button>
+                    <span class="inline-site-settings">|</span>
+                    <button class="btn btn-link" type="button" ng-click="vpgsCtrl.onNewVPGClick()" ng-disabled="!vpgsCtrl.isCreateVPGEnabled">{{'VPG_LIST.MORE_BUTTON.NEW_VPG'
+                        | translate}}</button>
+                    <span>|</span>
+                    <button class="btn btn-link" type="button" ng-click="vpgsCtrl.handleExportClick()">{{'VPG_LIST.MORE_BUTTON.EXPORT_CSV'
+                        | translate}}</button>
+                    <span>|</span>
+                    <default-query class="query-position"></default-query>
+                    <span>|</span>
+                    <button class="btn btn-link" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                        {{'VPG_LIST.MORE_BUTTON.MORE' | translate}}
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-white pull-right" role="menu" aria-labelledby="dropdownMenu1">
+                        <li role="presentation"><a help-icon="MORE_ACTIONS.EDIT_VPG" role="menuitem" ng-disabled="!vpgsCtrl.btnState.isUpdateVPGEnabled" tabindex="-1"
+                                                   href="javascript:void(0);" class="btn btn-link"
+                                                   ng-click="vpgsCtrl.onVPGEditClick()">{{'VPG_LIST.MORE_BUTTON.EDIT' | translate}}</a>
+                        </li>
+
+                        <li role="presentation"><a help-icon="MORE_ACTIONS.PAUSE" role="menuitem" ng-disabled="!vpgsCtrl.btnState.isPauseEnabled" tabindex="-1"
+                                                   href="javascript:void(0);"
+                                                   class="btn btn-link" ng-click="vpgsCtrl.onPauseClick()">{{'VPG_LIST.MORE_BUTTON.PAUSE' | translate}}</a></li>
+
+                        <li role="presentation"><a help-icon="MORE_ACTIONS.SYNC" role="menuitem" class="btn btn-link"
+                                                   tabindex="-1" ng-disabled="!vpgsCtrl.btnState.isForceSyncEnabled"
+                                                   href="javascript:void(0);" ng-click="vpgsCtrl.onForceSyncClick()"
+                                                   translate="VPG_DETAILS.FORCE_SYNC"></a></li>
+
+                        <li role="presentation"><a help-icon="MORE_ACTIONS.RESUME" role="menuitem" ng-disabled="!vpgsCtrl.btnState.isResumeEnabled" tabindex="-1"
+                                                   href="javascript:void(0);"
+                                                   class="btn btn-link" ng-click="vpgsCtrl.onResumeClick()">{{'VPG_LIST.MORE_BUTTON.RESUME' | translate}}</a></li>
+
+                        <li role="presentation" class="divider" ng-show="!vpgsCtrl.isPortal"></li>
+
+                        <li role="presentation" ng-show="!vpgsCtrl.isPortal"><a help-icon="MORE_ACTIONS.STOP" role="menuitem" ng-disabled="!vpgsCtrl.btnState.isAbortBackupEnabled" tabindex="-1"
+                                                   href="javascript:void(0);" class="btn btn-link" ng-click="vpgsCtrl.onStopBackupClick()">{{'VPG_LIST.MORE_BUTTON.STOP_BACKUP'
+                            | translate}}</a></li>
+                        <li role="presentation" ng-show="!vpgsCtrl.isPortal">
+                            <a help-icon="MORE_ACTIONS.START_BACKUP" role="menuitem" ng-disabled="!vpgsCtrl.btnState.isRunBackupEnabled" tabindex="-1"
+                                                   href="javascript:void(0);" class="btn btn-link"
+                                                   ng-click="vpgsCtrl.onRunBackupClick()">{{'VPG_LIST.MORE_BUTTON.RUN_BACKUP'| translate}}</a></li>
+
+                        <li role="presentation" class="divider"></li>
+                        <li role="presentation">
+                            <a help-icon="MORE_ACTIONS.DELETE_VPG" role="menuitem" ng-disabled="!vpgsCtrl.btnState.isDeleteEnabled" tabindex="-1"
+                                                   href="javascript:void(0);"
+                                                   class="btn btn-link" ng-click="vpgsCtrl.onDeleteButtonClick()">{{'VPG_LIST.MORE_BUTTON.DELETE' |translate}}</a>
+                        </li>
+                        <li role="presentation" ><a help-icon="MORE_ACTIONS.STOP_FOT" role="menuitem" ng-disabled="!vpgsCtrl.btnState.isStopFotEnabled" tabindex="-1"
+                                                    href="javascript:void(0);" class="btn btn-link"
+                                                    ng-click="vpgsCtrl.onStopFailOverTestClick()">{{'VPG_LIST.MORE_BUTTON.STOP_FOT'
+                            | translate}}</a></li>
+                    </ul>
+                </div>
+            </div>
+            <full-screen-button></full-screen-button>
+            <span class="pull-right">|</span>
+        </div>
+    </div>
+    <ui-view/>
+</div>

@@ -1,0 +1,33 @@
+{
+    "DASH_BOARD": {
+        "PROTECTED": "Protected",
+        "COMPRESSION": "Compression",
+        "THIS_SITE": "this site",
+        "MULTI_SITES": "Multiple Sites",
+        "INCOMING": "Incoming VPGs",
+        "OUTGOING": "Outgoing VPGs",
+        "VPG_STATUS": "VPG STATUS",
+        "TOPOLOGY":"Topology",
+        "ALERTS": "ALERTS",
+        "HEALTH": "VPG HEALTH",
+        "ONE_SITE": "One Site",
+        "STATUS": "STATUS",
+        "SITE_TOPOLOGY": "SITE TOPOLOGY",
+        "UPDATE": "UPDATE",
+        "TRIAL_LICENSE": "LICENSE ALERT",
+        "EXPIRES_DAYS": "Expires in X days",
+
+        "STATUS_PIE_LEGEND": {
+            "MEETING_SLA": "Meeting SLA",
+            "RPO_NOT_MEETING_SLA": "RPO not Meeting SLA",
+            "HISTORY_NOT_MEETING_SLA": "History not Meeting SLA",
+            "NOT_MEETING_SLA": "Not Meeting SLA",
+            "PROCESSING": "Processing",
+            "RECOVERED": "Recovered"
+        },
+        "PIE_MIDDLE_TEXT": {
+            "ALL_RECOVERED": "All VPGs are Recovered",
+            "ALL_PROCESSING": "All VPGs are Processing"
+        }
+    }
+}

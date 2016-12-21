@@ -1,0 +1,14 @@
+{
+    "OFF_SITE": {
+        "STOP_BACKUP":         "Stop Backup",
+        "START_BACKUP":         "Run Backup",
+        "START_WARNING":        "Scheduled runs will be skipped until the manually initiated run will end.<p>Are you sure you want to run the job?</p>",
+        "START_TITLE":          "Start Backup",
+        "STOP_WARNING":        "You are about to stop this backup run. VMs that were already backed up in this run remain saved in the repository.<br/>Stopping the operation will NOT remove any backed up volumes. Some volumes may not have been backed up in the repository.<br/>Are you sure you want to stop this run?",
+        "STOP_TITLE":          "Stop Backup",
+        "REPOSITORY":           "Repository",
+        "VPGS":                 "VPGs",
+        "VMS":                  "VMs",
+        "BACKUP_ENABLED":       "Backup Enabled"
+    }
+}

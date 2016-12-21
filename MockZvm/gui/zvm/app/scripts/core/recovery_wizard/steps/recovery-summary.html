@@ -1,0 +1,69 @@
+<div class="z-wizard-container" ng-controller="recoverySummaryController" ng-cloak>
+    <div class="recovery-summary">
+        <h4>{{::title}}</h4>
+
+        <div class="topology">
+
+            <div ng-if="::local" class="topology-site-type-{{::local.type}} site local-site-position"></div>
+            <div ng-if="::middle" class="topology-site-type-{{::middle.type}} site middle-site-position"></div>
+            <div ng-if="::right" class="topology-site-type-{{::right.type}} site right-site-position"></div>
+            <div ng-if="::left" class="topology-site-type-{{::left.type}} site left-site-position"></div>
+
+            <div class="local-label"><span class="topology-text">{{::local.name}}</span><label>{{::'RECOVERY_WIZARD.TOPOLOGY.THIS_SITE' | translate}}</label></div>
+            <div ng-if="::local.arrowType === 2" class="topology-arrow-2 arrows-hovering" data="local" class-position="top-side" recovery-wizard-tooltip-directive></div>
+            <span class="self-arrows-info-position topology-text">{{::local.data.text}}</span>
+
+            <div ng-if="::right">
+                <div class="right-label"><span class="topology-text" title="{{::right.name}}">{{::right.name}}</span></div>
+                <div ng-if="::right.arrowType === 0" class="topology-arrow-right-0 side-arrows arrows-hovering" data="right" class-position="right-side" recovery-wizard-tooltip-directive></div>
+                <div ng-if="::right.arrowType === 1" class="topology-arrow-right-1 side-arrows arrows-hovering" data="right" class-position="right-side" recovery-wizard-tooltip-directive></div>
+                <div ng-if="::right.arrowType === 3" class="topology-arrow-right-3 double-arrow arrows-hovering" data="right" class-position="right-side" recovery-wizard-tooltip-directive></div>
+
+                <span ng-if="::right.arrowType !== 3" class="right-single-arrows-info-position topology-text">{{::right.data.text}}</span>
+
+                <div ng-if="::right.arrowType === 3" class="right-double-arrows-info-position topology-text">
+                    <span class="outgoing">{{::right.data.text1}}</span>
+                    <span class="incoming">{{::right.data.text}}</span>
+                </div>
+            </div>
+
+            <div ng-if="::middle">
+                <div class="middle-label"><span class="topology-text" title="{{::middle.name}}">{{::middle.name}}</span></div>
+                <div ng-if="::middle.arrowType === 0" class="topology-arrow-middle-0 middle-arrows arrows-hovering" data="middle" class-position="middle-side" recovery-wizard-tooltip-directive></div>
+                <div ng-if="::middle.arrowType === 1" class="topology-arrow-middle-1 middle-arrows arrows-hovering" data="middle" class-position="middle-side" recovery-wizard-tooltip-directive></div>
+                <div ng-if="::middle.arrowType === 3" class="topology-arrow-middle-3 middle-arrows arrows-hovering" data="middle" class-position="middle-side" recovery-wizard-tooltip-directive></div>
+
+                <span ng-if="::middle.arrowType !== 3" class="middle-single-arrows-info-position topology-text">{{::middle.data.text}}</span>
+
+                <div ng-if="::middle.arrowType === 3" class="middle-double-arrows-info-position topology-text">
+                    <span class="outgoing">{{::middle.data.text}}</span>
+                    <span class="incoming">{{::middle.data.text1}}</span>
+                </div>
+            </div>
+
+            <div ng-if="::left">
+                <div class="left-label"><span class="topology-text" title="{{::left.name}}">{{::left.name}}</span></div>
+                <div ng-if="::left.arrowType === 0" class="topology-arrow-left-0 side-arrows arrows-hovering" data="left" class-position="left-side" recovery-wizard-tooltip-directive></div>
+                <div ng-if="::left.arrowType === 1" class="topology-arrow-left-1 side-arrows arrows-hovering" data="left" class-position="left-side" recovery-wizard-tooltip-directive></div>
+                <div ng-if="::left.arrowType === 3" class="topology-arrow-left-3 double-arrow arrows-hovering" data="left" class-position="left-side" recovery-wizard-tooltip-directive></div>
+
+                <span ng-if="::left.arrowType !== 3" class="left-single-arrows-info-position topology-text">{{::left.data.text}}</span>
+
+                <div ng-if="::left.arrowType === 3" class="left-double-arrows-info-position topology-text">
+                    <span class="outgoing">{{::left.data.text1}}</span>
+                    <span class="incoming">{{::left.data.text}}</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="summary-text">
+            <p ng-bind-html="::text1"></p>
+            <p ng-bind-html="::text2"></p>
+            <p ng-bind-html="::text3"></p>
+        </div>
+        <button ng-class="::isLive ? 'failover-red-button' : 'btn btn-default'" ng-click="handleClickButton()">
+            {{::buttonText}}
+        </button>
+    </div>
+</div>

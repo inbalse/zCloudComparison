@@ -1,0 +1,24 @@
+{
+    "CREATE_VPG": {
+        "CREATE_TITLE": "Create VPG",
+        "EDIT_TITLE": "Edit VPG",
+        "EDIT_REVERSE_TITLE": "Edit Reverse VPG",
+        "AUTOMATIC": "Automatic",
+        "TIMES": "times",
+        "MIN_APART": "minute apart",
+        "MINS_APART": "minutes apart",
+        "NO_SETTINGS": "No Settings",
+        "UPDATE_VPG_WITH_REMOVED_VMS": "You are about to save the VPG after removing the following VMs: <br/> {{VMNames}}. <br/> Do you want to save the recovery disks used for these virtual machines? (The disk locations are displayed in the description for the action in the Recent Activities dialog.)",
+        "UPDATE_VPG_WITH_REMOVED_VMS_AWS": "You are about to save the VPG after removing the following VMs: <br/> {{VMNames}}.",
+        "STEP_GENERAL": "GENERAL",
+        "STEP_VMS": "VMs",
+        "STEP_REPLICATION": "REPLICATION",
+        "STEP_STORAGE": "STORAGE",
+        "STEP_RECOVERY":    "RECOVERY",
+        "STEP_NICS":    "NICs",
+        "STEP_BACKUP":  "BACKUP",
+        "STEP_SUMMARY": "SUMMARY",
+        "BLOCK_PUBLIC_CLOUD":    "You cannot create a VPG while in {{env}}. Create the VPG from the protected site paired with this site.",
+        "EMPTY_BOOTGROUP_WARNING":"This VPG has empty boot groups. Empty boot groups are ignored."
+    }
+}

@@ -1,0 +1,106 @@
+.select2-container {
+    width: 100%;
+    .select2-choice {
+        overflow: visible;
+        border-radius: 0;
+        border-color: #767c83;
+        background: #f6f6f7 none;
+        .select2-arrow {
+            border-radius: 0;
+            border: 0;
+            background: transparent none;
+            b {
+                width: 7px;
+                height: 7px;
+                transform: rotate(-45deg);
+                border-bottom: 2px solid #84878e;
+                border-left: 2px solid #84878e;
+                position: absolute;
+                left: 4px;
+                top: 6px;
+            }
+        }
+        &:hover {
+            background-color: #dddddf;
+        }
+    }
+
+    &.ng-invalid-z-wizard-validator {
+        a {
+            border-color: red;
+        }
+    }
+}
+
+.select2-container.select2-dropdown-open {
+    .select2-choice {
+        background-color: #fff;
+        .select2-arrow {
+            b {
+                left: 3px;
+                top: 10px;
+                transform: rotate(135deg);
+            }
+        }
+    }
+}
+
+.select2-container-disabled {
+    .select2-choice:hover {
+        background-color: #f6f6f7;
+    }
+}
+
+.select2-container.select2-container-active {
+    .select2-choice {
+        box-shadow: 0;
+    }
+}
+
+.select2-drop-active {
+    border-color: #7C8289;
+    border-radius: 0;
+}
+
+.select2-search {
+    //  display: none
+}
+
+.ui-select-choices-row {
+    &.select2-highlighted {
+        background: none;
+        color:#000;
+    }
+
+    &:hover {
+        background: #3875d7;
+        color: #fff;
+    }
+}
+
+.select2-results {
+    padding: 0;
+    margin: 4px 0 0 0;
+    ul, ol {
+        margin: 0;
+    }
+}
+
+.select2-disabled{
+    span{color: #666;}
+}
+
+.select2-container-active .select2-choice,
+.select2-container-active .select2-choices {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.select2-text-icon-container {
+    padding-left: 30px;
+    position: relative;
+}
+
+.ui-select-placeholder {
+    color: #adadad;
+}

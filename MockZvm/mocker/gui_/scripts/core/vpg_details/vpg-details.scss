@@ -1,0 +1,701 @@
+.vpg-view {
+    @media screen and (min-width: 1366px) {
+        .nav-tabs {
+            max-width: 1366px;
+            left: 50%;
+            margin-left: -683px;
+        }
+    }
+
+    $title-height: 37px;
+
+    //images symbols
+    .vpg-details-parameters {
+        padding: 10px;
+        .vpg-details-parameters-title {
+            background-repeat: no-repeat;
+
+            &.vpg-details-parameters-title-general {
+                background-image: url('../assets/vpgs_details/general.png');
+                height: $title-height;
+            }
+            &.vpg-details-parameters-title-replication {
+                background-image: url('../assets/vpgs_details/replication.png');
+                height: $title-height + 4;
+            }
+            &.vpg-details-parameters-title-recovery {
+                background-image: url('../assets/vpgs_details/recovery.png');
+                height: $title-height;
+            }
+            &.vpg-details-parameters-title-backup {
+                background-image: url('../assets/vpgs_details/backup.png');
+                height: $title-height;
+            }
+        }
+    }
+
+    .z-tab-content {
+        padding: 10px 20px;
+    }
+    .grid-controller {
+        padding: 0;
+
+        .vm-grid-container {
+            height: 100%;
+        }
+    }
+    .vpg-details-parameters {
+        h4 {
+            font-weight: bold;
+        }
+        hr {
+            border-width: 2px;
+        }
+        ul {
+            margin: 0;
+            padding: 0;
+            li {
+                list-style: none;
+            }
+        }
+
+        p.container-ellipsis{
+            text-overflow: ellipsis;
+            overflow: hidden;
+            word-break: break-all;
+            display: inline-block;
+            margin: 0;
+        }
+    }
+
+    .status-tab {
+        height: 100%;
+        position: relative;
+        margin: 0 auto;
+        z-index: 2;
+        .status-tab-side {
+            position: absolute;
+            top: 10px;
+            bottom: 10px;
+            z-index: 1;
+            &.status-tab-side-charts {
+                left: 0;
+                right: 50%;
+                padding-right: 190px;
+                padding-bottom: 25px;
+
+                .charts-row {
+                    padding-top: 0;
+                    margin-bottom: 10px;
+                    height: 25%;
+                    position: relative;
+
+                    &:last-child {
+                        overflow: hidden;
+                    }
+
+                }
+            }
+            &.status-tab-side-lists {
+                left: 50%;
+                right: 0;
+                padding-left: 190px;
+                overflow-y: auto;
+                overflow-x: hidden;
+
+                .tasks-list-item {
+                    .flr-btn {
+                        width: 16px;
+                        height: 16px;
+                        display: block;
+                        background: transparent url('../assets/tasks/tasks-flr-grid-sprite.png');
+                        position: absolute;
+                        border: none;
+                        outline: none;
+
+                        &.browse-btn {
+                            background-position: 0px 0px;
+                        }
+                        &.browse-btn:hover {
+                            background-position: 0px -16px;
+                        }
+                        &.browse-btn:active {
+                            background-position: 0px -32px;
+                        }
+
+                        &.unmount-btn {
+                            left: 26px;
+                            background-position: -16px 0px;
+                        }
+                        &.unmount-btn:hover {
+                            background-position: -16px -16px;
+                        }
+                        &.unmount-btn:active {
+                            background-position: -16px -32px;
+                        }
+                    }
+                }
+            }
+        }
+        .status-tab-middle {
+            width: 340px;
+            height: 100%;
+            border-left: 1px solid #ccc;
+            border-right: 1px solid #ccc;
+            position: relative;
+            margin: 0 auto;
+            z-index: 2;
+            .status-widget {
+                padding: 10px;
+            }
+            .backup-vpg {
+                label {
+                    font-size: 16px;
+                    color: #919395;
+                    font-weight: bold;
+                }
+
+                img {
+                    padding-top: 4px;
+                }
+
+            }
+        }
+
+        @media only screen and (max-width: 1366px) {
+            .status-tab-side.status-tab-side-charts {
+                padding-right: 160px;
+            }
+            .status-tab-middle {
+                width: 280px;
+            }
+            .status-tab-side.status-tab-side-lists {
+                padding-left: 160px;
+            }
+        }
+        .journal-data {
+            border-bottom: 1px solid #ccc;
+            .center-content {
+                text-align: center;
+            }
+            label {
+                font-weight: bold;
+            }
+            .ring-chart {
+                display: block;
+                svg {
+                    margin: auto;
+                    display: block;
+                }
+            }
+            .ring-chart-text {
+                position: absolute;
+                top: 50%;
+                margin-top: -16px;
+                text-align: center;
+                width: 100%;
+                left: 0;
+                font-size: 20px;
+                font-weight: bold;
+                color: #20477c;
+                line-height: 16px;
+                span {
+                    font-size: 12px;
+
+                }
+            }
+
+        }
+    }
+
+    .topology-tab {
+        height: 100%;
+        position: relative;
+        padding-top: 40px;
+        padding-bottom: 30px;
+        overflow: hidden;
+        .grid-controls {
+            width: 476px;
+            position: absolute;
+            .topology-tab-search, .topology-tab-group, .topology-tab-zoom {
+                float: left;
+                padding: 0 5px;
+                position: relative;
+            }
+            .topology-tab-search {
+                width: 177px;
+                padding-left: 0px;
+            }
+            .topology-tab-group {
+                width: 186px;
+            }
+
+            .topology-tab-refresh {
+                width: 26px;
+                height: 26px;
+                position: relative;
+                float: left;
+                border: 0;
+                z-index: 1;
+                outline: 0;
+                padding: 0;
+                margin: 0;
+                background: transparent url('../assets/vpgs_details/topology/refresh.png') scroll no-repeat -6px -6px;
+                &:hover {
+                    background-position: -45px -6px;
+                }
+                &:active {
+                    background-position: -84px -6px;
+                }
+            }
+        }
+    }
+
+    @mixin border-style($color) {
+        border: solid 3px $color !important;
+    }
+
+    .nav-tabs li {
+        a label {
+            cursor: pointer;
+        }
+
+        float: none;
+        .vpg-status-tab {
+            font-size: 21px;
+            text-align: center;
+            text-transform: uppercase;
+            color: #b8b9bb;
+            padding-left: 65px;
+            padding-right: 0;
+            padding-top: 14px;
+            @include border-style(#c1c2c4);
+            .sub-status-container {
+                top: 50%;
+                transform: translateY(-50%);
+                margin-top: 10px;
+            }
+            .sub-status-progress {
+                width: 99%;
+                margin-top: 2px;
+                margin-bottom: 0;
+                height: 4px;
+                background-color: #c8d2d9;
+                border-radius: 0;
+                .progress-bar {
+                    background-color: #b8b9bb;
+                }
+            }
+
+            .sub-status-text {
+                font-size: 10px;
+                font-weight: bold;
+                color: #b8b9bb;
+                text-transform: none;
+                line-height: 12px;
+            }
+            .sub-status-second-line {
+                font-size: 10px;
+                font-weight: bold;
+                color: #b8b9bb;
+                text-transform: none;
+                line-height: 12px;
+            }
+            .sub-status-action {
+                color: #b8b9bb;
+            }
+
+            .sub-status-action:hover {
+                text-decoration: underline;
+            }
+
+            & + .vpg-status-tab-icon {
+                position: absolute;
+                width: 60px;
+                height: 45px;
+                left: 5px;
+                top: 10px;
+                border-right: 1px solid #cdcdcd;
+                background: transparent no-repeat center;
+                opacity: 0.5;
+            }
+            //  "0": "Initializing",
+            //  "1": "Meeting SLA",
+            //  "2": "Not Meeting SLA",
+            //  "3": "RPO Not Meeting SLA",
+            //  "4": "History Not Meeting SLA",
+            //  "5": "Failing Over",
+            //  "6": "Moving",
+            //  "7": "Deleting"
+            &.vpg-status-tab-state-0 {
+                & + .vpg-status-tab-icon {
+                    background-image: url('../assets/status_tab_icons/status-tab-initializing.png');
+                }
+            }
+            &.vpg-status-tab-state-1 {
+                & + .vpg-status-tab-icon {
+                    background-image: url('../assets/status_tab_icons/status-tab-meeting-sla.png');
+                }
+            }
+            &.vpg-status-tab-state-2 {
+                & + .vpg-status-tab-icon {
+                    background-image: url('../assets/status_tab_icons/status-tab-not-meeting-sla.png');
+                }
+            }
+            &.vpg-status-tab-state-3 {
+                & + .vpg-status-tab-icon {
+                    background-image: url('../assets/status_tab_icons/status-tab-history-not-meeting-sla.png');
+                }
+            }
+            &.vpg-status-tab-state-4 {
+                & + .vpg-status-tab-icon {
+                    background-image: url('../assets/status_tab_icons/status-tab-history-not-meeting-sla.png');
+                }
+            }
+            &.vpg-status-tab-state-5 {
+                & + .vpg-status-tab-icon {
+                    background-image: url('../assets/status_tab_icons/status-tab-failover.png');
+                }
+            }
+            &.vpg-status-tab-state-6 {
+
+                & + .vpg-status-tab-icon {
+                    background-image: url('../assets/status_tab_icons/status-tab-move.png');
+                }
+            }
+            &.vpg-status-tab-state-7 {
+                & + .vpg-status-tab-icon {
+                    background-image: url('../assets/status_tab_icons/status-tab-delete.png');
+                }
+            }
+            &.vpg-status-tab-state-8 {
+                & + .vpg-status-tab-icon {
+                    background-image: url('../assets/status_tab_icons/status-tab-recovered.png');
+                }
+            }
+        }
+        .vpg-topology-tab {
+            padding-left: 40px !important;
+            .topology-tab-container {
+                width: 100%;
+                height: 100%;
+                opacity: 0.5;
+                background: transparent scroll no-repeat center;
+                .topology-tab-item {
+                    width: 50%;
+                    height: 100%;
+                    margin-top: 2px;
+                    background: transparent scroll no-repeat center top;
+                    position: relative;
+                    img {
+                        height: 30px;
+                        margin: auto;
+                        display: block
+                    }
+                    small {
+                        width: 100%;
+                        display: block;
+                        text-align: center;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        font-size: 10px;
+                        color: #000;
+                        position: absolute;
+                        left: 0;
+                        bottom: 0;
+                    }
+                    &.topology-tab-type-0 {
+                        background-image: url('../assets/vpgs_details/topology/site-vc-grey.png');
+                        background-size: 31px 30px;
+                    }
+                    &.topology-tab-type-1 {
+                        background-image: url('../assets/vpgs_details/topology/site-vc-grey.png');
+                        background-size: 31px 30px;
+                    }
+                    &.topology-tab-type-2 {
+                        background-image: url('../assets/vpgs_details/topology/site-vcd-grey.png');
+                        background-size: 31px 30px;
+                    }
+                    &.topology-tab-type-3 {
+                        background-image: url('../assets/vpgs_details/topology/site-aws-grey.png');
+                        background-size: 35px 30px;
+                    }
+                    &.topology-tab-type-4 {
+                        background-image: url('../assets/vpgs_details/topology/site-hyperv-grey.png');
+                        background-size: 31px 30px;
+                    }
+                    &.topology-tab-type-5 {
+                        background-image: url('../assets/vpgs_details/topology/site-azure-grey.png');
+                        background-size: 36px 30px;
+                    }
+                }
+                &.topology-tab-container-direction-0 {
+                    background-image: url('../assets/list_icons/protected-direction.png');
+                    .source-site {
+                        float: left;
+                    }
+
+                    .target-site {
+                        float: right;
+                    }
+                }
+                &.topology-tab-container-direction-1 {
+                    background-image: url('../assets/list_icons/recovery-direction.png');
+                    .source-site {
+                        float: right;
+                    }
+
+                    .target-site {
+                        float: left;
+                    }
+                }
+                &.topology-tab-container-direction-2 {
+                    background-image: url('../assets/list_icons/self-direction.png');
+                    background-position: 95% center;
+                    .source-site {
+                        float: left;
+                    }
+                    .topology-tab-item {
+                        float: right;
+                    }
+                }
+
+            }
+
+        }
+        &.active {
+            .vpg-status-tab {
+                color: #505151;
+                &.vpg-status-tab-state-0 {
+                    @include border-style(#637fa5);
+                }
+                &.vpg-status-tab-state-1 {
+                    @include border-style(#65a144);
+                }
+                &.vpg-status-tab-state-2 {
+                    @include border-style(#b95559);
+                }
+                &.vpg-status-tab-state-3 {
+                    @include border-style(#e9bb1b);
+                }
+                &.vpg-status-tab-state-4 {
+                    @include border-style(#e9bb1b);
+                }
+                &.vpg-status-tab-state-5 {
+                    @include border-style(#53585f);
+                }
+                &.vpg-status-tab-state-6 {
+                    @include border-style(#20477c);
+                }
+                &.vpg-status-tab-state-7 {
+                    @include border-style(#8d9fb8);
+                }
+                &.vpg-status-tab-state-8 {
+                    @include border-style(#AFB9C7);
+                }
+                & + .vpg-status-tab-icon {
+                    opacity: 1;
+                }
+                .sub-status-text {
+                    color: #000000;
+                }
+                .sub-status-second-line {
+                    color: #000000;
+                }
+                .sub-status-action {
+                    color: #20477c;
+                }
+                .progress-bar {
+                    background-color: #20477c;
+                }
+            }
+            .vpg-topology-tab {
+                .topology-tab-container {
+                    opacity: 1;
+                    .topology-tab-item {
+                        &.topology-tab-type-0 {
+                            background-image: url('../assets/vpgs_details/topology/site-vc.png');
+                        }
+                        &.topology-tab-type-1 {
+                            background-image: url('../assets/vpgs_details/topology/site-vc.png');
+                        }
+                        &.topology-tab-type-2 {
+                            background-image: url('../assets/vpgs_details/topology/site-vcd.png');
+                        }
+                        &.topology-tab-type-3 {
+                            background-image: url('../assets/vpgs_details/topology/site-aws.png');
+                        }
+                        &.topology-tab-type-4 {
+                            background-image: url('../assets/vpgs_details/topology/site-hyperv.png');
+                        }
+                        &.topology-tab-type-5 {
+                            background-image: url('../assets/vpgs_details/topology/site-azure.png');
+                        }
+                    }
+                }
+            }
+            .tab-content {
+                opacity: 1;
+            }
+        }
+        .tab-content {
+            color: #000;
+            font-size: 16px;
+            top: 18px;
+            height: 25px;
+            min-width: 40px;
+            position: relative;
+            line-height: 100%;
+            opacity: 0.5;
+            padding: 0 9px;
+            text-align: left;
+            border-right: 1.9px solid #ccc;
+
+            &.protected-vms-part {
+                height: 17px;
+                min-width: 25px;
+                padding: 0;
+                top: 14px;
+
+                p {
+                    top: -1px;
+                    font-size: 16px;
+                }
+                small {
+                    top: 2px;
+                }
+            }
+            &.protected-storage-part {
+                top: 20px;
+                p {
+                    font-size: 16px;
+                }
+            }
+
+            small {
+                font-size: 10px;
+                position: relative;
+                top: -5px;
+            }
+            p {
+                margin: 0;
+                margin-bottom: -5px;
+                font-size: 11px;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+                position: relative;
+                top: -7px;
+            }
+            .protected-vms-value {
+                text-align: center;
+                position: relative;
+                left: -2px;
+                padding-bottom: 2px;
+            }
+
+            &.tab-content-latest-test, &.tab-content-protected {
+                border-right: 0;
+                .recovery-storage-suffix {
+                    font-size: 8px;
+                }
+            }
+
+            &.tab-content-3-parts {
+                width: 33%;
+            }
+            &.tab-content-2-parts {
+                width: 50%;
+            }
+
+            &.tab-content-priority {
+                width: 75px;
+            }
+        }
+
+        .sub-status-exists {
+            font-size: 16px;
+            text-align: left;
+            padding-top: 8px;
+            //margin-left:10px;
+        }
+
+        .sub-status-two-lines {
+            padding-top: 5px;
+        }
+        label {
+            font-weight: bold;
+            position: absolute;
+        }
+    }
+
+    .status-widget {
+        min-height: 60px;
+        h4 {
+            font-size: 12px;
+        }
+        .status-widget-content {
+            padding: 15px;
+            min-height: 60px;
+        }
+
+        .charts-left-label {
+            padding-left: 28px;
+        }
+
+        .charts-right-label {
+            float: right;
+            padding-right: 36px;
+            width: auto;
+        }
+
+        .recovery-checkpoint {
+            label {
+                width: initial;
+                padding-top: 10px;
+            }
+        }
+
+        .actual-fail-safe-history {
+            font-weight: bold;
+            padding: 0 7px;
+        }
+    }
+    .aligned-recovery-policy-text {
+        margin-top: 10px;
+    }
+
+    .aws-network-settings {
+        padding-left: 184px;
+        position: relative;
+    }
+
+    .aws-network-test-settings {
+        padding-left: 175px;
+        position: relative;
+    }
+
+    .aws-network-settings-label {
+        width: 183px;
+        position: absolute;
+        left: 0;
+    }
+    .aws-network-settings-info {
+        width: 100%;
+        display: block;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    .aws-network-settings-link {
+        position: absolute;
+        width: 20px;
+        height: 100%;
+        top: 0;
+        right: 0;
+    }
+
+}
+
+

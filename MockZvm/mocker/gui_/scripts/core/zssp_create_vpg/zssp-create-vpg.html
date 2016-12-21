@@ -1,0 +1,147 @@
+<base-modal-window modal-title="{{'CREATE_VPG.CREATE_TITLE' | translate}}" btns="buttons"
+                   close="handleCancel" loading="loading" help="ZSSP_NEW_VPG">
+<div class="container-fluid">
+        <form class="form-horizontal" autocomplete="off" name="forms.zsspForm">
+            <div class="form-group">
+                <label for="vpgName" class="col-xs-3 control-label">
+                    <b>{{ "CREATE_VPG_INITIAL.VPG_NAME" | translate }}</b>
+                </label>
+
+                <div class="col-xs-9">
+                    <input type="text" id="vpgName" ng-model="data.name" maxlength="80" required="" z-focus="true">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-3 control-label">
+                    <b>{{ "CREATE_VPG_SELECT_VMS.UNPROTECTED_VMS" | translate }}</b>
+                </label>
+                <label class="col-xs-9 control-label">
+                    {{'ZSSP_VPG.SELECT_VMS' | translate}}
+                </label>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-offset-3 col-xs-9">
+                    <z-radio name="vcVMsRadio" ng-show="data.showVcVms" value="enums.VpgEntityType.VCVpg"
+                             model="data.sourceSiteType.sourceType">
+                        <img src="assets/list_icons/vc-icon.png">
+                        {{"CREATE_VPG_SELECT_VMS.VMS"|translate}}
+                    </z-radio>
+                    <z-radio name="vcdVAppsRadio" ng-show="data.showVCDVapps" value="enums.VpgEntityType.VCDvApp"
+                             model="data.sourceSiteType.sourceType">
+                        <img src="assets/list_icons/vcd-icon.png">
+                        {{"CREATE_VPG_SELECT_VMS.VCDVAPS"|translate}}
+                    </z-radio>
+                </div>
+            </div>
+            <!---- vc vms ------------------------------->
+            <div class="form-group" ng-show="data.sourceSiteType.sourceType === enums.VpgEntityType.VCVpg">
+                <div class="col-xs-offset-3 col-xs-9">
+                    <z-slick-grid id="create-vpg-vms" hide-view-options="true"  grid-id="create-vpg-vms" data="gridData" ng-if="showVcGrid" selected-items="selectedItems"
+                                  class="zssp-vms-grid" custom-options="customOptions" on-selection="selectedItemsChange" ></z-slick-grid>
+                </div>
+            </div>
+
+            <!-- vcd vapps ------------------------------>
+            <div class="form-group" ng-show="data.sourceSiteType.sourceType === enums.VpgEntityType.VCDvApp">
+                <div class="col-xs-offset-3 col-xs-9">
+                    <z-slick-grid data="data.initialSitesInfo.LocalVCDVapps"
+                                  custom-options="potentialVcdVappColumnOptions"
+                                  grid-id="potentialVcdVappGridId"
+                                  selected-items="selectedVCDVapp"
+                                  hide-view-options="true"
+                                  class="zssp-vcd-vapp-grid"
+                                  on-selection="handleVcdVappItemChange">
+                    </z-slick-grid>
+                </div>
+            </div>
+
+            <!--------- replicate to ------------------>
+            <div class="form-group">
+                <label class="col-xs-3 control-label">
+                    <b>{{ "CREATE_VPG_REPLICATION.REPLICATE_TO" | translate }}</b>
+                </label>
+
+                <div class="col-xs-3">
+                    <label class="control-label">{{ "VPG_VM_LIST_COL.REMOTE_SITE" | translate }}</label>
+                </div>
+                <div class="col-xs-6">
+                    <ui-select theme="select2" name="remoteSite" ng-model="$parent.data.targetSite" required ng-show="!data.isEdit">
+                        <ui-select-match class="ui-select-match">{{$select.selected.OwnersId.DisplayName}}</ui-select-match>
+                        <ui-select-choices class="ui-select-choices" repeat="item in data.initialSitesInfo.TargetSites | filter: $select.search">
+                            <span ng-bind-html="item.OwnersId.DisplayName | highlight: $select.search"></span>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+            </div>
+            <!------ org vdc --------------->
+            <div class="form-group" ng-if="showTargetOrgVDC">
+                <div class="col-xs-offset-3 col-xs-3">
+                    <label class="control-label">{{'ZSSP_VPG.ORG_VDC' | translate}}</label>
+                </div>
+                <div class="col-xs-6">
+
+                    <ui-select theme="select2" name="orgVDC" ng-model="$parent.data.targetVirtualDatacenter" required ng-show="!data.isEdit">
+                        <ui-select-match class="ui-select-match">{{$select.selected.DisplayName}}</ui-select-match>
+                        <ui-select-choices class="ui-select-choices" repeat="item in data.targetOrgVDCDropDownData | filter: $select.search">
+                            <span ng-bind-html="item.DisplayName | highlight: $select.search"></span>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+            </div>
+            <!------ resource pool --------------->
+            <div class="form-group" ng-if="showResourcePool">
+                <div class="col-xs-offset-3 col-xs-3">
+                    <label class="control-label">{{'ZSSP_VPG.RESOURCE_POOL' | translate}}</label>
+                </div>
+                <div class="col-xs-6">
+
+                    <ui-select theme="select2" name="resourcepool" ng-model="$parent.data.targetResourcePool" required ng-show="!data.isEdit">
+                        <ui-select-match class="ui-select-match">{{$select.selected.DisplayName}}</ui-select-match>
+                        <ui-select-choices class="ui-select-choices" repeat="item in data.targetResourcePoolDropDownData | filter: $select.search">
+                            <span ng-bind-html="item.DisplayName | highlight: $select.search"></span>
+                        </ui-select-choices>
+                    </ui-select>
+
+                </div>
+            </div>
+            <!------ data store --------------->
+            <div class="form-group" ng-if="showDataStore">
+                <div class="col-xs-offset-3 col-xs-3">
+                    <label class="control-label">{{ "ADVANCED_VM_REPLICATION_SETTINGS.GRID.RECOVERY_DATASTORE" | translate }}</label>
+                </div>
+                <div class="col-xs-6">
+
+                    <ui-select theme="select2" name="resourcepool" ng-model="$parent.data.targetDs" required ng-show="!data.isEdit">
+                        <ui-select-match class="ui-select-match">{{$select.selected.Datastore.DisplayName}}</ui-select-match>
+                        <ui-select-choices class="ui-select-choices"  ui-disable-choice="!item.IsEnabled"
+                                           repeat="item in data.targetDatastoreData | filter: $select.search">
+                            <span ng-bind-html="item.Datastore.DisplayName | highlight: $select.search"></span>
+                        </ui-select-choices>
+                    </ui-select>
+
+                </div>
+            </div>
+            <!------ service profile --------------->
+            <div class="form-group">
+                <div class="col-xs-offset-3 col-xs-3">
+                    <label class="control-label">{{ "CREATE_VPG_REPLICATION.SERVICE_PROFILE" | translate }}</label>
+                </div>
+                <div class="col-xs-6">
+
+                    <ui-select theme="select2" name="serviceProfile" ng-model="$parent.data.serviceProfile" required="" ng-show="!data.isEdit" ng-change="setAdvancedButton()">
+                        <ui-select-match class="ui-select-match">{{$select.selected.DisplayName}}</ui-select-match>
+                        <ui-select-choices class="ui-select-choices" repeat="item in data.serviceProfileDropDownData | filter: $select.search">
+                            <span title="{{item.Description}}" ng-bind-html="item.DisplayName | highlight: $select.search"></span>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+            </div>
+            <div class="form-group" >
+                <div class="col-xs-offset-6 col-xs-6">
+                    <a class="btn btn-link" ng-click="openAdvanced()" ng-disabled="advancedButtonDisabled">{{'ZSSP_VPG.SWITCH' | translate}}</a>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</base-modal-window>

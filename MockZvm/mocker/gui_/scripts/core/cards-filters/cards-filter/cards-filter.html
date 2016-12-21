@@ -1,0 +1,14 @@
+<div class="cards-filter-container">
+    <div uib-dropdown auto-close="clickOutside" is-open="$ctrl.column.isDropdownVisible" filter-auto-close>
+        <div uib-dropdown-toggle>
+            <div class="cards-filter-toggle-wrapper">
+                <span class="cards-filter-name">{{$ctrl.column.name}}:</span>
+                <card-filter-selection class="cards-active-filter__content"
+                                       column="$ctrl.column"></card-filter-selection>
+            </div>
+        </div>
+        <!--TODO: Refactor this for better component/directive with external template and changing inputs-->
+        <div uib-dropdown-menu aria-labelledby="cards-filter-dropdown"
+             template-url="{{$ctrl.filterTemplate}}"></div>
+    </div>
+</div>

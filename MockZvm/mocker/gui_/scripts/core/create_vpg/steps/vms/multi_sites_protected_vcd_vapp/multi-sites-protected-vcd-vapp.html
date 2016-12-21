@@ -1,0 +1,33 @@
+<base-modal-window modal-title="{{:: 'CREATE_VPG_SELECT_VMS.SELECT_VCD_VAPP' | translate }}" close="allProtectedVcdVapp.handleCancelClicked"
+                   btns="allProtectedVcdVapp.buttons" help="VMs">
+
+    <div class="window-info-title">{{:: 'CREATE_VPG_SELECT_VMS.SELECT_VCD_VAPP_INFO' | translate}}</div>
+
+
+    <div class="custom-grid-filter-container">
+        <ui-select theme="select2" ng-model="allProtectedVcdVapp.customFilter.selected" ng-change="allProtectedVcdVapp.filterOptionChange($select.selected)">
+            <ui-select-match class="ui-select-match" placeholder="Select or search a filter in the list...">
+                <span class="ui-select-placeholder">
+                   {{:: 'CREATE_VPG_SELECT_VMS.SHOW' | translate}}&nbsp;
+                </span>{{$select.selected.display}}
+            </ui-select-match>
+            <ui-select-choices class="ui-select-choices" repeat="option in allProtectedVcdVapp.gridFilterOptions | filter: $select.search">
+                <span ng-bind-html="option.display | highlight: $select.search"></span>
+            </ui-select-choices>
+        </ui-select>
+    </div>
+
+    <div class="select-vms-grid-container">
+        <z-slick-grid data="allProtectedVcdVapp.data.allPotentialVcdVapp"
+                      custom-options="allProtectedVcdVapp.data.allPotentialColumnOptionsVcdVapp"
+                      group-by-values="allProtectedVcdVapp.data.allProtectedGroupByDef"
+                      grid-id="{{:: allProtectedVcdVapp.allPotentialVcdVappGrid}}"
+                      grid="allProtectedVcdVapp.gridObj.allPotentialsGrid"
+                      selected-items="allProtectedVcdVapp.data.allCheckedPotentialVcdVapp"
+                      hide-view-options="true"
+                      on-selection="allProtectedVcdVapp.gridSelectionChange"
+                      on-mouse-enter="allProtectedVcdVapp.cellMouseEnter">
+        </z-slick-grid>
+    </div>
+
+</base-modal-window>

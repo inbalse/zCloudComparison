@@ -1,0 +1,33 @@
+<base-modal-window modal-title="{{ 'EDIT_STOP_FAILOVER_ITEM.TITLE' | translate }}" close="close" btns="buttons"
+                   loading="loading" help="stopFailoverTestController">
+    <div class="container-fluid">
+        <div class="row">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-xs-12 control-label">{{ 'EDIT_STOP_FAILOVER_ITEM.INFO' | translate }}</label>
+
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-xs-2">{{ 'EDIT_STOP_FAILOVER_ITEM.RESULT' | translate }}</label>
+
+                    <div class="col-xs-10">
+                        <ui-select theme="select2" ng-model="$parent.data.Result.Status" search-enabled="false">
+                            <ui-select-match class="ui-select-match">{{$select.selected.Label}}</ui-select-match>
+                            <ui-select-choices class="ui-select-choices" repeat="item.Value as item in results | filter: $select.search">
+                                <span ng-bind-html="item.Label | highlight: $select.search"></span>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-xs-2">{{ 'EDIT_STOP_FAILOVER_ITEM.Notes' | translate }}</label>
+
+                    <div class="col-xs-10">
+                        <input type="text" ng-model="data.Result.Summary"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</base-modal-window>

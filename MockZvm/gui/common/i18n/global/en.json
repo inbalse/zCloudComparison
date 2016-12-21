@@ -1,0 +1,149 @@
+{
+  "MODAL": {
+    "OK": "OK",
+    "SAVE": "SAVE",
+    "APPLY": "APPLY",
+    "CANCEL": "CANCEL",
+    "RESET": "RESET",
+    "REFRESH": "REFRESH",
+    "RETRY": "RETRY",
+    "CLOSE": "CLOSE",
+    "HELP": "HELP",
+    "STOP": "STOP",
+    "YES": "YES",
+    "NO": "NO",
+    "NEXT": "NEXT",
+    "DONE": "DONE",
+    "COMMIT": "COMMIT",
+    "ABORT": "ABORT",
+    "DELETE": "DELETE",
+    "CONTINUE": "CONTINUE",
+    "SELECT": "SELECT",
+    "ADD": "ADD",
+    "SITE_LIST": "SITE LIST"
+  },
+  "METRICS": {
+    "UNIT": "Unit",
+    "MB": "MB",
+    "GB": "GB",
+    "TB": "TB",
+    "MS": "MS",
+    "MB_PER_SEC": "MB/sec",
+    "M_BIT_PER_SEC": "Mb/sec",
+    "HOURS_SHORT": "h",
+    "MINUTES_SHORT": "min",
+    "AUTO": "Auto",
+    "IOPS": "IOPS",
+    "SECONDS": "Seconds",
+    "MINUTES": "Minutes",
+    "HOURS": "Hours",
+    "DAY": "Day",
+    "DAYS": "Days",
+    "MONTH": "Month",
+    "MONTHS": "Months",
+    "MIN": "min",
+    "SEC": "sec"
+  },
+  "FROM": "From",
+  "TO": "To",
+  "AT": "at",
+  "VALIDATION": {
+    "THIS_FIELD_IS_REQUIRED": "This field is required"
+  },
+  "DAYS": {
+    "MONDAY": "Monday",
+    "TUESDAY": "Tuesday",
+    "WEDNESDAY": "Wednesday",
+    "THURSDAY": "Thursday",
+    "FRIDAY": "Friday",
+    "SATURDAY": "Saturday",
+    "SUNDAY": "Sunday"
+  },
+  "SCHEDULE_PERIOD_TYPES": {
+    "HOURLY": "Hourly",
+    "DAILY": "Daily",
+    "WEEKLY": "Weekly",
+    "NONE": "None",
+    "MINUTES": "minutes",
+    "MINUTE": "minute",
+    "HOUR": "hour",
+    "HOURS": "hours",
+    "DAY": "day",
+    "DAYS": "days"
+  },
+  "VIEWS": "Views",
+  "CLOSE_VIEWS_INFO": "You are about to delete the view {{viewName}}.",
+  "COGWHEEL": {
+    "SHOW_COLUMNS": "Show/Hide Columns",
+    "CREATE_NEW": "Create View",
+    "RESET_COLUMNS": "Reset Columns"
+  },
+  "NA": "NA",
+  "NONE": "None",
+  "MORE": "MORE",
+  "NOT_DEFINED": "Not defined",
+  "GROUP_BY": "Group by:",
+  "SORT_BY": "Sort by:",
+  "ADD_FILTER": "Add Filter:",
+  "CLEAR_ALL_FILTERS": "CLEAR ALL FILTERS",
+  "VIEW_BY": "View by:",
+  "SEARCH": "Search",
+  "EXPORT": "EXPORT",
+  "YES": "Yes",
+  "NO": "No",
+  "SELECT": "Select...",
+  "UNDO": "Undo",
+  "BEFORE": "Before",
+  "DEFAULT_TIMEOUT": "Default Timeout:",
+  "EDIT": "Edit",
+  "POWERED_OF": "Powered by",
+  "TYPE": "Type",
+  "UNDO_TEXT": "Undo the last action",
+  "LOGOUT": "Log Out",
+  "REFRESH": "Refresh",
+  "SUPPORT": "Support",
+  "ABOUT": "About",
+  "HELP": "Help",
+  "EXCEPTIONS": {
+    "UNKNOWN": "Unknown error occurred. Please contact Zerto Support",
+    "MANAGER_NOT_RESPONDING": {
+      "TITLE": "The Zerto Virtual Manager (ZVM) is not responding.",
+      "DESC": "Wait a few seconds and then refresh the display. If refreshing does not work, check the status of the ZVM Windows Service and access to the ZVM machine."
+    },
+    "CONNECTION_FAILED": {
+      "TITLE": "Connection to Zerto Virtual Manager (ZVM) service cannot be established.",
+      "DESC": "Check the status of the ZVM Windows Service and access to the ZVM machine."
+    },
+    "VSPHERE_SESSION_FAILED": {
+      "TITLE": "There seems to be a problem with the vSphere session.",
+      "DESC": "Refresh and try again."
+    },
+    "PORTAL_NOT_AVAILABLE": {
+      "TITLE": "The Portal is currently not available.",
+      "DESC": "Wait a few minutes and refresh the portal or contact your cloud provider for assistance."
+    },
+    "PERMISSION_TITLE": "Permissions",
+    "PERMISSION_ERROR": "You do not have the correct set of permissions for this task.",
+    "LICENSE_TITLE": "License",
+    "LICENSE_ERROR": "License expired"
+  },
+  "GRAPHS": {
+    "IOPS": "IOPS",
+    "RPO": "RPO (sec)",
+    "THROUGHPUT": "THROUGHPUT (MB/sec)",
+    "WANTRAFFIC": "WAN TRAFFIC (MB/sec)",
+    "OUTGOING": "Outgoing"
+  },
+  "COPY_NAT_SERVICE_COLLECTION": {
+    "CONVERT_AUTO_TO_MANUAL_AND_RETAIN_EXTERNAL_IP": "Use source external IP",
+    "COPY_AS_IS": "Use automatically allocated IP"
+  },
+  "TIME_UNITS": {
+    "SEC": "sec",
+    "MIN": "min",
+    "HOUR": "hr",
+    "HOURS": "hrs",
+    "DAY": "day",
+    "DAYS": "days"
+  }
+}

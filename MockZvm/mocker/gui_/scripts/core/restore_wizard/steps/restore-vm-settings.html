@@ -1,0 +1,54 @@
+<div class="z-wizard-container-wide" ng-controller="restoreVmSettingsController" ng-cloak="">
+
+    <form class="form-horizontal">
+        <div class="form-group">
+            <h4 class="recovery-title">{{'RESTORE_WIZARD.RESTORE_VM_SETTINGS_STEP.INFO' | translate}}</h4>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-4">{{'RESTORE_WIZARD.RESTORE_VM_SETTINGS_STEP.RESTORE_ON_HOST' |
+                translate}}</label>
+
+            <div class="col-xs-8">
+                <ui-select theme="select2" search-enabled="false" ng-model="$parent.data.restoreHost" ng-change="onRestoreHostChanged()">
+                    <ui-select-match class="ui-select-match"><span ng-bind="$select.selected.DisplayName"></span></ui-select-match>
+                    <ui-select-choices class="ui-select-choices" repeat="item in data.restoreConfiguration.PotentialRestoreMainEntities.PotentialComputeResources">
+                        <span ng-bind="item.DisplayName"></span>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <div class="form-group" ng-show="data.potentialRestoreSecondaryEntities.Datastores">
+            <label ng-hide="isHyperV" class="control-label col-xs-4">{{'RESTORE_WIZARD.RESTORE_VM_SETTINGS_STEP.RESTORE_ON_DATASTORE' |
+                translate}}</label>
+            <label ng-show="isHyperV" class="control-label col-xs-4">{{'RESTORE_WIZARD.RESTORE_VM_SETTINGS_STEP.RESTORE_ON_STORAGE' |
+                translate}}</label>
+
+            <div class="col-xs-8">
+                <ui-select theme="select2" search-enabled="false" ng-model="$parent.data.restoreDatastore" ng-change="onRestoreDatastoreChanged()">
+                    <ui-select-match class="ui-select-match"><span ng-bind="$select.selected.Datastore.DisplayName"></span></ui-select-match>
+                    <ui-select-choices class="ui-select-choices" repeat="item in data.potentialRestoreSecondaryEntities.Datastores">
+                        <span ng-bind="item.Datastore.DisplayName"></span>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-offset-7">
+                <button class="btn btn-link pull-right" ng-click="handleEditSelectedClick()"
+                        ng-disabled="selectedVmSettings.length == 0">
+                    {{'RESTORE_WIZARD.RESTORE_VM_SETTINGS_STEP.EDIT_SELECTED' | translate}}
+                </button>
+                <button class="btn btn-link pull-right" ng-click="handleApplyVPGConfigurationClick()">
+                    {{'RESTORE_WIZARD.RESTORE_VM_SETTINGS_STEP.APPLY_VPG_CONFIGURATION' | translate}}
+                </button>
+            </div>
+        </div>
+        <div class="form-group">
+            <z-slick-grid grid="grid" class="restore-vms-settings-grid" grid-id="restore-vms-settings-grid" id="restoreVmSettingsGrid"
+                    data="data.restoreConfiguration.Configuration.VirtualMachines" row-click="rowClick" hide-view-options="true"
+                    selected-items="selectedVmSettings" on-selection="selectedVmSettingsChange"
+                    custom-options="restoreVmsSettingsCustomOptions"></z-slick-grid>
+        </div>
+    </form>
+
+</div>

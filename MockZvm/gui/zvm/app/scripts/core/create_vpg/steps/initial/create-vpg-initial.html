@@ -1,0 +1,52 @@
+<div class="z-wizard-container-narrow" ng-controller="createVPGInitialController" ng-cloak="">
+    <form role="form" class="form-horizontal" novalidate>
+        <div class="form-group">
+            <p class="text-center step-desc">{{:: "CREATE_VPG_INITIAL.EDIT_SETTING" | translate }}</p>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-12">
+                <hr/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="vpgName" class="col-xs-4 control-label">
+                <b>{{:: "CREATE_VPG_INITIAL.VPG_NAME" | translate }}</b>
+            </label>
+
+            <div class="col-xs-8">
+                <input type="text"
+                       id="vpgName"
+                       ng-model="data.vpgName"
+                       z-wizard-validator="vpgName"
+                       data-placement="top"
+                       maxlength="80"
+                       required=""
+                       z-focus="true"
+                       ng-blur="handleNameChange()">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="priority" class="col-xs-4 control-label">
+                <b>{{:: "CREATE_VPG_INITIAL.PRIORITY" | translate }}</b>
+            </label>
+
+            <div class="col-xs-8">
+                <ui-select theme="select2"
+                           earch-enabled="false"
+                           id="priority"
+                           ng-model="$parent.data.priority"
+                           on-select="handlePriorityChange()"
+                           required="">
+                    <ui-select-match class="ui-select-match"><span
+                        class="select-ui-priority {{'select-ui-priority-'+ $select.selected.label}}">{{$select.selected.label}}</span>
+                    </ui-select-match>
+                    <ui-select-choices class="ui-select-choices"
+                                       repeat="item.enum as item in data.priorityCollection | filter: $select.search">
+                        <span class="select-ui-priority {{'select-ui-priority-'+item.label}}"
+                              ng-bind-html="item.label | highlight: $select.search"></span>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+    </form>
+</div>

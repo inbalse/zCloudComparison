@@ -1,0 +1,329 @@
+.vra-view {
+    $title-height: 42px;
+
+    //images symbols
+    .vra-details-parameters {
+        padding: 10px;
+
+        .vra-details-parameters-title {
+            background-repeat: no-repeat;
+
+            &.vra-details-parameters-title-general {
+                background-image: url('../assets/vpgs_details/general.png');
+                height: $title-height - 5;
+                top: 35px;
+                position: relative;
+            }
+            &.vra-details-parameters-title-network {
+                background-image: url('../assets/vra_details/network.png');
+                height: $title-height;
+            }
+            &.vra-details-parameters-title-recovery {
+                background-image: url('../assets/vra_details/replication-and-recovery.png');
+                height: $title-height;
+            }
+        }
+
+        hr {
+            border-width: 2px;
+        }
+        ul {
+            margin: 0;
+            padding: 0;
+            li {
+                list-style: none;
+                a {
+                    label {
+                        position: absolute;
+                        line-height: 100%;
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+
+    }
+
+    .status-tab {
+        height: 100%;
+        position: relative;
+        padding: 15px;
+        .status-tab-left, .status-tab-right {
+            height: 100%;
+            position: relative;
+            float: left;
+            width: 50%;
+            .status-widget {
+                padding: 10px;
+            }
+        }
+        .status-tab-left {
+            padding-right: 15px;
+            margin-bottom: 20px;
+            .charts-row {
+                padding-top: 0;
+                padding-bottom: 20px;
+                height: 33%;
+                position: relative;
+                &:last-child {
+                    overflow:hidden;
+                }
+            }
+        }
+        .status-tab-right {
+            padding-left: 15px;
+            border-left: 1px solid #cdcdcd;
+            overflow-y: auto;
+        }
+    }
+
+    @mixin border-style($color) {
+        border: solid 3px $color !important;
+    }
+
+    .nav-tabs li {
+        a label {
+            cursor: pointer;
+        }
+
+        button {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
+
+        .vra-status-tab {
+            font-size: 21px;
+            text-align: left;
+            text-transform: uppercase;
+            color: #b8b9bb;
+            padding-left: 75px;
+            position: relative;
+
+            label {
+                line-height: 100%;
+                margin: 0;
+                position: static;
+            }
+            @include border-style(#c1c2c4);
+
+            & + .vra-status-tab-icon {
+                position: absolute;
+                width: 60px;
+                height: 45px;
+                left: 5px;
+                top: 10px;
+                border-right: 1px solid #cdcdcd;
+                background: transparent no-repeat center;
+                opacity: 0.5;
+            }
+            & ~ .vra-status-progress {
+                height: 3px;
+                margin: 0;
+                left: 79px;
+                right: 23px;
+                bottom: 10px;
+                position: absolute;
+                .progress-bar {
+                    background-color: #cdcdcd;
+                    box-shadow: none;
+                }
+            }
+            & ~ .vra-status-progress-value {
+                position: absolute;
+                left: 79px;
+                color: #c1c2c4;
+                bottom: 15px;
+                margin: 0;
+                font-size: 11px;
+            }
+            &.vra-status-tab-state-0 {
+                label {
+                    top: 18px;
+                }
+                & + .vra-status-tab-icon {
+                    background-image: url('../assets/status_tab_icons/status-tab-meeting-sla.png');
+                }
+            }
+            &.vra-status-tab-state-1 {
+                & + .vra-status-tab-icon {
+                    background-image: url('../assets/status_tab_icons/status-tab-history-not-meeting-sla.png');
+                }
+            }
+            &.vra-status-tab-state-2 {
+                & + .vra-status-tab-icon {
+                    background-image: url('../assets/status_tab_icons/status-tab-not-installed.png');
+                }
+            }
+            &.vra-status-tab-state-3 {
+                & + .vra-status-tab-icon {
+                    background-image: url('../assets/status_tab_icons/status-tab-installing.png');
+                }
+            }
+            &.vra-status-tab-state-4 {
+                & + .vra-status-tab-icon {
+                    background-image: url('../assets/status_tab_icons/status-tab-delete.png');
+                }
+            }
+            &.vra-status-tab-state-5 {
+                label {
+                    top: 18px;
+                }
+                & + .vra-status-tab-icon {
+                    background-image: url('../assets/status_tab_icons/status-tab-not-meeting-sla-1.png');
+                }
+            }
+            &.vra-status-tab-state-6 {
+                label {
+                    top: 18px;
+                }
+                & + .vra-status-tab-icon {
+                    background-image: url('../assets/status_tab_icons/status-tab-history-not-meeting-sla.png');
+                }
+            }
+            &.vra-status-tab-state-7 {
+                & + .vra-status-tab-icon {
+                    background-image: url('../assets/status_tab_icons/status-tab-updating-ip-settings.png');
+                }
+            }
+            &.vra-status-tab-state-8 {
+                & + .vra-status-tab-icon {
+                    background-image: url('../assets/status_tab_icons/status-tab-changing-host.png');
+                }
+            }
+            &.vra-status-tab-state-9 {
+                & + .vra-status-tab-icon {
+                    background-image: url('../assets/status_tab_icons/status-tab-history-not-meeting-sla-dark.png');
+                }
+            }
+            &.vra-status-tab-state-ghost {
+                & + .vra-status-tab-icon {
+                    background-image: url('../assets/status_tab_icons/status-tab-not-meeting-sla.png');
+                }
+            }
+        }
+        .tab-content {
+            color: #000;
+            font-size: 18px;
+            top: 10px;
+            height: 35px;
+            min-width: 40px;
+            text-align: center;
+            position: relative;
+            border-right: 1px solid #ccc;
+            line-height: 100%;
+            opacity: 0.5;
+            .vra-direction {
+                width: 100%;
+                height: 14px;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                background: transparent no-repeat center;
+
+                &.vra-direction-self {
+                    background-image: url('../assets/list_icons/self-direction.png');
+                }
+                &.vra-direction-recovery {
+                    background-image: url('../assets/list_icons/recovery-direction.png');
+                }
+                &.vra-direction-protected {
+                    background-image: url('../assets/list_icons/protected-direction.png');
+                }
+
+            }
+            &:nth-child(2) {
+                border-right: none;
+            }
+            p {
+                text-align: left;
+                margin: 0px;
+            }
+        }
+        &.active {
+            .tab-content {
+                opacity: 1;
+            }
+            .vra-status-tab {
+                color: #505151;
+
+                & ~ .vra-status-progress-value {
+                    color: #20477c;
+                }
+                &.vra-status-tab-state-0 {
+                    @include border-style(#65a144);
+                }
+                &.vra-status-tab-state-1 {
+                    @include border-style(#e9bb1b);
+                }
+                &.vra-status-tab-state-2 {
+                    @include border-style(#9e9e9e);
+                }
+                &.vra-status-tab-state-3 {
+                    @include border-style(#8d9fb8);
+                    & ~ .vra-status-progress .progress-bar {
+                        background-color: #8d9fb8
+                    }
+                }
+                &.vra-status-tab-state-4 {
+                    @include border-style(#71829a);
+                    & ~ .vra-status-progress .progress-bar {
+                        background-color: #71829a
+                    }
+                }
+                &.vra-status-tab-state-5 {
+                    @include border-style(#b95559);
+                }
+                &.vra-status-tab-state-6 {
+                    @include border-style(#e9bb1b);
+                }
+                &.vra-status-tab-state-7 {
+                    @include border-style(#8d9fb8);
+                    & ~ .vra-status-progress .progress-bar {
+                        background-color: #8d9fb8
+                    }
+                }
+                &.vra-status-tab-state-8 {
+                    @include border-style(#656c74);
+                }
+                &.vra-status-tab-state-9 {
+                    @include border-style(#20477c);
+                }
+                &.vra-status-tab-state-ghost {
+                    @include border-style(#b95559);
+                }
+                & + .vra-status-tab-icon {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    .vra-parameters-tab {
+        .tab-content {
+            padding: 0 5px;
+            text-align: left !important;
+
+            small {
+                font-size: 12px;
+            }
+            p {
+                font-size: 14px;
+            }
+        }
+    }
+    .vra-parameters-diskboxes {
+        height: 85px;
+        overflow-y: auto;
+    }
+
+    .vra-li-with-icon {
+        padding-left: 8px;
+        span {
+            left: -10px;
+        }
+    }
+    .vra-drop-down-menu {
+        min-width: 200px;
+    }
+}

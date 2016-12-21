@@ -1,0 +1,145 @@
+//============================================================================
+// The modal window
+//============================================================================
+.modal {
+    outline: none;
+    overflow-y: auto;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    //    display: flex;
+    //    flex-direction: column;
+    //    justify-content: center;
+
+//    .modal-dialog {
+//        position: fixed;
+//        left: 50%;
+//        //        margin-left: -50%;
+//        top: 50%;
+//        //        transform: none;
+//        //        -webkit-transform: none;
+//    }
+//    &.fade {
+//        .modal-dialog {
+//            -webkit-transform: translate(-50%, -100%) scale(1.1);
+//            transform: translate(-50%, -100%) scale(1.1);
+//            //            margin-top: -100%;
+//            //            transform: none;
+//            //            -webkit-transform: none;
+//
+//        }
+//    }
+//    &.in {
+//        .modal-dialog {
+//            //            margin-top: -50%;
+//            //            transform: none;
+//            //            -webkit-transform: none;
+//            -webkit-transform: translate(-50%, -50%) scale(1);
+//            transform: translate(-50%, -50%) scale(1);
+//        }
+//    }
+}
+
+.modal-content {
+    padding: 6px;
+    border: 2px solid $modal-content-border-color;
+    .modal-header {
+        color: white;
+        padding: 0;
+        border: none;
+
+        h4 {
+            margin: 5px 0 0 8px;
+        }
+        .modal-header-inner {
+            margin: 0;
+            padding: 0;
+        }
+        .modal-buttons-header {
+            margin: 3px 3px;
+        }
+    }
+    .modal-body {
+        margin-top: 10px;
+        padding: 20px 10px;
+    }
+    .modal-footer {
+        border: none;
+        padding: 10px;
+        margin-top: 0px;
+        background-color: white;
+
+        //    button{
+        //      @extend .btn;
+        //      @extend .z-btn-default;
+        //    }
+        //
+        //    button[name='CANCEL']{
+        //      @extend .btn;
+        //      @extend .btn-link;
+        //    }
+    }
+
+    .modal-busy {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0px;
+        left: 0px;
+        opacity: 0.5;
+        background: #3c454f url("../assets/preloader.GIF") no-repeat center;
+        cursor: progress;
+        z-index: 11;
+    }
+}
+
+// Additional properties for button version
+// iOS requires the button element instead of an anchor tag.
+// If you want the anchor version, it requires `href="#"`.
+button.z-help {
+    padding: 0;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    -webkit-appearance: none;
+    width: 12px;
+    height: 12px;
+    background-image: url("../assets/modal/help-icon.png");
+    opacity: 1;
+    margin-right: 2px;
+}
+
+button.z-close {
+    padding: 0;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    -webkit-appearance: none;
+    width: 12px;
+    height: 12px;
+    background-image: url("../assets/modal/close-icon.png");
+    opacity: 1;
+}
+
+//============================================================================
+// The panel window
+//============================================================================
+.z-panel {
+    overflow: hidden;
+
+    .modal-header {
+        margin-top: 3px;
+    }
+
+    .modal-content {
+        padding: 5px;
+    }
+
+    .modal-body {
+        padding: 0px;
+    }
+
+    .modal-footer {
+        margin-top: 0px;
+        padding: 0px;
+    }
+}

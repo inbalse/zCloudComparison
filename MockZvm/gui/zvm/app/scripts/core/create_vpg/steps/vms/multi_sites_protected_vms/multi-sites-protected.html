@@ -1,0 +1,37 @@
+<base-modal-window modal-title="{{:: 'CREATE_VPG_SELECT_VMS.SELECT_VMS' | translate }}" close="allProtectedVms.handleCancelClicked"
+                   btns="allProtectedVms.buttons" help="VMs">
+
+    <div class="window-info-title">{{:: 'CREATE_VPG_SELECT_VMS.WINDOW_INFO_TITLE' | translate}}</div>
+
+
+    <div class="custom-grid-filter-container">
+        <ui-select theme="select2" ng-model="allProtectedVms.customFilter.selected" ng-change="allProtectedVms.filterOptionChange($select.selected)">
+            <ui-select-match class="ui-select-match" placeholder="Select or search a filter in the list...">
+                <span class="ui-select-placeholder">
+                   {{:: 'CREATE_VPG_SELECT_VMS.SHOW' | translate}}&nbsp;
+                </span>{{$select.selected.display}}
+            </ui-select-match>
+            <ui-select-choices class="ui-select-choices" repeat="option in allProtectedVms.gridFilterOptions | filter: $select.search">
+                <span ng-bind-html="option.display | highlight: $select.search"></span>
+            </ui-select-choices>
+        </ui-select>
+    </div>
+
+    <div class="select-vms-grid-container">
+        <z-slick-grid data="allProtectedVms.data.allPotentialVms"
+                      custom-options="allProtectedVms.data.allPotentialColumnOptions"
+                      group-by-values="allProtectedVms.data.allProtectedGroupByDef"
+                      grid-id="allProtectedVms.allPotentialVMsGrid"
+                      grid="allProtectedVms.gridObj.allPotentialsGrid"
+                      selected-items="allProtectedVms.data.allCheckedPotentialVms"
+                      hide-view-options="true"
+                      on-selection="allProtectedVms.gridSelectionChange"
+                      on-mouse-enter="allProtectedVms.cellMouseEnter">
+        </z-slick-grid>
+    </div>
+
+    <div class="selected-vms-details">
+        <label>{{:: 'CREATE_VPG_SELECT_VMS.SELECTED_VMS' | translate}} : {{allProtectedVms.data.allCheckedPotentialVms.length}}</label>
+    </div>
+
+</base-modal-window>

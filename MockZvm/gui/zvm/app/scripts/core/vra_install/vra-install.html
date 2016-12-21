@@ -1,0 +1,134 @@
+<base-modal-window modal-title="{{ 'VRA_INSTALL.TITLE' | translate }}" close="close" btns="buttons"
+                   loading="loading" help="vraInstallController">
+    <form class="form-horizontal" autocomplete="off" name="forms.vraForm" z-enter="enterPressEvent()">
+        <h4 class="form-h4">{{'VRA_INSTALL.HOST_DETAILS' | translate}}</h4>
+        <div class="form-group">
+            <label class="col-xs-5 control-label">{{'VRA_INSTALL.HOST' | translate}}</label>
+
+            <div class="col-xs-7">
+                <ui-select theme="select2" id="hostList" ng-model="$parent.vraInstallObject.host"  ng-change="changedHost()" required val="vraInstallObject.host">
+                    <ui-select-match class="ui-select-match">{{$select.selected.HostInfo.DisplayName}}</ui-select-match>
+                    <ui-select-choices class="ui-select-choices" repeat="item in hostList | filter: $select.search">
+                        <span ng-bind-html="item.HostInfo.DisplayName | highlight: $select.search"></span>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <div class="form-group" ng-show="vraInstallObject.host.VibSupported">
+            <div class="col-xs-12">
+                <z-checkbox model="VibUseCredentials.isVibUseCredentialsSelected" change="isVibUseCredentialsSelectedChanged()">{{"VRA_INSTALL.VIB_SUPPORTED" | translate}}</z-checkbox>
+            </div>
+        </div>
+        <div class="form-group" ng-show="!vraInstallObject.host.VibSupported || VibUseCredentials.isVibUseCredentialsSelected">
+            <label class="col-xs-5 control-label">{{'VRA_INSTALL.HOST_PASS' | translate}}</label>
+
+            <div class="col-xs-6">
+                <z-password model="vraInstallObject.password" show-text="vraInstallObject.showPasswordText"
+                            z-disabled="!isUserNamePasswordEnabled" required="isUserNamePasswordRequired"></z-password>
+            </div>
+            <div class="col-xs-1">
+                <z-checkbox z-disabled="!isUserNamePasswordEnabled" model="vraInstallObject.showPasswordText">
+                </z-checkbox>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="dataStoresList" class="col-xs-5 control-label">{{ textLabel }}</label>
+
+            <div class="col-xs-7">
+                <ui-select theme="select2" id="dataStoresList" ng-model="$parent.vraInstallObject.dataStore" required>
+                    <ui-select-match class="ui-select-match">{{$select.selected.Datastore.DisplayName}}</ui-select-match>
+                    <ui-select-choices class="ui-select-choices" ui-disable-choice="!item.IsEnabled" repeat="item in dataStores | filter: $select.search">
+                        <span ng-bind-html="item.Datastore.DisplayName | highlight: $select.search"></span>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="networkList" class="col-xs-5 control-label">{{'VRA_INSTALL.NETWORK' | translate}}</label>
+
+            <div class="col-xs-7">
+                <ui-select theme="select2" id="networkList" ng-model="$parent.vraInstallObject.network" required>
+                    <ui-select-match class="ui-select-match">{{$select.selected.DisplayName}}</ui-select-match>
+                    <ui-select-choices class="ui-select-choices" repeat="item in networks | filter: $select.search">
+                        <span ng-bind-html="item.DisplayName | highlight: $select.search"></span>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label help-icon="VRA_INSTALL.VRA_RAM_TOOLTIP" for="amountList" class="col-xs-5 control-label">{{'VRA_INSTALL.AMOUNT' | translate}}</label>
+
+            <div class="col-xs-2">
+                <div z-stepper ng-model="vraInstallObject.amountRam" min="1" max="16"></div>
+            </div>
+            <div class="col-xs-5">
+                <label class="amount-ram-label">{{'VRA_INSTALL.GB' | translate}}</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="groupList" class="col-xs-5 control-label">{{'VRA_INSTALL.VRAGROUP' | translate}}</label>
+
+            <div class="col-xs-7">
+                <ui-select theme="select2" id="groupList" ng-model="$parent.vraInstallObject.vraGroup" >
+                    <ui-select-match class="ui-select-match">{{$select.selected}}</ui-select-match>
+                    <ui-select-choices class="ui-select-choices" repeat="item in vragroups | filter: $select.search">
+                        <span ng-bind-html="item | highlight: $select.search"></span>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+
+        <!-- ADD GROUP -->
+        <div class="form-group">
+            <label class="col-xs-5"></label>
+            <div class="col-xs-5">
+                <input name="createInput" type="text" ng-model="vraInstallObject.newGroup" collection="vragroups"
+                       placement="left" error-message="{{'VRA_EDIT.GROUP_EXIST' | translate}}" z-unique-valid
+                       placeholder="New group"/>
+            </div>
+            <div class="col-xs-2">
+                <button class="btn btn-primary create-group-btn" ng-click="createNewGroup(vraInstallObject.newGroup)"
+                        ng-disabled="!vraInstallObject.newGroup || forms.vraForm.createInput.$invalid">{{'VRA_EDIT.CREATE' | translate}}</button>
+            </div>
+        </div>
+
+
+        <h4 class="form-h4">{{'VRA_INSTALL.VRANETWORK' | translate}}</h4>
+        <div class="form-group">
+            <label for="confList" class="col-xs-5 control-label">{{'VRA_INSTALL.CONFIGURATION' | translate}}</label>
+
+            <div class="col-xs-7">
+                <ui-select theme="select2" id="confList" ng-model="$parent.vraInstallObject.networkType" search-enabled="false">
+                    <ui-select-match class="ui-select-match">{{$select.selected.label}}</ui-select-match>
+                    <ui-select-choices class="ui-select-choices" repeat="item.value as item in networkTypes | filter: $select.search">
+                        <span ng-bind-html="item.label | highlight: $select.search"></span>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <div class="form-group" ng-if="!isNetworkDisabled">
+            <label class="col-xs-5 control-label">{{'VRA_INSTALL.ADDRESS' | translate}}</label>
+
+            <div class="col-xs-7">
+                <input z-ip-field type='text' id="address" required="$parent.vraInstallObject.networkType === 1 ? true : false"
+                       ng-model='vraInstallObject.Ip'/>
+            </div>
+        </div>
+        <div class="form-group" ng-if="!isNetworkDisabled">
+            <label class="col-xs-5 control-label">{{'VRA_INSTALL.SUBNET' | translate}}</label>
+
+            <div class="col-xs-7">
+                <input z-ip-field type='text' id="subnet" required="$parent.vraInstallObject.networkType === 1 ? true : false"
+                       ng-model='vraInstallObject.NetMask'/>
+            </div>
+        </div>
+        <div class="form-group" ng-if="!isNetworkDisabled">
+            <label class="col-xs-5 control-label">{{'VRA_INSTALL.GATEWAY' | translate}}</label>
+
+            <div class="col-xs-7">
+                <input z-ip-field type='text' id="gateway" required="$parent.vraInstallObject.networkType === 1 ? true : false"
+                       ng-model='vraInstallObject.DefaultGw'/>
+            </div>
+        </div>
+    </form>
+</base-modal-window>

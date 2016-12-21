@@ -1,0 +1,190 @@
+<div class="vra-details-parameters">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-2">
+                <div class="vra-details-parameters-title vra-details-parameters-title-general"></div>
+            </div>
+            <div class="col-xs-4">
+                <ul>
+                    <li>
+                        <b>{{ "VRA_DETAILS.PARAMETERS.GENERAL.VRA_VERSION" | translate }}: </b>{{
+                        vraData.Config.Info.InstalledVraVersion }}&nbsp;({{ vraData.State.UpgradeDetails }})
+                    </li>
+                    <li>
+                        <b>{{ "VRA_DETAILS.PARAMETERS.GENERAL.VRA_GROUP" | translate }}: </b>{{
+                        vraData.Config.Info.BandwidthGroup }}
+                    </li>
+                    <li>
+                        <b>{{ "VRA_DETAILS.PARAMETERS.GENERAL.VRA_RAM" | translate }}: </b>{{vraData.Config.Info.MemoryInGB}}
+                        GB
+                    </li>
+                    <li>
+                        <b>{{ "VRA_DETAILS.PARAMETERS.REPLICATION_RECOVERY.VRA_VM_NAME" | translate }}: </b>{{vraData.Config.Info.VraVM.DisplayName}}
+                    </li>
+                </ul>
+            </div>
+            <div class="col-xs-3">
+                <ul>
+                    <li>
+                        <b>{{ "VRA_DETAILS.PARAMETERS.CONFIGURATION.HOST_CLUSTER" | translate }}: </b>{{
+                        vraData.Summary.OwningClusterName }}
+                    </li>
+                    <li>
+                        <b>{{ "VRA_DETAILS.PARAMETERS.REPLICATION_RECOVERY.VRA_HOST" | translate }}: </b>{{vraData.Summary.HostInfo.DisplayName}}
+                    </li>
+                    <li>
+                        <b>{{ "VRA_DETAILS.PARAMETERS.CONFIGURATION.HOST_VERSION" | translate }}: </b>{{vraData.Summary.HostVersion.Version}}
+                    </li>
+                    <li>
+                        <b>{{ "VRA_DETAILS.PARAMETERS.CONFIGURATION.DATASTORE" | translate }}: </b>{{vraData.Config.Info.Datastore.DisplayName}}
+                    </li>
+                </ul>
+            </div>
+            <div class="col-xs-3">
+                <ul>
+                    <li>
+                        <b>{{ "VRA_DETAILS.PARAMETERS.GENERAL.SHADOW_VARS" | translate }}: </b>{{vraData.Summary.DiskBoxGroup.length}}
+                    </li>
+                    <li>
+                        <div class="vra-parameters-diskboxes">
+                            <div ng-repeat="item in vraData.Summary.DiskBoxGroup track by $index">
+                                <label>{{item.DisplayName}}</label>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <hr/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-2">
+                <div class="vra-details-parameters-title vra-details-parameters-title-network"></div>
+            </div>
+            <div class="col-xs-4">
+                <ul>
+                    <li>
+                        <b>{{ "VRA_DETAILS.PARAMETERS.NETWORK.NETWORK_NAME" | translate }}: </b>{{
+                        vraData.Config.Info.Network.DisplayName }}
+                    </li>
+                    <li>
+                        <b>{{ "VRA_DETAILS.PARAMETERS.NETWORK.ADDRESS" | translate }}: </b>{{
+                        vraData.Config.Info.IpConfiguration.Ip }}
+                    </li>
+                </ul>
+            </div>
+            <div class="col-xs-3">
+                <ul>
+                    <li>
+                        <b>{{ "VRA_DETAILS.PARAMETERS.NETWORK.SUBNET_MASK" | translate }}: </b>{{vraData.Config.Info.IpConfiguration.NetMask}}
+                    </li>
+                    <li>
+                        <b>{{ "VRA_DETAILS.PARAMETERS.NETWORK.DEFAULT_GATEWAY" | translate }}: </b>{{vraData.Config.Info.IpConfiguration.DefaultGw}}
+                    </li>
+                </ul>
+            </div>
+            <div class="col-xs-3">
+                <ul>
+                    <li>
+                        <!--<b>{{ "VRA_DETAILS.PARAMETERS.DATASTORE" | translate }} </b>{{vraData}}-->
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <hr/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-2">
+                <div class="vra-details-parameters-title vra-details-parameters-title-recovery"></div>
+            </div>
+            <div class="col-xs-4">
+                <ul>
+                    <li>
+                        <b>{{ "VRA_DETAILS.PARAMETERS.REPLICATION_RECOVERY.OUTGOING_VOLUMES" | translate }}: </b>{{
+                        vraData.Summary.ProtectedCounters.Volumes }}
+                    </li>
+                    <li>
+                        <b>{{ "VRA_DETAILS.PARAMETERS.REPLICATION_RECOVERY.OUTGOING_VMS" | translate }}: </b>{{
+                        vraData.Summary.ProtectedCounters.Vms }}
+                    </li>
+                    <li>
+                        <b>{{ "VRA_DETAILS.PARAMETERS.REPLICATION_RECOVERY.OUTGOING_VPGS" | translate }}: </b>{{
+                        vraData.Summary.ProtectedCounters.Vpgs }}
+                    </li>
+                    <!--<li>-->
+                        <!--<b>{{ "VRA_DETAILS.PARAMETERS.REPLICATION_RECOVERY.RDM_DISKS_PROTECTED" | translate }}: </b>TBD-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<b>{{ "VRA_DETAILS.PARAMETERS.REPLICATION_RECOVERY.TOTAL_PROTECTED" | translate }}: </b>{{-->
+                        <!--vraData.Summary.ProtectedCounters.Volumes }}-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<b>{{ "VRA_DETAILS.PARAMETERS.REPLICATION_RECOVERY.TOTAL_RDM_PROTECTED" | translate }}: </b>TBD-->
+                    <!--</li>-->
+                </ul>
+            </div>
+            <div class="col-xs-3">
+                <ul>
+                    <li>
+                        <b>{{ "VRA_DETAILS.PARAMETERS.REPLICATION_RECOVERY.INCOMING_VOLUMES" | translate }}: </b>{{vraData.Summary.RecoveryCounters.Volumes}}
+                    </li>
+                    <li>
+                        <b>{{ "VRA_DETAILS.PARAMETERS.REPLICATION_RECOVERY.INCOMING_VMS" | translate }}: </b>{{vraData.Summary.RecoveryCounters.Vms}}
+                    </li>
+                    <li>
+                        <b>{{ "VRA_DETAILS.PARAMETERS.REPLICATION_RECOVERY.INCOMING_VPGS" | translate }}: </b>{{vraData.Summary.RecoveryCounters.Vpgs}}
+                    </li>
+                    <!--<li>-->
+                        <!--<b>{{ "VRA_DETAILS.PARAMETERS.REPLICATION_RECOVERY.JOURNAL_VOLUMES" | translate }}: </b>TBD-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<b>{{ "VRA_DETAILS.PARAMETERS.REPLICATION_RECOVERY.RDM_RECOVERY_DISKS" | translate }}: </b>TBD-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<b>{{ "VRA_DETAILS.PARAMETERS.REPLICATION_RECOVERY.SCRATCH_VOLUMES" | translate }}: </b>TBD-->
+                    <!--</li>-->
+                </ul>
+            </div>
+            <div class="col-xs-3">
+                <ul>
+                    <li>
+                        <b>{{ "VRA_DETAILS.PARAMETERS.REPLICATION_RECOVERY.RECOVERY_STORAGE_SIZE" | translate }}: </b>{{
+                        vraData.Summary.RecoveryCounters.StorageSizeInMB | mbToStringConvertor }}
+                    </li>
+                    <li>
+                        <b>{{ "VRA_DETAILS.PARAMETERS.REPLICATION_RECOVERY.PROTECTED_STORAGE_SIZE" | translate }}: </b>{{
+                        vraData.Summary.ProtectedCounters.StorageSizeInMB | mbToStringConvertor }}
+                    </li>
+                    <!--<li>-->
+                        <!--<b>{{ "VRA_DETAILS.PARAMETERS.REPLICATION_RECOVERY.TOTAL_JOURNAL_SIZE" | translate }}: </b>TBD-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<b>{{ "VRA_DETAILS.PARAMETERS.REPLICATION_RECOVERY.TOTAL_RECOVERY_VOLUMES_SIZE" | translate-->
+                            <!--}}: </b>TBD-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<b>{{ "VRA_DETAILS.PARAMETERS.REPLICATION_RECOVERY.TOTAL_RDM_SIZE" | translate }}: </b>TBD-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<b>{{ "VRA_DETAILS.PARAMETERS.REPLICATION_RECOVERY.TOTAL_RECOVERY_STORAGE" | translate }}: </b>TBD-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<b>{{ "VRA_DETAILS.PARAMETERS.REPLICATION_RECOVERY.TOTAL_SCRATCH_VOLUMES_SIZE" | translate-->
+                            <!--}}: </b>TBD-->
+                    <!--</li>-->
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <hr/>
+            </div>
+        </div>
+    </div>
+</div>

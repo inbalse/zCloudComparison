@@ -1,0 +1,175 @@
+<base-modal-window modal-title="{{popupTitle}}" close="close" btns="buttons" loading="loading" help="editRepositoryController">
+    <div class="container-fluid">
+
+        <form class="form-horizontal" autocomplete="off" name="forms.repForm">
+            <div class="form-group">
+                <label class="col-xs-2 control-label"><b>{{ 'EDIT_REP.GENERAL' | translate }}</b></label>
+                <div class="col-xs-3"><label class="control-label">{{'EDIT_REP.REP_NAME' | translate}}</label></div>
+                <div class="col-xs-7"><input class="repo-Input" required type="text" ng-model="repObject.DisplayName" ng-change="changeName()"/></div>
+            <div class="form-group">
+                <label class="col-xs-2 control-label"></label>
+                <div class="col-xs-3"><label class="repo-label">{{'EDIT_REP.REP_TYPE' | translate}}</label></div>
+                <div class="col-xs-7 select2-repo-type-container">
+                    <ui-select theme="select2" class="repo-Input" name="repTypes" ng-model="$parent.repObject.RepositoryTypeObject" required>
+                        <ui-select-match class="ui-select-match"><div class="select2-text-icon-container" ><div class="reptype-icon-{{$select.selected.value}} reptype-icon-match" ></div>{{$select.selected.label}}</div></ui-select-match>
+                        <ui-select-choices class="ui-select-choices" repeat="item in repTypes | filter: $select.search">
+                            <div class="select2-text-icon-container"><div class="reptype-icon-{{item.value}}"></div>{{item.label | highlight: $select.search}}</div>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+            </div>
+                <div class="col-xs-12">
+                    <hr/>
+                </div>
+            </div>
+
+            <div class="form-group location-label">
+                    <label class="col-xs-2 control-label"><b>{{ 'EDIT_REP.LOCATION' | translate }}</b></label>
+                    <div class="col-xs-10"></div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-xs-12">
+                    <div class="form-group" ng-show="isSMBData">
+                        <label class="col-xs-2"></label>
+                        <div class="col-xs-3"><label class="control-label">{{'EDIT_REP.USER' | translate}}</label></div>
+                        <div class="col-xs-7"><input required type="text" ng-model="repObject.SMBData.Username" ng-change="changeUserName()" ng-required="isSMBData"/></div>
+                    </div>
+                    <div class="form-group" ng-show="isSMBData">
+                        <label class="col-xs-2"></label>
+                        <div class="col-xs-3"><label class="control-label">{{'EDIT_REP.PASSWORD' | translate}}</label></div>
+                        <div class="col-xs-7"><z-password model="repObject.SMBData.UserPassword" change="changePassword()" show-text="repObject.showPasswordText" ng-required="isSMBData"></z-password></div>
+                        <div class="eye-icon-container" ng-click="repObject.showPasswordText = !repObject.showPasswordText"></div>
+                    </div>
+                </div>
+
+                <!------------------------ AWS section -------------------------->
+                <div class="col-xs-12">
+                    <div class="form-group" ng-show="isAws">
+                        <label class="col-xs-2"></label>
+                        <div class="col-xs-3"><label class="control-label">{{'EDIT_REP.ACCESS_KEY' | translate}}</label></div>
+                        <div class="col-xs-7"><input name="accessKey" required type="text" ng-model="repObject.AWSData.AccessKey" ng-change="changeAccessKey()" ng-required="isAws"/></div>
+                    </div>
+
+                    <div class="form-group" ng-show="isAws">
+                        <label class="col-xs-2"></label>
+                        <div class="col-xs-3"><label class="control-label">{{'EDIT_REP.SECRET_KEY' | translate}}</label></div>
+                        <div ng-if="!repObject.showSecretText" class="col-xs-7"><input class="eye-padding-space" name="secretKey" required type="password" ng-model="repObject.AWSData.SecretKey" ng-change="changeSecretKey()" ng-required="isAws"/></div>
+                        <div ng-if="repObject.showSecretText" class="col-xs-7"><input class="eye-padding-space" name="secretKey" required type="text" ng-model="repObject.AWSData.SecretKey" ng-change="changeSecretKey()" ng-required="isAws"/></div>
+                        <div class="eye-icon-container" ng-click="repObject.showSecretText = !repObject.showSecretText"></div>
+                    </div>
+
+                    <div class="form-group" ng-show="isAws">
+                        <label class="col-xs-2"></label>
+                        <div class="col-xs-3"><label class="control-label">{{'EDIT_REP.BUCKET' | translate}}</label></div>
+                        <div class="col-xs-7 aws-bucket-container" ng-class="{'in-load': bucketLoading }">
+
+                            <!--//cover the select2 for get click event to controller-->
+                            <div ng-show="!awsBucketPotentials" class="bucket-cover-click-event" ng-click="bucketListClicked()"></div>
+
+                            <ui-select theme="select2" id="bucketListAws" search-enabled="false" ng-change="changeBucket()"
+                                       ng-disabled="!forms.repForm.accessKey.$valid || !forms.repForm.secretKey.$valid"
+                                       ng-model="$parent.repObject.AWSData.Bucket" required="">
+                                <ui-select-match class="ui-select-match"><span>{{$select.selected}}</span></ui-select-match>
+                                <ui-select-choices class="ui-select-choices" repeat="item in awsBucketPotentials | filter: $select.search">
+                                    <span ng-bind-html="item | highlight: $select.search"></span>
+                                </ui-select-choices>
+                            </ui-select>
+
+
+                            <div ng-if="bucketLoading" class="bucket-loading-container">
+                                <div class="loading"></div>
+                                <input type="text" readonly="readonly" value="{{'EDIT_REP.BUCKET_PLACEHOLDER' | translate}}"/>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+               <!----------------------------------------------------------------->
+
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <label class="col-xs-2"></label>
+                        <div class="col-xs-3"><label class="control-label">{{'EDIT_REP.REP_PATH' | translate}}</label></div>
+                        <div class="col-xs-7"><input required type="text" ng-model="repObject.GlobalPath" ng-change="changePath()"/></div>
+                    </div>
+                </div>
+
+                <div ng-show="isAws" class="aws-free-space-info-container">
+                   <span class="backup-free-space-box"></span>
+                    <span class="after-box-info">{{'EDIT_REP.FREE_SPACE' | translate}}</span>
+                    <span class="info-label-aws">{{freeSpace ? 'Unlimited' : 'N/A'}}</span>
+                </div>
+
+                <div ng-show="!isAws" class="col-xs-12">
+                    <div class="col-xs-2"></div>
+                    <div class="col-xs-3 pies-container">
+                        <z-pie-chart class="backup-pie" data="pieData" pie-width="87" pie-height="87"></z-pie-chart>
+                        <div ng-show="isPieChartEmpty" class="empty-pie-chart-container"></div>
+                    </div>
+                    <div class="col-xs-5 vertical-separator">
+                        <div class="form-group">
+                            <div class="col-xs-1"><span class="backup-free-space-box"></span></div>
+                            <div class="col-xs-6">{{'EDIT_REP.FREE_SPACE' | translate}}</div>
+                            <div class="col-xs-5 pie-info">
+                                {{freeSpace ? freeSpace : 'N/A'}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-1"><span class="backup-used-space-box"></span></div>
+                            <div class="col-xs-6">{{'EDIT_REP.USED_SPACE' | translate}}</div>
+                            <div class="col-xs-5 pie-info">
+                                {{usedSpace ? usedSpace : 'N/A'}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-1"></div>
+                            <div class="col-xs-6">{{'EDIT_REP.CAPACITY' | translate}}</div>
+                            <div class="col-xs-5 pie-info">
+                                {{capacity ? capacity : 'N/A'}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-5"></div>
+                <div class="col-xs-4">
+                    <div ng-if="isValidateSuccses !== undefined">
+                    <div class="repo-info-reachable" ng-if="isValidateSuccses">
+                        <p class="repo-icon"><img src="assets/repository_icons/reachable.png"/></p>
+                        <p class="repo-text">{{ 'EDIT_REP.REPOSITORY_REACHABLE' | translate }}</p>
+                    </div>
+                    <div class="repo-info-unreachable" ng-if="!isValidateSuccses">
+                        <p class="repo-icon"><img src="assets/repository_icons/unreachable.png"/></p>
+                        <p class="repo-text">{{ 'EDIT_REP.REPOSITORY_UNREACHABLE' | translate }}</p>
+                    </div>
+                </div>
+                </div>
+                <div class="col-xs-3">
+                    <input type="button" class="btn btn-primary repo-btn" value="{{ 'EDIT_REP.VALIDATE' | translate }}" ng-click="validate()" ng-disabled="validationButtonState"/>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <hr/>
+            </div>
+
+            <label class="properties-label"><b>{{ 'EDIT_REP.PROPERTIES' | translate }}</b></label>
+
+            <div ng-show="!isAws" class="form-group cancellation-bottom">
+                <label class="col-xs-2"></label>
+                <div class="col-xs-10">
+                    <z-checkbox model="repObject.IsCompressionEnabled"></z-checkbox>
+                    <label class="control-label">{{'EDIT_REP.COMPRESS' | translate}}</label>
+                </div>
+            </div>
+            <div class="form-group cancellation-bottom">
+                <label class="col-xs-2"></label>
+                <div class="col-xs-10">
+                    <z-checkbox model="repObject.IsDefault"></z-checkbox>
+                    <label class="control-label">{{'EDIT_REP.DEFAULT' | translate}}</label>
+                </div>
+            </div>
+        </form>
+    </div>
+</base-modal-window>

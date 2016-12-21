@@ -1,0 +1,30 @@
+<base-modal-window modal-title="{{ 'ADVANCED_VM_REPLICATION_SETTINGS.TITLE' | translate }}" close="close" btns="buttons"
+                   loading="loading" help="advancedVcdVmReplicationSettingsController">
+    <p class="text-center">{{"ADVANCED_VM_REPLICATION_SETTINGS.ADVANCED_VM_REPLICATION_SETTINGS_INFO" | translate }}</p>
+    <div class="advancedVcdVmReplicationSettingsController">
+        <div class="btn-group z-white-btn-group pull-right">
+
+            <button type="button" class="btn btn-link" ng-click="handleEditSelectedClick()"
+                    ng-disabled="!selectedItems.length">{{
+                "ADVANCED_VM_REPLICATION_SETTINGS.EDIT_SELECTED" | translate}}
+            </button>
+        </div>
+        <div class="advanced-vcd-grid-container">
+            <z-slick-grid class="advancedVcdVmsSettingsGridStyle" data="gridData" group-by-values="groupByValues"
+                          custom-options="vmsGridOptions" grid-id="advancedVcdVmSettingsGrid"
+                          selected-items="selectedItems" on-selection="selectedItemsChange"
+                          grid="gridObj.advancedVcdVmSettingsGrid" hide-view-options="true"></z-slick-grid>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+            </div>
+            <div class="row">
+                <div class="col-xs-offset-8 col-xs-4">
+                    <h5 class="pull-left">{{ "ADVANCED_VM_REPLICATION_SETTINGS.SELECTED_VMS" | translate }} {{ selectedItems.length }} VMs</h5>
+                    <h5 class="pull-right">{{ "ADVANCED_VM_REPLICATION_SETTINGS.TOTAL_VMS" | translate }} {{ data.copiedVms.length }} VMs</h5>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</base-modal-window>

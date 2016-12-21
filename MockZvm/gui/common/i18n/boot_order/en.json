@@ -1,0 +1,11 @@
+{
+    "BOOT_ORDER": {
+        "TITLE": "Boot Order",
+        "ADD_GROUP":"ADD GROUP",
+        "REMOVE_GROUP":"REMOVE",
+        "BOOT_DELAY":"Boot Delay",
+        "NEW_GROUP": "NEW GROUP",
+        "ADD_INFO":"Define the boot order of groups of VMs when they are recovered.",
+        "BOOT_DELAY_TOOLTIP": "The delay starting the VMs in the next group"
+    }
+}

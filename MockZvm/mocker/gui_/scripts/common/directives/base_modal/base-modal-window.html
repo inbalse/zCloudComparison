@@ -1,0 +1,38 @@
+<div class="modal-header" ng-hide="loading" draggable>
+    <div class="modal-header-inner">
+        <h4 class="pull-left">{{ modalTitle }}</h4>
+        <div class="pull-right modal-buttons-header">
+            <button type="button" class="z-help" ng-click="handleHelpClick()" aria-hidden="true" uib-tooltip="Get Help" tooltip-append-to-body="true" ng-show="help">&nbsp;</button>
+            <button type="button" class="z-close" ng-click="close()" aria-hidden="true" >&nbsp;</button>
+        </div>
+    </div>
+</div>
+<div class="modal-body" ng-transclude="" ng-hide="loading">
+    <!-- YOUR CONTENT GOES HERE -->
+</div>
+
+<!-- DONT DELETE THIS PART -->
+<div class="modal-footer" ng-hide="loading">
+    <button ng-repeat="button in btns track by $index" ng-click="button.handler()" ng-class=" button.class != undefined ? button.class : 'btn z-btn-default' "
+            title="{{ button.toolTip }}"
+            ng-disabled="button.disabled">{{ button.label }}
+    </button>
+</div>
+
+<!-- Adding buttons to a modal widow -->
+<!--        create a collection of items {label:<button_label>,handler:<click_handler>,toolTip:<button_tooltip>} -->
+<!--        this will dynamically create buttons on the modal base template and you will be able to handle user -->
+<!--        interaction in your controller -->
+
+
+<!-- LOADIG STATE -->
+<!-- When dealing with async calls you will need to show the user that something is happening -->
+<!-- to use this you will need to pass loading property to the base_modal directive -->
+<!-- on your html loading=loading -->
+<!-- on your controller $scope.loading = True or False -->
+
+<!-- loaing animation -->
+<!--<div class="modal-preloader" ng-show="loading"></div>-->
+<div class="modal-busy" ng-show="busy"></div>
+
+

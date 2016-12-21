@@ -1,0 +1,9 @@
+{
+    "VRA_CHANGE_PASSWORD": {
+        "TITLE": "Change Host Password VRA",
+        "NEW_PASSWORD":"New Password",
+        "TOOLTIP_INFO":"Show password text",
+        "LABEL_BOTTOM_TEXT":"Only enter a password if the password to access the host has changed.",
+        "TEXT_WARN_MODAL":"Are you sure?"
+    }
+}

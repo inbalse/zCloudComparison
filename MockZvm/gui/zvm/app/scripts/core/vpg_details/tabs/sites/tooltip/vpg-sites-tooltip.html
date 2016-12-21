@@ -1,0 +1,19 @@
+<div class="topology-tooltip" ng-show="model.state" ng-style="model.position" ng-mouseenter="onMouseEnter()" ng-mouseleave="onMouseLeave()">
+    <h4 ng-bind="model.item.name"></h4>
+    <ul ng-if="model.item.slicedAlerts.length || model.item.slicedPoolAlerts.length">
+        <li ng-repeat="alert in model.item.slicedAlerts"><img width="14" height="14" ng-src="{{alert.imgSrc}}"/> {{alert.Description}}
+        </li>
+        <li ng-repeat="alert in model.item.slicedPoolAlerts"><img width="14" height="14" ng-src="{{alert.imgSrc}}"/>
+            {{alert.Description}}
+        </li>
+        <li ng-if="model.item.flagMoreAlerts || model.item.flagMorePoolAlerts" ng-click="linkClick()"><a id="topology-tooltip-link"
+                                                                                   href="#/main/monitoring/alerts">More
+            Alerts</a></li>
+    </ul>
+    <p ng-if="model.item.IsSiteToVraConnectionOk">Site to Vra not connected!</p>
+
+    <p ng-if="model.item.IsVraToVraConnectionOk">Vra to Vra not connected!</p>
+
+    <p ng-if="model.item.isConnected">Not connected!</p>
+
+</div>

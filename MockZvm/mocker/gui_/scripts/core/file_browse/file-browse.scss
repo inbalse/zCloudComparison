@@ -1,0 +1,38 @@
+.file-browse {
+  .modal-body {
+    background-color: white;
+    height: 360px;
+  }
+
+  .modal-dialog {
+    width: 600px;
+  }
+
+  .glyphicon-remove-sign {
+    color: #ff6942
+  }
+
+  .glyphicon-folder-open, .glyphicon-folder-close {
+    color: #ff9c10
+  }
+
+  .tree-view-container{
+    max-height: 271px;
+    overflow-y: auto
+  }
+  .filename {
+    padding: 0 5px;
+    &.selected {
+      background-color: #ccc;
+    }
+
+    &.selectable:hover {
+      cursor: pointer;
+    }
+    &.disabled {
+      color: #aaa;
+      cursor: not-allowed;
+    }
+  }
+
+}

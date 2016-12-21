@@ -1,0 +1,23 @@
+{
+  "name": "mocker",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=0.10.x"
+  },
+  "scripts": {
+    "start": "node router"
+  },
+  "dependencies": {
+    "amf": "^0.1.0",
+    "body-parser": "^1.15.2",
+    "chance": "^1.0.4",
+    "colors": "^1.1.2",
+    "express": "^4.14.0",
+    "localStorage": "^1.0.3",
+    "lodash": "^4.16.6",
+    "morgan": "^1.7.0",
+    "nodemon": "^1.11.0",
+    "path": "^0.12.7",
+    "soap": "^0.17.0"
+  }
+}

@@ -1,0 +1,27 @@
+{
+    "ADVANCED_VM_REPLICATION_SETTINGS": {
+        "TITLE": "Advanced VM Replication Settings",
+        "SEARCH_PROMPT": "Search VMs...",
+        "APPLY_DEFAULTS": "Apply VPG Defaults",
+        "EDIT_SELECTED": "EDIT SELECTED",
+        "SELECTED_VMS" : "Selected VMs:",
+        "TOTAL_VMS" : "Total VMs:",
+        "ADVANCED_VM_REPLICATION_SETTINGS_INFO":"Specify specific settings for the VM, overriding the default settings.",
+        "SAVE_SETTINGS":    "VM Settings",
+        "RECOVERY_DATASTORE":   "</b>: recovery datastore <b>",
+        "NOTEXIST": "</b> does not exist in <b>",
+        "JOURNAL_DATASTORE": "</b>: journal datastore <b>",
+        "GRID":{
+            "VM_NAME":"VM Name",
+            "RECOVERY_HOST_CLUSTER_HOST":"Recovery Host Cluster/Host",
+            "RECOVERY_STORAGE":"Recovery Storage",
+            "RECOVERY_DATASTORE":"Recovery Datastore",
+            "JOURNAL_SIZE":"Journal Size",
+            "JOURNAL_WARNING_THRESHOLD":"Journal Warning Threshold",
+            "JOURNAL_STORAGE":"Journal Storage",
+            "JOURNAL_DATASTORE":"Journal Datastore",
+            "STORAGE_PROFILE": "Storage Profile",
+            "RECOVERY_FOLDER": "Recovery Folder"
+        }
+    }
+}

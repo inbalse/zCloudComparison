@@ -1,0 +1,84 @@
+<div class="z-wizard-container-wide" ng-controller="flrWizardRestorepointController">
+    <div class="form-horizontal">
+        <p class="text-center step-desc" translate="FLR.WIZARD.RESTORE_POINT.TITLE"></p>
+    </div>
+    <div class="flr-restorepoint-message" translate="CONFIGURE_CHECKPOINT.SELECT_FROM"></div>
+    <div class="flr-restorepoint-filters">
+        <!--todo: https://github.com/angular/angular.js/issues/4558-->
+
+        <!--<label class="offsite-cp z-checkbox">-->
+        <!--<input type="checkbox" ng-model="model.filters.offsite" ng-change="filter()">-->
+        <!--<span class="z-checkbox-container"></span>-->
+        <!--<span class="icon"></span>-->
+        <!--{{'FLR.WIZARD.RESTORE_POINT.OFFSITE_BACKUPS'|translate}}-->
+        <!--</label>-->
+        <!--|-->
+        <!--{{'FLR.WIZARD.RESTORE_POINT.CHECKPOINTS'|translate}}-->
+        <!-- to be back!-->
+        <label>{{'FLR.WIZARD.RESTORE_POINT.SHOW'|translate}}:&nbsp;</label>
+        <label class="auto-cp z-checkbox">
+            <input type="checkbox" ng-model="model.filters.auto" ng-change="filter()">
+            <span class="z-checkbox-container"></span>
+            <span class="icon"></span>
+            {{'FLR.WIZARD.RESTORE_POINT.AUTO'|translate}}
+        </label>
+        <label class="vss-cp z-checkbox">
+            <input type="checkbox" ng-model="model.filters.vss" ng-change="filter()">
+            <span class="z-checkbox-container"></span>
+            <span class="icon"></span>
+            {{'FLR.WIZARD.RESTORE_POINT.VSS'|translate}}
+        </label>
+        <label class="user-cp z-checkbox">
+            <input type="checkbox" ng-model="model.filters.user" ng-change="filter()">
+            <span class="z-checkbox-container"></span>
+            <span class="icon"></span>
+            {{'FLR.WIZARD.RESTORE_POINT.USER'|translate}}
+        </label>
+
+        <button class="btn z-btn-reload pull-right" ng-click="reloadCheckPoints()"></button>
+    </div>
+    <div class="flr-restorepoint_grid-container">
+        <div ng-hide="model.dateOptions.oneDateOnly" class="flr-checkpoints_jump-to">
+            <label class="jump-to_label" for="jump_to">Jump to date:</label>
+            <input id="jump_to" type="daterange" class="pull-right btn btn-link" parent-element="true"
+                   single-date-picker="true" min-date="{{model.dateOptions.minDate}}"
+                   max-date="{{model.dateOptions.maxDate}}" ng-model="model.dateOptions.range"
+                   ng-change="onDateChange()" ng-if="model.dateOptions.minDate"/>
+        </div>
+        <z-slick-grid id="flr-checkpoints-grid"
+                      grid-id="flr-checkpoints-grid"
+                      grid="grid"
+                      custom-options="model.options"
+                      data="model.filtered"
+                      selected-items="model.selectedItems"
+                      on-selection="selectedItemsChange"
+                      hide-create-view="true"
+                      hide-view-options="true">
+        </z-slick-grid>
+
+        <div class="flr-restorepoint_total-checkpoints">
+            <label class="pull-right">{{::'CONFIGURE_CHECKPOINT.TOTAL_CHECKPOINTS' | translate}} {{model.filtered.length}}</label>
+        </div>
+    </div>
+
+    <div class="flr-restorepoint_details">
+        <div class="flr-restorepoint_details--container">
+            <p translate="FLR.WIZARD.RESTORE_POINT.POINT_DETAILS"></p>
+
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <div class="col-xs-2" translate="FLR.WIZARD.RESTORE_POINT.TIME"></div>
+                    <div class="col-xs-8" ng-bind="model.selectedItems[0].TimeStamp | zDateFilter"></div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-2" translate="FLR.WIZARD.RESTORE_POINT.CHECKPOINT_TYPE"></div>
+                    <div class="col-xs-8" ng-bind="model.selectedItems[0].type"></div>
+                </div>
+                <div class="form-group" ng-if="model.selectedItems[0].Tag">
+                    <div class="col-xs-2" translate="FLR.WIZARD.RESTORE_POINT.NAME"></div>
+                    <div class="col-xs-8" ng-bind="model.selectedItems[0].Tag"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

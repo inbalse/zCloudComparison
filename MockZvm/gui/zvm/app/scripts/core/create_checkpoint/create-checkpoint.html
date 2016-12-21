@@ -1,0 +1,24 @@
+<base-modal-window modal-title="{{ 'CREATE_CHECKPOINT.TITLE' | translate }}" btns="buttons"
+                   close="closeHandler" loading="!gridData" help="createCheckpointController">
+    <form class="form-horizontal" autocomplete="off" name="forms.addCheckpointForm">
+        <div class="container-fluid">
+            <div class="form-group">
+                <label class="col-xs-12 control-label">{{ 'CREATE_CHECKPOINT.NAME_LABEL' | translate }}</label>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-12">
+                    <input type="text" name="name" ng-model="checkpoint.name" required/>
+                </div>
+            </div>
+            <div class="form-group divider"></div>
+            <div class="form-group">
+                <label class="col-xs-6">{{ 'CREATE_CHECKPOINT.TABLE_LABEL' | translate }}</label>
+            </div>
+            <div class="z-slick-grid-container" ng-if="showGrid">
+                <z-slick-grid id="checkpoint-list"  grid-id="checkpoint-list" data="gridData"
+                              custom-options="customOptions" hide-view-options="true"
+                              selected-items="selectedItems" on-selection="selectedItemChange"></z-slick-grid>
+            </div>
+        </div>
+    </form>
+</base-modal-window>

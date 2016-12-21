@@ -1,0 +1,15 @@
+<div class="form-group" ng-if="">
+    <label class="col-xs-3 control-label"><b>{{::"CREATE_VPG_RECOVERY.VAPP_NETWORK_MAPPING" |
+        translate}}</b></label>
+
+    <div class="col-xs-9">
+        <z-slick-grid grid-id="create-vpg-vapp-network-mapping"
+                      z-wizard-grid-validator="vappNetworkMaping"
+                      data-placement="top"
+                      data="mappingData"
+                      hide-view-options="true"
+                      class="mapping-grid"
+                      custom-options="customOptions">
+        </z-slick-grid>
+    </div>
+</div>

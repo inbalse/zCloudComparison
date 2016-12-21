@@ -1,0 +1,89 @@
+{
+    "RECOVERY_WIZARD": {
+        "TITLE_LIVE": "Failover",
+        "TITLE_LIVE_BUTTON": "FAILOVER",
+        "TITLE_TEST": "Failover Test",
+        "TITLE_TEST_BUTTON": "FAILOVER TEST",
+        "TITLE_MOVE": "Move",
+        "TITLE_MOVE_BUTTON": "MOVE",
+        "TITLE_RESTORE": "Restore",
+        "TITLE_VPGS_SELECT_FAILOVER":  "Select VPGs to failover.",
+        "TITLE_VPGS_SELECT_FAILOVER_TEST":  "Select VPGs to test failover.",
+        "TITLE_VPGS_SELECT_MOVE":  "Select VPGs to move.",
+        "TITLE_EXECUTION_PARAMETERS":  "Select execution parameters for each VPG.",
+        "TITLE_SUMMARY": "Ready to Failover",
+        "SELECTED_DETAILS": "Selection details",
+        "VPGS":"VPGs",
+        "VMS":"VMs",
+        "STORAGE": "Storage",
+        "VPG_LIST_ERROR":"Select at least one VPG",
+        "FAILOVER_LIVE_PERMISSION_FAILED": "You do not have the correct permissions to perform a failover.",
+        "FAILOVER_TEST_PERMISSION_FAILED": "You do not have the correct permissions to perform a test failover.",
+        "FAILOVER_MOVE_PERMISSION_FAILED": "You do not have the correct permissions to perform a move",
+
+        "EXECUTION_PARAMETERS" : {
+            "PEER_SITE": "Peer Site",
+            "CHECKPOINT": "Checkpoint",
+            "COMMIT_POLICY": "Commit Policy",
+            "VM_SHUTDOWN": "VM Shutdown",
+            "VM_SHUTDOWN_TOOLTIP": "To enable the Move to continue, VMs that cannot be shutdown gracefully, for example, VMs not running VMTools, are forcibly powered off.",
+            "REVERSE_PROTECTION": "Reverse Protection",
+            "KEEP_SOURCE_VMS":"Keep Source VMs",
+            "BOOT_ORDER": "Boot Order",
+            "SCRIPTS": "Scripts",
+            "FORCE_SHUTDOWN": "Force Shutdown",
+            "NOT_AVAILABLE_AWS_INFO":"Reverse protection is not available with AWS.",
+            "NOT_AVAILABLE_AZURE_INFO":"Reverse protection is not available with Azure.",
+
+            "NO_CHECKPOINTS": "This VPG has no checkpoints",
+            "WARNING_TITLE": "Warning",
+            "WARNING_TEXT": "The backup being performed on VPGs {{vpgNames}} must be aborted to continue with the recovery operation. VMs that were already backed up are not removed from the repository. Aborting the backup may result in partial VMs in the repository. Do you want to abort the backup to continue the recovery operation?",
+
+            "REVERSE_LOADING": "Loading",
+            "REVERSE_MISSING": "Missing Configuration",
+            "REVERSE_REGULAR": "Reverse",
+            "ERROR_MISSING":   "Some VPGs are not fully configured for reverse protection",
+            "ERROR_ROLLBACK":  "Rollback timeout cant be lower than 10 minutes",
+            "REVERSE_ALL":     "REVERSE PROTECT ALL",
+            "REVERSE_ALL_TOOLTIP":     "Set up reverse protection",
+            "ERROR_CHECKPOINT": "Failed to get the latest checkpoint",
+
+            "GRAYED_OUT_REVERSE_PROTECT_INFO":"Source VMs cannot be kept after Move if Reverse Protection is selected.",
+            "GRAYED_OUT_BC_INFO":"Both sites must support keeping source VMs. Upgrade the paired site."
+        },
+
+        "SUMMARY": {
+            "TITLE_FAILOVER_LIVE": "Ready to Failover",
+            "TITLE_FAILOVER_TEST": "Ready to Failover Test",
+            "TITLE_MOVE": "Ready to Move",
+            "START_FAILOVER": "START FAILOVER",
+            "START_FAILOVER_TEST": "START FAILOVER TEST",
+            "START_MOVE": "START MOVE",
+            "FAILOVER_TEXT": "You are about to start failing over VPGs. Number of VPGs to failover: {{vpgCount}} out of {{availableVPGs}} selected.",
+            "FAILOVER_TEXT_SECOND":"Once started the process cannot be undone. Running the failover will permanently alter the virtual machines and infrastructure of both the protected and recovery sites.",
+            "FAILOVER_TEXT_THIRD":  "Click START FAILOVER to start the process",
+            "FAILOVER_TEST_TEXT": "You are about to test failing over VPGs. Number of VPGs to test: {{vpgCount}} out of {{availableVPGs}} have been selected.",
+            "FAILOVER_TEST_TEXT_SECOND": "Click START FAILOVER TEST to start the process.",
+            "MOVE_TEXT": "You are about to start moving VPGs. Number of VPGs to move: {{vpgCount}} out of {{availableVPGs}} have been selected.",
+            "MOVE_TEXT_SECOND": "Once started each VPG is moved according to the commit policy. Running the move will alter the virtual machines and infrastructure of both the protected and recovery sites.",
+            "MOVE_TEXT_THIRD": "Click START MOVE to begin the process.",
+            "MOVE_WITHOUT_REVERSE": "Reverse protection has not been specified for some VPGs. This means the protected disks will be deleted with the protected VMs.\nDo you want to continue?",
+            "REVERSE_true": "set",
+            "REVERSE_false": "not set",
+            "TO_CHECKPOINT": "to checkpoint",
+            "COMMIT_POLICY": "with commit policy:",
+            "WITH_REVERSE":  "and with reverse protection"
+        },
+        "EDIT_POLICY" :{
+            "COMMIT_POLICY": "Commit Policy:",
+            "DEFAULT_TIME": "Default Timeout (minutes):"
+        },
+        "TOPOLOGY":{
+            "TOTAL_VPGS":"Total VPGs: ",
+            "TOTAL_VMS":"Total VMs: ",
+            "TOTAL_SIZE":"Total Size: ",
+            "TOTAL_SITES": "Total Sites: ",
+            "THIS_SITE":"this site"
+        }
+    }
+}

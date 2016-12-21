@@ -1,0 +1,11 @@
+<div class="z-wizard-container-narrow" ng-controller="flrWizardVolumesController" ng-cloak>
+    <div class="form-horizontal">
+        <div class="form-group">
+            <p class="text-center step-desc" translate="FLR.WIZARD.VOLUMES.TITLE"></p>
+        </div>
+    </div>
+    <z-slick-grid class="flr-volume-grid" id="flr-volume-grid" grid-id="flr-volume-grid" data="model.data"
+                  grid="grid" selected-items="model.selectedItems"
+                  on-selection="validate"
+                  custom-options="model.options" hide-create-view="true" hide-view-options="true"></z-slick-grid>
+</div>

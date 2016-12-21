@@ -1,0 +1,15 @@
+<div class="grid-controller datastore-controller " ng-controller="datastoreController">
+    <div class="btn-group z-white-btn-group">
+        <button class="btn btn-link inline-site-settings" type="button" ng-click="handleSiteSettingsClick()">{{'VPG_LIST.MORE_BUTTON.SITE_SETTINGS'
+            | translate}}</button>
+        <span class="inline-site-settings">|</span>
+        <button type="button" class="btn btn-link" ng-click="export()">{{"DATASTORE.EXPORT" | translate}}</button>
+        <span>|</span>
+    </div>
+    <z-slick-grid id="datastore-list" data="data" custom-options="customOptions" view-by-values="viewByValues"
+                  group-by-values="groupByValues" grid-id="datastore-list" selected-group="selectedGroup"></z-slick-grid>
+
+    <z-checkbox class="chckShowZerto" model="showByChecked" change="showByChange()">
+        {{'DATASTORE.SHOW_ZERTO' | translate}}
+    </z-checkbox>
+</div>

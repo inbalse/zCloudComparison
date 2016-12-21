@@ -1,0 +1,31 @@
+{
+"ORGANIZATION_LIST":{
+        "TITLE": "Organization Management",
+        "TOOLTIP": "Add and manage organizations with disaster recovery managed in the cloud, including the sites the organization uses, permissions and resources. The organization with its definition in the Zerto Cloud Manager is referred to as a Zerto Organization, or ZORG.",
+        "ZORG_NAME": "ZORG Name",
+        "CRM_ID": "CRM ID",
+        "NUM_OF_CLOUD_SITE": "Number of Cloud Sites",
+        "NUM_OF_CUST_SITE": "Number of Customer Sites",
+        "ADD":"ADD",
+        "EDIT":"EDIT",
+        "REMOVE":"REMOVE",
+        "DELETE":"You are about to delete ZORG ",
+        "DELETE_ERROR": "An organizations cannot be removed when vCenter or vCD cloud resources have been assigned or a customer site added for the organization.",
+        "EMPTY": "There are no organizations",
+        "EMPTY1": "There are no organizations",
+        "EMPTY2": "Press ",
+        "EMPTY3": " to create organizations",
+        "HERE": "HERE",
+        "ORGANIZATION_ADD" :{
+                "TITLE" : "Add ZORG",
+                "SUBTITLE": "Specifiy the indification for a ZORG.",
+                "ZORG_NAME": "ZORG Name",
+                "CRM": "CRM ID",
+                "HELP_NAME" : "The name used to identifiy the ZORG. The name must be unique.",
+                "HELP_CRM" : "An optional internal CRM identification for the ZORG.",
+                "ZORG_NAME_ERROR": "A ZORG name cannot include the @ sign"
+
+        }
+    }
+
+}

@@ -1,0 +1,24 @@
+{
+    "REPOSITORY_LIST": {
+        "CONNECTED":        "Connected",
+        "DISCONNECTED":     "Disconnected",
+        "DELETE":           "Delete Repository",
+        "EDIT_BUTTON":      "Edit",
+        "DELETE_QUESTION":  "You are about to disconnect the repository from Zerto Virtual Replication. Unless reconnected to a Zerto Virtual Manager all the backups in the repository will not be restorable. Click OK to continue and CANCEL to abort this operation.",
+        "NEW_REP":          "NEW REPOSITORY",
+        "LOCAL":            "Local",
+        "SMB":              "Network Share (SMB)",
+        "AWS":              "Amazon S3",
+        "FUNC":             "Func",
+        "REPOSITORY_NAME":  "Repository Name",
+        "REPOSITORY_TYPE":  "Repository Type",
+        "PATH":             "Path",
+        "CAPACITY":         "Capacity",
+        "FREE_SPACE":       "Free Space",
+        "ACTIVE_BACKUPS":   "Active Backups",
+        "RESTORE_POINTS":   "Restore Points",
+        "COMPRESSION":      "Compression",
+        "CONNECTIVITY":     "Connectivity",
+        "DELETE_BUTTON":    "Delete"
+    }
+}

@@ -1,0 +1,26 @@
+{
+"SITE_VIEW":{
+        "SITE_FAILED": "Site not found",
+        "PROPERTIES_TITLE": "Properties",
+        "ORGANIZATIONS_TITLE": "Organizations",
+        "DASHBOARD_TITLE": "Site Dashboard",
+        "VPGS_TITLE": "VPGs",
+        "VMS_TITLE": "VMs",
+        "SITES_TITLE": "Sites",
+        "SETUP_TITLE": "Setup",
+        "OFFSITE_BACKUP_TITLE": "Offsite Backup",
+        "MONITORING_TITLE": "Monitoring",
+        "REPORTS_TITLE": "Reports",
+        "PROPERTIES_SUBTITLE": "Site properties for site ",
+        "CONNECTION_STATUS": "Connection status",
+        "CONTACT_EMAIL": "Contact Email",
+        "CONTACT_PHONE": "Contact Phone",
+        "ZVM_INTERFACE": "Open ZVM Interface",
+        "SITE_NAME_HELP": "The name used to identify the site where the Zerto Virtual Manager runs.",
+        "HOST_NAME_HELP": "The name or IP address of the machine where the Zerto Virtual Manager runs.",
+        "PORT_HELP": "The port used access the Zerto Virtual Manager at the site.",
+        "TYPE_HELP": "The type of the site. vCenter, vCloud Director, AWS or Azure.",
+        "EMAIL_HELP": "The email to contact in case of a DR emergency.",
+        "PHONE_HELP": "The phone number to contact in case of a DR emergency."
+    }
+}

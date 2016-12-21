@@ -1,0 +1,15 @@
+{
+    "SELECT_VPG": {
+        "TITLE": "Select VPG",
+        "DESC": "",
+        "GRID": {
+            "STATE": "State",
+            "VPG_NAME": "VPG Name",
+            "SOURCE_SITE": "Source Site",
+            "DIRECTION": "Direction",
+            "TARGET_SITE": "Target Site",
+            "SCRIPTS_DEFINED": "Scripts Defined",
+            "BOOT_ORDER": "Boot Order"
+        }
+    }
+}

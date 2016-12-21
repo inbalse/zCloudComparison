@@ -1,0 +1,15 @@
+<div class="z-wizard-container-wide" ng-controller="restorePointController" ng-cloak="">
+
+    <h5 class="recovery-title">{{restorePoinTitle}}</h5>
+
+        <z-slick-grid grid-id="restore-point-grid" data="data.RestoreSelectionScreenVisualObject.Instances" class="restore-point-grid"
+                      id="restorePointGrid" lower-cog="true"
+                      selected-items="selectedRestorePoints" on-selection="selectedPointsChange"
+                      custom-options="restorePointCustomOptions" hide-view-options="true"></z-slick-grid>
+
+        <h5 class="recovery-title">{{'RESTORE_WIZARD.RESTORE_POINT_STEP.SELECT_A' | translate}}</h5>
+
+    <z-slick-grid grid-id="restore-point-details-grid" data="data.selectedPointVMs" class="restore-point-details-grid"
+                  id="restorePointDetailsGrid" hide-view-options="true"
+                  custom-options="restorePointDetailsCustomOptions"></z-slick-grid>
+</div>

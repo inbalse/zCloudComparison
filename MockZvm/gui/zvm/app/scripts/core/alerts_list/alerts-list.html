@@ -1,0 +1,21 @@
+<div class="grid-controller alerts-list-controller" ng-controller="alertsListController">
+    <div class="btn-group z-white-btn-group">
+        <button class="btn btn-link inline-site-settings" type="button" ng-click="handleSiteSettingsClick()">{{'VPG_LIST.MORE_BUTTON.SITE_SETTINGS'
+            | translate}}</button>
+        <span class="inline-site-settings">|</span>
+        <button type="button" class="btn btn-link" ng-disabled="!isDismissEnabled" ng-click="acknowledge()">{{"ALERTS_LIST.ACKNOWLEDGE" | translate}}</button>
+        <span>|</span>
+        <button type="button" class="btn btn-link" ng-disabled="!isResetEnabled" ng-click="reset()">{{"ALERTS_LIST.RESET" | translate}}</button>
+        <span>|</span>
+        <button type="button" class="btn btn-link" ng-click="exportAlerts()">{{"ALERTS_LIST.EXPORT" | translate}}</button>
+        <span>|</span>
+    </div>
+
+    <z-slick-grid ng-click="selectedItemsChange()" grid="gridObj.grid" grid-id="alerts-list" data="data"
+                  group-by-values="groupByValues" hide-create-view="true" on-selection="selectedItemsChange"
+                  custom-options="customOptions" selected-items="selectedItems" row-click="rowClick"></z-slick-grid>
+
+    <z-checkbox class="chck-display-acknowledged" model="displayAcknowledgedChecked" change="displayAcknowledgedCheckedChange()">
+        {{'ALERTS_LIST.DISPLAY_ACKNOWLEDGED' | translate}}
+    </z-checkbox>
+</div>

@@ -1,0 +1,24 @@
+<div class="form-group">
+    <label class="col-xs-3 control-label"><b>{{::"CREATE_VPG_RECOVERY.DEFAULT_RECOVERY" | translate}}</b></label>
+
+    <div class="col-xs-9">
+        <div class="form-group">
+            <label help-icon="VPG_WIZARD.RECOVERY_FOLDER" class="col-xs-4 control-label">{{::"CREATE_VPG_RECOVERY.RECOVERY_FOLDER"
+                | translate}}</label>
+            <div class="col-xs-8">
+                <ui-select ng-disabled="!data.targetHost"
+                           theme="select2"
+                           ng-model="$parent.data.selectedTargetFolder"
+                           required z-wizard-validator="recoveryFolder"
+                           data-placement="bottom"
+                           on-select="onTargetFolderChange()">
+                    <ui-select-match class="ui-select-match">{{$select.selected.DisplayName}}</ui-select-match>
+                    <ui-select-choices class="ui-select-choices"
+                                       repeat="item in data.potentialFolders | filter: $select.search">
+                        <span ng-bind-html="item.DisplayName | highlight: $select.search"></span>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+    </div>
+</div>

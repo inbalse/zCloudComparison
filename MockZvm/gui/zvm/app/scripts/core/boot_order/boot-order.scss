@@ -1,0 +1,82 @@
+.boot-order {
+    .ui-tree {
+        height: 280px
+    }
+    .angular-ui-tree-nodes .angular-ui-tree-nodes {
+        padding-left: 40px;
+        padding-right: 26px;
+    }
+    .modal-body {
+        background-color: white;
+        height: 360px;
+        padding: 10px 10px 32px 10px;
+    }
+    .modal-dialog {
+        width: 600px;
+    }
+    .btn-add {
+        margin-bottom: 5px;
+    }
+    .boot-order-root > ul > li {
+        & > div {
+            min-height: 30px;
+        }
+        & > ul {
+            padding-bottom: 5px;
+        }
+    }
+    .boot-order-controls {
+        width: 200px;
+        float: right;
+        text-align: left;
+    }
+
+    .boot-order-icon {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        top: 4px;
+        position: relative;
+        &:hover {
+            cursor: pointer;
+        }
+        &.boot-order-remove {
+            background-image: url('../assets/tree_view/delete.png');
+        }
+        &.boot-order-edit {
+            background-image: url('../assets/tree_view/edit.png');
+        }
+        &.boot-order-vm {
+            background-image: url('../assets/tree_view/vm.png');
+        }
+    }
+
+    .boot-order-edit-text {
+        width: 40%;
+    }
+    .boot-order-save {
+        width: 50px;
+    }
+
+    .boot-order-delay {
+        width: 75px;
+        margin-left: 5px;
+    }
+
+    label {
+        max-width: 200px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        vertical-align: middle;
+    }
+    .boot-order-sec-label {
+        margin: 0 0 0 8px;
+    }
+
+    .step-desc {
+        padding: 10px 0 10px 0;
+        margin: 0;
+    }
+}
+

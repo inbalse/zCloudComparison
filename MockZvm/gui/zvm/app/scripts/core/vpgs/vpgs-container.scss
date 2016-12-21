@@ -1,0 +1,33 @@
+.vpgs-list-controller {
+    min-width: 1047px;
+    view-switch {
+        position: absolute;
+        left: 115px;
+        top: 16px;
+    }
+
+    .status-filter {
+        float: left;
+        margin-right: 15px;
+        min-width: 70px;
+    }
+
+    .status-filter-area {
+        position: absolute;
+        left: 225px;
+        top: 16px;
+    }
+
+    .status-icon {
+        margin-right: 3px;
+        margin-left: -8px;
+    }
+
+    .ui-select-choices-group-label {
+        color: #595959;
+    }
+
+    .query-position {
+        position: relative;
+    }
+}

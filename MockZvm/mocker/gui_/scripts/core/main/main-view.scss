@@ -1,0 +1,398 @@
+#mainViewController {
+    width: 100%;
+    height: 100%;
+    background-color: #e6e8e9;
+
+    padding-bottom: 70px;
+    position: relative;
+
+    .logo-icon-container {
+        width: 110px;
+        height: 80px;
+        background-size: 110px 80px;
+        &.logo-icon {
+            background: url('../assets/zertoLogo.png') no-repeat;
+        }
+        &.portal-logo-icon {
+            background: url('/cloudLogo.png') no-repeat;
+        }
+    }
+
+    .navigation_tabs {
+        top: 47px;
+        left: 120px;
+        position: absolute;
+        right: 0;
+        .nav-tabs {
+            li a {
+                padding-top: 6px;
+                border: 1px solid transparent;
+            }
+            .dynamic-tab {
+                a {
+                    font-style: italic;
+                    font-weight: bold;
+                    color: #04417E;
+                    background-color: #BFC9CE;
+
+                    .dynamic-title {
+                        width: 100px;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                        padding-right: 15px
+                    }
+                    .dynamic-close {
+                        top: 0;
+                    }
+                }
+                &.active {
+                    a {
+                        font-style: italic;
+                        font-weight: bold;
+                        color: #50585F;
+                        padding-top: 8px;
+                        background-color: #E6E8E9;
+                        .dynamic-title {
+                            width: 100%;
+                            padding-right: 15px
+                        }
+                        .dynamic-close {
+                            top: 0;
+                        }
+                    }
+                }
+                .dynamic-close {
+                    background-image: url('../assets/navigations_tabs/close-icon.png');//(x)
+                    height: 30px;
+                    width: 30px;
+                    position: absolute;
+                    right: 0;
+                    background-repeat: no-repeat;
+                    background-position: center;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+        .main-tabs-ellipsis {
+            a {
+                height: 31px;
+                font-weight: bold;
+            }
+            &.active {
+                a {
+                    height: 36px;
+                }
+            }
+
+            .arrow-ellipsis {
+                background-image: url('../assets/navigations_tabs/drop-down-icon.png');//(>>)
+                height: 11px;
+                width: 13px;
+                position: relative;
+                top: -13px;
+                left: 13px;
+            }
+
+            .dropdown .dropdown-menu {
+                max-height: 236px;
+                overflow-y: auto;
+            }
+
+            ul {
+                border-width: 2px;
+                max-width: 175px;
+                max-height: 170px;
+                overflow-y: auto;
+                overflow-x: hidden;
+                li {
+                    width: 163px;
+                    a {
+                        height: 30px;
+                        padding-top: 5px;
+                        color: #04417E;
+                        background-color: #FFFFFF;
+                    }
+                    a:hover {
+                        width: 160px;
+                        background-color: #DEE6EC;
+                    }
+                }
+            }
+        }
+    }
+
+    .logo {
+        width: 110px;
+        height: 80px;
+        background-color: #cf000a;
+        position: relative;
+        display: inline-block;
+        img {
+            position: absolute;
+            left: 20px;
+            top: 29px;
+        }
+    }
+
+    .viewContainer {
+        height: 100%;
+        position: relative;
+        z-index: 1;
+        overflow: auto;
+    }
+
+    .mainViewHeader {
+        height: 80px;
+        background-color: #53585f;
+        position: absolute;
+        width: 100%;
+        top: 0;
+        .menu {
+            position: absolute;
+            right: 20px;
+            top: 10px;
+        }
+    }
+
+    .iframeMainViewHeader {
+        display: none;
+    }
+
+    .zerto-site-name {
+        position: absolute;
+        left: 129px;
+        top: 18px;
+
+        span {
+            font-size: 13px;
+
+            &:first-child {
+                color: #ffffff;
+                margin-right: 10px;
+            }
+
+            &:last-child {
+                color: #a9aaac;
+            }
+        }
+    }
+
+    .info {
+        position: absolute;
+        right: 75px;
+        top: 16px;
+        color: #c8c8c8;
+        max-width: 450px;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        li {
+            display: inline;
+            margin-right: 8px;
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+        img {
+            display: inline-block;
+            margin-right: 6px;
+            margin-top: -2px;
+            height: 17px;
+        }
+        .powerd-logo{
+            height: auto;
+            margin-top: 0;
+            margin-left:2px;
+        }
+    }
+
+    .bottom-dashboard {
+        width: 100%;
+        height: 70px;
+        background: #53585f url("../assets/dashboardPattern.jpg");
+        position: absolute;
+        bottom: 0;
+        z-index: 2;
+        color: $brand-font-white;
+        .dashboard-ul {
+            list-style: none;
+            position: absolute;
+            left: 10px;
+            top: 14px;
+            padding: 0;
+            .dashboard-li {
+                float: left;
+                margin-right: 5px;
+                padding-right: 5px;
+                border-right: 2px $brand-grey-content-bg solid;
+
+                &:last-child {
+                    border-right: none;
+                    position: relative;
+                }
+
+            }
+        }
+
+        .failover-button {
+            position: absolute;
+            right: 10px;
+            top: 14px;
+            width: 193px;
+            height: 40px;
+            background: transparent;
+            border: none;
+
+            @mixin text-base-style($top, $alpha) {
+                display: inline-block;
+                position: absolute;
+                left: 0;
+                top: $top;
+                opacity: $alpha;
+                font-size: 11px;
+            }
+
+            .live-failover-full {
+                font-weight: bold;
+                @include text-base-style(2px, 1);
+            }
+
+            .live-failover-alpha {
+                @include text-base-style(2px, .6);
+            }
+
+            .test-failover-full {
+                font-weight: bold;
+                @include text-base-style(20px, 1);
+            }
+
+            .test-failover-alpha {
+                @include text-base-style(20px, .6);
+            }
+
+            .failover-toggle-background {
+                width: 25px;
+                height: 39px;
+                background-color: #3d4550;
+                border: 2px solid #767c83;
+                display: inline-block;
+                position: absolute;
+                left: 33px;
+                top: 0;
+                cursor: pointer;
+
+                &:hover {
+                    border-color: #e1e1e1;
+                }
+
+                @mixin failover-toggle-button-base($top, $color) {
+                    background-color: $color;
+                    width: 17px;
+                    height: 16px;
+                    display: inline-block;
+                    position: absolute;
+                    left: 2px;
+                    top: $top;
+                    cursor: pointer;
+                }
+
+                .failover-toggle-up {
+                    @include failover-toggle-button-base(2px, #cf000a);
+                }
+
+                .failover-toggle-down {
+                    @include failover-toggle-button-base(17px, #ffffff);
+                }
+            }
+
+            @mixin failover-button-base() {
+                width: 124px;
+                height: 38px;
+                padding-right: 16px;
+                position: absolute;
+                left: 69px;
+                top: 0;
+                outline: none;
+                color: white;
+                background-image: url('../assets/sprite-failover-states.png');
+                background-position: 0px 77px;
+                border: none;
+                padding-top: 10px;
+                text-align: center;
+                &:hover{
+                    text-decoration: none;
+                    cursor: pointer;
+                    background-position: 0px 38px;
+                }
+                &:active{
+                    text-decoration: none;
+                    cursor: pointer;
+                    background-position: 0px 0px;
+                }
+                &[disabled] {
+                    opacity: 0.5;
+                    pointer-events: none;
+
+                }
+            }
+
+            .failover-button-live {
+                @include failover-button-base();
+
+            }
+
+            #base {
+                background: red;
+                display: inline-block;
+                height: 55px;
+                margin-left: 20px;
+                margin-top: 55px;
+                position: relative;
+                width: 100px;
+            }
+            #base:before {
+                border-bottom: 35px solid red;
+                border-left: 50px solid transparent;
+                border-right: 50px solid transparent;
+                content: "";
+                height: 0;
+                left: 0;
+                position: absolute;
+                top: -35px;
+                width: 0;
+            }
+        }
+    }
+
+    .bottom-dashboard-fol{
+        background: #53585f url("../assets/dashboardPatternRed.png");
+    }
+
+    .popover-vra {
+        top: 28px !important;
+        left: 303px !important;
+        .arrow {
+            left: 30px !important;
+        }
+    }
+
+    .popover-sites {
+        top: 28px !important;
+        left: 95px !important;
+        .arrow {
+            left: 171px !important;
+        }
+    }
+}
+
+.main-view-in-iframe{
+    padding-top: 0;
+}
+
+.main-view-in-normal-mode{
+    padding-top: 80px;
+}

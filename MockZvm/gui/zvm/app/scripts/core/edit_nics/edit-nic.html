@@ -1,0 +1,306 @@
+<base-modal-window modal-title="{{::'EDIT_NIC.TITLE' | translate}}" close="close" btns="data.buttons"
+                   loading="false"
+                   help="editNicsController">
+    <div class="container-fluid">
+
+        <p class="text-center padding-10">{{::"EDIT_NIC.EDIT_NIC_INFO" | translate }}</p>
+
+        <label class="col-xs-12">{{::'EDIT_NIC.SUB_TITLE' | translate}}</label>
+
+        <form class="form-horizontal" autocomplete="off" name="data.nicForm">
+            <div class="form-group">
+                <div class="col-xs-offset-4 col-xs-4 ">
+                    <label class="col-xs-12 control-label center-label">{{::'EDIT_NIC.FO_MOVE' | translate}}</label>
+                </div>
+                <div class="col-xs-4">
+                    <label class="col-xs-12 control-label center-label">{{::'EDIT_NIC.TEST' | translate}}</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-4">
+                    <label class="col-xs-12 control-label">{{::'EDIT_NIC.NETWORK' | translate}}</label>
+                </div>
+                <div class="col-xs-4" ng-if="isNetworkListNotEmpty()">
+                    <ui-select theme="select2"
+                               name="failoverNetwork"
+                               ng-model="$parent.data.failoverSettings.recoveryNetwork"
+                               on-select="onFailoverSettingsRecoveryNetworkChange()"
+                               required>
+                        <ui-select-match class="ui-select-match">{{$select.selected.DisplayName}}</ui-select-match>
+                        <ui-select-choices class="ui-select-choices"
+                                           repeat="item in data.networksList | filter: $select.search">
+                            <span ng-bind-html="item.DisplayName | highlight: $select.search"></span>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+
+                <div class="col-xs-4" ng-if="isNetworkListNotEmpty()">
+                    <ui-select theme="select2"
+                               name="testNetwork"
+                               ng-model="$parent.data.testSettings.recoveryNetwork"
+                               on-select="onTestSettingsRecoveryNetworkChange()"
+                               required>
+                        <ui-select-match class="ui-select-match">{{$select.selected.DisplayName}}</ui-select-match>
+                        <ui-select-choices class="ui-select-choices"
+                                           repeat="item in data.networksList | filter: $select.search">
+                            <span ng-bind-html="item.DisplayName | highlight: $select.search"></span>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+
+                <div class="col-xs-4" ng-if="!isNetworkListNotEmpty()">
+                    {{::'EDIT_NIC.NO_SHARED_NETWORKS' | translate}}
+                </div>
+
+                <div class="col-xs-4" ng-if="!isNetworkListNotEmpty()">
+                    {{::'EDIT_NIC.NO_SHARED_NETWORKS' | translate}}
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-12">
+                    <hr/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-4 ">
+                    <label class="col-xs-12 control-label">{{::'EDIT_NIC.NEW_MAC' | translate}}</label>
+                </div>
+                <div class="col-xs-4">
+                    <ui-select theme="select2"
+                               name="failoverMac"
+                               search-enabled="false"
+                               ng-model="$parent.data.failoverSettings.shouldReplaceMacAddress"
+                               on-select="onFailoverSettingsShouldReplaceMacAddress()"
+                               required>
+                        <ui-select-match class="ui-select-match">{{$select.selected.label}}</ui-select-match>
+                        <ui-select-choices class="ui-select-choices"
+                                           repeat="item.value as item in ::data.createMacList">
+                            <span ng-bind-html="item.label"></span>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+                <div class="col-xs-4">
+                    <ui-select theme="select2"
+                               name="testMac"
+                               search-enabled="false"
+                               ng-model="$parent.data.testSettings.shouldReplaceMacAddress"
+                               on-select="onTestSettingsShouldReplaceMacAddress()"
+                               required>
+                        <ui-select-match class="ui-select-match">{{$select.selected.label}}</ui-select-match>
+                        <ui-select-choices class="ui-select-choices"
+                                           repeat="item.value as item in ::data.createMacList">
+                            <span ng-bind-html="item.label"></span>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-12">
+                    <hr/>
+                </div>
+            </div>
+            <div ng-if="::data.isIPConfigurationEnabled">
+                <div class="form-group">
+                    <div class="col-xs-4 ">
+                        <label class="col-xs-12 control-label ">{{::'EDIT_NIC.CHANGE_IP' | translate}}</label>
+                    </div>
+                    <div class="col-xs-4">
+                        <ui-select theme="select2"
+                                   search-enabled="false"
+                                   ng-model="$parent.data.failoverSettings.changeIpConfig"
+                                   ng-required="::data.isIPConfigurationEnabled"
+                                   on-select="onChangeIpConfFailoverChange()">
+                            <ui-select-match class="ui-select-match">{{$select.selected.label}}</ui-select-match>
+                            <ui-select-choices class="ui-select-choices"
+                                               repeat="item.value as item in ::data.changeVnicIPConfList | filter: $select.search">
+                                <span ng-bind-html="item.label | highlight: $select.search"></span>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                    <div class="col-xs-4">
+                        <ui-select theme="select2"
+                                   search-enabled="false"
+                                   ng-model="$parent.data.testSettings.changeIpConfig"
+                                   ng-required="::data.isIPConfigurationEnabled"
+                                   on-select="onChangeIpConfTestChange()">
+                            <ui-select-match class="ui-select-match">{{$select.selected.label}}</ui-select-match>
+                            <ui-select-choices class="ui-select-choices"
+                                               repeat="item.value as item in ::data.changeVnicIPConfList | filter: $select.search">
+                                <span ng-bind-html="item.label | highlight: $select.search"></span>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-offset-1 col-xs-11">
+                        <hr/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-offset-1 col-xs-3">
+                        <label class="col-xs-12 control-label ">{{::'EDIT_NIC.IP_ADDRESS' | translate}}</label>
+                    </div>
+                    <div class="col-xs-4">
+                        <input z-ip-field
+                               type="text"
+                               ng-model="data.failoverSettings.staticIP"
+                               ng-required="isFailoverStaticIPRequired()"
+                               ng-disabled="isFailoverIPConfigDisabledOrBulk()"
+                               ng-change="onFailoverStaticIPChange()"
+                        />
+                    </div>
+                    <div class="col-xs-4">
+                        <input z-ip-field
+                               type="text"
+                               ng-model="data.testSettings.staticIP"
+                               ng-required="isTestStaticIPRequired()"
+                               ng-disabled="isTestIPConfigDisabledOrBulk()"
+                               ng-change="onTestStaticIPChange()"
+                        />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-xs-offset-1 col-xs-3">
+                        <label class="col-xs-12 control-label">{{::'EDIT_NIC.SUBNET' | translate}}</label>
+                    </div>
+                    <div class="col-xs-4">
+                        <input z-ip-field
+                               type="text"
+                               ng-model="data.failoverSettings.subnetMask"
+                               ng-required="isIPConfigurationAndFailoverIpConfigEnabled()"
+                               ng-disabled="!data.failoverSettings.isIpConfigEnabled"
+                               ng-change="onFailoverSubnetMaskChange()"
+                        />
+                    </div>
+                    <div class="col-xs-4">
+                        <input z-ip-field type="text"
+                               ng-model="data.testSettings.subnetMask"
+                               ng-required="isIPConfigurationAndTestIpConfigEnabled()"
+                               ng-disabled="!data.testSettings.isIpConfigEnabled"
+                               ng-change="onTestSubnetMaskChange()"
+                        />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-xs-offset-1 col-xs-3">
+                        <label class="col-xs-12 control-label">{{::'EDIT_NIC.GATEWAY' | translate}}</label></div>
+                    <div class="col-xs-4">
+                        <input z-ip-field type="text"
+                               ng-model="data.failoverSettings.gateway"
+                               ng-required="isIPConfigurationAndFailoverIpConfigEnabled()"
+                               ng-disabled="!data.failoverSettings.isIpConfigEnabled"
+                               ng-change="onFailoverGatewayChange()"
+                        />
+                    </div>
+                    <div class="col-xs-4">
+                        <input z-ip-field type="text"
+                               ng-model="data.testSettings.gateway"
+                               ng-required="isIPConfigurationAndTestIpConfigEnabled()"
+                               ng-disabled="!data.testSettings.isIpConfigEnabled"
+                               ng-change="onTestGatewayChange()"
+                        />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-xs-offset-1 col-xs-11">
+                        <hr/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-offset-1 col-xs-3">
+                        <label class="col-xs-12 control-label">{{::'EDIT_NIC.PREFERRED_DNS' | translate}}</label>
+                    </div>
+                    <div class="col-xs-4">
+                        <input type="text"
+                               z-ip-field
+                               ng-model="data.failoverSettings.primaryDNS"
+                               z-dup-validator="{{data.failoverSettings.secondaryDNS}}"
+                               error-message="{{::'EDIT_NIC.DNS_DUPLICATE' | translate}}"
+                               ng-disabled="!data.failoverSettings.isDNSEnabled"
+                               ng-change="onFailoverPrimaryDNSChange()"
+                               placement="bottom"
+                        />
+                    </div>
+                    <div class="col-xs-4">
+                        <input type="text"
+                               z-ip-field
+                               ng-model="data.testSettings.primaryDNS"
+                               z-dup-validator="{{data.testSettings.secondaryDNS}}"
+                               error-message="{{::'EDIT_NIC.DNS_DUPLICATE' | translate}}"
+                               ng-disabled="!data.testSettings.isDNSEnabled"
+                               ng-change="onTestPrimaryDNSChange()"
+                               placement="bottom"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-offset-1 col-xs-3">
+                        <label class="col-xs-12 control-label ">{{::'EDIT_NIC.ALTER_DNS' | translate}}</label>
+                    </div>
+                    <div class="col-xs-4">
+                        <input type="text"
+                               z-ip-field
+                               ng-model="data.failoverSettings.secondaryDNS"
+                               z-dup-validator="{{data.failoverSettings.primaryDNS}}"
+                               error-message="{{::'EDIT_NIC.DNS_DUPLICATE' | translate}}"
+                               ng-change="onFailoverSecondaryDNSChange()"
+                               ng-disabled="!data.failoverSettings.isDNSEnabled"
+                               placement="bottom"
+                        />
+                    </div>
+                    <div class="col-xs-4">
+                        <input type="text"
+                               z-ip-field
+                               ng-model="data.testSettings.secondaryDNS"
+                               z-dup-validator="{{data.testSettings.primaryDNS}}"
+                               error-message="{{::'EDIT_NIC.DNS_DUPLICATE' | translate}}"
+                               ng-change="onTestSecondaryDNSChange()"
+                               ng-disabled="!data.testSettings.isDNSEnabled"
+                               placement="bottom"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-offset-1 col-xs-3">
+                        <label class="col-xs-12 control-label ">{{::'EDIT_NIC.DNS_SUFFIX' | translate}}</label>
+                    </div>
+                    <div class="col-xs-4">
+                        <input
+                            type="text"
+                            ng-model="data.failoverSettings.dnsSuffix"
+                            ng-disabled="!data.failoverSettings.isDNSEnabled"
+                            ng-change="onFailoverDNSSuffixChange()"
+                        />
+                    </div>
+                    <div class="col-xs-4">
+                        <input type="text"
+                               ng-model="data.testSettings.dnsSuffix"
+                               ng-disabled="!data.testSettings.isDNSEnabled"
+                               ng-change="onTestDNSSuffixChange()"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-offset-4 col-xs-4">
+                        <button type="button" class="btn btn-link" ng-click="copyToFot()">{{'EDIT_NIC.COPY_TO_FOT' | translate}}</button>
+                    </div>
+                    <div class="col-xs-4">
+                        <button type="button" class="btn btn-link" ng-click="copyToFo()">{{'EDIT_NIC.COPY_TO_FO' | translate}}</button>
+                    </div>
+                </div>
+            </div>
+            <div ng-if="::!data.isIPConfigurationEnabled" class="info-label">
+                <label ng-show="::!data.isBulk"><b>{{::'EDIT_NIC.MIXED_TYPE_INFO' | translate}}</b></label>
+                <label ng-show="::data.isBulk"><b>{{::'EDIT_NIC.RESTRICT_TOOLS_BULK' | translate}}</b></label>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-12">
+                    <br/>
+                </div>
+            </div>
+        </form>
+    </div>
+</base-modal-window>

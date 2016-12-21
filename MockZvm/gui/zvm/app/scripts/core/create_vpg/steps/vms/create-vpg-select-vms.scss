@@ -1,0 +1,166 @@
+.create-vpg-select-vms {
+
+    .protected-site {
+        margin-right: 10px;
+    }
+
+    .selectVMsTitle {
+        margin: 0;
+    }
+
+    .all-selected-vms-link {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .availableVMsGridStyle {
+        height: 227px;
+    }
+
+    .selectVMsGridStyle {
+        height: 255px;
+    }
+
+    .all-protected-panel-expand-potentials-grid{
+        height: 265px;
+    }
+
+    .multi-site-expand-panel {
+        position: absolute;
+        top: 269px;
+        width: 399px;
+
+        .expand-icon{
+            position: absolute;
+            height: 20px;
+            width: 20px;
+            right: 0;
+            top: 6px;
+            background: url("../assets/grid_icons/expand.png") no-repeat;
+            cursor: pointer;
+        }
+
+        .collapse-icon{
+            position: absolute;
+            height: 20px;
+            width: 20px;
+            right: 0;
+            top: 6px;
+            background: url("../assets/grid_icons/collapse.png") no-repeat;
+            cursor: pointer;
+        }
+    }
+
+    .count-vms-label{
+        position: absolute;
+        right: 26px;
+        top: 40px;
+    }
+
+    .all-protected-panel-expand {
+        top: 307px;
+        width: 399px;
+    }
+
+    .potentialsVMsGrid_VCDMODE {
+        .availableVMsGridStyle {
+            height: 207px;
+        }
+
+        .selectVMsGridStyle {
+            height: 233px;
+        }
+
+        .all-protected-panel-expand-potentials-grid{
+            height: 247px;
+        }
+
+        .multi-site-expand-panel {
+            top: 249px;
+        }
+
+        .all-protected-panel-expand {
+            top: 289px;
+        }
+    }
+
+    .filtered-out-vms {
+        position: relative;
+        top: 3px;
+        padding-left: 3px;
+    }
+
+    .vc-icon {
+        background: url('../assets/list_icons/vc-icon.png') no-repeat;
+        width: 13px;
+        height: 15px;
+        float: left;
+        padding-left: 18px;
+        position: relative;
+        top: 5px
+    }
+
+    .vcd-icon {
+        background: url('../assets/list_icons/vcd-icon.png') no-repeat;
+        width: 14px;
+        height: 15px;
+        float: left;
+        padding-left: 18px;
+        position: relative;
+        top: 5px
+    }
+
+    .boot-order-link{
+        padding-right: 0;
+    }
+
+    .vpg-vm-controls {
+        width: 10%;
+        float: left;
+        button {
+            display: block;
+            border: 0;
+            border-radius: 0;
+            background-color: #fff;
+            width: 88px;
+            height: 40px;
+            color: #b5b7b9;
+            margin: 0 auto;
+            outline: none;
+        }
+
+        .vm-add {
+            position: absolute;
+            top: 40%;
+            padding-left: 34px;
+        }
+
+        .vm-remove{
+            position: absolute;
+            top: 52%;
+            padding-left: 34px;
+        }
+
+        .right-arrow-image {
+            width: 100%;
+            height: 100%;
+            background: url('../assets/vpg_wizard/arrow_right.png') no-repeat;
+            cursor: pointer;
+        }
+
+        .left-arrow-image {
+            width: 100%;
+            height: 100%;
+            background: url('../assets/vpg_wizard/arrow_left.png') no-repeat;
+            cursor: pointer;
+        }
+
+        .right-arrow-image-opacity {
+            opacity: 0.6;
+        }
+
+        .left-arrow-image-opacity {
+            opacity: 0.6;
+        }
+    }
+}

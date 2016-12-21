@@ -1,0 +1,7 @@
+@mixin z-image-icon($bgImage, $bgPos: center) {
+  width: 100%;
+  height: 100%;
+  background-image: url($bgImage);
+  background-repeat: no-repeat;
+  background-position: $bgPos;
+}

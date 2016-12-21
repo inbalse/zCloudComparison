@@ -1,0 +1,17 @@
+$create-checkpoint-width: 600px;
+
+.create-checkpoint {
+  .modal-dialog {
+    width: $create-checkpoint-width;
+  }
+
+  .modal-body {
+    background-color: white;
+    padding-bottom: 5px;
+  }
+
+  .z-slick-grid-container {
+    position: relative;
+    height: 380px;
+  }
+}

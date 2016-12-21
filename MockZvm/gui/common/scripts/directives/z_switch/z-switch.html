@@ -1,0 +1,6 @@
+<label class="z-switch-container">
+    <input type="checkbox" ng-model="model" ng-disabled="disabled" ng-change="change()">
+    <span class="z-switch-thumb z-switch-thumb-true" ng-bind="labels.positive" ng-show="model===true"></span>
+    <span class="z-switch-thumb z-switch-thumb-false" ng-bind="labels.negative" ng-show="model===false"></span>
+    <span class="z-switch-thumb z-switch-thumb-indeterminate" ng-show="isIndeterminate"></span>
+</label>

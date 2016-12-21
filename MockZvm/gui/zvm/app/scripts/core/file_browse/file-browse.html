@@ -1,0 +1,35 @@
+<base-modal-window modal-title="Browse for file" close="close" btns="buttons"
+                   loading="loading" busy="busy" help="fileBrowserController">
+    <!-- Nested node template -->
+    <script type="text/ng-template" id="file_browse_item.html">
+        <div class="tree-view-item" id="{{ node.id }}" ng-click="select(node)">
+            <span class="glyphicon glyphicon-remove-sign" ng-if="node.disabled"></span>
+            <span ng-if="!node.isFile" class="tree-view-icon"
+                  ng-class="{'tree-view-expand' : node.collapsed, 'tree-view-collapse' : !node.collapsed}">
+                   </span>
+            <span class="tree-view-icon" ng-if="!node.isFile"
+                  ng-class="{'tree-view-folder-closed': node.collapsed, 'tree-view-folder-opened': !node.collapsed}">
+            </span>
+            <span class="glyphicon glyphicon-file" ng-if="node.isFile && !node.disabled"></span>
+            <span title="{{ node.disabled ? node.source.DisabledReason : node.source.VmdkFullPath}}" class="filename"
+                  ng-class="{'selected':node.selected, 'disabled':node.disabled, 'selectable': !node.disabled }">
+                {{node.name}}&nbsp;{{node.isFile ? '(' + (node.source.FileSizeInBytes | storageBytesToStringfilter) + ')' :''}}
+            </span>
+        </div>
+        <ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: node.collapsed}">
+            <li ng-repeat="node in node.nodes track by $index" ui-tree-node ng-include="'file_browse_item.html'">
+            </li>
+        </ol>
+    </script>
+    <p>{{"FILE_BROWSE.PROTECTED" | translate}}:&nbsp;{{volume.SourceAddress}}</p>
+
+    <p ng-bind="restrictionText"></p>
+
+    <div class="ui-tree tree-view-container">
+        <div ui-tree data-drag-enabled="false">
+            <ol ui-tree-nodes="" ng-model="data" id="tree-root">
+                <li ng-repeat="node in data track by $index" ui-tree-node ng-include="'file_browse_item.html'"></li>
+            </ol>
+        </div>
+    </div>
+</base-modal-window>

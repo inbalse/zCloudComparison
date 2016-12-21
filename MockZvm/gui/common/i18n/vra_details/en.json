@@ -1,0 +1,79 @@
+{
+    "VRA_DETAILS": {
+        "VRA": "VRA: ",
+        "VPGS": {
+            "TITLE": "List of VPGs"
+        },
+        "VMS": {
+            "TITLE": "List of VMs"
+        },
+        "TABS": {
+            "VPGS": "VPGs",
+            "VMS": "VMs",
+            "PARAMETERS": "SETTINGS"
+        },
+        "ACTIONS": {
+            "EDIT": "EDIT VRA",
+            "CHANGE_HOST_PASSWORD": "Change Host Password",
+            "CHANGE_VM_RECOVERY_VRA": "Change VM Recovery VRA",
+            "UPGRADE": "Upgrade",
+            "INSTALL": "Install",
+            "UNINSTALL": "Uninstall",
+            "REPAIR": "Repair",
+            "CHANGE_VM_RECOVERY_VRA_DISABLED" : "No protected virtual machines are being recovered to this VRA",
+            "CHANGE_VM_RECOVERY_VRA_ENABLED" : "Change the recovery host for a protected virtual machine"
+        },
+        "PARAMETERS": {
+            "GENERAL": {
+                "VRA_VERSION": "Version",
+                "LATEST": "LATEST",
+                "OUTDATED": "OUTDATED",
+                "VRA_GROUP": "VRA Group",
+                "VRA_RAM": "VRA RAM",
+                "SHADOW_VARS": "Shadow VRAs"
+            },
+            "CONFIGURATION": {
+                "TITLE": "Configuration",
+                "HOST_CLUSTER": "Host Cluster",
+                "HOST_VERSION": "Host Version",
+                "DATASTORE": "Datastore"
+            },
+            "NETWORK": {
+                "NETWORK_NAME": "Network Name",
+                "ADDRESS": "Address",
+                "SUBNET_MASK": "Subnet Mask",
+                "DEFAULT_GATEWAY": "Default Gateway"
+            },
+            "REPLICATION_RECOVERY": {
+                "OUTGOING_VOLUMES": "Outgoing Volumes",
+                "OUTGOING_VMS": "Outgoing VMs",
+                "OUTGOING_VPGS": "Outgoing VPGs",
+                "RDM_DISKS_PROTECTED": "RDM Disks Protected",
+                "TOTAL_PROTECTED": "Total Protected",
+                "TOTAL_RDM_PROTECTED": "Total RDM Protected",
+                "TOTAL_PROTECTED_STORAGE": "Total Protected Storage",
+                "INCOMING_VOLUMES": "Incoming Volumes",
+                "INCOMING_VMS": "Incoming VMs",
+                "INCOMING_VPGS": "Incoming VPGs",
+                "JOURNAL_VOLUMES": "Journal Volumes",
+                "RDM_RECOVERY_DISKS": "RDM Recovery Disks",
+                "SCRATCH_VOLUMES": "Scratch Volumes",
+                "TOTAL_JOURNAL_SIZE": "Total Journal Size",
+                "TOTAL_RECOVERY_VOLUMES_SIZE": "Total Recovery Volumes Size",
+                "TOTAL_RDM_SIZE": "Total RDM Size",
+                "TOTAL_RECOVERY_STORAGE": "Total Recovery Storage",
+                "TOTAL_SCRATCH_VOLUMES_SIZE": "Total Scratch Volumes Size",
+                "RECOVERY_STORAGE_SIZE": "Recovery Storage Size",
+                "PROTECTED_STORAGE_SIZE": "Protected Storage Size",
+                "VRA_VM_NAME":"VRA VM Name",
+                "VRA_HOST":"VRA Host"
+            }
+        },
+        "HOST": "Host",
+        "VRA_ERROR": {
+            "HOST_DOESNT_EXIST": "VRA doesn't exist.",
+            "VRA_NOT_INSTALLED": "VRA not installed.",
+            "TITLE_ERROR": "Error"
+        }
+    }
+}

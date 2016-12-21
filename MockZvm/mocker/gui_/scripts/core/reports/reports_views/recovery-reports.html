@@ -1,0 +1,80 @@
+<div class='full-height recovery-report-grid-container'>
+    <z-slick-grid id="recovery-report-grid" class="recovery-report-grid" data="data" custom-options="customOptions"
+                  grid-id="recovery-grid"
+                  selected-items="selectedItems" hide-create-view="true"></z-slick-grid>
+</div>
+
+<script id="recovery-reports-input.html" type="text/ng-template">
+    <table>
+        <tr>
+            <td>
+                <button class="btn btn-link" ng-click="applyFilter()">{{ 'REPORTS_VIEW.APPLY' | translate
+                    }}
+                </button>
+                <button type="button" class="btn btn-link" ng-click="reset()">{{ 'REPORTS_VIEW.RESET' | translate }}
+                </button>
+                <div class="btn-group">
+                    <div class="dropdown zerto">
+                        <button class="btn btn-link" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                            {{ 'REPORTS_VIEW.EXPORT' | translate }}
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-white pull-right" role="menu"
+                            aria-pledby="dropdownMenu1">
+                            <li role="presentation"><a class="mouse-pointer" role="menuitem" tabindex="-1"
+                                                       ng-click="exportReport('pdf')">{{
+                                'REPORTS_VIEW.TO_PDF' | translate }}</a></li>
+                            <li role="presentation"><a class="mouse-pointer" role="menuitem" tabindex="-1"
+                                                       ng-click="exportReport('zip')">{{
+                                'REPORTS_VIEW.TO_ZIP' | translate }}</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+</script>
+
+<script id="recovery-reports-form.html" type="text/ng-template">
+    <div class="container-fluid">
+        <div class="row">
+            <form class="form-horizontal">
+                <div class="col-xs-4">
+                    <div class="form-group pull-left">
+                        <input type="daterange" ng-model="reportDateRange" ng-change="onDateChange()"
+                               class="pull-right btn btn-link">
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        <label class="col-xs-4  control-label">{{ 'REPORTS_VIEW.VPG' | translate }}</label>
+
+                        <div class="col-xs-8">
+                            <z-dropdown-multiselect options="vpgs" width="108" selected-model="selectedVpgs"
+                                                    extra-settings="ddVpgsSettings" checkboxes="true"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-4 control-label">{{ 'REPORTS_VIEW.TYPE' | translate }}</label>
+
+                        <div class="col-xs-8">
+                            <z-dropdown-multiselect options="types" width="108" selected-model="selectedTypes"
+                                                    extra-settings="ddTypesSettings" checkboxes="true"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        <label class="col-xs-4 control-label">{{ 'REPORTS_VIEW.STATUS' | translate }}</label>
+
+                        <div class="col-xs-8">
+                            <z-dropdown-multiselect options="statuses" width="108" selected-model="selectedStatuses"
+                                                    extra-settings="ddStatusesSettings" checkboxes="true"/>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</script>

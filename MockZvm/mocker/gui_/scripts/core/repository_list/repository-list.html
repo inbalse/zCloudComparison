@@ -1,0 +1,34 @@
+<div class="grid-controller repository-list-controller" ng-controller="repositoryListController">
+    <div class="btn-group z-white-btn-group">
+        <button class="btn btn-link inline-site-settings" type="button" ng-click="handleSiteSettingsClick()">{{'VPG_LIST.MORE_BUTTON.SITE_SETTINGS'
+            | translate}}</button>
+        <span class="inline-site-settings">|</span>
+        <button type="button" id="addNewRepsoitoryBtn" ng-disabled="!IsAddEnabled" class="btn btn-link new-repositoy-btn"  ng-click="addRepository()">
+            {{'REPOSITORY_LIST.NEW_REP' | translate}}
+        </button>
+        <span>|</span>
+        <button type="button" class="btn btn-link" ng-click="export()">{{'EXPORT' | translate}}</button>
+        <span>|</span>
+        <button class="btn btn-link more-btn" type="button" id="dropdownMenu1" data-toggle="dropdown">
+            {{'VRA_LIST.MORE' | translate}}
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu dropdown-white pull-right" role="menu" aria-labelledby="dropdownMenu1">
+            <li role="presentation"><a role="menuitem" tabindex="-1" ng-disabled="!isEditSelected"
+                                       class="btn btn-link edit-btn" ng-click="openEditRepo()">{{'REPOSITORY_LIST.EDIT_BUTTON' |
+                translate}}</a></li>
+
+            <li role="presentation"><a role="menuitem" tabindex="-1" ng-disabled="!isDeleteEnabled"
+                                       class="btn btn-link delete-btn" ng-click="menuDeleteRepo()">{{'REPOSITORY_LIST.DELETE_BUTTON'
+                | translate}}</a></li>
+        </ul>
+        <span>|</span>
+    </div>
+    <z-slick-grid id="repository-list" grid-id="repository-list"
+                  data="data" row-click="rowClick"
+                  grid="gridObj.grid"
+                  view-by-values="viewByValues" group-by-values="groupByValues"
+                  selected-items="selectedItems"
+                  on-selection="selectedItemsChange"
+                  custom-options="customOptions"></z-slick-grid>
+</div>

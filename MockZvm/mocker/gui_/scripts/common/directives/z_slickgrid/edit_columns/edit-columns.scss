@@ -1,0 +1,39 @@
+.edit-columns-modal {
+  .modal-dialog{
+    width: 530px;
+  }
+
+  .modal-body{
+    background-color: white;
+    padding-bottom:4px;
+  }
+
+  .columns-container{
+    min-height:142px;
+    max-height:420px;
+    overflow: auto;
+    border:solid 1px $gray-darker;
+    width:475px;
+    padding-left:10px;
+    padding-right:0px;
+    padding-top:4px;
+  }
+
+  @mixin column-tile-base{
+    padding: 3px 0px 5px 5px;
+    margin: 0px 2% 4px 0px;
+    float:left;
+    width:48%;
+    height:30px;
+    border:solid 1px $gray-light;
+  }
+  .column-tile-selected{
+    @include column-tile-base();
+    background-color: $well-bg;
+  }
+
+  .column-tile-unselected{
+    @include column-tile-base();
+    background-color: #ffffff;
+  }
+}

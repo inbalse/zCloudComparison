@@ -1,0 +1,93 @@
+.z-scroll-and-zoom {
+    position: relative;
+    height: 100%;
+
+    .z-zoom {
+        width: 26px;
+        height: 78px;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        z-index: 3;
+    }
+
+    .z-zoom_button {
+        display: block;
+        width: 26px;
+        height: 26px;
+        border: 1px solid #7C8289;
+        line-height: 100%;
+        font-weight: bold;
+        background-color: #f6f6f6;
+        float: left;
+        font-size: 16px;
+        outline: none;
+    }
+    .z-zoom_button-plus:first-child {
+        padding-bottom: 5px;
+        border-bottom: 0;
+    }
+    .z-zoom_button-minus:last-child {
+        border-top: 0;
+    }
+    .z-zoom_button:hover {
+        background-color: #dddddf;
+    }
+    .z-zoom_button:active {
+        background-color: #71A2BF;
+    }
+    .z-zoom_button[disabled] {
+        opacity: 0.5;
+        background-color: #f6f6f6;
+    }
+
+    .z-scroll-button {
+        position: absolute;
+        left: 50%;
+        margin-left: -25px;
+        width: 50px;
+        height: 20px;
+        z-index: 3;
+        background-repeat: no-repeat;
+        background-position: center;
+
+        &:hover {
+            border: solid 1px #ccc;
+            background-color: #fff;
+        }
+        &:active, &.z-scroll-button--in-scroll {
+            background-color: #fafafb;
+        }
+
+        &.z-scroll-button--up {
+            top: 0;
+            background-image: url('../assets/vpgs_details/topology/arrow-up.png');
+        }
+        &.z-scroll-button--down {
+            bottom: 0;
+            background-image: url('../assets/vpgs_details/topology/arrow-down.png');
+        }
+    }
+
+    .z-fader {
+        position: absolute;
+        height: 20px;
+        left: 0;
+        width: 100%;
+        z-index: 2;
+        &.z-fader--top {
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+            top: 0;
+        }
+        &.z-fader--bottom {
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+            bottom: 0;
+        }
+    }
+
+    .z-zoom-container {
+        position: relative;
+        overflow: hidden;
+        height: 100%;
+    }
+}

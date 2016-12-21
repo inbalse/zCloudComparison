@@ -1,0 +1,57 @@
+<div class="grid-controls" ng-if="showSearch || showGroupBy">
+    <div class="row">
+        <div class="col-xs-6" ng-if="showSearch">
+            <input type="text" ng-model="search.input.term" placeholder="Search" ng-change="search()"/>
+            <div class="search-icon"></div>
+        </div>
+        <div class="col-xs-6" ng-if="showGroupBy">
+            <ui-select theme="select2" ng-model="group.selected" ng-change="groupChange()">
+                <ui-select-match class="ui-select-match" placeholder="Select or search a group in the list..."><span
+                        class="ui-select-placeholder">{{"GROUP_BY"|translate}}&nbsp;</span>{{$select.selected.text}}
+                </ui-select-match>
+                <ui-select-choices class="ui-select-choices" repeat="group in groupByValues | filter: $select.search">
+                    <span ng-bind-html="group.text | highlight: $select.search"></span>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+    </div>
+</div>
+
+<div ng-if="grid">
+    <zsg-cell-error-tooltip></zsg-cell-error-tooltip>
+</div>
+
+<zsg-views></zsg-views>
+
+<div class="grid-cogwheel" ng-if="!hideViewOptions"
+     ng-class="{'cog-in-view':views.length,'cog-in-grid':!views.length, 'cog-lower':(showSearch || showGroupBy || lowerCog)}">
+    <button type="button" id="zGridColumnsSettingsMenu" class="btn btn-xs"
+            data-toggle="dropdown">
+        <span class="glyphicon glyphicon-cog"></span>
+    </button>
+    <ul class="dropdown-menu dropdown-white pull-right" role="menu"
+        aria-labelledby="zGridColumnsSettingsMenu">
+        <li role="presentation"><a role="menuitem" tabindex="-1" class="btn btn-link"
+                                   ng-click="openColumnsEditor(false)">{{'COGWHEEL.SHOW_COLUMNS' |
+            translate}}</a></li>
+        <li ng-if="!hideCreateView" role="presentation" class="divider"></li>
+        <li ng-if="!hideCreateView" role="presentation"><a role="menuitem" tabindex="-1" class="btn btn-link"
+                                                           ng-click="openColumnsEditor(true)">{{'COGWHEEL.CREATE_NEW' |
+            translate}}</a></li>
+        <li role="presentation" class="divider"></li>
+        <li role="presentation">
+            <a role="menuitem" tabindex="-1" class="btn btn-link"
+               ng-click="resetColumns()">{{'COGWHEEL.RESET_COLUMNS' | translate}}</a>
+        </li>
+    </ul>
+</div>
+
+<div class="z-slickgrid-container">
+    <div class="undo-container" ng-if="showUndo">
+        <span>{{"UNDO_TEXT"|translate}}</span>
+        <button type="button" class="btn undo-button" ng-click="undo()">{{"UNDO"|translate}}</button>
+        <button type="button" class="z-close" ng-click="closeUndo()" aria-hidden="true">&nbsp;</button>
+    </div>
+    <div class="z-slickgrid"
+         ng-class="{'z-slickgrid-full': (!(showSearch || showGroupBy))}"></div>
+</div>

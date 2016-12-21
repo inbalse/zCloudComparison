@@ -1,0 +1,37 @@
+<div class="form-group" ng-class="{ 'blocked-view': !data.isBackupEnabled }">
+    <div class="col-xs-2">
+        <z-checkbox class="check-post-back-scripts" model="data.enableBackupScripts"
+                    z-disabled="!data.isBackupEnabled" change="postScriptChange()">
+            <span class="check-post-back-scripts-label">{{:: 'CREATE_VPG_BACKUP.POST' | translate}}</span>
+        </z-checkbox>
+    </div>
+    <div class="col-xs-2">
+        <input type="text"
+               ng-model="data.backup.Scripting.PostScript.Command"
+               ng-change="postScriptChange()"
+               ng-required="data.enableBackupScripts" placeholder="{{:: 'CREATE_VPG_BACKUP.COMMAND' | translate}}"
+               ng-disabled="!data.isBackupEnabled || !data.enableBackupScripts"/>
+    </div>
+    <div class="col-xs-6">
+        <input type="text"
+               ng-model="data.backup.Scripting.PostScript.Parameters"
+               placeholder="{{:: 'CREATE_VPG_BACKUP.PARAMETERS' | translate}}"
+               ng-disabled="!data.isBackupEnabled || !data.enableBackupScripts"/>
+    </div>
+    <div class="col-xs-2">
+
+        <div name="journalStepper"
+             z-wizard-validator="backupScriptTimeout"
+             data-placement="top"
+             scriptTimeOutValid
+             z-stepper
+             element-disabled="isBackupTimeoutScriptDisabled"
+             ng-model="data.backup.Scripting.PostScript.TimeoutInSeconds"
+             ng-required="data.enableBackupScripts"
+             p-holder="{{:: 'CREATE_VPG_BACKUP.TIMEOUT' | translate}}"
+             min="1"
+             max="6000">
+        </div>
+
+    </div>
+</div>

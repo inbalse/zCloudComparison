@@ -1,0 +1,78 @@
+<div class="grid-controller vra-list-controller" ng-controller="vraListController">
+
+    <div class="btn-group z-white-btn-group">
+        <div class="btn-group">
+            <div class="dropdown zerto">
+                <button class="btn btn-link inline-site-settings" type="button" ng-click="handleSiteSettingsClick()">
+                    {{'VPG_LIST.MORE_BUTTON.SITE_SETTINGS'
+                    | translate}}
+                </button>
+                <span class="inline-site-settings">|</span>
+                <button class="btn btn-link install-vra-btn" type="button" ng-disabled="!installEnabled"
+                        ng-click="openInstallVra()">
+                    {{'VRA_LIST.INSTALL_BUTTON'| translate}}
+                </button>
+                <span>|</span>
+                <button type="button" class="btn btn-link" ng-click="export()">{{'EXPORT' | translate}}</button>
+                <span>|</span>
+                <button class="btn btn-link more-btn" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                    {{'VRA_LIST.MORE' | translate}}
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu dropdown-white pull-right" role="menu" aria-labelledby="dropdownMenu1">
+                    <li role="presentation"><a help-icon="VRA_MORE_ACTION.EDIT" role="menuitem" tabindex="-1"
+                                               ng-disabled="isEditEnabled"
+                                               class="btn btn-link edit-btn" ng-click="openEditVra()">{{'VRA_LIST.EDIT'
+                        |
+                        translate}}</a></li>
+
+                    <li role="presentation"><a help-icon="VRA_MORE_ACTION.UPGRADE" role="menuitem" tabindex="-1"
+                                               ng-disabled="!isUpgradeEnabled"
+                                               class="btn btn-link upgrade-btn" ng-click="openUpgradeVra()">{{'VRA_LIST.UPGRADE'
+                        | translate}}</a></li>
+
+                    <li role="presentation"><a help-icon="VRA_MORE_ACTION.CHANGE_HOST_PASSWORD" role="menuitem"
+                                               tabindex="-1" ng-disabled="!isChangeHostPasswordEnabled"
+                                               class="btn btn-link change-host-password-btn"
+                                               ng-click="changeHostPassword()">{{'VRA_LIST.CHANGE_PASSWORD'
+                        | translate}}</a></li>
+
+                    <li role="presentation">
+                        <!--in case of enabled, display a tag with enabled tooltip-->
+                        <a ng-if="IsChangeHostEnabled"
+                                               help-icon="VRA_LIST.CHANGE_VM_RECOVERY_VRA_ENABLED" role="menuitem"
+                                               tabindex="-1"
+                                               class="btn btn-link change-recovery-vm-btn"
+                                               ng-click="handleChangeVmRecoveryVra()">{{'VRA_LIST.CHANGE_VM'
+                        | translate}}</a>
+                        <!--in case of disabled, display a tag with disabled tooltip and disable tag-->
+                        <a ng-if="!IsChangeHostEnabled" help-icon="VRA_LIST.CHANGE_VM_RECOVERY_VRA_DISABLED"
+                           role="menuitem" tabindex="-1"
+                           disabled="disabled" class="btn btn-link change-recovery-vm-btn"
+                           ng-click="handleChangeVmRecoveryVra()">{{'VRA_LIST.CHANGE_VM'
+                            | translate}}</a></li>
+
+                    <li role="presentation" class="divider "></li>
+                    <li role="presentation"><a help-icon="VRA_MORE_ACTION.UNINSTALL" role="menuitem" tabindex="-1"
+                                               ng-click="uninstallVra()"
+                                               ng-disabled="isUninstallDisabled" class="btn btn-link uninstall-btn">{{'VRA_LIST.UNINSTALL_BUTTON'
+                        | translate}}</a></li>
+                    <li role="presentation" class="divider "></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" ng-click="handlePairSiteRouting()"
+                                               ng-disabled="!isPairedSiteRounigEnabled"
+                                               class="btn btn-link pair-site-routing-btn">{{'VRA_LIST.PAIR_SITE_ROUTING'
+                        | translate}}</a></li>
+                </ul>
+                <span>|</span>
+            </div>
+        </div>
+    </div>
+    <z-slick-grid data="data" grid-id="vra-list" view-by-values="viewByValues" grid="gridObj.grid"
+                  group-by-values="groupByValues" custom-options="customOptions" on-selection="selectedItemsChange"
+                  selected-items="selectedItems" row-click="rowClick"></z-slick-grid>
+    <z-checkbox title="{{'VRA_LIST.SHOW_ONLY_HOST_WITH_VRA_INSTALL' | translate}}"
+                class="chck-show-host-without-vra-install line-ellipsis" model="showOnlyHostWithVraInstallChecked"
+                change="showOnlyHostWithVraInstallChange()">
+        {{'VRA_LIST.SHOW_ONLY_HOST_WITH_VRA_INSTALL' | translate}}
+    </z-checkbox>
+</div>

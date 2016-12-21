@@ -1,0 +1,37 @@
+.advanced-vm-replication-settings {
+
+    .modal-body {
+        background-color: white;
+        height: 500px;
+    }
+
+    .modal-dialog {
+        width: 860px;
+    }
+
+    .advancedVmsSettingsGridStyle {
+        display: block;
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    .step-desc {
+        padding: 10px;
+    }
+
+    h5 {
+        display: inline-block;
+    }
+
+    .control-label {
+        padding-top: 4px;
+    }
+
+    .z-white-btn-group {
+        z-index: 2;
+    }
+    .grid-container {
+        height: 415px;
+    }
+}

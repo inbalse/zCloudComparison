@@ -1,0 +1,198 @@
+module.exports = function GetDatastoreClustersScreen() {
+
+    return {
+        "StorageResourceNodes": [{
+            "children": [{
+                "children": null,
+                "NodeType": 0,
+                "DisplayName": "Cluster BK1-14 BA5-20 IBM iSCSI vol2",
+                "Device": "naa.60050768028180700000000000000167",
+                "DatastoreTotalCapacityInGb": 49.75,
+                "DatastoreConsumptionInGB": 7.2119140625,
+                "ZertoConsumptionInGB": 0,
+                "RecoveryVolsSizeInGB": 0,
+                "JournalVolsSizeInGB": 0,
+                "ProtectedVMs": 0,
+                "IncomingVMs": 0,
+                "ConnectedVRAs": 0,
+                "DatastoreAvailabilityStatusVisualObject": 0,
+                "AlertStatusVisualObject": 1,
+                "AlertTip": {
+                    "Alerts": [],
+                    "HasMore": false,
+                    "TotalNumberOfAlerts": 0,
+                    "TotalNumberOfWarnings": 0,
+                    "TotalNumberOfErrors": 0
+                },
+                "UsedByZerto": false,
+                "TypeOfDatastore": "VMFS"
+            }, {
+                "children": null,
+                "NodeType": 0,
+                "DisplayName": "Cluster BK1-14 BA5-20 IBM iSCSI vol1",
+                "Device": "naa.60050768028180700000000000000166",
+                "DatastoreTotalCapacityInGb": 49.75,
+                "DatastoreConsumptionInGB": 9.775390625,
+                "ZertoConsumptionInGB": 0,
+                "RecoveryVolsSizeInGB": 0,
+                "JournalVolsSizeInGB": 0,
+                "ProtectedVMs": 0,
+                "IncomingVMs": 0,
+                "ConnectedVRAs": 0,
+                "DatastoreAvailabilityStatusVisualObject": 0,
+                "AlertStatusVisualObject": 1,
+                "AlertTip": {
+                    "Alerts": [],
+                    "HasMore": false,
+                    "TotalNumberOfAlerts": 0,
+                    "TotalNumberOfWarnings": 0,
+                    "TotalNumberOfErrors": 0
+                },
+                "UsedByZerto": false,
+                "TypeOfDatastore": "VMFS"
+            }],
+            "NodeType": 1,
+            "DisplayName": "DS Cluster",
+            "Device": "",
+            "DatastoreTotalCapacityInGb": null,
+            "DatastoreConsumptionInGB": null,
+            "ZertoConsumptionInGB": 0,
+            "RecoveryVolsSizeInGB": 0,
+            "JournalVolsSizeInGB": 0,
+            "ProtectedVMs": 0,
+            "IncomingVMs": 0,
+            "ConnectedVRAs": 0,
+            "DatastoreAvailabilityStatusVisualObject": 0,
+            "AlertStatusVisualObject": 3,
+            "AlertTip": {
+                "Alerts": [],
+                "HasMore": false,
+                "TotalNumberOfAlerts": 0,
+                "TotalNumberOfWarnings": 0,
+                "TotalNumberOfErrors": 0
+            },
+            "UsedByZerto": false,
+            "TypeOfDatastore": null
+        }, {
+            "children": null,
+            "NodeType": 0,
+            "DisplayName": "BK1-1415 SSD SW DS",
+            "Device": "eui.473c0d536c8b71d9",
+            "DatastoreTotalCapacityInGb": 199.75,
+            "DatastoreConsumptionInGB": 2.97265625,
+            "ZertoConsumptionInGB": 0,
+            "RecoveryVolsSizeInGB": 0,
+            "JournalVolsSizeInGB": 0,
+            "ProtectedVMs": 0,
+            "IncomingVMs": 0,
+            "ConnectedVRAs": 0,
+            "DatastoreAvailabilityStatusVisualObject": 0,
+            "AlertStatusVisualObject": 1,
+            "AlertTip": {
+                "Alerts": [],
+                "HasMore": false,
+                "TotalNumberOfAlerts": 0,
+                "TotalNumberOfWarnings": 0,
+                "TotalNumberOfErrors": 0
+            },
+            "UsedByZerto": false,
+            "TypeOfDatastore": "VMFS"
+        }, {
+            "children": null,
+            "NodeType": 0,
+            "DisplayName": "Cluster IS-6-14 BA5-20 iSCSI DS I",
+            "Device": "naa.600601605c902e004851db0123a5e211",
+            "DatastoreTotalCapacityInGb": 299.75,
+            "DatastoreConsumptionInGB": 156.2578125,
+            "ZertoConsumptionInGB": 39.306640625,
+            "RecoveryVolsSizeInGB": 2.962890625,
+            "JournalVolsSizeInGB": 11.341796875,
+            "ProtectedVMs": 2,
+            "IncomingVMs": 6,
+            "ConnectedVRAs": 2,
+            "DatastoreAvailabilityStatusVisualObject": 0,
+            "AlertStatusVisualObject": 1,
+            "AlertTip": {
+                "Alerts": [],
+                "HasMore": false,
+                "TotalNumberOfAlerts": 0,
+                "TotalNumberOfWarnings": 0,
+                "TotalNumberOfErrors": 0
+            },
+            "UsedByZerto": true,
+            "TypeOfDatastore": "VMFS"
+        }, {
+            "children": null,
+            "NodeType": 0,
+            "DisplayName": "Cluster IS-6-14 BA5-20 iSCSI DSII",
+            "Device": "naa.600601605c902e000a0a5e62bc52e311",
+            "DatastoreTotalCapacityInGb": 299.75,
+            "DatastoreConsumptionInGB": 150.80859375,
+            "ZertoConsumptionInGB": 15.7685546875,
+            "RecoveryVolsSizeInGB": 0.498046875,
+            "JournalVolsSizeInGB": 1.7041015625,
+            "ProtectedVMs": 3,
+            "IncomingVMs": 1,
+            "ConnectedVRAs": 2,
+            "DatastoreAvailabilityStatusVisualObject": 0,
+            "AlertStatusVisualObject": 1,
+            "AlertTip": {
+                "Alerts": [],
+                "HasMore": false,
+                "TotalNumberOfAlerts": 0,
+                "TotalNumberOfWarnings": 0,
+                "TotalNumberOfErrors": 0
+            },
+            "UsedByZerto": true,
+            "TypeOfDatastore": "VMFS"
+        }, {
+            "children": null,
+            "NodeType": 0,
+            "DisplayName": "datastore1 (2)",
+            "Device": "naa.6001c230d0af440016c497b94fdc8137",
+            "DatastoreTotalCapacityInGb": 62.75,
+            "DatastoreConsumptionInGB": 1.7958984375,
+            "ZertoConsumptionInGB": 0,
+            "RecoveryVolsSizeInGB": 0,
+            "JournalVolsSizeInGB": 0,
+            "ProtectedVMs": 0,
+            "IncomingVMs": 0,
+            "ConnectedVRAs": 0,
+            "DatastoreAvailabilityStatusVisualObject": 0,
+            "AlertStatusVisualObject": 1,
+            "AlertTip": {
+                "Alerts": [],
+                "HasMore": false,
+                "TotalNumberOfAlerts": 0,
+                "TotalNumberOfWarnings": 0,
+                "TotalNumberOfErrors": 0
+            },
+            "UsedByZerto": false,
+            "TypeOfDatastore": "VMFS"
+        }, {
+            "children": null,
+            "NodeType": 0,
+            "DisplayName": "datastore1",
+            "Device": "naa.60019b90cf79920016c49e4f680ec78c",
+            "DatastoreTotalCapacityInGb": 62.75,
+            "DatastoreConsumptionInGB": 0.94921875,
+            "ZertoConsumptionInGB": 0,
+            "RecoveryVolsSizeInGB": 0,
+            "JournalVolsSizeInGB": 0,
+            "ProtectedVMs": 0,
+            "IncomingVMs": 0,
+            "ConnectedVRAs": 0,
+            "DatastoreAvailabilityStatusVisualObject": 0,
+            "AlertStatusVisualObject": 1,
+            "AlertTip": {
+                "Alerts": [],
+                "HasMore": false,
+                "TotalNumberOfAlerts": 0,
+                "TotalNumberOfWarnings": 0,
+                "TotalNumberOfErrors": 0
+            },
+            "UsedByZerto": false,
+            "TypeOfDatastore": "VMFS"
+        }]
+    }
+};

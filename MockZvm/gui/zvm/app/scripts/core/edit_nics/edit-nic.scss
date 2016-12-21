@@ -1,0 +1,34 @@
+.nic-edit-modal {
+  .modal-dialog {
+    width: 660px;
+  }
+
+  .modal-body{
+    background-color: white;
+    padding: 6px 10px;
+  }
+
+  .center-label{
+    text-align:center;
+  }
+
+  .info-label{
+      height: 200px;
+      width:100%;
+      text-align:center;
+      label{
+        width:380px;
+        padding-top:60px;
+      }
+  }
+
+  hr{
+    border-top:1px solid $gray-light;
+    margin-bottom: 4px;
+    margin-top:4px;
+  }
+
+  .step-desc{
+    padding: 10px 0 10px 0;
+  }
+}

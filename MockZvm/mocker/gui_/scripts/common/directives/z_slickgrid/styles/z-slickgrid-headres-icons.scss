@@ -1,0 +1,44 @@
+.z-slickgrid .ui-state-default {
+  .alerts-list-level-status-header {
+    background-image: url("../assets/list_icons/alert-status-header.png");
+    background-repeat: no-repeat;
+    background-position: center 5.5px;
+    background-color: transparent;
+    margin-bottom: 0;
+    height: 24px;
+  }
+
+  .alerts-list-dismiss-header {
+    background-image: url("../assets/alerts/dismiss_header.png");
+    background-repeat: no-repeat;
+    background-position: center 5.5px;
+    background-color: transparent;
+    margin-bottom: 0;
+    height: 24px;
+  }
+
+  .tasks-list-level-status-header {
+    background-image: url("../assets/list_icons/alert-status-header.png");
+    background-repeat: no-repeat;
+    background-position: center 5.5px;
+    background-color: transparent;
+    margin-bottom: 0;
+    height: 24px;
+  }
+
+  .protection-group-alert-status-header {
+    background-image: url('../assets/list_icons/alert-status-header.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    text-indent: -1000px;
+  }
+
+  //header icon for multi sites
+  .multi-sites-header-icon {
+    background-image: url("../assets/multi_sites/multi_site_heder_grid_icon.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    text-indent: -1000px;
+  }
+}
+

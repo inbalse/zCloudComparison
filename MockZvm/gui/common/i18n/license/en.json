@@ -1,0 +1,13 @@
+{
+    "LICENSE": {
+        "TITLE":                     "Start Zerto Virtual Replication by entering a valid license or pairing to a site with a valid license",
+        "PUBLIC_CLOUD_TITLE":        "Start Zerto Virtual Replication by entering a valid license",
+        "LICENSE_RADIO":             "I have a license",
+        "LICENSE_LABEL":             "License:",
+        "PAIR_RADIO":                "Pair to a site with a license",
+        "PAIR_LABEL":                "Site Address:",
+        "PORT_LABEL":                "Port:",
+        "LICENSE_BUTTON":            "START",
+        "PAIR_BUTTON":               "START"
+    }
+}

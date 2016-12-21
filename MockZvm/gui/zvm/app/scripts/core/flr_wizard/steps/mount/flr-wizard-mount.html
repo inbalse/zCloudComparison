@@ -1,0 +1,26 @@
+<div class="row flr-wizard-mount-summary" ng-controller="flrWizardMountController">
+    <div class="form-horizontal">
+        <div class="form-group">
+            <p class="text-center step-desc" translate="FLR.WIZARD.MOUNT.TITLE"></p>
+        </div>
+        <div class="form-group">
+            <label class="col-xs-offset-4 col-xs-2" translate="FLR.WIZARD.MOUNT.VM"></label>
+
+            <div class="col-xs-6 text-left">{{vmModel.selectedItems[0].VmName}}</div>
+        </div>
+        <div class="form-group">
+            <label class="col-xs-offset-4 col-xs-2" translate="FLR.WIZARD.MOUNT.POINT"></label>
+
+            <div class="col-xs-6 text-left">{{rpModel.selectedItems[0].PointInTime}}</div>
+        </div>
+        <div class="form-group">
+            <label class="col-xs-offset-4 col-xs-2" translate="FLR.WIZARD.MOUNT.VOLUME"></label>
+
+            <div class="col-xs-6 text-left">{{volumeModel.selectedItems[0].VmVolumeIdentifier}}</div>
+        </div>
+
+        <div class="form-group">
+            <button ng-click="mount()" class="btn btn-mount" translate="FLR.WIZARD.MOUNT.START_MOUNT"></button>
+        </div>
+    </div>
+</div>

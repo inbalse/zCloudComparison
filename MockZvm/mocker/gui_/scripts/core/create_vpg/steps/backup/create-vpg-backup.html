@@ -1,0 +1,55 @@
+<div class="z-wizard-container-wide" ng-controller="createVPGBackupController">
+    <p class="text-center step-desc">{{:: "CREATE_VPG_BACKUP.BACKUP_INFO" | translate }}</p>
+
+    <!-- user info about backup -->
+    <span ng-if="!data.isSlaCustom">
+        <span ng-if="data.isBackupEnabled"
+              translate="CREATE_VPG_BACKUP.SP_DEFINED"
+              translate-values="{serviceProfile: data.serviceProfileName}">
+        </span>
+        <span ng-if="!data.isBackupEnabled"
+              translate="CREATE_VPG_BACKUP.SP_NO_BACKUP"
+              translate-values="{serviceProfile: data.serviceProfileName}">
+        </span>
+    </span>
+
+    <form class="form-horizontal" name="forms.backupForm" ng-if="data.isSlaCustom || data.isBackupEnabled">
+
+
+        <div class="form-group" ng-show="data.isSlaCustom">
+            <label class="col-xs-2 control-label"><b>{{:: 'CREATE_VPG_BACKUP.BACKUP' | translate}}</b></label>
+
+            <!-- switch -->
+            <div class="col-xs-10">
+                <z-switch model="data.isBackupEnabled"
+                          labels="{positive:'ON',negative:'OFF'}" change="handleSwitchChanged()"></z-switch>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-xs-12">
+                <hr/>
+            </div>
+        </div>
+
+        <div ng-include="partialViews.repositoryPath"></div>
+
+        <div class="form-group"
+             ng-class="{ 'blocked-view': !data.isBackupEnabled }">
+            <div class="col-xs-12">
+                <hr/>
+            </div>
+        </div>
+
+        <div ng-include="partialViews.retentionPeriodPath"></div>
+
+        <div class="form-group">
+            <div class="col-xs-12">
+                <hr/>
+            </div>
+        </div>
+
+        <div ng-include="partialViews.postBackupScriptPath"></div>
+
+    </form>
+</div>

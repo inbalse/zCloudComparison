@@ -1,0 +1,27 @@
+<div class="row flr-wizard-summary" ng-controller="flrDownloadSettingsController">
+    <div class="form-horizontal">
+        <div class="form-group">
+            <p class="text-center step-desc" translate="FLR.DOWNLOAD.SETTINGS.TITLE"></p>
+        </div>
+        <div class="form-group">
+            <label class="col-xs-offset-4 col-xs-2" translate="FLR.DOWNLOAD.SETTINGS.VM"></label>
+
+            <div class="col-xs-6 text-left">{{model.vm.VmName}}</div>
+        </div>
+        <div class="form-group">
+            <label class="col-xs-offset-4 col-xs-2" translate="FLR.DOWNLOAD.SETTINGS.POINT"></label>
+
+            <div class="col-xs-6 text-left">{{model.cp.TimeStamp | zDateFilter}}</div>
+        </div>
+        <div class="form-group" ng-show="model.cp.tag">
+            <label class="col-xs-offset-4 col-xs-2" translate="FLR.DOWNLOAD.SETTINGS.CP_TAG"></label>
+
+            <div class="col-xs-6 text-left">{{model.cp.tag}}</div>
+        </div>
+        <div class="form-group">
+            <label class="col-xs-offset-4 col-xs-2" translate="FLR.DOWNLOAD.SETTINGS.VOLUME"></label>
+
+            <div class="col-xs-6 text-left">{{model.VolumeId}}</div>
+        </div>
+    </div>
+</div>

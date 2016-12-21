@@ -1,0 +1,6 @@
+{
+    "FILE_BROWSE":{
+        "PROTECTED":"Protected",
+        "RESTRICTION_TEXT":"To use a {{file_type}} for preseeding, it must be {{size}} and not attached to another VM."
+    }
+}

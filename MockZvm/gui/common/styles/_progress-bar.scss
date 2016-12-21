@@ -1,0 +1,26 @@
+.slimNoValueProgressBar{
+  height: 4px;
+  background-color: #000000;
+  border-radius:0px;
+  .progress-bar{
+    background-color: #62afde;
+  }
+}
+.storage-progressbar-content {
+    padding: 2px 22px 0 22px;
+    .storage-progressbar {
+        color: #FFFFFF;
+        background-color: #8D9FB8;
+        text-align: center;
+        position: relative;
+        .progress-bar {
+            background-color: #20477C;
+        }
+        i{
+            width: 100%;
+            display: block;
+            text-align: center;
+            position: absolute;
+        }
+    }
+}

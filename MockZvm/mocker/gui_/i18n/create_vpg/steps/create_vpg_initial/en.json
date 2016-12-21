@@ -1,0 +1,10 @@
+{
+    "CREATE_VPG_INITIAL": {
+        "EDIT_SETTING": "Specify a unique name for the VPG and the priority.",
+        "VPG_NAME": "VPG Name",
+        "DESCRIPTION": "Description",
+        "PRIORITY": "Priority",
+        "NAME_INVALID": "VPG name is mandatory"
+
+    }
+}

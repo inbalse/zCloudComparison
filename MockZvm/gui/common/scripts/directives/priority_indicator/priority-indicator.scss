@@ -1,0 +1,24 @@
+priority-indicator {
+  display: inline-block;
+  .priority-indicator-item {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 4px;
+    background-color: #888C92;
+    border: 1px solid #888C92;
+  }
+  &.priority-low {
+    .priority-indicator-item:nth-child(2), .priority-indicator-item:last-child {
+      background-color: #fff;
+    }
+  }
+  &.priority-medium {
+    .priority-indicator-item:last-child {
+      background-color: #fff;
+    }
+  }
+  &.priority-high {
+    //
+  }
+}

@@ -1,0 +1,52 @@
+<div id="loginView" ng-controller="loginViewController" class="base-static-window login">
+    <div class="center-container">
+        <div class="login-icon-container">
+            <div class="login-icon"></div>
+            <label>{{title}}</label>
+        </div>
+        <form ng-submit="loginViewFactory.login({ zorgName:user.zorgName, username:user.username, password:user.password, rememberMe:user.rememberMe })"
+              name="loginForm" class="form-horizontal login-form">
+            <div class="form-group" ng-if="IsPortal">
+                <label for="zorgNameInput" class="control-label col-xs-4">{{ 'ZORG_NAME' | translate }}</label>
+
+                <div class="col-xs-8">
+                    <input type="text" required ng-model='user.zorgName' name="zorgNameInput" id="zorgNameInput">
+                </div>
+            </div>
+            <div class="form-group">
+                <label id="usernameText" for="usernameInput" help-icon="{{helpTooltip}}" class="control-label col-xs-4">{{ 'USERNAME' | translate }}</label>
+
+                <div class="col-xs-8">
+                    <input type="text" required ng-model='user.username' name="usernameInput" id="usernameInput">
+                </div>
+            </div>
+            <div class="form-group">
+                <label id="passwordText" for="passwordInput" class="control-label col-xs-4">{{'PASSWORD' | translate }}</label>
+
+                <div class="col-xs-8">
+                    <input type="password" required ng-model='user.password' name="passwordInput" id="passwordInput">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-4"></label>
+                <div class="col-xs-4">
+                    <z-checkbox model="user.rememberMe">{{'REMEMBERME' | translate }}</z-checkbox>
+                </div>
+                <div class="col-xs-4">
+                    <input type="submit" value="LOGIN" ng-disabled="loginForm.$invalid" class="btn z-btn-default pull-right"/>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="version">
+        <label ng-show="IsPortal" class="control-label">{{'POWERED_OF' | translate}}</label>
+        <img ng-show="IsPortal" src="assets/zerto_logo_red_small.png">
+        <span ng-show="IsPortal">  |  </span>
+        <h6><!-- do not remove this comment it's for gulp task build version -->
+            <!--build version-->
+            ZVR 4.5
+            <!--end build version-->
+        </h6>
+    </div>
+</div>

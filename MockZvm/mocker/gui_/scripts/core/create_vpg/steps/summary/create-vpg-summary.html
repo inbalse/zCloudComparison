@@ -1,0 +1,304 @@
+<div class="z-wizard-container-wide" ng-controller="createVPGSummaryController" ng-cloak="">
+    <div class="container-fluid">
+        <div class="row">
+            <!--LEFT-->
+            <div class="col-xs-8">
+                <!--GENERAL-->
+                <div class="row">
+                    <label class="col-xs-2 control-label"><b>{{::"CREATE_VPG_SUMMARY.GENERAL" | translate}}</b></label>
+
+                    <div class="col-xs-5">
+                        <div class="entities-view">
+                            <div class="entities-item entities-item-source"
+                                 ng-class="::data.sourceSiteClass">
+                                <b title="{{::data.ownersSiteName}}">{{::data.ownersSiteName}}</b>
+                            </div>
+                            <div class="entities-view-direction"></div>
+                            <div class="entities-item entities-item-target"
+                                 ng-class="::data.targetSiteClass">
+                                <b title="{{::data.targetSiteName}}">{{::data.targetSiteName}}</b>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-5">
+                        <div class="vpg-text-ellipsis"
+                             uib-tooltip="{{::data.vpgName}}">
+                            <label>{{::"CREATE_VPG_SUMMARY.NAME" | translate }}</label>{{::data.vpgName}}
+                        </div>
+
+                        <div>
+                            <label>{{::"CREATE_VPG_SUMMARY.PRIORITY" | translate }}</label>
+                            <priority-indicator priority="::data.priority"></priority-indicator>
+                            {{::"ENUM.PRIORITY." + data.priority | translate }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <hr/>
+                    </div>
+                </div>
+                <!--REPLICATION-->
+                <div class="row">
+                    <label class="col-xs-2 control-label">
+                        <b>{{::"CREATE_VPG_SUMMARY.REPLICATION" | translate}}</b>
+                    </label>
+                    <div class="col-xs-5">
+                        <div ng-show="::data.showSelectedZORG">
+                            <label>{{"CREATE_VPG_SUMMARY.ZORG" | translate}}</label>{{::data.selectedZORGName}}
+                        </div>
+                        <div ng-if="::data.showSummaryHost"
+                             class="overflowEllipsis"
+                             title="{{::data.targetHostName}}">
+                            <label>{{::"CREATE_VPG_SUMMARY.HOST" | translate}}</label>{{::data.targetHostName}}
+                        </div>
+                        <div ng-if="::data.showTargetDataStore">
+                            <label>{{::data.storageText}}</label>
+                            {{::data.targetDataStoreName}}
+                        </div>
+                        <div ng-if="::data.showTargetOrgvDC">
+                            <label>{{"CREATE_VPG_SUMMARY.RECOVERY_ORG_VDC"| translate}}</label>
+                            {{::data.targetOrgVdcName}}
+                        </div>
+                        <div ng-if="data.showNetworkMapping">
+                            <label>{{::"CREATE_VPG_SUMMARY.NETWORK_MAPPING" | translate }}</label>
+                            {{::"CREATE_VPG_SUMMARY.VAPP_NETWORKING_CONFIGURED" | translate}}
+                        </div>
+                        <div ng-if="data.showServiceProfile">
+                            <label>{{::"CREATE_VPG_SUMMARY.SERVICE_PROFILE" | translate}}</label>
+                            {{::data.serviceProfileName}}
+                        </div>
+                    </div>
+                    <div class="col-xs-5">
+                        <div>
+                            <label>{{::"CREATE_VPG_SUMMARY.JOURNAL_HISTORY" | translate}}</label>
+                            {{::data.minimalJournalLengthInMinutes | convertMinToHoursOrDaysFilter}}
+                        </div>
+                        <div>
+                            <label>{{::"CREATE_VPG_SUMMARY.TARGET_RPO" | translate}}</label>
+                            {{::data.rpoThressholdInSeconds | convertFormatSecondsFilter}}
+                        </div>
+                        <div>
+                            <label>{{::"CREATE_VPG_SUMMARY.TEST_REMINDER" | translate}}</label>
+                            {{::data.maxTestIntervalInMinutes | testPeriodFilter}}
+                        </div>
+                        <div>
+                            <label>{{::"CREATE_VPG_SUMMARY.WAN_COMPRESSION" | translate}}</label>
+                            {{::data.wanCompressionEnabled | booleanToString}}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <hr/>
+                    </div>
+                </div>
+                <!--RECOVERY-->
+                <div class="row">
+                    <label class="col-xs-2 control-label"><b>{{::"CREATE_VPG_SUMMARY.RECOVERY" | translate}}</b></label>
+                    <!------ AWS ------>
+                    <!--FAILOVER-->
+                    <div ng-if="::data.isAws" class="col-xs-5">
+                        <div class="vpg-text-ellipsis"
+                             uib-tooltip="{{::data.failoverPcnName}}">
+                            <label>{{"CREATE_VPG_RECOVERY.FAILOVER_VPC" | translate}}</label>
+                            {{::data.failoverPcnName}}
+                        </div>
+                        <div class="vpg-text-ellipsis"
+                             uib-tooltip="{{::data.failoverSubnetName}}">
+                            <label>{{"CREATE_VPG_RECOVERY.FAILOVER_SUBNET" | translate}}</label>
+                            {{::data.failoverSubnetName}}
+                        </div>
+                        <div class="vpg-text-ellipsis"
+                             uib-tooltip="{{::data.failoverSecurityGroups}}">
+                            <label>{{"CREATE_VPG_RECOVERY.FAILOVER_GROUP" | translate}}</label>
+                            {{::data.failoverSecurityGroups}}
+                        </div>
+                        <div class="vpg-text-ellipsis"
+                             uib-tooltip="{{::data.failoverInstanceFamilyName}}">
+                            <label>{{"CREATE_VPG_RECOVERY.INSTANCE_FAMILY" | translate}}</label>
+                            {{::data.failoverInstanceFamilyName}}
+                        </div>
+                        <div class="vpg-text-ellipsis"
+                             uib-tooltip="{{::data.failoverInstanceType}}">
+                            <label>{{"CREATE_VPG_RECOVERY.INSTANCE_TYPE" | translate}}</label>
+                            {{::data.failoverInstanceType}}
+                        </div>
+                    </div>
+                    <!--FAILOVER TEST-->
+                    <div ng-if="::data.isAws" class="col-xs-5">
+                        <div class="vpg-text-ellipsis"
+                             uib-tooltip="{{::data.failoverTestPcnName}}">
+                            <label>{{"CREATE_VPG_RECOVERY.FAILOVERTEST_VPC" | translate}}</label>
+                            {{::data.failoverTestPcnName}}
+                        </div>
+                        <div class="vpg-text-ellipsis"
+                             uib-tooltip="{{::data.failoverTestSubnetName}}">
+                            <label>{{"CREATE_VPG_RECOVERY.FAILOVERTEST_SUBNET" | translate}}</label>
+                            {{::data.failoverTestSubnetName}}
+                        </div>
+                        <div class="vpg-text-ellipsis"
+                             uib-tooltip="{{::data.failoverTestSecurityGroups}}"><label>
+                            {{"CREATE_VPG_RECOVERY.FAILOVERTEST_GROUP" | translate}}</label>
+                            {{::data.failoverTestSecurityGroups}}
+                        </div>
+                        <div class="vpg-text-ellipsis"
+                             uib-tooltip="{{::data.failoverTestInstanceFamilyName}}">
+                            <label>{{"CREATE_VPG_RECOVERY.INSTANCE_FAMILY" | translate}}</label>
+                            {{data.failoverTestInstanceFamilyName}}
+                        </div>
+                        <div class="vpg-text-ellipsis"
+                             uib-tooltip="{{::data.failoverTestInstanceType}}">
+                            <label>{{"CREATE_VPG_RECOVERY.INSTANCE_TYPE" | translate}}</label>
+                            {{::data.failoverTestInstanceType}}
+                        </div>
+                    </div>
+
+                    <!------ AZURE ------>
+                    <!--FAILOVER-->
+                    <div ng-if="::data.isAzure" class="col-xs-5">
+                        <div class="vpg-text-ellipsis"
+                             uib-tooltip="{{::data.failoverPcnName}}">
+                            <label>{{"CREATE_VPG_RECOVERY.FAILOVER_VNET" | translate}}</label>
+                            {{::data.failoverPcnName}}
+                        </div>
+                        <div class="vpg-text-ellipsis"
+                             uib-tooltip="{{::data.failoverSubnetName}}">
+                            <label>{{"CREATE_VPG_RECOVERY.FAILOVER_SUBNET" | translate}}</label>
+                            {{::data.failoverSubnetName}}
+                        </div>
+                        <div class="vpg-text-ellipsis"
+                             uib-tooltip="{{::data.failoverSecurityGroups}}">
+                            <label>{{"CREATE_VPG_RECOVERY.FAILOVER_GROUP" | translate}}</label>
+                            {{::data.failoverSecurityGroups}}
+                        </div>
+                        <div class="vpg-text-ellipsis"
+                             uib-tooltip="{{::data.failoverInstanceFamilyName}}">
+                            <label>{{"CREATE_VPG_RECOVERY.INSTANCE_FAMILY" | translate}}</label>
+                            {{::data.failoverInstanceFamilyName}}
+                        </div>
+                        <div class="vpg-text-ellipsis"
+                             uib-tooltip="{{::data.failoverInstanceType}}">
+                            <label>{{"CREATE_VPG_RECOVERY.INSTANCE_SIZE" | translate}}</label>
+                            {{::data.failoverInstanceType}}
+                        </div>
+                    </div>
+                    <!--FAILOVER TEST-->
+                    <div ng-if="::data.isAzure" class="col-xs-5">
+                        <div class="vpg-text-ellipsis"
+                             uib-tooltip="{{::data.failoverTestPcnName}}">
+                            <label>{{"CREATE_VPG_RECOVERY.FAILOVERTEST_VNET" | translate}}</label>
+                            {{::data.failoverTestPcnName}}
+                        </div>
+                        <div class="vpg-text-ellipsis"
+                             uib-tooltip="{{::data.failoverTestSubnetName}}">
+                            <label>{{"CREATE_VPG_RECOVERY.FAILOVERTEST_SUBNET" | translate}}</label>
+                            {{::data.failoverTestSubnetName}}
+                        </div>
+                        <div class="vpg-text-ellipsis"
+                             uib-tooltip="{{::data.failoverTestSecurityGroups}}"><label>
+                            {{"CREATE_VPG_RECOVERY.FAILOVERTEST_GROUP" | translate}}</label>
+                            {{::data.failoverTestSecurityGroups}}
+                        </div>
+                        <div class="vpg-text-ellipsis"
+                             uib-tooltip="{{::data.failoverTestInstanceFamilyName}}">
+                            <label>{{"CREATE_VPG_RECOVERY.INSTANCE_FAMILY" | translate}}</label>
+                            {{::data.failoverTestInstanceFamilyName}}
+                        </div>
+                        <div class="vpg-text-ellipsis"
+                             uib-tooltip="{{::data.failoverTestInstanceType}}">
+                            <label>{{"CREATE_VPG_RECOVERY.INSTANCE_SIZE" | translate}}</label>
+                            {{::data.failoverTestInstanceType}}
+                        </div>
+                    </div>
+
+                    <div class="col-xs-5" ng-if="::!data.isPublicCloud">
+                        <div ng-if="::data.isVCDvApp">
+                            <label>{{ "CREATE_VPG_RECOVERY.VCD_GUEST_CUSTOMIZATION" | translate }}:</label>
+                            {{::!data.disableGuestCustomization | booleanToString}}
+                        </div>
+                        <div ng-if="::!data.isUsingVappNetworkMapping"><label>
+                            {{"CREATE_VPG_SUMMARY.FAILOVER_NETWORK" | translate}}</label>
+                            {{::data.failoverNetworkName}}
+                        </div>
+                        <div ng-if="::!data.isUsingVappNetworkMapping"><label>
+                            {{"CREATE_VPG_SUMMARY.FAILOVER_TEST_NETWORK" | translate}}</label>
+                            {{::data.testNetworkName}}
+                        </div>
+                    </div>
+
+                    <div class="col-xs-5" ng-if="::data.showTargetFolder">
+                        <div ng-if="::data.showVCVpgFolder">
+                            <label>{{"CREATE_VPG_SUMMARY.RECOVERY_FOLDER" | translate}}</label>
+                            {{::data.defaultTargetFolder}}<br>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <hr/>
+                    </div>
+                </div>
+                <!--BACKUP-->
+                <div class="row" ng-if="::data.isBackupEnabled">
+                    <label class="col-xs-2 control-label"><b>{{::"CREATE_VPG_SUMMARY.BACKUP" | translate}}</b></label>
+
+                    <div class="col-xs-5">
+                        <div ng-if="::data.showBackupTargetDetails">
+                            <label>{{"CREATE_VPG_SUMMARY.REPOSITORY" | translate}}</label>{{::data.backupDisplayName}}
+                        </div>
+                        <div>
+                            <label>{{::"CREATE_VPG_SUMMARY.RETENTION_PERIOD" | translate}}</label>
+                            {{::data.backupRestorePointRange | restorePointRangeEnum:1}}
+                        </div>
+                    </div>
+                    <div class="col-xs-5">
+                        <div>
+                            <label>{{::"CREATE_VPG_SUMMARY.RUN_JOB" | translate}}</label>
+                            {{::data.backupSchedulerRunningTime | summaryRunJobFilter}}
+                        </div>
+                        <div>
+                            <label>{{::"CREATE_VPG_SUMMARY.RETRIES" | translate}}</label>
+                            {{::data.backupSchedulerRetry | summaryRetriesFilter}}
+                        </div>
+                    </div>
+                </div>
+                <div class="row" ng-if="::!data.isBackupEnabled">
+                    <label class="col-xs-2 control-label"><b>{{::"CREATE_VPG_SUMMARY.BACKUP" | translate}}</b></label>
+
+                    <div>
+                        <label>{{::"CREATE_VPG_SUMMARY.BACKUP_NOT_CONFIGURED" | translate}}</label>
+                    </div>
+                </div>
+            </div>
+            <!--RIGHT-->
+            <div class="col-xs-4">
+                <!--VMS-->
+                <div class="row">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <p><b>{{::data.selectedVms.length}}&nbsp;{{"CREATE_VPG_SUMMARY.VMS_IN_WORKLOAD" | translate}}</b></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <ul class="vpg-wizard-summary-vms">
+                                <li ng-repeat="vm in ::data.selectedVms track by $index">
+                                    <label>{{vm.Name}}</label>
+                                    <b>{{vm.StorageUsageInfo.ProvisionedStorageSizeInMB | mbToStringConvertorFilter}}</b>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <p class="vpg-wizard-summary-total">
+                                {{::"CREATE_VPG_SUMMARY.TOTAL_VM_PROVISIONED_SIZE" | translate}}:&nbsp;{{::data.totalProvisionedSpace | mbToStringConvertorFilter}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

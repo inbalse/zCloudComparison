@@ -1,0 +1,939 @@
+<base-modal-window modal-title="{{'SITE_SETTINGS.MODAL_TITLE' | translate}}"
+                   btns="buttons"
+                   loading="isLoading"
+                   close="handleCancelClick"
+                   busy="isBusy"
+                   help="{{currentTab}}">
+
+    <div class="site-settings-container">
+        <div class="site-settings-side">
+            <ul class="site-tabs">
+                <li>
+                    <a ng-class="tabClass(0)" ng-show="tabs[0].visible && isManageSiteSettingsEnabled"
+                       ng-click="showTabByIndex(0)">{{ tabs[0].title
+                        | translate}}
+                        <span ng-hide="tabs[0].valid">*</span>
+                    </a>
+                    <span class="site-settings-container__site-tabs--disabled" ng-show="!isManageSiteSettingsEnabled">{{ tabs[0].title | translate}}</span>
+                </li>
+                <li>
+                    <a ng-class="tabClass(1)" ng-show="tabs[1].visible && isManageSiteSettingsEnabled"
+                       ng-click="showTabByIndex(1)">{{ tabs[1].title
+                        | translate}}
+                        <span ng-hide="tabs[1].valid">*</span>
+                    </a>
+                    <span class="site-settings-container__site-tabs--disabled" ng-show="!isManageSiteSettingsEnabled">{{ tabs[1].title | translate}}</span>
+                </li>
+                <li>
+                    <a ng-class="tabClass(2)" ng-show="tabs[2].visible && isManageSiteSettingsEnabled"
+                       ng-click="showTabByIndex(2)">{{ tabs[2].title
+                        | translate}}
+                        <span ng-hide="tabs[2].valid">*</span>
+                    </a>
+                    <span class="site-settings-container__site-tabs--disabled" ng-show="!isManageSiteSettingsEnabled">{{ tabs[2].title | translate}}</span>
+                </li>
+                <li>
+                    <a ng-class="tabClass(3)" ng-show="tabs[3].visible && isManageSiteSettingsEnabled"
+                       ng-click="showTabByIndex(3)">{{ tabs[3].title
+                        | translate}}
+                        <span ng-hide="tabs[3].valid">*</span>
+                    </a>
+                    <span class="site-settings-container__site-tabs--disabled" ng-show="!isManageSiteSettingsEnabled">{{ tabs[3].title | translate}}</span>
+                </li>
+                <li>
+                    <a ng-class="tabClass(4)" ng-show="tabs[4].visible && isManageSiteSettingsEnabled"
+                       ng-click="showTabByIndex(4)">{{ tabs[4].title
+                        | translate}}
+                    </a>
+                    <span class="site-settings-container__site-tabs--disabled" ng-show="!isManageSiteSettingsEnabled">{{ tabs[4].title | translate}}</span>
+                </li>
+                <li>
+                    <a ng-class="tabClass(5)" ng-show="tabs[5].visible && isManageSiteSettingsEnabled"
+                       ng-click="showTabByIndex(5)">{{ tabs[5].title
+                        | translate}}
+                    </a>
+                    <span class="site-settings-container__site-tabs--disabled" ng-show="!isManageSiteSettingsEnabled">{{ tabs[5].title | translate}}</span>
+                </li>
+                <li>
+                    <a ng-class="tabClass(6)" ng-show="tabs[6].visible && isManageSiteSettingsEnabled"
+                       ng-click="showTabByIndex(6)">{{ tabs[6].title
+                        | translate}}
+                        <span ng-hide="tabs[6].valid">*</span>
+                    </a>
+                    <span class="site-settings-container__site-tabs--disabled" ng-show="!isManageSiteSettingsEnabled">{{ tabs[6].title | translate}}</span>
+                </li>
+                <li>
+                    <a ng-class="tabClass(7)" ng-show="tabs[7].visible && isManageSiteSettingsEnabled"
+                       ng-click="showTabByIndex(7)">{{ tabs[7].title
+                        | translate}}
+                    </a>
+                    <span class="site-settings-container__site-tabs--disabled" ng-show="!isManageSiteSettingsEnabled">{{ tabs[7].title | translate}}</span>
+                </li>
+                <li>
+                    <a ng-class="tabClass(8)" ng-show="tabs[8].visible" ng-click="showTabByIndex(8)">{{ tabs[8].title
+                        | translate}}
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="site-settings-main">
+            <div ng-if="tabs[0].active" ng-controller="siteDetailsController">
+                <form class="form-horizontal" autocomplete="off" name="forms.siteDetails">
+                    <h4 class="form-h4">{{ 'SITE_SETTINGS.SITE_INFO.DETAILS' | translate}}</h4>
+
+                    <div class="form-group">
+                        <label class="col-xs-5" for="siteName">{{ 'SITE_SETTINGS.SITE_INFO.NAME' | translate}}</label>
+
+                        <div class="col-xs-7">
+                            <input type="text" required name="siteName"
+                                   ng-model="siteDetailsModel.siteManagementDetails.SiteName"
+                                   id="siteName"
+                                   uib-tooltip="{{ forms.siteDetails.siteName.$valid ? '' : ( 'VALIDATION.THIS_FIELD_IS_REQUIRED' | translate)}}"
+                                   tooltip-placement="right" tooltip-append-to-body="true"/>
+                            <span class="z-asterisk">*</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-xs-5" for="siteLocation">{{ 'SITE_SETTINGS.SITE_INFO.LOCATION' |
+                            translate}}</label>
+
+                        <div class="col-xs-7">
+                            <input type="text" required name="siteLocation" id="siteLocation"
+                                   uib-tooltip="{{ forms.siteDetails.siteLocation.$valid ? '' : ( 'VALIDATION.THIS_FIELD_IS_REQUIRED' | translate)}}"
+                                   tooltip-placement="right" tooltip-append-to-body="true"
+                                   ng-model="siteDetailsModel.siteManagementDetails.Location"/>
+                            <span class="z-asterisk">*</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group" ng-show="isAws">
+                        <label class="col-xs-5">{{ 'SITE_SETTINGS.SITE_INFO.BUCKET_NAME' | translate}}</label>
+                        <label class="col-xs-7">{{
+                            siteDetailsModel.siteManagementDetails.CloudSiteSettings.AwsBucketName }}</label>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-xs-5" for="siteContactName">{{ 'SITE_SETTINGS.SITE_INFO.CONTACT_NAME' |
+                            translate}}</label>
+
+                        <div class="col-xs-7">
+                            <input type="text" required name="siteContactName" id="siteContactName"
+                                   uib-tooltip="{{ forms.siteDetails.siteContactName.$valid ? '' : ( 'VALIDATION.THIS_FIELD_IS_REQUIRED' | translate)}}"
+                                   tooltip-placement="right" tooltip-append-to-body="true"
+                                   ng-model="siteDetailsModel.siteManagementDetails.ContactInfo"/>
+                            <span class="z-asterisk">*</span>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-xs-5" for="siteContactEmail">{{ 'SITE_SETTINGS.SITE_INFO.CONTACT_EMAIL' |
+                            translate}}</label>
+
+                        <div class="col-xs-7">
+                            <input type="email" name="siteContactEmail" id="siteContactEmail"
+                                   placeholder="Unconfigured contact email"
+                                   ng-model="siteDetailsModel.siteManagementDetails.ContactEmail"/>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-5" for="siteContactPhone">{{ 'SITE_SETTINGS.SITE_INFO.CONTACT_PHONE' |
+                            translate}}</label>
+
+                        <div class="col-xs-7">
+                            <input type="text" name="siteContactPhone" id="siteContactPhone"
+                                   placeholder="Unconfigured contact phone"
+                                   ng-model="siteDetailsModel.siteManagementDetails.ContactPhone"
+                                   tooltip-placement="top"/>
+                        </div>
+                    </div>
+
+                    <h4 ng-if="!isAzure" class="form-h4">{{ 'SITE_SETTINGS.SITE_INFO.USER_CREDENTIALS' |
+                        translate}}</h4>
+                    <div ng-if="!isAzure">
+                        <div class="form-group">
+                            <label class="col-xs-5">{{ userNameText }}</label>
+
+                            <div class="col-xs-7">
+                                <input type="text" ng-model="siteDetailsModel.vCenterCredentials.username">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-xs-5">{{ userPasswordText }}</label>
+                            <input type="password" style="display:none">
+                            <input type="password" style="display:none">
+                            <input type="password" style="display:none">
+
+                            <div class="col-xs-7"><input type="password"
+                                                         ng-model="siteDetailsModel.vCenterCredentials.password">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4 ng-if="isAzure" class="form-h4">{{ 'SITE_SETTINGS.SITE_INFO.AZURE_SETTINGS' | translate}}</h4>
+                    <div ng-if="isAzure">
+                        <div class="form-group">
+                            <label class="col-xs-5">{{ 'SITE_SETTINGS.SITE_INFO.APPLICATION_NAME' | translate}}</label>
+                            <label class="col-xs-7">{{
+                                siteDetailsModel.siteManagementDetails.CloudSiteSettings.ApplicationName }}</label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-5">{{ 'SITE_SETTINGS.SITE_INFO.CLIENT_ID' | translate}}</label>
+                            <label class="col-xs-7">{{ siteDetailsModel.siteManagementDetails.CloudSiteSettings.ClientId
+                                }}</label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-5">{{ 'SITE_SETTINGS.SITE_INFO.SUBSCRIPTION' | translate}}</label>
+                            <label class="col-xs-7">{{
+                                siteDetailsModel.siteManagementDetails.CloudSiteSettings.Subscription }}</label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-5">{{ 'SITE_SETTINGS.SITE_INFO.RESOURCE_NAME' | translate}}</label>
+                            <label class="col-xs-7">{{
+                                siteDetailsModel.siteManagementDetails.CloudSiteSettings.ResourceName }}</label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-5">{{ 'SITE_SETTINGS.SITE_INFO.STORAGE_ACCOUNT_NAME' |
+                                translate}}</label>
+                            <label class="col-xs-7">{{
+                                siteDetailsModel.siteManagementDetails.CloudSiteSettings.StorageAccountName }}</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div ng-if="tabs[1].active" ng-controller="performanceController">
+                <form class="form-horizontal" autocomplete="off" name="forms.performance">
+
+                    <h4 ng-show="!isPublicCloud" class="form-h4">{{ 'SITE_SETTINGS.PERFORMANCE.BANDWIDTH' |
+                        translate}} </h4>
+
+                    <div class="warning-bandwidth-disable" ng-if="!bandwidthSettings.Enabled"
+                         uib-tooltip="{{'SITE_SETTINGS.PERFORMANCE.BANDWIDTH_DISABLED_INFO' | translate}}"
+                         tooltip-placement="right"></div>
+
+                    <div class="form-group" ng-show="!isPublicCloud">
+                        <!-- <label class="col-xs-5" help-icon="{key:SITE_SETTINGS.PERFORMANCE_TOOLTIPS.BANDWIDTH_THROTTLING,position:'right'}">{{ 'SITE_SETTINGS.PERFORMANCE.BANDWIDTH_THROTTLING' | translate}}</label>-->
+
+                        <div class="col-xs-12 bandwidth-title"
+                             help-icon="SITE_SETTINGS.PERFORMANCE_TOOLTIPS.BANDWIDTH_THROTTLING">
+                            <label ng-class="{disabled: !bandwidthSettings.Enabled}">
+                                {{'SITE_SETTINGS.PERFORMANCE.BANDWIDTH_THROTTLING' | translate}}</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group" ng-show="!isPublicCloud">
+                        <label class="col-xs-1"></label>
+
+                        <div class="col-xs-4">
+                            <z-checkbox z-disabled="!bandwidthSettings.Enabled"
+                                        change="bandwidthThrottlingUnlimitedChange()"
+                                        model="bandwidthThrottlingUnlimited">
+                                <label ng-class="{disabled: !bandwidthSettings.Enabled}">{{'SITE_SETTINGS.PERFORMANCE.UNLIMITED'
+                                    | translate}}</label>
+                            </z-checkbox>
+                        </div>
+                        <div ng-show="!bandwidthThrottlingUnlimited">
+                            <div class="col-xs-5">
+                                <input type="number"
+                                       ng-model="outsideTimeBandwidth"
+                                       ng-min="bandwidthThrottlingUnlimited ? 0 : 5"
+                                       ng-required="!bandwidthThrottlingUnlimited && !bandwidthSettings.Enabled"
+                                       ng-disabled="!bandwidthSettings.Enabled"
+                                       ng-change="onOutsideTimeBandwidthChange()"
+                                       max="10500"/>
+                            </div>
+
+                            <span class="col-xs-1 mb-sec-label">{{ 'METRICS.M_BIT_PER_SEC' | translate}}</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group" ng-show="!isPublicCloud">
+                        <div class="col-xs-12"
+                             help-icon="SITE_SETTINGS.PERFORMANCE_TOOLTIPS.TIME_BASE_BANDWIDTH_THROTTLING">
+                            <z-checkbox class="time-based-checkbox" z-disabled="!bandwidthSettings.Enabled"
+                                        change="onTimeBasedBandwidthChange()"
+                                        model="bandwidthSettings.TimeBasedBandwidthEnabled">
+                                <label ng-class="{disabled: !bandwidthSettings.Enabled}">{{'SITE_SETTINGS.PERFORMANCE.TIME_BASED_THROTTLING'
+                                    | translate}}</label>
+                            </z-checkbox>
+                        </div>
+                    </div>
+
+                    <div class="form-group" ng-show="!isPublicCloud">
+                        <label class="col-xs-1"></label>
+
+                        <div class="col-xs-4">
+                            <z-checkbox
+                                z-disabled="!bandwidthSettings.TimeBasedBandwidthEnabled || !bandwidthSettings.Enabled"
+                                change="timeBasedThrottlingUnlimitedChange()"
+                                model="timeBasedThrottlingUnlimited">
+                                <label
+                                    ng-class="{disabled: !bandwidthSettings.TimeBasedBandwidthEnabled || !bandwidthSettings.Enabled}">{{'SITE_SETTINGS.PERFORMANCE.UNLIMITED'
+                                    | translate}}</label>
+                            </z-checkbox>
+                        </div>
+                        <div ng-show="!timeBasedThrottlingUnlimited">
+                            <div class="col-xs-5">
+                                <input type="number" ng-model="insideTimeBandwidth"
+                                       ng-change="onInsideTimeBandwidthChange()"
+                                       ng-disabled="!bandwidthSettings.TimeBasedBandwidthEnabled || !bandwidthSettings.Enabled"
+                                       ng-min="timeBasedThrottlingUnlimited ? 0 : 5" max="10500"
+                                       ng-required="!timeBasedThrottlingUnlimited && bandwidthSettings.TimeBasedBandwidthEnabled"/>
+                            </div>
+                            <span class="col-xs-1 mb-sec-label">{{ 'METRICS.M_BIT_PER_SEC' | translate}}</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group" ng-show="!isPublicCloud">
+                        <label
+                            ng-class="{disabled: !bandwidthSettings.TimeBasedBandwidthEnabled || !bandwidthSettings.Enabled}"
+                            class="col-xs-4 col-xs-offset-1">{{ 'FROM' | translate}}
+                        </label>
+
+                        <div class="col-xs-5">
+                            <z-timepicker
+                                ng-model="bandwidthSettings.FromTimeInMinutes"
+                                required="false"
+                                disabled="!bandwidthSettings.TimeBasedBandwidthEnabled || !bandwidthSettings.Enabled"
+                                placeholder-hours="hours"
+                                placeholder-minutes="minutes">
+                            </z-timepicker>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group" ng-show="!isPublicCloud">
+                        <label
+                            ng-class="{disabled: !bandwidthSettings.TimeBasedBandwidthEnabled || !bandwidthSettings.Enabled}"
+                            class="col-xs-4 col-xs-offset-1">{{ 'TO' | translate}}</label>
+
+                        <div class="col-xs-5">
+                            <z-timepicker
+                                ng-model="bandwidthSettings.ToTimeInMinutes"
+                                required="false"
+                                disabled="!bandwidthSettings.TimeBasedBandwidthEnabled || !bandwidthSettings.Enabled"
+                                placeholder-hours="hours"
+                                placeholder-minutes="minutes">
+                            </z-timepicker>
+                        </div>
+                    </div>
+
+                    <!-- advanced settings ------------------------------------------------------------------------------------------------------------------>
+
+                    <h4 ng-show="!isPublicCloud" class="performance__io-throttling-separator"></h4>
+
+                    <div class="performance__advanced-setting-container">
+                        <div ng-hide="bandwidthSetting" class="form-group ">
+                            <a href="" ng-click="advancedSettingsClick($event, 'show')">{{'SITE_SETTINGS.PERFORMANCE.SETTINGS_SHOW'
+                                | translate}}</a>
+                        </div>
+
+                        <div ng-show="bandwidthSetting">
+
+                            <lable class="performance-advanced-setting-container__title-container">
+                                <span class="performance-advanced-setting-container__title">{{'SITE_SETTINGS.PERFORMANCE.WARN_SETTING_TITLE' | translate}}</span>
+                            </lable>
+
+                            <div class="form-group">
+                                <div class="col-xs-12 performance__regulation-checkbox-container">
+                                    <div help-icon="SITE_SETTINGS.PERFORMANCE_TOOLTIPS.ENABLE_REGULATION_HELP">
+                                        <z-checkbox model="bandwidthSettings.Enabled">
+                                            {{ 'SITE_SETTINGS.PERFORMANCE.ENABLE_REGULATION' | translate }}
+                                        </z-checkbox>
+                                    </div>
+                                </div>
+
+                                <h4 class="form-h4 form-title-without-border performance__io-throttling-title">{{
+                                    'SITE_SETTINGS.PERFORMANCE.IO_THROTTLING' | translate}}</h4>
+
+                                <div class="form-group performance__io-throttling-congestion">
+                                    <div class="col-xs-12">
+                                        <z-checkbox model="ioCongestionParams.IsEnabled"
+                                                    change="enableIoThrottlingChange()">
+                                            {{ 'SITE_SETTINGS.PERFORMANCE.ENABLE_IO_THROTTLING' | translate }}
+                                        </z-checkbox>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-xs-4 col-xs-offset-1"
+                                           ng-class="{disabled: !ioCongestionParams.IsEnabled}">{{'SITE_SETTINGS.PERFORMANCE.BAD_IO_LATENCY_VM'
+                                        | translate }}</label>
+
+                                    <div class="col-xs-7">
+                                        <div z-stepper name="badIOLatencyVM" min="0" max="999999999"
+                                             ng-model="ioCongestionParams.BadIoLatencyMs"
+                                             element-disabled="!ioCongestionParams.IsEnabled"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-xs-4 col-xs-offset-1"
+                                           ng-class="{disabled: !ioCongestionParams.IsEnabled}">
+                                        {{'SITE_SETTINGS.PERFORMANCE.REQUESTED_DURATION' | translate }}</label>
+
+                                    <div class="col-xs-7">
+                                        <div z-stepper min="0" max="999999999"
+                                             ng-model="ioCongestionParams.PeriodDurationMs"
+                                             element-disabled="!ioCongestionParams.IsEnabled"></div>
+                                    </div>
+                                </div>
+
+                                <div ng-show="bandwidthSetting" class="form-group performance__hide-setting-link">
+                                    <a href="" ng-click="advancedSettingsClick($event, 'hide')">{{'SITE_SETTINGS.PERFORMANCE.SETTINGS_HIDE'
+                                        | translate}}</a>
+                                </div>
+                                <!-- ----------------------------------------------------------------------------------------------------------------------------->
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div ng-if="tabs[2].active" ng-controller="policiesSettingsController">
+                <form class="form-horizontal" name="forms.policies">
+                    <h4 class="form-h4" ng-bind-html="'SITE_SETTINGS.POLICIES.DISASTER_RECOVERY' | translate"></h4>
+                    <div class="form-group">
+                        <label class="col-xs-5">{{ 'SITE_SETTINGS.POLICIES.FAILOVER_COMMIT_POLICY' | translate}}</label>
+
+                        <div class="col-xs-7">
+                            <ui-select theme="select2" ng-model="$parent.commitPolicySelected" name="commitPolicy"
+                                       required search-enabled="false">
+                                <ui-select-match class="ui-select-match">{{$select.selected}}</ui-select-match>
+                                <ui-select-choices class="ui-select-choices" repeat="item in commitPolicys">
+                                    <span ng-bind-html="item | highlight: $select.search"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-xs-5">
+                            <label help-icon="SITE_SETTINGS.DISASTER_AND_RECOVERY_TOOLTIPS.DEFAULT_TIMEOT">{{
+                                'SITE_SETTINGS.POLICIES.DEFAULT_TIMEOUT' | translate}}</label>
+                        </div>
+                        <div class="col-xs-7">
+                            <input ng-model="defaultTimeoutMinutesValue"
+                                   ng-required="commitPolicySelected !== 'None'"
+                                   name="defaultTimeoutMinutes"
+                                   ng-disabled="commitPolicySelected === 'None'"
+                                   type="number"
+                                   max="{{maxDefaultTimeoutMinutes}}"
+                                   min="{{minDefaultTimeoutMinutes}}"
+                                   ng-change="timeoutChanged()"/>
+                        </div>
+                    </div>
+
+                    <!-- public cloud default instance -->
+                    <div class="form-group" ng-if="isPublicCloud">
+                        <label class="col-xs-5">{{'CREATE_VPG_RECOVERY.INSTANCE_FAMILY' | translate}}</label>
+
+                        <div class="col-xs-7">
+                            <ui-select theme="select2" ng-model="$parent.selectedInstanceFamily"
+                                       ng-change="familyInstanceChange($select.selected)"
+                                       required search-enabled="false">
+                                <ui-select-match class="ui-select-match">{{$select.selected.FamilyName}}
+                                </ui-select-match>
+                                <ui-select-choices class="ui-select-choices" repeat="item in instanceFamily">
+                                    <span ng-bind-html="item.FamilyName | highlight: $select.search"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-if="isPublicCloud">
+                        <label ng-if="isAws" class="col-xs-5">{{'CREATE_VPG_RECOVERY.INSTANCE_TYPE' |
+                            translate}}</label>
+                        <label ng-if="isAzure" class="col-xs-5">{{'CREATE_VPG_RECOVERY.INSTANCE_SIZE' |
+                            translate}}</label>
+
+                        <div class="col-xs-7">
+                            <ui-select theme="select2" ng-model="$parent.publicCloud.selectedInstanceType"
+                                       ng-change="instanceTypeChange($select.selected)"
+                                       required search-enabled="true">
+                                <ui-select-match class="ui-select-match">{{$select.selected.Name}}</ui-select-match>
+                                <ui-select-choices class="ui-select-choices" repeat="item in instanceTypes">
+                                    <span ng-bind-html="item.Name | highlight: $select.search"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div>
+                    <h4 class="form-h4" ng-show="!isPublicCloud">{{ 'SITE_SETTINGS.POLICIES.PRE_POST_RECOVERY' |
+                        translate}}</h4>
+
+                    <div class="form-group" ng-show="!isPublicCloud">
+                        <div class="col-xs-5">
+                            <label help-icon="SITE_SETTINGS.PERFORMANCE_TOOLTIPS.DEFAULT_SCRIPT_EXECUTION_TIME">{{
+                                'SITE_SETTINGS.PERFORMANCE.DEFAULT_SCRIPT_EXECUTION_TIMEOUT' |
+                                translate}}</label>
+                        </div>
+                        <div class="col-xs-6">
+                            <input required name="defaultScriptTimeout" input-max-min-extra-values-valid
+                                   max="6000" min="300" values="0" type="number"
+                                   ng-model="data.PrePostOperationTimeoutInSec">
+                            <span class="z-asterisk">*</span>
+                        </div>
+                        <span
+                            class="col-xs-1 performance-sec-span">{{ 'SITE_SETTINGS.PERFORMANCE.SEC' | translate}}</span>
+                    </div>
+
+                    <h4 class="form-h4">Replication</h4>
+
+                    <div class="form-group" ng-show="!isPublicCloud">
+                        <div class="col-xs-11">
+                            <z-checkbox model="data.AllowCreationOfSelfProtectedVpg">
+                                {{'SITE_SETTINGS.POLICIES.ENABLED_REP_TO_SELF'|translate}}
+                                <span class="help-icon"
+                                      uib-tooltip="{{ 'SITE_SETTINGS.DISASTER_AND_RECOVERY_TOOLTIPS.ENABLE_REPLICATE_TO_SELF' | translate}}"
+                                      tooltip-placement="right">?</span></z-checkbox>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-5">
+                            <label help-icon="SITE_SETTINGS.DISASTER_AND_RECOVERY_TOOLTIPS.REPLICATION_PAUSE_TIME">{{'SITE_SETTINGS.POLICIES.REP_PAUSE_TIME'|translate}}</label>
+                        </div>
+
+                        <div class="col-xs-7">
+                            <ui-select theme="select2" ng-model="$parent.data.ReplicationPauseTimeInMinutesDefault"
+                                       search-enabled="false"
+                                       name="repPauseTime">
+                                <ui-select-match class="ui-select-match">{{$select.selected.label}}</ui-select-match>
+                                <ui-select-choices class="ui-select-choices"
+                                                   repeat="item.value as item in replicationPauseInMinutesCollection | filter: $select.search">
+                                    <span ng-bind-html="item.label | highlight: $select.search"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div>
+                    <h4 class="form-h4" ng-if="vumAllowed">
+                        {{ 'SITE_SETTINGS.POLICIES.VMWARE_VUM' | translate}}
+                    </h4>
+                    <div class="form-group" ng-if="vumAllowed">
+                        <div class="col-xs-11">
+                            <z-checkbox model="data.ShouldEnterMMDuringRemediation">
+                                {{'SITE_SETTINGS.POLICIES.ALLOW_MAINTENANCE_MODE'|translate}}
+                            </z-checkbox>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div ng-if="tabs[3].active" ng-controller="emailSettingsController">
+                <form class="form-horizontal" autocomplete="off" name="forms.emailSettings" novalidate>
+                    <h4 class="form-h4" help-icon="SITE_SETTINGS.EMAIL_SETTINGS_TOOLTIPS.EMAIL_SETTINGS">
+                        {{'SITE_SETTINGS.EMAIL_SETTINGS.TAB_TITLE' | translate }}</h4>
+
+                    <div class="form-group">
+                        <label help-icon="SITE_SETTINGS.EMAIL_SETTINGS_TOOLTIPS.SMTP_SERVER_ADDRESS" class="col-xs-5">{{
+                            'SITE_SETTINGS.EMAIL_SETTINGS.SMTP_SERVER_ADDRESS' | translate }}</label>
+
+                        <div class="col-xs-7">
+                            <input type="text" name="smtpServerAddress" ng-model="settings.SmtpServerAddress"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label help-icon="SITE_SETTINGS.EMAIL_SETTINGS_TOOLTIPS.SMTP_SERVER_PORT" class="col-xs-5">{{
+                            'SITE_SETTINGS.EMAIL_SETTINGS.SMTP_SERVER_PORT' | translate }}</label>
+
+                        <div class="col-xs-7">
+                            <input type="number" min="1" max="65535" name="smtpServerPort"
+                                   ng-model="settings.SmtpServerPort"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label help-icon="SITE_SETTINGS.EMAIL_SETTINGS_TOOLTIPS.SENDER" class="col-xs-5">{{
+                            'SITE_SETTINGS.EMAIL_SETTINGS.SENDER_ACCOUNT' | translate }}</label>
+
+                        <div class="col-xs-7">
+                            <input type="email" name="senderAccount" ng-model="settings.From" email-empty-or-valid/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label help-icon="SITE_SETTINGS.EMAIL_SETTINGS_TOOLTIPS.TO" class="col-xs-5">{{ 'TO' | translate
+                            }}</label>
+
+                        <div class="col-xs-7">
+                            <input type="text" name="sendTo" ng-model="settings.ToAddresses"
+                                   to-addresses-empty-or-valid/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-offset-8 col-xs-3">
+                            <input type="button" ng-disabled="disableSend"
+                                   class="btn settings-button send-test-mail-button"
+                                   value="{{ 'SITE_SETTINGS.EMAIL_SETTINGS.SEND_TEST_EMAIL' | translate }}"
+                                   ng-click="sendEmail()"/>
+                        </div>
+                        <div class="col-xs-1" help-icon="SITE_SETTINGS.EMAIL_SETTINGS_TOOLTIPS.TEST_EMAIL"></div>
+                    </div>
+
+                    <h4 class="form-h4"
+                        ng-bind-html="'SITE_SETTINGS.EMAIL_SETTINGS.ALERTING_AND_REPORTS' | translate"></h4>
+
+                    <div class="form-group">
+                        <div class="col-xs-5">
+                            <z-checkbox help-icon="SITE_SETTINGS.EMAIL_SETTINGS_TOOLTIPS.ENABLE_ALERTS"
+                                        model="settings.IsEnabled">
+                                {{'SITE_SETTINGS.EMAIL_SETTINGS.ENABLE_ALERTING' | translate }}
+                            </z-checkbox>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-5">
+                            <z-checkbox help-icon="SITE_SETTINGS.EMAIL_SETTINGS_TOOLTIPS.BACKUP_REPORT"
+                                        model="settings.BackupNotificationEnabled">
+                                {{'SITE_SETTINGS.EMAIL_SETTINGS.ENABLE_BACKUP_REPORTS' | translate }}
+                            </z-checkbox>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-offset-1 col-xs-4">
+                            <z-radio name="reportingType"
+                                     z-disabled="!settings.BackupNotificationEnabled"
+                                     value="SchedulePeriodType.Daily"
+                                     model="settings.BackupNotificationScheduleType">{{'SCHEDULE_PERIOD_TYPES.DAILY' |
+                                translate }}
+                            </z-radio>
+                            <z-radio name="reportingType"
+                                     z-disabled="!settings.BackupNotificationEnabled"
+                                     value="SchedulePeriodType.Weekly"
+                                     model="settings.BackupNotificationScheduleType">{{'SCHEDULE_PERIOD_TYPES.WEEKLY' |
+                                translate }}
+                            </z-radio>
+
+                        </div>
+                        <div class="col-xs-3">
+                            <ui-select theme="select2" ng-model="$parent.settings.BackupNotificationScheduleDayOfWeek"
+                                       search-enabled="false"
+                                       ng-disabled="settings.BackupNotificationEnabled ? settings.BackupNotificationScheduleType===SchedulePeriodType.Daily : true">
+                                <ui-select-match class="ui-select-match">{{$select.selected.name}}</ui-select-match>
+                                <ui-select-choices class="ui-select-choices"
+                                                   repeat="item.value as item in daysOfWeek | filter: $select.search">
+                                    <span ng-bind-html="item.name | highlight: $select.search"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label ng-class="{disabled: !settings.BackupNotificationEnabled}"
+                               class="col-xs-offset-1 col-xs-4">{{
+                            'SITE_SETTINGS.EMAIL_SETTINGS.REPORTS_SCHEDULE' | translate }}</label>
+
+                        <div class="col-xs-6">
+                            <z-timepicker
+                                ng-model="settings.BackupNotificationScheduleTimeOfDay"
+                                required="false"
+                                disabled="!settings.BackupNotificationEnabled"
+                                placeholder-hours="hours"
+                                placeholder-minutes="minutes">
+                            </z-timepicker>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div ng-if="tabs[4].active" ng-controller="reportsSettingsController">
+                <form class="form-horizontal" name="forms.reports">
+                    <h4 class="form-h4">{{'SITE_SETTINGS.REPORTS.RESOURCE_REPORT' | translate}}</h4>
+
+                    <div class="form-group">
+                        <div class="col-xs-4">
+                            <label help-icon="SITE_SETTINGS.REPORTS_TOOLTIPS.SAMPLING_RATE">{{'SITE_SETTINGS.REPORTS.SAMPLING_RATE'
+                                | translate}}</label>
+                        </div>
+
+                        <div class="col-xs-8">
+                            <ui-select theme="select2" name="samplingRateSelect" id="samplingRateSelect"
+                                       search-enabled="false"
+                                       ng-model="$parent.data.ResourcesReportSettings.Resolution"
+                                       ng-change="$parent.handleSamplingRateChange()">
+                                <ui-select-match class="ui-select-match">{{$select.selected.label}}</ui-select-match>
+                                <ui-select-choices class="ui-select-choices"
+                                                   repeat="item.value as item in resourceReportsCollection | filter: $select.search">
+                                    <span ng-bind-html="item.label | highlight: $select.search"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-xs-4">
+                            <label help-icon="SITE_SETTINGS.REPORTS_TOOLTIPS.SAMPLING_TIME">{{'SITE_SETTINGS.REPORTS.SAMPLING_TIME'
+                                | translate}}</label>
+                        </div>
+
+                        <div class="col-xs-8" ng-if="!isHourEnabled">
+                            <z-timepicker
+                                ng-model="data.ResourcesReportSettings.TimeOfDayInMinutes"
+                                required="false"
+                                disabled="isHourEnabled"
+                                placeholder-hours="hours"
+                                placeholder-minutes="minutes">
+                            </z-timepicker>
+                        </div>
+
+                        <div class="col-xs-4">
+                            <div name="journalStepper" ng-if="isHourEnabled"
+                                 id="onlyMinutes"
+                                 z-time-input
+                                 persist-time-validation="true"
+                                 ng-model="data.ResourcesReportSettings.TimeOfDayInMinutes"
+                                 min="0"
+                                 max="59"
+                                 p-holder="minutes"
+                                 element-disabled="!isHourEnabled">
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+
+            <div ng-if="tabs[5].active" ng-controller="hostVersionsController">
+                <form class="form-horizontal" name="forms.hostVersions">
+
+                    <h4 class="form-h4">{{ 'SITE_SETTINGS.COMPATIBILITY.HOST_VERSIONS' | translate}}</h4>
+
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <z-slick-grid id="versions-grid" grid-id="versions-grid" grid="versionsGrid"
+                                          custom-options="supportedVersionsModel.options" hide-view-options="true"
+                                          data="supportedVersionsModel.data" ng-show="!supportedVersionsModel.isScvmm"
+                                          class="versions-grid gridStyle"></z-slick-grid>
+                            <label ng-show="supportedVersionsModel.isScvmm">{{ 'SITE_SETTINGS.COMPATIBILITY.HYPER_LABEL'
+                                | translate}}</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div ng-if="tabs[6].active" ng-controller="vcdSettingsController">
+                <form class="form-horizontal" autocomplete="off" name="forms.cloudSettings">
+                    <h4 class="form-h4" help-icon="SITE_SETTINGS.CLOUD_SETTINGS.VCD_SETTINGS">{{
+                        'SITE_SETTINGS.CLOUD_SETTINGS.VCD_SETTINGS_TITLE' | translate}}</h4>
+
+                    <div class="form-group">
+                        <div class=" col-xs-5">
+                            <z-checkbox model="data.Enabled">
+                                {{'SITE_SETTINGS.CLOUD_SETTINGS.USE_VCD'
+                                | translate}}
+                            </z-checkbox>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label ng-class="{disabled:!data.Enabled}" class="col-xs-5">{{'SITE_SETTINGS.CLOUD_SETTINGS.IP_ADDRESS'
+                            |
+                            translate}}</label>
+
+                        <div class="col-xs-7">
+                            <input type="text" ng-disabled="!data.Enabled" name="vCDIpAddress"
+                                   ng-required="data.Enabled"
+                                   ng-model="data.VcloudIp">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label ng-class="{disabled:!data.Enabled}" class="col-xs-5">{{'SITE_SETTINGS.CLOUD_SETTINGS.USER_NAME'
+                            |
+                            translate}}</label>
+
+                        <div class="col-xs-5">
+                            <input type="text" name="vcdUsername" class="vcdUserNameInput" ng-disabled="!data.Enabled"
+                                   ng-required="data.Enabled"
+                                   ng-model="data.Username">
+                        </div>
+                        <label class="col-xs-2">@system</label>
+                    </div>
+
+                    <div class="form-group">
+                        <label ng-class="{disabled:!data.Enabled}" class="col-xs-5">{{'SITE_SETTINGS.CLOUD_SETTINGS.PASSWORD'
+                            |
+                            translate}}</label>
+
+                        <div class="col-xs-5">
+                            <z-password model="data.Password"
+                                        placeholder-text="{{'SITE_SETTINGS.CLOUD_SETTINGS.KEEP_EXISTING_PASSWORD' | translate}}"
+                                        show-text="showVcdPassword" z-disabled="!data.Enabled"/>
+                        </div>
+                        <div class="col-xs-2">
+                            <z-checkbox model="showVcdPassword" z-disabled="!data.Enabled">
+                            </z-checkbox>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label ng-class="{disabled:!data.Enabled}" class="col-xs-5">{{'SITE_SETTINGS.CLOUD_SETTINGS.AMQP_USER_NAME'
+                            | translate}}</label>
+
+                        <div class="col-xs-7">
+                            <input type="text" name="amqpUsername" ng-model="data.AMQPUsername"
+                                   ng-required="data.Enabled"
+                                   ng-disabled="!data.Enabled">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label ng-class="{disabled:!data.Enabled}" class="col-xs-5">{{'SITE_SETTINGS.CLOUD_SETTINGS.AMQP_PASSWORD'
+                            |
+                            translate}}</label>
+
+                        <div class="col-xs-5">
+                            <z-password model="data.AMQPPassword"
+                                        placeholder-text="{{'SITE_SETTINGS.CLOUD_SETTINGS.KEEP_EXISTING_PASSWORD' | translate}}"
+                                        show-text="showAMPQPass" z-disabled="!data.Enabled"/>
+                        </div>
+                        <div class="col-xs-2">
+                            <z-checkbox model="showAMPQPass" z-disabled="!data.Enabled"></z-checkbox>
+                        </div>
+                    </div>
+
+                    <h4 class="form-h4">{{'SITE_SETTINGS.CLOUD_SETTINGS.NETWORKING_TITLE' | translate}}</h4>
+
+                    <div class="form-group">
+                        <div class="col-xs-5">
+                            <label help-icon="SITE_SETTINGS.CLOUD_SETTINGS.MANAGE_STATIC_ROUTES">{{'SITE_SETTINGS.CLOUD_SETTINGS.MANGE_STATIC_ROUTES'
+                                | translate}}</label>
+                        </div>
+
+                        <div class="col-xs-3 col-xs-offset-4">
+                            <button class="btn settings-button settings-button-extended pull-right"
+                                    ng-click="handleStaticRoutes()">Configure
+                            </button>
+                        </div>
+                    </div>
+                    <h4 class="form-h4">{{'SITE_SETTINGS.CLOUD_SETTINGS.DATASTORE_CONFIGURATION_TITLE' |
+                        translate}}</h4>
+
+                    <div class="form-group">
+                        <label class="col-xs-5">{{'SITE_SETTINGS.CLOUD_SETTINGS.PROVIDER_VDC_SETTINGS' |
+                            translate}}</label>
+
+                        <div class="col-xs-3 col-xs-offset-4">
+                            <button class="btn settings-button settings-button-extended pull-right"
+                                    ng-click="handleConfigureProviderVdc()">Configure
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div ng-if="tabs[7].active" ng-controller="licenseController" z-rebuild-grid="{{tabs[7].active}}">
+                <form class="form-horizontal" autocomplete="off" name="forms.license">
+                    <h4 class="form-h4">{{'SITE_SETTINGS.LICENSE.TAB_TITLE' | translate}}</h4>
+
+                    <div class="form-group">
+                        <label class="col-xs-5">{{'SITE_SETTINGS.LICENSE.TAB_TITLE' | translate}}</label>
+
+                        <div class="col-xs-5">
+                            <input ng-disabled="!licenseModel.licenseData.IsLicenseUpdateEnabled" type="text"
+                                   name="licenseInput"
+                                   class="licenseInputClass"
+                                   ng-model="licenseModel.licenseData.Key.Key">
+                        </div>
+                        <div class="col-xs-2">
+                            <button class="btn settings-button  pull-right"
+                                    ng-disabled="!licenseModel.licenseData.IsLicenseUpdateEnabled"
+                                    ng-click="updateLicense()">
+                                {{'SITE_SETTINGS.LICENSE.UPDATE' | translate}}
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-5">{{'SITE_SETTINGS.LICENSE.ID' | translate}}</label>
+
+                        <div class="col-xs-7">
+                            <input type="text" readonly name="licenseId"
+                                   ng-model="licenseModel.licenseData.Details.LicenseId">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-5">{{'SITE_SETTINGS.LICENSE.TYPE' | translate}}</label>
+
+                        <div class="col-xs-7">
+                            <input type="text" readonly name="licenseType"
+                                   ng-model="licenseModel.licenseData.Details.Type">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-5">{{'SITE_SETTINGS.LICENSE.EXPIRY' | translate}}</label>
+
+                        <div class="col-xs-7">
+                            <input type="text" readonly name="licenseExpiryDate"
+                                   ng-model="licenseModel.licenseData.Details.ExpiryDate">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-5">{{'SITE_SETTINGS.LICENSE.QUANTITY' | translate}}</label>
+
+                        <div class="col-xs-7">
+                            <input type="text" readonly name="licenseQuantity"
+                                   ng-model="licenseModel.licenseData.Details.Limit.Num">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-5">{{'SITE_SETTINGS.LICENSE.MAX' | translate}}</label>
+
+                        <div class="col-xs-7">
+                            <input type="text" readonly name="licenseMaxSites"
+                                   ng-model="licenseModel.licenseData.Details.MaxSites.Num">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-12">{{'SITE_SETTINGS.LICENSE.USAGE' | translate}}</label>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <z-slick-grid id="license-grid" grid-id="license-grid" grid="licenseGrid"
+                                          custom-options="licenseModel.gridOptions" hide-view-options="true"
+                                          data="licenseModel.licenseData.Details.SitesUsage"
+                                          class="license-usages-grid"></z-slick-grid>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-xs-5">{{'SITE_SETTINGS.LICENSE.TOTAL' | translate}}
+                            {{licenseModel.totalSites}}
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div ng-if="tabs[8].active" ng-controller="aboutController">
+
+                <form class="form-horizontal" autocomplete="off" name="forms.about">
+                    <h4 class="form-h4">{{::'SITE_SETTINGS.ABOUT_SITE.VERSION_INFORMATION' | translate}}</h4>
+
+                    <p>{{::'SITE_SETTINGS.ABOUT_SITE.ZERTO_VIRTUAL_REPLICATION' | translate}}</p>
+
+                    <p>
+                        {{::'SITE_SETTINGS.ABOUT_SITE.VERSION' | translate}} {{version}}
+                    </p>
+
+                    <p>{{::'SITE_SETTINGS.ABOUT_SITE.INFORMATION' | translate}} <a
+                        href="http://www.zerto.com/privacy-policy/">www.zerto.com/privacy-policy</a></p>
+                    <div class="form-group">
+                        <div class="col-xs-12">
+
+                            <z-checkbox z-disabled="isPublicCloud" change="sendAnalyticsChange()" model="sendAnalytics">
+                                {{::'SITE_SETTINGS.ABOUT_SITE.SEND_ANALYTICS_TO_ZERTO' | translate}}
+                            </z-checkbox>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-if="settings.isTransmitterVisible">
+                        <div class="col-xs-12">
+
+                            <z-checkbox change="onTransmitterChange()" model="settings.isTransmitterEnabled">
+                                {{::'SITE_SETTINGS.ABOUT_SITE.SEND_DATA_TO_CLOUD' | translate}}
+                            </z-checkbox>
+                            {{isTransmitterEnabled}}
+                        </div>
+                    </div>
+
+                    <p ng-bind-html="::'SITE_SETTINGS.ABOUT_SITE.COPYRIGHT' | translate"></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</base-modal-window>

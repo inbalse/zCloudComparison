@@ -1,0 +1,14 @@
+<base-modal-window modal-title="{{ 'CREATE_VPG_RECOVERY.ADVANCED_SETTINGS' | translate }}" close="close" btns="buttons" help="advancedVMSettings">
+    <div class="btn-group z-white-btn-group pull-right">
+        <button type="button" class="btn btn-link" ng-click="handleEditSelectedClick()"
+                ng-disabled="!selectedItems.length">{{"ADVANCED_VM_REPLICATION_SETTINGS.EDIT_SELECTED" | translate}}
+        </button>
+    </div>
+
+    <z-slick-grid grid-id="publicCloudVmSettingsGrid" id="publicCloudVmSettingsGrid" data="gridData"
+                  selected-group="selectedGroup" selected-items="selectedItems"
+                  view-by-values="viewByValues" do-full-row-validation="true"
+                  custom-options="customOptions" group-by-values="groupByValues"
+                  class="public-cloud-vms-settings-grid" grid="gridObj.grid"
+                  on-selection="selectedItemsChange"></z-slick-grid>
+</base-modal-window>

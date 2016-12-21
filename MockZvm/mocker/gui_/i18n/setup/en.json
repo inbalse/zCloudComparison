@@ -1,0 +1,14 @@
+{
+    "SETUP_TABS": {
+        "TITLE":          "Setup",
+        "VRAS":           "VRAs",
+        "DATASTORES":     "DATASTORES",
+        "STORAGES":       "STORAGE",
+        "REPOSIOTORIES":  "REPOSITORIES",
+        "NO_DATASTORES":  "NO DATASTORES",
+        "NO_STORAGES":     "NO STORAGES",
+        "VRAS_TOOLTIP":   "Manage Virtual Replication Appliances (VRAs). VRAs enable the replication of data from protected virtual machines to the recovery site",
+        "DATASTORES_TOOLTIP": "datastores",
+        "REPOSIOTORY_TOOLTIP": "repository"
+    }
+}

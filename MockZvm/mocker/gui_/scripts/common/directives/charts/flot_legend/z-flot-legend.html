@@ -1,0 +1,4 @@
+<div class="flot-legend">
+    <div ng-repeat="item in items track by $index" ng-click="onClick(item)" ng-class="{'legend-alpha':!item.selected}"><div  class="rect" ng-style="{backgroundColor:item.color}" ></div>
+        <div tooltip-append-to-body="true" uib-tooltip="{{item.name}}" class="legend-text">{{item.name}}</div></div>
+</div>

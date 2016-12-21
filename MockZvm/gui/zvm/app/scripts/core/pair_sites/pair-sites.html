@@ -1,0 +1,22 @@
+<base-modal-window modal-title="{{ 'PAIR_SITES.TITLE' | translate }}" btns="buttons"
+                   close="closeHandler" loading="loading" help="pairSitesController">
+    <form class="form-horizontal" autocomplete="off" name="forms.pairForm">
+        <div class="container-fluid" z-enter="enterPressEvent()">
+            <div class="form-group">
+                <label help-icon="PAIR_SITES.PAIR_IP_ADDRESS" class="col-xs-6">{{ 'PAIR_SITES.ADDRESS' | translate
+                    }}</label>
+
+                <div class="col-xs-6">
+                    <input type="text" name="address" ng-model="site.address" z-ng-enter="handleSaveClicked()" required z-focus/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-6">{{ 'PAIR_SITES.PORT' | translate }}</label>
+
+                <div class="col-xs-2">
+                    <input type="text" name="port" ng-model="site.port"  z-ng-enter="handleSaveClicked()" required/>
+                </div>
+            </div>
+        </div>
+    </form>
+</base-modal-window>

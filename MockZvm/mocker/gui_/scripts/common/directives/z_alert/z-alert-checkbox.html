@@ -1,0 +1,12 @@
+<div class="drag-area" draggable></div>
+<h4 class="z-alert-title">
+    {{title}}
+</h4>
+<p class="z-alert-description" ng-bind-html="description">
+</p>
+<z-checkbox model="selectCheckbox">{{checkboxText}}</z-checkbox>
+<div class="z-alert-buttons">
+    <button ng-repeat="button in buttons track by $index" ng-click="handleButtonAction($event)" id="{{button}}" name="{{button}}">{{ button | translate }}
+    </button>
+</div>
+<div class="indicator"></div>

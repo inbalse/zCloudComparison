@@ -1,0 +1,73 @@
+<base-modal-window modal-title="{{ 'ADVANCED_JOURNAL_SETTINGS.TITLE' | translate }}" close="closeWindow"
+                   btns="buttons" help="advancedJournalSettingsController" loading="loading" >
+    <form class="form-horizontal" name="forms.advancedJournalForm" autocomplete="off">
+        <div class="container-fluid">
+            <div class="form-group">
+                <label class="col-xs-5 control-label">{{ 'ADVANCED_JOURNAL_SETTINGS.JOURNAL_HISTORY' | translate}}</label>
+
+                <div class="col-xs-2">
+                    <div z-stepper
+                         ng-model="data.defaultJournal.value"
+                         ng-change="handleJournalValueChanged()"
+                         min="journalMinMaxValue.min"
+                         max="journalMinMaxValue.max">
+                    </div>
+                </div>
+
+                <div class="col-xs-4">
+                    <ui-select theme="select2"
+                               search-enabled="false"
+                               ng-model="$parent.data.defaultJournal.type"
+                               on-select="handleJournalTypeChange()"
+                               required="">
+                        <ui-select-match class="ui-select-match">{{$select.selected.label}}</ui-select-match>
+                        <ui-select-choices class="ui-select-choices" repeat="item.value as item in data.journalHistoryTypes | filter: $select.search">
+                            <span ng-bind-html="item.label | highlight: $select.search"></span>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+                <div class="col-xs-1"></div>
+            </div>
+            <div class="form-group" ng-if="!data.isVcdVapp">
+                <label help-icon="{{datstoreOrStorageLabelTT}}" class="col-xs-5 control-label">{{ textLabel }}</label>
+
+                <div class="col-xs-6">
+                    <ui-select theme="select2"
+                               ng-model="$parent.data.selectedJournalDatastore"
+                               required="" search-enabled="true">
+                        <ui-select-match class="ui-select-match">{{$select.selected.Datastore.DisplayName}}</ui-select-match>
+                        <ui-select-choices class="ui-select-choices"
+                                           ui-disable-choice="!item.IsEnabled"
+                                           repeat="item.Datastore as item in data.potentialJournalDatastores | filter: $select.search">
+                            <span ng-bind-html="item.Datastore.DisplayName | highlight: $select.search"></span>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+                <div class="col-xs-1">
+                    <span class="help-icon" uib-tooltip="{{datstoreOrStorageSelectTT}}" tooltip-placement="right" tooltip-append-to-body="true">?</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label help-icon="JOURNAL_SETTINGS.HARD_LIMIT" class="col-xs-5 control-label">{{'ADVANCED_JOURNAL_SETTINGS.JOURNAL_SIZE_HARD_LIMIT' | translate}}</label>
+
+                <div class="col-xs-7">
+                    <journal-limit class="advanced-journal-settings__hard-limit"
+                                   value="data.selectedJournalHardLimitPerVM"
+                                   required >
+                    </journal-limit>
+                </div>
+            </div>
+            <div class="form-group">
+                <label help-icon="JOURNAL_SETTINGS.SOFT_LIMIT"
+                       class="col-xs-5 control-label">{{'ADVANCED_JOURNAL_SETTINGS.JOURNAL_SIZE_WARNING_THRESHOLD' |
+                    translate}}</label>
+
+                <div class="col-xs-7">
+                    <journal-limit class="advanced-journal-settings__soft-limit"
+                                   value="data.selectedJournalWarningThresholdPerVM"
+                                   required ></journal-limit>
+                </div>
+            </div>
+        </div>
+    </form>
+</base-modal-window>

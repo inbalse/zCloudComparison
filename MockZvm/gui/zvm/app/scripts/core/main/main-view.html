@@ -1,0 +1,155 @@
+<div id="mainViewController" ng-class="{'main-view-in-iframe':isIframe, 'main-view-in-normal-mode':!isIframe}">
+    <div ng-class="headerClass">
+        <div class="logo-icon-container" ng-dblclick="doubleClick($event)" ng-class="{'portal-logo-icon': IsPortal, 'logo-icon': !IsPortal}" ></div>
+        <z-debugger-directive ng-if="isDebuggerOpen"></z-debugger-directive>
+        <div class="zerto-site-name">
+            <span>{{siteName}}</span>
+            <span>{{ipAddress}}</span>
+            <!--this code useful just in develop mode !!!-->
+            <!--remove-->
+            <span>Count of watchers : {{watchers}}</span>
+            <!--end remove-->
+        </div>
+        <site-settings-drop-menu class="menu"></site-settings-drop-menu>
+
+        <ul class="info">
+            <li ng-if="IsPortal">
+                <label class="control-label">{{'POWERED_OF' | translate}}</label>
+                <img class="powerd-logo" src="assets/zerto_white_logo.png">
+                <span>  |  </span>
+            </li>
+            <li uib-tooltip="{{'GLOBAL.SITE_LOCATION' | translate}}" tooltip-placement="bottom" class="mouse-help">
+                <img src="assets/locationIcon.png">{{location}}
+            </li>
+            <li uib-tooltip="{{'GLOBAL.TIME_INFORMATION' | translate}}" tooltip-placement="bottom" class="mouse-help">
+                <img src="assets/clockIcon.png">{{currentLocalTime}}
+            </li>
+            <li uib-tooltip="{{'GLOBAL.SITE_NAME' | translate}}" tooltip-placement="bottom" class="mouse-help" tooltip-append-to-body="true">
+                <img src="assets/userIcon.png">{{contactInfo}}
+            </li>
+        </ul>
+
+        <div class="navigation_tabs" ng-controller="navigationTabsController" navigation-ellipsis>
+            <div name="tabset">
+                <ul class="nav nav-tabs">
+
+                    <li ng-if="mainStaticTabs[0].visible" ng-class="{'active':mainStaticTabs[0].active}"
+                        tooltip-placement="bottom" name="static" uib-tooltip="{{mainStaticTabs[0].tooltip}}"
+                        ng-click="tabClicked()">
+                        <a ui-sref="{{mainStaticTabs[0].route}}">{{mainStaticTabs[0].title}}</a>
+                    </li>
+
+                    <li ng-if="mainStaticTabs[1].visible" ng-class="{'active':mainStaticTabs[1].active}" name="static"
+                        tooltip-placement="bottom" uib-tooltip="{{mainStaticTabs[1].tooltip}}" ng-click="tabClicked()">
+                        <a ui-sref="{{mainStaticTabs[1].route}}">{{mainStaticTabs[1].title}}</a>
+                    </li>
+
+                    <li ng-if="mainStaticTabs[2].visible" ng-class="{'active':mainStaticTabs[2].active}" name="static"
+                        tooltip-placement="bottom" uib-tooltip="{{mainStaticTabs[2].tooltip}}" ng-click="tabClicked()">
+                        <a ui-sref="{{mainStaticTabs[2].route}}">{{mainStaticTabs[2].title}}</a>
+                    </li>
+
+                    <li ng-if="mainStaticTabs[3].visible" content="{{'POPOVER.POPOVER_SITES_INFO' | translate}}"
+                        placement="bottom" name="static"
+                        trigger="manual" close="true" close-event="closeSites()" content-event="navigateToSites()"
+                        ng-click="tabClicked()" tooltip-placement="bottom" uib-tooltip="{{mainStaticTabs[3].tooltip}}"
+                        position-class-name="popover-sites" content-clickable="true" show="isPopoverSitesShow" z-popover
+                        ng-class="{'active':mainStaticTabs[3].active}">
+                        <a ui-sref="{{mainStaticTabs[3].route}}">{{mainStaticTabs[3].title}}</a>
+                    </li>
+
+                    <li ng-if="mainStaticTabs[4].visible" content="{{'POPOVER.POPOVER_VRA_INFO' | translate}}"
+                        placement="bottom" name="static"
+                        trigger="manual" close="true" content-event="navigateToVra()" position-class-name="popover-vra"
+                        ng-click="tabClicked()"
+                        content-clickable="true" show="vrasCount === 0" z-popover tooltip-placement="bottom"
+                        uib-tooltip="{{mainStaticTabs[4].tooltip}}"
+                        ng-class="{'active':mainStaticTabs[4].active}">
+                        <a ui-sref="{{mainStaticTabs[4].route}}">{{mainStaticTabs[4].title}}</a>
+                    </li>
+
+                    <li ng-if="mainStaticTabs[5].visible" ng-class="{'active':mainStaticTabs[5].active}" name="static"
+                        ng-click="tabClicked()"
+                        tooltip-placement="bottom" uib-tooltip="{{mainStaticTabs[5].tooltip}}">
+                        <a ui-sref="{{mainStaticTabs[5].route}}">{{mainStaticTabs[5].title}}</a>
+                    </li>
+
+                    <li ng-if="mainStaticTabs[6].visible" ng-class="{'active':mainStaticTabs[6].active}" name="static"
+                        ng-click="tabClicked()"
+                        tooltip-placement="bottom" uib-tooltip="{{mainStaticTabs[6].tooltip}}">
+                        <a ui-sref="{{mainStaticTabs[6].route}}">{{mainStaticTabs[6].title}}</a>
+                    </li>
+
+                    <li ng-if="mainStaticTabs[7].visible" ng-class="{'active':mainStaticTabs[7].active}" name="static"
+                        ng-click="tabClicked()"
+                        tooltip-placement="bottom" uib-tooltip="{{mainStaticTabs[7].tooltip}}">
+                        <a ui-sref="{{mainStaticTabs[7].route}}">{{mainStaticTabs[7].title}}</a>
+                    </li>
+
+
+                    <li ng-repeat="tabDynamic in dynamicTabs"
+                        ng-class="{'active':tabDynamic.active}" class="dynamic-tab" name="dynamic"
+                        ng-click="tabClicked($event,tabDynamic)">
+                        <a ui-sref="{{tabDynamic.route}}">
+                            <div class="dynamic-title">
+                                {{tabDynamic.title}}
+                                <div class="dynamic-close"
+                                     ng-click="onTabCloseClick($event, tabDynamic.id, tabDynamic.name);onTabClosed(tabDynamic.id, tabDynamic.name);"></div>
+                            </div>
+                        </a>
+                    </li>
+
+                    <li class="tab dropdown main-tabs-ellipsis" ng-show="ellipsisCollection.length"
+                        ng-class="{'active':dropdownTabActive}" name="dropdown">
+                        <a class="dropdown-toggle" href="" data-toggle="dropdown" >
+                            {{ ellipsisCollection.length }}
+                            <div class="arrow-ellipsis"></div>
+                        </a>
+
+                        <ul class="dropdown-menu dropdown-white">
+                            <li ng-repeat="tab in ellipsisCollection" name="dynamic"
+                                ng-click="tabClickedEllipsisList('ellipsis', tab)">
+                                <a ui-sref="{{tab.route}}" class="line-ellipsis">{{tab.title}}</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- END :this part is used by the navigation-ellipsis directive -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div ui-view class="viewContainer"></div>
+
+    <div ng-class="failoverState === failoverStates.TEST? 'bottom-dashboard': 'bottom-dashboard bottom-dashboard-fol'">
+        <ul class="dashboard-ul">
+            <li class="dashboard-li">
+                <alerts-status-button></alerts-status-button>
+            </li>
+            <li class="dashboard-li">
+                <tasks-mini show-task-summary="showTaskSummary"></tasks-mini>
+            </li>
+            <li class="dashboard-li">
+                <actions-button data="summaryMinimalData"></actions-button>
+            </li>
+        </ul>
+
+        <input type="button" class="failover-button">
+
+        <div class="failover-button">
+            <div ng-class="failoverState === failoverStates.TEST? 'live-failover-alpha': 'live-failover-full'">
+                {{'FAILOVER_COMPONENT.LIVE' | translate}}
+            </div>
+            <div ng-class="failoverState === failoverStates.TEST? 'test-failover-full': 'test-failover-alpha'">
+                {{'FAILOVER_COMPONENT.TEST' | translate}}
+            </div>
+            <a class="failover-toggle-background" ng-click="failoverToggleClick()" href="">
+                <div
+                    ng-class="failoverState === failoverStates.TEST? 'failover-toggle-down': 'failover-toggle-up'"></div>
+            </a>
+            <!--<div class="morenos">-->
+            <a class="failover-button-live" type="button" translate="FAILOVER_COMPONENT.FAILOVER"
+               ng-model="failoverState" ng-disabled="!enableBtn" ng-click="faioverButtonClick()"></a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,62 @@
+.monitoring {
+
+    .active .tab-content {
+        opacity: 1;
+    }
+
+    .tab-content {
+        opacity: 0.4;
+        color: black;
+        font-size: 15px;
+        position: relative;
+        top: 17px;
+        right: 10px;
+        background: transparent no-repeat left 3px;
+        img {
+            margin-right: 5px;
+        }
+        &.tab-alert {
+            padding-left: 20px;
+            color: #BA5461;
+            background-image: url('../assets/alerts/monitoring_alert_icon.png');
+        }
+        &.tab-warning {
+            padding-left: 20px;
+            color: #E4BB24;
+            background-image: url('../assets/alerts/monitoring_warning_icon.png');
+            right:20px;
+        }
+        .separator {
+            color: #a9abaf;
+            font-weight: normal;
+        }
+
+        .last-hours {
+            position: absolute;
+            font-size: 9.5px;
+            font-weight: normal;
+            right: 0;
+            top: 20px;
+        }
+    }
+
+    .events-info-container{
+        text-align: right;
+    }
+}
+
+.z-tabbed-view .nav-tabs > {
+    .monitoring-alerts-tab-waring.active {
+        a, a:hover, a:focus{
+            border: solid 2px #E4BB24;
+        }
+    }
+
+    .monitoring-alerts-tab-error.active {
+        a, a:hover, a:focus{
+            border: solid 2px #BA5461;
+        }
+    }
+}
+
+

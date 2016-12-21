@@ -1,0 +1,41 @@
+<base-modal-window modal-title="{{ 'EDIT_VOLUMES.TITLE' | translate }}" close="close" btns="buttons"
+                   loading="loading()"
+                   help="editVCDVolumesController">
+
+    <form name="form.editVolume" autocomplete="off" class="form-horizontal">
+        <div class="form-group">
+            <label class="col-xs-3 control-label">{{ "EDIT_VOLUMES.PRE_SEED" | translate}}</label>
+
+            <div class="col-xs-6">
+                <ui-select theme="select2" id="preseedOptions" ng-model="$parent.volumeConfiguration.replicationDestinationType" search-enabled="false"
+                        ng-change="onReplicationDestinationChange()">
+                    <ui-select-match class="ui-select-match">{{$select.selected.label | translate }}</ui-select-match>
+                    <ui-select-choices class="ui-select-choices" repeat="item in sharedVolumePotentials.replicationDestinationTypes | filter: $select.search">
+                        <span ng-bind-html="item.label | highlight: $select.search"></span>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+            <div class="col-xs-3">
+                <z-checkbox help-icon="VPG_WIZARD.TEMP_DISK" model="volumeConfiguration.swap" use-indeterminate="true">{{ "EDIT_VOLUMES.TEMP_DISK" | translate}}</z-checkbox>
+            </div>
+        </div>
+        <div class="form-group"
+             ng-if="volumeConfiguration.replicationDestinationType.value==dataCollectionFactory.REPLICATION_TYPE.VCD_PROFILE.value">
+            <div class="col-xs-offset-9 col-xs-3">
+                <z-checkbox help-icon="VPG_WIZARD.THIN" model="volumeConfiguration.thin" use-indeterminate="true" change="onThinProvisionChange()" >{{ "EDIT_VOLUMES.THIN_PROVISIONING" | translate}}</z-checkbox>
+            </div>
+        </div>
+        <div class="form-group"
+             ng-if="volumeConfiguration.replicationDestinationType.value==dataCollectionFactory.REPLICATION_TYPE.PRESEED.value">
+            <label class="col-xs-3 control-label" for="path">{{ "EDIT_VOLUMES.PATH" | translate}}</label>
+
+            <div class="col-xs-6">
+                <input id="path" type="text" ng-model="volumeConfiguration.preSeedText" required
+                       extension="validFileExtensions"
+                       ng-model-options="{allowInvalid:true}"
+                       placeholder="Folder-A/Sub-Folder-B/Filename.vmdk"/>
+            </div>
+            <div class="browse-icon-container" ng-click="browse()"></div>
+        </div>
+    </form>
+</base-modal-window>

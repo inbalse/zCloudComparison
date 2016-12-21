@@ -1,0 +1,33 @@
+<div>
+    <div class="tree-view-item">
+        <a class="tree-view-icon" ng-class="{'tree-view-collapse': !collapsed, 'tree-view-expand': collapsed}"
+           data-nodrag ng-click="toggle(this)" ng-show="checkIfGroup(this)">
+        </a>
+        <a class="tree-view-icon"
+           ng-class="{'tree-view-folder-opened': !collapsed, 'tree-view-folder-closed': collapsed}"
+           data-nodrag ng-click="toggle(this)" ng-show="checkIfGroup(this)">
+        </a>
+        <span ng-hide="checkIfGroup(this)" class="boot-order-icon boot-order-vm"></span>
+        <label ui-tree-handle ng-hide="showedit && checkIfGroup(this)">{{item.title}}</label>
+        <a data-nodrag class="boot-order-icon boot-order-edit" ng-click="enableEdit(this)"
+           ng-show="!showedit && checkIfEditable(this)"></a>
+        <input class="boot-order-edit-text" ng-show="showedit && checkIfGroup(this)" ng-model="item.title" type="text"
+               z-ng-enter="disableEdit(this)">
+        <a class="btn btn-link boot-order-save" ng-click="disableEdit(this)"
+           ng-show="showedit && checkIfGroup(this)">save</a>
+
+        <div class="boot-order-controls" title="{{:: 'BOOT_ORDER.BOOT_DELAY_TOOLTIP' | translate}}">
+            <span ng-show="checkIfGroup(this)">{{:: "BOOT_ORDER.BOOT_DELAY" | translate }}</span>
+            <input class="boot-order-delay" ng-show="checkIfGroup(this)" ng-model="item.settings.BootDelay"
+                   type="number" min="0" max="10000"/><label class="boot-order-sec-label"
+                                                             ng-show="checkIfGroup(this)">sec</label>
+            <a class="boot-order-icon boot-order-remove" data-nodrag ng-click="removeGroup(this)"
+               ng-show="checkIfRemoveEnable(this)"></a>
+        </div>
+
+    </div>
+    <ul ui-tree-nodes="options" ng-model="item.items" ng-class="{hidden: collapsed}">
+        <li ng-repeat="item in item.items" ui-tree-node ng-include="partialViews.itemRenderer">
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,16 @@
+//@import 'app-vars';
+//
+//
+// Reference to source bootstrap variables
+// ----------------------------------------
+
+//-------------------------------------------
+// Override variables of Bootsrap Sass
+//-------------------------------------------
+@import 'bootstrap-override.scss';
+//and then import bootstrap-sass
+@import '../bower_components/bootstrap-sass/assets/stylesheets/bootstrap';
+
+@import '../../../common/styles/common';
+
+@import 'concat-styles';

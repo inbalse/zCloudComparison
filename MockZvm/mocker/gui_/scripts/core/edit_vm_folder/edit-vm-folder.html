@@ -1,0 +1,20 @@
+<base-modal-window modal-title="{{selectedVmsCount}}" close="close" btns="buttons" loading="loading">
+    <div class="container-fluid">
+        <form class="form-horizontal">
+            <div class="row">
+                <div class="form-group">
+                    <label class="col-xs-4 control-label" for="">{{'RECOVERY_FOLDER_VM_SETTINGS.GRID.RECOVERY_FOLDER' | translate}}</label>
+
+                    <div class="col-xs-8">
+                        <ui-select theme="select2" ng-model="$parent.vm.TargetFolder" required="">
+                            <ui-select-match class="ui-select-match">{{$select.selected.DisplayName}}</ui-select-match>
+                            <ui-select-choices class="ui-select-choices" repeat="item in potentialFolders | filter: $select.search">
+                                <span ng-bind-html="item.DisplayName | highlight: $select.search"></span>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</base-modal-window>

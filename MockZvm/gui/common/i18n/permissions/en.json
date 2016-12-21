@@ -1,0 +1,19 @@
+{
+    "PERMISSIONS": {
+        "MANAGE_ROLES": "Manage Roles",
+        "MORE": "More",
+        "DISABLE_PERMISSIONS": "Disable role-based permissions",
+        "ENABLED_PERMISSIONS": "Enable role-based permissions",
+        "ADD_PERMISSION": "ADD PERMISSION",
+        "EDIT": "EDIT",
+        "DELETE": "DELETE",
+        "ENABLED_PERMISSION_EXPLANATION_PART_I": "You're currently working in permission mode.",
+        "ENABLED_PERMISSION_EXPLANATION_PART_II": "Permissions you define here will not take effect until you enable role-based permissions.",
+        "ENABLE_ROLE_BASED_PERMISSIONS": " Enable Role-based Permissions",
+        "LEARN_MORE": "  Learn more",
+        "ENABLED_MESSAGE": "Role-based permission will be enabled. You can disable it back in the More menu.",
+        "DISABLE_MESSAGE": "You are about to disable role-based permission",
+        "ENABLE_TITLE": "Enable",
+        "DISABLE-TITLE": "Disable"
+    }
+}

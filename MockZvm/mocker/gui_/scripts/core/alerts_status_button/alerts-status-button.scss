@@ -1,0 +1,43 @@
+@mixin alertsStatusButtonClass($path, $cursorPointer) {
+  position: relative;
+  display: block;
+  width: 136px;
+  height: 44px;
+  background-image: url($path);
+  background-repeat: no-repeat;
+  background-position: 12px 10px;
+  border: solid 2px transparent;
+  cursor: $cursorPointer;
+  padding: 12px 12px 12px 45px;
+  &:hover {
+    background-color: #656c74;
+    border-color:#9da3af;
+    .alertsStatusExpandButton{
+      visibility: visible;
+    }
+  }
+  &:active {
+    background-color: #656c74;
+  }
+
+  .alertsStatusExpandButton {
+    position: absolute;
+    right: 6px;
+    top: 5px;
+    visibility: hidden;
+  }
+}
+
+.errorAlertsStatusButtonClass {
+  @include alertsStatusButtonClass('../assets/alerts_status_button/error.png', pointer);
+}
+
+.warningAlertsStatusButtonClass {
+  @include alertsStatusButtonClass('../assets/alerts_status_button/warning.png', pointer);
+}
+
+.normalAlertsStatusButtonClass {
+  @include alertsStatusButtonClass('../assets/alerts_status_button/normal.png', default);
+}
+
+

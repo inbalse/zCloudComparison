@@ -1,0 +1,50 @@
+.alerts-status-panel {
+  color: $brand-font-white;
+  pointer-events: none;
+
+  .modal-dialog {
+    width: 450px;
+    pointer-events: all !important;
+    position: absolute;
+    bottom: 40px;
+    left: 5px;
+  }
+
+  .row {
+    background-color: $brand-grey-content-bg;
+    padding: 5px;
+    margin-bottom: 1px;
+    &:last-child {
+      margin-bottom: 0px;
+    }
+    @mixin alert-icon($path) {
+      width: 18px;
+      height: 18px;
+      margin: 12px 0px;
+      background-repeat: no-repeat;
+      background-image: url($path);
+    }
+
+    .alert-icon-1 {
+      @include alert-icon('../assets/small_status_icons/error-alerts-list-icon.gif');
+    }
+
+    .alert-icon-0 {
+      @include alert-icon('../assets/small_status_icons/small_icon_warning.png');
+    }
+
+    label {
+      width: 100%;
+    }
+  }
+
+  a {
+    color: $z-panel-link-color;
+    font-size: 11px;
+
+    &:hover {
+      color: $brand-font-white;
+      text-decoration: none;
+    }
+  }
+}

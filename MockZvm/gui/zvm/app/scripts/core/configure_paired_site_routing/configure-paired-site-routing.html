@@ -1,0 +1,30 @@
+<base-modal-window modal-title="{{'CONFIGURE_PAIRED_SITE_ROUTING.TITLE' | translate}}" btns="buttons"
+                   close="handleCancel" loading="loading" help="configurePairSiteRoutingController">
+
+    <form class="form-horizontal" name="forms.pairedSiteRouting">
+        <div class="form-group">
+            <div class="col-xs-12"><z-checkbox class="configure-paired-site-routing__checkbox" model="usePairSiteRouting">{{'CONFIGURE_PAIRED_SITE_ROUTING.ENABLE' | translate}}</z-checkbox></div>
+        </div>
+        <div class="form-group">
+            <label class="col-xs-4 control-label">{{'CONFIGURE_PAIRED_SITE_ROUTING.ADDRESS' | translate}}</label>
+
+            <div class="col-xs-8">
+                <input z-ip-field type='text' ng-disabled="!usePairSiteRouting" ng-model='data.PeerNetwork' ng-required="true"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-xs-4 control-label">{{'CONFIGURE_PAIRED_SITE_ROUTING.SUBNET_MASK' | translate}}</label>
+
+            <div class="col-xs-8">
+                <input z-ip-field type='text' ng-disabled="!usePairSiteRouting" ng-model='data.PeerNetMask' ng-required="true"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-xs-4 control-label">{{'CONFIGURE_PAIRED_SITE_ROUTING.GATEWAY' | translate}}</label>
+
+            <div class="col-xs-8">
+                <input z-ip-field type='text' ng-disabled="!usePairSiteRouting" ng-model='data.PeerGw' ng-required="true"/>
+            </div>
+        </div>
+    </form>
+</base-modal-window>

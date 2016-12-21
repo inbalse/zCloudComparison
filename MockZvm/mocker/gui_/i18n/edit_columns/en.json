@@ -1,0 +1,11 @@
+{
+    "EDIT_COLUMNS": {
+        "TITLE_SHOW" : "Show/Hide Columns",
+        "TITLE_CREATE": "Create Custom Tab",
+        "CHOOSE":       "Choose columns to show",
+        "VIEW_NAME":    "View Name",
+        "ENTER_NAME":   "Enter name",
+        "EXISITING":    "Use Existing View as Template",
+        "ALREADY_EXISTS": "View name already exists"
+    }
+}

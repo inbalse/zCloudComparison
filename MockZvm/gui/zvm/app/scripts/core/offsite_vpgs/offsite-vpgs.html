@@ -1,0 +1,25 @@
+<div class="grid-controller offsite-backup" ng-controller="offsiteVpgsListController">
+    <div class="btn-group z-white-btn-group">
+        <div class="btn-group">
+            <div class="dropdown zerto">
+                <button class="btn btn-link inline-site-settings" type="button" ng-click="handleSiteSettingsClick()">{{'VPG_LIST.MORE_BUTTON.SITE_SETTINGS'
+                    | translate}}</button>
+                <span class="inline-site-settings">|</span>
+                <button type="button" class="btn btn-link" ng-click="export()">{{'EXPORT' | translate}}</button>
+                <span>|</span>
+                <button class="btn btn-link" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                    MORE
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu dropdown-white pull-right" role="menu" aria-labelledby="dropdownMenu1">
+                    <li role="presentation"><a role="menuitem" tabindex="-1" ng-disabled="!isAbortEnabled" ng-click="abortBackup()"  class="btn btn-link">{{'OFF_SITE.STOP_BACKUP' | translate}}</a></li>
+                    <li role="presentation" ><a role="menuitem" tabindex="-1" ng-disabled="!isRunEnabled" ng-click="runBackup()" class="btn btn-link">{{'OFF_SITE.START_BACKUP' | translate}}</a></li>
+                </ul>
+                <span>|</span>
+            </div>
+        </div>
+    </div>
+    <z-slick-grid id="offsite-vpgs-list"  grid-id="offsite-vpgs-list" data="data" grid="gridObj.grid"
+                  view-by-values="viewByValues" group-by-values="groupByValues" selected-items="selectedItems"
+                  custom-options="customOptions" on-selection="selectedItemsChange"></z-slick-grid>
+</div>

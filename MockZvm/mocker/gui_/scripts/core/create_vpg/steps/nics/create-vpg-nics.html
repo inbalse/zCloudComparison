@@ -1,0 +1,46 @@
+<div class="z-wizard-container-wide grid-controller-enhanced" ng-controller="createVPGNICsController" ng-cloak="">
+    <p class="text-center step-desc">{{::"CREATE_VPG_NICS.NICS_INFO" | translate }}</p>
+    <div class="btn-group z-white-btn-group pull-right" ng-class="::{'vcd-nic-edit-btn':data.isTargetVCD}">
+        <button ng-if="::!data.isTargetVCD"
+                type="button"
+                class="btn btn-link"
+                ng-disabled="data.editNicsDisabled"
+                ng-click="editNics()">
+            {{::'EDIT_NIC.EDIT_BUTTON' | translate}}
+        </button>
+
+        <button ng-if="::data.isTargetVCD"
+                type="button"
+                class="btn btn-link"
+                ng-disabled="data.editVCDNicsDisabled"
+                ng-click="editVCDNics()">
+            {{::'EDIT_NIC.EDIT_BUTTON' | translate}}
+        </button>
+    </div>
+
+    <z-slick-grid ng-if="::!data.isTargetVCD"
+                  class="nics-grid"
+                  grid="data.gridObj.grid"
+                  grid-id="data.gridObj.id"
+                  data="data.gridObj.data"
+                  group-by-values="data.gridObj.groupByValues"
+                  selected-items="data.selectedItems"
+                  custom-options="data.gridObj.customOptions"
+                  on-selection="selectedItemsChange"
+                  hide-view-options="true">
+
+    </z-slick-grid>
+
+    <z-slick-grid ng-if="::data.isTargetVCD"
+                  class="nics-grid"
+                  grid-id="{{::data.gridObj.id}}"
+                  grid="::data.gridObj.grid"
+                  data="data.gridObj.data"
+                  group-by-values="data.gridObj.groupByValues"
+                  selected-items="data.selectedVCDItems"
+                  custom-options="data.gridObj.customOptions"
+                  on-selection="selectedVCDItemsChange"
+                  view-by-values="data.gridObj.viewByValues"
+                  hide-view-options="true">
+    </z-slick-grid>
+</div>

@@ -1,0 +1,48 @@
+.topology-tooltip {
+    position: fixed;
+    width: 180px;
+    border: 1px solid #53585f;
+    z-index: 100;
+    background-color: #fff;
+    user-select: text;
+    h4 {
+        position: relative;
+        width: 100%;
+        margin: 0;
+        color: #fff;
+        font-size: 12px;
+        padding: 10px 10px 10px 35px;
+        background: #53585f url('../assets/vpgs_details/topology/vm.png') scroll no-repeat 10px 8px;
+        word-break: break-all;
+    }
+    div {
+        width: 100%;
+        padding: 7px;
+        overflow-y: auto;
+        color: #333;
+    }
+    ul {
+        padding: 7px;
+        list-style-position: inside;
+        li {
+            margin-bottom: 5px;
+            list-style: none;
+            img {
+                display: block;
+                float: left;
+                margin: 2px 5px 0 0;
+            }
+            a {
+                float: right;
+            }
+        }
+    }
+    p {
+        padding: 7px;
+        border-bottom: 1px solid #53585f;
+        &:last-child {
+            border-bottom: 0;
+        }
+    }
+
+}

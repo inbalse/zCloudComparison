@@ -1,0 +1,30 @@
+.setup {
+    .active .tab-content {
+        opacity: 1;
+    }
+
+    .tab-content {
+        opacity: 0.4;
+        color: black;
+        font-size: 15px;
+        position: absolute;
+        top: 24px;
+        right: 10px;
+
+        .separator {
+            color: #a9abaf;
+            font-weight: normal;
+        }
+
+        .last-hours {
+            position: absolute;
+            font-size: 9.5px;
+            font-weight: normal;
+            right: 0px;
+            top: 20px;
+        }
+        .sub-title {
+            font-size: 10px;
+        }
+    }
+}

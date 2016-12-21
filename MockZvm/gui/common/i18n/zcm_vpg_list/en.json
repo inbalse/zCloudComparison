@@ -1,0 +1,8 @@
+{
+    "ZCM_VPG_LIST": {
+        "TITLE": "VPGs",
+        "TOOLTIP": "The list of all VPGs defined to all cloud sites that are defined to the Zerto Cloud Manager, with details of each VPG",
+        "EXPORT": "EXPORT",
+        "EMPTY": "There are no VPGs"
+    }
+}

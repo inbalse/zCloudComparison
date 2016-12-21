@@ -1,0 +1,21 @@
+<div ng-class="{potentialsVMsGrid_VCDMODE: isGridInVcdMode}" ng-hide="data.isReverse">
+    <div class="panel panel-default pull-left multi-site-expand-panel" ng-class="{'all-protected-panel-expand': isExpand }">
+        <div ng-click="multiTargetExpandCollapseClicked()" class="panel-heading">
+            <b class="panel-title">{{:: "CREATE_VPG_SELECT_VMS.ADVANCED_ONE_TO_MANY" | translate }}</b>
+            <div ng-if="isExpand" class="expand-icon"></div>
+            <div ng-if="!isExpand" class="collapse-icon"></div>
+        </div>
+
+        <div ng-if="!isExpand" class="panel-body" ng-class="{potentialsVMsGrid_VCDMODE: isGridInVcdMode}">
+            <button class="btn btn-link all-selected-vms-link" ng-disabled="!data.oneToManyState.isAllowed"
+                    ng-click="handleAllProtectVmsVappLink()">{{:: advancedLinkName}}
+            </button>
+            <span class="help-icon"
+                  uib-tooltip="{{:: advancedTooltipInfo}}"
+                  tooltip-placement="right">?</span>
+        </div>
+
+        <label ng-if="data.oneToManyState.isAllowed && !isVcdSiteType && !isExpand" class="count-vms-label">{{:: "CREATE_VPG_SELECT_VMS.PROTECTED_VMS" | translate }}:&nbsp;{{ data.protectedVmsCount }}</label>
+
+    </div>
+</div>

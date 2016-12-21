@@ -1,0 +1,19 @@
+<div class="form-group">
+    <label class="col-xs-4 control-label">{{::"CREATE_VPG_RECOVERY.FAILOVER_TEST_NETWORK" |
+        translate}}</label>
+
+    <div class="col-xs-8">
+        <ui-select theme="select2" ng-model="$parent.data.defaultTestNetwork" require
+                   on-select="onTestNetworkChange()"
+                   z-wizard-validator="defaultTestNetwork" data-placement="top">
+            <ui-select-match class="ui-select-match">{{$select.selected.DisplayName ?
+                $select.selected.DisplayName : $select.selected.NetworkName}}
+            </ui-select-match>
+            <ui-select-choices class="ui-select-choices"
+                               repeat="item in data.potentialNetworks | filter: $select.search">
+                                <span
+                                    ng-bind-html="(item.DisplayName ? item.DisplayName : item.NetworkName) | highlight: $select.search"></span>
+            </ui-select-choices>
+        </ui-select>
+    </div>
+</div>

@@ -1,0 +1,78 @@
+.z-debug {
+    width: 30%;
+    height: 100%;
+    position: fixed;
+    z-index: 2000;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    padding: 5px;
+    border: 1px solid;
+    min-width: 300px;
+
+    .nav-tabs {
+        margin-bottom: 10px;
+    }
+
+    .z-debug-container {
+        position: absolute;
+        left: 5px;
+        bottom: 5px;
+        right: 5px;
+        &.log-tab {
+            top: 130px;
+        }
+        &.rest-tab {
+            top: 175px;
+        }
+        &.settings-tab {
+            top: 125px;
+        }
+    }
+    .close {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        color: #000;
+        &:hover {
+            opacity: 0.5;
+        }
+    }
+    .drag {
+        position: absolute;
+        top: 5px;
+        right: 20px;
+    }
+    .rest-method {
+        width: 4%;
+        margin: 10px 0 10px;
+    }
+    .log-ellipsis {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    textarea {
+        position: absolute;
+        display: block;
+        height: 100%;
+        width: 100%;
+    }
+    .options-table {
+        overflow-y: auto;
+        overflow-x: hidden;
+        position: absolute;
+        display: block;
+        height: 100%;
+        width: 100%;
+    }
+    label {
+        font-weight: 700;
+        font-size: 110%;
+        margin: 10px 0 10px;
+    }
+}
+
+.debugger-popover {
+    z-index: 2000 !important;
+    max-width: 700px;
+}

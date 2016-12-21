@@ -1,0 +1,13 @@
+{
+    "USERNAME": "User Name",
+    "ZORG_NAME": "ZORG",
+    "PASSWORD": "Password",
+    "REMEMBERME": "Remember me",
+    "ERROR": "Error",
+    "ROLES_AND_PERMISSION_HINT": "<br/>Please try again ... try to use fully qualified domain name for login.",
+    "SUCCESS": "YEY",
+    "WRONG_CREDENTIALS": "Invalid username or password",
+    "ZSSP_TITLE": "Zerto Service Portal",
+    "VIRTUAL_MANAGER_TITLE": "Virtual Manager Web Client",
+    "ZCM_LOGIN_HELP": "Login with a domain user or local administrator credentials."
+}

@@ -1,0 +1,43 @@
+<base-modal-window class="tasks-panel" modal-title="{{'TASK_SUMMARY_TITLE' | translate}}" loading="false"
+                   close="hidePanel" help="tasksSummaryController">
+    <div class="container-fluid">
+        <div ng-repeat="task in TaskItems track by $index" class="row">
+            <div class="col-xs-1">
+                <div ng-class="task.tasksIconClass" ng-show="task.showIconOrProgress"></div>
+                <div class="progress-div text-center" ng-show="task.showProgress">
+                    <label>{{task.StateAndProgress.Progress}}%</label>
+                    <uib-progressbar value="task.StateAndProgress.Progress" animate="false"
+                                 class="slimNoValueProgressBar"></uib-progressbar>
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <div class="h-middle">
+                    <div>
+                        <span ng-class="{'line-ellipsis' : task.HasLongTaskType}" tooltip-enable="{{task.HasLongTaskType}}" uib-tooltip="{{task.TaskTypeEnum}}" tooltip-placement="top" tooltip-append-to-body="true">{{task.TaskTypeEnum}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="h-middle">
+                    <div>
+                        <span ng-class="{'line-ellipsis' : task.HasLongDescription}" tooltip-enable="{{task.HasLongDescription}}" uib-tooltip="{{task.Description}}" tooltip-placement="top" tooltip-append-to-body="true">{{task.Description}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-2">
+                <button ng-if="task.showRightButton" ng-click="taskAction(task,task.rightButtonEvent)"
+                        uib-tooltip="{{task.rightButtonTooltip}}"
+                        ng-class="task.rightButtonClass">{{task.rightLabel}}
+                </button>
+                <button ng-if="task.showLeftButton" ng-click="taskAction(task,task.leftButtonEvent)"
+                        uib-tooltip="{{task.leftButtonTooltip}}"
+                        ng-class="task.leftButtonClass">{{task.leftLabel}}
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <a href="" class="pull-right inline-alerts-and-tasks-links" ng-click="handleSeeAllTasksClicked()" ng-bind-html="'TASK_SUMMARY_ALL' | translate"></a>
+        </div>
+    </div>
+
+</base-modal-window>

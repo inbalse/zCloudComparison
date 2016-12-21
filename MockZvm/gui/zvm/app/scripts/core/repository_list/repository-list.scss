@@ -1,0 +1,36 @@
+.repository-list-controller {
+  .connected-state-label{
+    padding-left:24px;
+  }
+
+  @mixin repository-list-icon-base($path){
+    background-repeat: no-repeat;
+    background-position: center 1px;
+    background-image: url($path);
+    height: 100%;
+  }
+
+  .repository-list-default-true{
+    @include repository-list-icon-base("../assets/repository/default_enabled.png");
+  }
+
+  .repository-list-default-false{
+    @include repository-list-icon-base("../assets/repository/default_disabled.png");
+  }
+
+  .repository-list-state-0{
+    @include repository-list-icon-base("../assets/repository/green_icon.png");
+    background-position: 5px 5px;
+  }
+
+  .repository-list-state-1{
+    @include repository-list-icon-base("../assets/repository/red_icon.png");
+    background-position: 5px 5px;
+  }
+
+  .default-header{
+      background-image: url('../assets/repository/default_header.png');
+      background-repeat: no-repeat;
+      background-position: center;
+  }
+}

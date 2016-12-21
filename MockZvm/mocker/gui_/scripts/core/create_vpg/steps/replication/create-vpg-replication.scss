@@ -1,0 +1,79 @@
+.create-vpg-replication {
+    .control-label {
+        padding-left: 25px;
+
+        &.no-padding-top{
+            padding-top: 0;
+        }
+    }
+
+    .label-and-icon-container{
+        position: absolute;
+    }
+
+    .align-to-left > input{
+        padding-left: 8px;
+        text-align: left;
+    }
+
+    .recovery-site-type-icon {
+        width: 27px;
+        height: 22px;
+        display: block;
+        position: absolute;
+        background-repeat: no-repeat;
+        background-position: center;
+        left: -2px;
+
+        &.recovery-site-match {
+            top: 1px;
+        }
+
+        &.recovery-site-choice {
+            top: -2px;
+            background-color: white;
+        }
+
+        &.VC-match {
+            top: 1px;
+        }
+
+        &.VC-choice {
+            top: -2px;
+            background-color: white;
+        }
+
+        &.vCD-match {
+            top: 2px;
+        }
+
+        &.vCD-choice {
+            top: -2px;
+            background-color: white;
+        }
+
+        &.azure-img{
+            background-image: url('../assets/list_icons/azure-icon-trans.png');
+        }
+
+        &.hyperv-img {
+            background-image: url('../assets/list_icons/hyperv-icon-trans.png');
+        }
+
+        &.aws-img {
+            background-image: url('../assets/list_icons/aws-icon-trans.png');
+        }
+
+        &.vmware-img {
+            background-image: url('../assets/list_icons/vmware-icon-trans.png');
+        }
+
+        &.VC-img {
+            background-image: url('../assets/list_icons/vc-icon-trans.png');
+        }
+
+        &.vCD-img {
+            background-image: url('../assets/list_icons/vcd-icon-trans.png');
+        }
+    }
+}

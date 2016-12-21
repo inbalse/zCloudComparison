@@ -1,0 +1,15 @@
+{
+    "ACTIONS_BUTTON": {
+        "ACTIONS": "ACTIONS",
+        "CREATE_VPG": "CREATE VPG",
+        "CREATE_VPG_TEXT": "Create a Virtual Protection Group (VPG)",
+        "SET_CHECKOUT": "ADD CHECKPOINT",
+        "SET_CHECKOUT_TEXT": "Add a checkpoint with a tag",
+        "RESTORE": "RESTORE BACKUP",
+        "RESTORE_TEXT": "Restore one or more VMs from a selected backup point",
+        "RESTORE_FILE": "RESTORE FILE",
+        "RESTORE_FILE_TEXT": "Restore a file from the recovery site",
+        "MOVE": "MOVE VPG",
+        "MOVE_TEXT": "Migrate one or more VPGs to their recovery site"
+    }
+}

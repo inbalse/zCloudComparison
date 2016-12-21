@@ -1,0 +1,4 @@
+<div class="form-group form-group-public-cloud">
+    <div ng-if="data.isAws" ng-include="partials.aws"></div>
+    <div ng-if="data.isAzure" ng-include="partials.azure"></div>
+</div>

@@ -1,0 +1,75 @@
+<div id="licenseView" ng-controller="licenseViewController" class="base-static-window license">
+    <div class="container-fluid center-container">
+        <div class="logo" ng-hide="loading"></div>
+        <form class="form-horizontal license-form" ng-hide="loading" ng-submit="submitForm()" autocomplete="off"
+              name="forms.license">
+            <div class="container-fluid">
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <p>{{title}}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-4">
+                        <z-radio name="{{LICENSE}}" value="LICENSE" model="checked">
+                            {{ 'LICENSE.LICENSE_RADIO' | translate }}
+                        </z-radio>
+                    </div>
+                    <div class="col-xs-8">
+                        <input type="text" name="licenseInput" ng-required="checked == LICENSE"
+                               ng-disabled="checked == PAIR" ng-model="values.license" ng-class="licenseClass"
+                               tt-tooltip="{{licenseTooltip}}" tt-placement="right"/>
+                    </div>
+                </div>
+
+                <div ng-show="!isPublicCloud" class="form-group divider"></div>
+                <div ng-show="!isPublicCloud" class="form-group">
+                    <div class="col-xs-12">
+                        <z-radio name="{{LICENSE}}" value="PAIR" model="checked">
+                            {{ 'LICENSE.PAIR_RADIO' | translate }}
+                        </z-radio>
+                    </div>
+                </div>
+                <div ng-show="!isPublicCloud" class="form-group">
+                    <label help-icon="LICENSE.PAIR" class="col-xs-4 control-label sub-label" for="addressInput"
+                           ng-disabled="checked == LICENSE">{{ 'LICENSE.PAIR_LABEL' | translate }}</label>
+
+                    <div class="col-xs-5 col-lg-5">
+                        <input type="text" id="addressInput" name="addressInput" ng-required="checked == PAIR"
+                               ng-disabled="checked == LICENSE" ng-model="values.hostName" ng-class="pairClass"/>
+                    </div>
+                    <label class="col-xs-1 control-label" for="portInput"
+                           ng-disabled="checked == LICENSE">{{ 'LICENSE.PORT_LABEL' | translate }}</label>
+
+                    <div class="col-xs-2">
+                        <input type="text" id="portInput" name="portInput" ng-required="checked == PAIR"
+                               ng-disabled="checked == 'license'" ng-model="values.port" ng-class="pairClass"/>
+                    </div>
+                </div>
+                <div class="form-group divider"></div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <button type="submit" class="btn z-btn-default pull-right" ng-show="checked == LICENSE"
+                                id="licenseSubmit" ng-disabled="!forms.license.$valid">{{ 'LICENSE.LICENSE_BUTTON' |
+                            translate }}
+                        </button>
+                        <button type="submit" ng-disabled="!forms.license.$valid" class="btn z-btn-default pull-right"
+                                ng-show="checked == PAIR"
+                                id="pairSubmit">{{ 'LICENSE.PAIR_BUTTON' | translate }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <!--<div class="preloader" ng-show="loading"></div>-->
+    </div>
+    <div class="version">
+
+        <h6><!-- do not remove this comment it's for gulp task build version -->
+            <!--build version-->
+            ZVR 4.5
+            <!--end build version-->
+        </h6>
+
+    </div>
+</div>

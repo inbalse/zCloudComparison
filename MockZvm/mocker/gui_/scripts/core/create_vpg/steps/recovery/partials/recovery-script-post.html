@@ -1,0 +1,33 @@
+<div class="form-group">
+    <label class="col-xs-2 control-label">{{::"CREATE_VPG_RECOVERY.POST" | translate}}</label>
+    <div class="col-xs-3">
+        <input type="text"
+               placeholder="{{::'CREATE_VPG_RECOVERY.COMMAND_TO_RUN' | translate}}"
+               ng-model="data.postScriptCommand" ng-change="onPostScriptsChange()"/>
+    </div>
+    <div class="col-xs-5">
+        <input type="text"
+               ng-disabled="!(data.postScriptCommand && data.postScriptCommand.length)"
+               placeholder="{{::'CREATE_VPG_RECOVERY.PARAMS' | translate}}"
+               ng-model="data.postScriptParameters" ng-change="onPostScriptsChange()"/>
+    </div>
+
+    <div class="col-xs-2 no-wrap">
+        <div name="journalStepper"
+             z-stepper
+             z-wizard-validator="postScriptTimeOut"
+             scriptTimeOutValid
+             data-placement="bottom"
+             ng-model="data.postScriptTimeout"
+             ng-change="onPostScriptsChange()"
+             element-disabled="!data.postScriptCommand"
+             min="300"
+             max="6000"
+             p-holder="{{::'CREATE_VPG_RECOVERY.TIMEOUT' | translate}}">
+        </div>
+        <div class="div-text-sec">
+            <label>sec</label>
+        </div>
+    </div>
+</div>
+

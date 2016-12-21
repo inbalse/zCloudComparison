@@ -1,0 +1,10 @@
+{
+    "EDIT_STOP_FAILOVER_ITEM": {
+        "TITLE": "Stop Test",
+        "INFO": "Specify the test result and optionally add test notes.",
+        "RESULT": "Result",
+        "Notes": "Notes",
+        "CANT_STOP_ALERT_TITLE": "Stop Test Failed",
+        "CANT_STOP_ALERT_TEXT": "Some of the selected VPGs cannot be stopped"
+    }
+}

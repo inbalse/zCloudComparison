@@ -1,0 +1,33 @@
+{
+  "ZCM_SITE_LIST": {
+    "TITLE": "Sites Management",
+    "TOOLTIP": "Add and manage cloud sites",
+    "CONNECTION_STATUS": "Connection Status",
+    "SITE_NAME": "Site Name",
+    "VERSION": "Version",
+    "HOST_NAME": "Host Name",
+    "PORT": "Port",
+    "TYPE": "Type",
+    "ZORGS_NUMBER": "# of ZORGs",
+    "ZVM_INTERFACE": "ZVM Interface",
+    "CLOUD_SITE_TYPE_0": "vCD",
+    "CLOUD_SITE_TYPE_1": "vCenter",
+    "CLOUD_SITE_TYPE_2": "Scvmm",
+    "CLOUD_SITE_TYPE_3": "AWS",
+    "CLOUD_SITE_TYPE_4": "Azure",
+    "DELETE": "You are about to delete site ",
+    "CONNECTED": "Connected",
+    "DISCONNECTED": "Disconnected",
+    "EMPTY1": "There are no sites connected",
+    "EMPTY2": "Press ",
+    "EMPTY3": "to connect sites"
+  },
+  "SITE_ADD": {
+    "TITLE": "Add Cloud Site",
+    "SITE_IP": "IP Address:",
+    "PORT": "Port:",
+    "SUBTITLE": "Specify the access to the cloud site.",
+    "HELP_HOST": "The IP address for the Zerto Virtual Manager at the cloud site.",
+    "HELP_PORT": "The port used access Zerto Virtual Manager at the cloud site."
+  }
+}

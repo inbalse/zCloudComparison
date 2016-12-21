@@ -1,0 +1,100 @@
+<div class="row">
+    <div class="col-xs-12">
+        <!-- left side of vc stuff -->
+        <div class="panel panel-default pull-left">
+            <div class="panel-heading" ng-hide="data.isReverse">
+                <b class="panel-title">{{:: "CREATE_VPG_SELECT_VMS.UNPROTECTED_VMS" | translate }}</b>
+            </div>
+            <div class="panel-body" ng-class="{potentialsVMsGrid_VCDMODE: isGridInVcdMode}">
+
+                <label class="count-vms-label">{{:: "CREATE_VPG_SELECT_VMS.UNPROTECTED_VMS" | translate }}:&nbsp;{{data.potentialVms.length}}</label>
+
+                <z-slick-grid ng-if="!isExpand" ng-hide="data.isReverse"
+                              data="data.potentialVms"
+                              custom-options="potentialColumnOptions"
+                              grid-id="potentialVMsGrid"
+                              grid="gridObj.potentialsGrid"
+                              selected-items="checkedPotentialVms"
+                              hide-view-options="true"
+                              class="availableVMsGridStyle"
+                              on-selection="gridSelectionChangeEvent">
+                </z-slick-grid>
+
+                <!-- grid definition when multi site panel closed -->
+                <z-slick-grid ng-if="isExpand" ng-hide="data.isReverse"
+                              data="data.potentialVms"
+                              custom-options="potentialColumnOptions"
+                              grid-id="potentialVMsGrid"
+                              grid="gridObj.potentialsGrid"
+                              selected-items="checkedPotentialVms"
+                              hide-view-options="true"
+                              class="availableVMsGridStyle all-protected-panel-expand-potentials-grid"
+                              on-selection="gridSelectionChangeEvent">
+                </z-slick-grid>
+
+                <p ng-show="data.isReverse">
+                    {{:: "CREATE_VPG_SELECT_VMS.REVERSE_DESC1" | translate}}
+                    <br>
+                    {{:: "CREATE_VPG_SELECT_VMS.REVERSE_DESC2" | translate}}
+                </p>
+            </div>
+        </div>
+
+        <!--  multi site panel closed -->
+        <div ng-include="partialViews[3].path"></div>
+
+        <!-- move VMs arrows -->
+        <div ng-hide="data.isReverse" class="vpg-vm-controls">
+            <button ng-click="handleRightButtonClick()" class="vm-add"
+                    ng-class="{'right-arrow-image-opacity': !isHasPotentialChecked}"
+                    ng-disabled="!isHasPotentialChecked">
+                <div class="right-arrow-image"></div>
+            </button>
+
+            <button ng-click="handleRemoveSelectedVmsClick()" class="vm-remove"
+                    ng-class="{'left-arrow-image-opacity': !isHasSelectedChecked}"
+                    ng-disabled="!isHasSelectedChecked">
+                <div class="left-arrow-image"></div>
+            </button>
+        </div>
+
+        <!-- right side of vc stuff -->
+        <div class="panel panel-default pull-right">
+            <div class="panel-heading">
+                <b class="panel-title">{{:: "CREATE_VPG_SELECT_VMS.SELECTED_VMS" | translate }}</b>
+            </div>
+            <div class="panel-body" ng-class="{potentialsVMsGrid_VCDMODE: isGridInVcdMode}">
+
+                <div class="btn-group z-white-btn-group pull-right">
+                    <button ng-disabled="!bootorderEnable"
+                            class="btn btn-link pull-right text-uppercase boot-order-link"
+                            ng-click="handleBootOrderClicked()">{{:: "CREATE_VPG_SELECT_VMS.BOOT_ORDER" | translate }}
+                    </button>
+                </div>
+
+                <z-slick-grid data="selectedVms"
+                              z-wizard-grid-validator="selectedVms"
+                              data-placement="top"
+                              selected-items="checkedSelectedVms"
+                              custom-options="selectedColumnOptions"
+                              lower-cog="true"
+                              hide-view-options="true"
+                              grid="gridObj.selectedVMsGrid"
+                              grid-id="selectedVMsGrid"
+                              class="selectVMsGridStyle"
+                              on-selection="gridSelectionChangeEvent"
+                              on-mouse-enter="selectedGridRowClick">
+                </z-slick-grid>
+
+            </div>
+            <div class="panel-footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <label class="col-xs-5">{{:: "CREATE_VPG_SELECT_VMS.VMS" | translate }}:&nbsp;{{selectedVms.length}}</label>
+                        <label class="col-xs-7">{{:: "CREATE_VPG_SELECT_VMS.TOTAL_VM_PROVISIONED_SIZE" | translate }}:&nbsp;{{ vcVMsSize | mbToStringConvertorFilter}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+{
+    "SUPPORT_TICKET": {
+        "TITLE": "Open Support Ticket",
+        "TICKET_INFO": "Ticket Information",
+        "SUBJECT": "Subject",
+        "TYPE": "Type",
+        "DESC": "Description",
+        "CONTACT": "Contact Information",
+        "SSP": "SSP Email Address",
+        "PROGRESS": "Submission Progress",
+        "COMMUNICATION_EXCEPTION": "Ticket submission failed because of connection problems to Zerto support server. To submit a ticket now, visit <a href='http://www.zerto.com/support' target='_blank'>Zerto support portal</a> and log your case there, or try again later.",
+        "SUCCESS": "Ticket <b>#{0}</b> was successfully created and sent to Zerto support. The team will process it and contact you. If you need to send logs to Zerto, follow the instructions <a href='/Help/index.html#page/AdministratorforZertoVirtualManager/CollectingLogs.html' target='_blank'>here</a>.",
+        "ABORTED": "The ticket was submitted because the submission started before the cancel button was pressed.",
+        "INVALID_EMAIL": "Case submission failed because the Support Portal user is not valid or not authorized. Please make sure you are using a valid support user. If you don't have a valid user please create one on <a href='https://www.zerto.com/myzerto/login-request' target='_blank'>Zerto login request</a> If you still have issue submitting a case please log a case in the <a href='https://www.zerto.com/myzerto/support/' target='_blank'>MyZerto Support Center</a>", 
+        "NO_LICENSE": "You do not have a valid license to submit a ticket. <a href='mailto:support@zerto.com'> Contact Zerto support.</a>",
+        "DEFAULT_ERROR": "An error has occurred during ticket submission. <a href='mailto:support@zerto.com'> Contact Zerto support.</a>",
+        "PROBLEM": "Problem",
+        "FEATURE_REQUEST": "Feature Request",
+        "QUESTION": "Question",
+        "CLOSE": "CLOSE",
+        "SUBMIT": "SUBMIT",
+        "CANCEL": "CANCEL",
+        "VERSION": "Version",
+        "SSP_MAIL_TOOLTIP": "Your email address contains invalid characters or empty"
+    }
+}

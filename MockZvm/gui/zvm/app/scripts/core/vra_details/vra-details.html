@@ -1,0 +1,118 @@
+<div class="z-tabbed-view vra-view non-symmetric-view">
+    <h3>{{'VRA_DETAILS.VRA' | translate}}{{ vraData.Config.Info.VraVM.DisplayName }}</h3>
+
+    <div class="btn-group z-white-btn-group">
+        <button type="button" class="btn btn-link" ng-click="edit()" ng-disabled="!vraData.State.IsEditEnabled">{{"VRA_DETAILS.ACTIONS.EDIT"|translate}}
+        </button>
+        <span>|</span>
+
+        <div class="btn-group">
+            <div class="dropdown zerto">
+                <button class="btn btn-link" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                    {{"MORE"|translate}}
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu dropdown-white pull-right vra-drop-down-menu" role="menu" aria-labelledby="dropdownMenu1">
+                    <li role="presentation"><a ng-disabled="!vraData.State.IsChangePasswordEnabled" help-icon="VRA_MORE_ACTION.CHANGE_HOST_PASSWORD" help-icon-position="left" role="menuitem" class="btn btn-link" tabindex="-1"
+                                               ng-click="changeHostPassword($event)">{{"VRA_DETAILS.ACTIONS.CHANGE_HOST_PASSWORD"
+                        | translate}}</a></li>
+                    <li role="presentation" class="vra-li-with-icon"><div><a role="menuitem" class="btn btn-link" tabindex="-1"
+                                               ng-click="changeVmRecoveryVRA()" ng-disabled="!vraData.State.IsChangeHostEnabled">{{"VRA_DETAILS.ACTIONS.CHANGE_VM_RECOVERY_VRA" | translate}}</a>
+                                            <span ng-if="vraData.State.IsChangeHostEnabled" class="help-icon" uib-tooltip="{{'VRA_DETAILS.ACTIONS.CHANGE_VM_RECOVERY_VRA_ENABLED' | translate}}"
+                                                  tooltip-placement="left" tooltip-append-to-body="true">?</span>
+                                            <span ng-if="!vraData.State.IsChangeHostEnabled" class="help-icon" uib-tooltip="{{'VRA_DETAILS.ACTIONS.CHANGE_VM_RECOVERY_VRA_DISABLED' | translate}}"
+                                                  tooltip-placement="left" tooltip-append-to-body="true">?</span></div>
+                    </li>
+                    <li role="presentation" class="vra-li-with-icon"><div><a role="menuitem" ng-disabled="!vraData.State.IsUpgradeEnabled" class="btn btn-link" tabindex="-1"
+                                               ng-click="upgrade($event)">{{"VRA_DETAILS.ACTIONS.UPGRADE" | translate}}</a>
+                                            <span class="help-icon" uib-tooltip="{{upgradeTooltip }}" tooltip-placement="right" tooltip-append-to-body="true">?</span></div>
+                    </li>
+                    <li role="presentation" class="divider"></li>
+                    <li role="presentation"><a help-icon="VRA_MORE_ACTION.UNINSTALL" role="menuitem" class="btn btn-link" tabindex="-1" ng-disabled="!isUninstallEnabled"
+                                               ng-click="uninstall()">{{"VRA_DETAILS.ACTIONS.UNINSTALL" |
+                        translate}}</a></li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    <div name="tabset">
+        <ul class="nav nav-tabs">
+            <li ng-class="{'active':tabs[0].active}"
+                ng-style="{'width':tabs[0].width}">
+                <a class="vra-status-tab vra-status-tab-state-{{vraData.State.GhostStatus.IsGhost ? 'ghost' : vraData.State.Status}}"
+                   ui-sref="{{tabs[0].route}}" border-arrow="up" ng-cloak="">
+                    <label>{{vraData.State.GhostStatus.IsGhost ? ('ENUM.VRA_NUM_STATUS.GHOST') : ('ENUM.VRA_NUM_STATUS.' + vraData.State.Status) |translate}}</label>
+                </a>
+
+                <div class="vra-status-tab-icon"></div>
+                <label class="vra-status-progress-value" ng-show="showProgress">{{ progress }}%</label>
+                <uib-progressbar value="progress" ng-show="showProgress"
+                             animate="true"
+                             class="vra-status-progress"></uib-progressbar>
+                <button class="btn btn-link btn-vra-repair" ng-click="repair($event)"
+                   ng-show="vraData.State.Status==enums.VraStatusVisual.InstallationError">{{"VRA_DETAILS.ACTIONS.REPAIR"
+                    | translate}}</button>
+                <button class="btn btn-link btn-vra-install" ng-click="install($event)"
+                   ng-show="vraData.State.Status==enums.VraStatusVisual.NotInstalled">{{"VRA_DETAILS.ACTIONS.INSTALL" |
+                    translate}}</button>
+                <button class="btn btn-link btn-vra-set" ng-click="set($event)"
+                   ng-show="vraData.State.Status==enums.VraStatusVisual.HostPasswordChanged">{{"VRA_DETAILS.ACTIONS.REPAIR"
+                    | translate}}</button>
+            </li>
+            <li ng-class="{'active':tabs[1].active}" ng-style="{'width':tabs[1].width}">
+                <a ui-sref="{{tabs[1].route}}" border-arrow="up">
+                    <label>{{tabs[1].title}}</label>
+
+                    <div class="tab-content pull-right">
+                        {{vpgsSelfDirection}}
+                        <span class="vra-direction vra-direction-self"></span>
+                    </div>
+                    <div class="tab-content pull-right">
+                        {{vpgsIncomingDirection}}
+                        <span class="vra-direction vra-direction-recovery"></span>
+                    </div>
+                    <div class="tab-content pull-right">
+                        {{vpgsOutgoingDirection}}
+                        <span class="vra-direction vra-direction-protected"></span>
+                    </div>
+                </a>
+            </li>
+            <li ng-class="{'active':tabs[2].active}" ng-style="{'width':tabs[2].width}">
+                <a ui-sref="{{tabs[2].route}}" border-arrow="up">
+                    <label>{{tabs[2].title}}</label>
+
+                    <div class="tab-content pull-right">
+                        {{vmsSelfDirection}}
+                        <span class="vra-direction vra-direction-self"></span>
+                    </div>
+                    <div class="tab-content pull-right">
+                        {{vmsIncomingDirection}}
+                        <span class="vra-direction vra-direction-recovery"></span>
+                    </div>
+                    <div class="tab-content pull-right">
+                        {{vmsOutgoingDirection}}
+                        <span class="vra-direction vra-direction-protected"></span>
+                    </div>
+                </a>
+            </li>
+            <li class="vra-parameters-tab" ng-class="{'active':tabs[3].active}" ng-style="{'width':tabs[3].width}">
+                <a ui-sref="{{tabs[3].route}}" border-arrow="up">
+                    <label>{{tabs[3].title}}</label>
+
+                    <div class="tab-content pull-right">
+                        <small>{{ "VRA_DETAILS.HOST" | translate }}</small>
+                        <p class="title">{{vraData.Summary.HostInfo.DisplayName}}</p>
+                    </div>
+                    <div class="tab-content pull-right">
+                        <small>{{ "VRA_DETAILS.PARAMETERS.GENERAL.VRA_VERSION" | translate }}</small>
+                        <p class="title">{{vraVersionInfo}}</p>
+                    </div>
+
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="z-tab-content" ui-view>
+    </div>
+</div>

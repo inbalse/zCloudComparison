@@ -1,0 +1,8 @@
+{
+    "RESTORE_EDIT_VOLUME": {
+        "TITLE": "Edit Selected Volumes",
+        "DATASTORE_RAW_DISK": "Datastore / Raw Disk",
+        "PATH": "Path",
+        "THIN": "Thin"
+    }
+}
