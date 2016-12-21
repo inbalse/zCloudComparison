@@ -74,7 +74,7 @@ angular.module('zvmApp.core')
 
 
                 var cellElement = $(e.target.parentElement)[0];
-                $('<div class="tco-container table-responsive"><h>Choose a DR provider</h> <table class="table table-hover"><thead><tr><th>Cloud</th><th>TCO</th><th>Save</th></tr></thead><tbody>'+rows+'</tbody></table><input type="button" onclick="" value="Migrate DR"></div>').appendTo($('body'));
+                $('<div class="tco-container table-responsive"><center style="margin-top:5px"><b>Choose a DR provider:</b></center> <table class="table table-hover"><thead><tr><th>Cloud</th><th>TCO</th><th>Save</th></tr></thead><tbody>'+rows+'</tbody></table><button style="margin-left:auto;margin-right:auto;display:block;margin-top:0%;margin-bottom:0%" type="button" onclick="">Migrate DR</button></div>').appendTo($('body'));
 
             }
 

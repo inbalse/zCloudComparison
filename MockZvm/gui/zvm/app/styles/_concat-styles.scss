@@ -745,6 +745,49 @@ textarea {
     }
 }
 
+.advanced-vcd-vm-replication-settings {
+
+    .modal-body {
+        background-color: white;
+        height: 500px;
+    }
+
+    .modal-dialog {
+        width: 860px;
+    }
+
+    .advancedVcdVmReplicationSettingsController {
+        height: 100%;
+    }
+
+    .advancedVcdVmsSettingsGridStyle {
+        display: block;
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    .advanced-vcd-grid-container{
+       height: 430px;
+    }
+
+    .step-desc {
+        padding: 10px;
+    }
+
+    h5 {
+        display: inline-block;
+    }
+
+    .control-label {
+        padding-top: 4px;
+    }
+
+    .z-white-btn-group {
+        z-index: 2;
+    }
+}
+
 .advanced-journal-settings{
    .modal-body{
      background-color: white;
@@ -753,6 +796,44 @@ textarea {
      height: 26px;
    }
  }
+
+.advanced-vm-replication-settings {
+
+    .modal-body {
+        background-color: white;
+        height: 500px;
+    }
+
+    .modal-dialog {
+        width: 860px;
+    }
+
+    .advancedVmsSettingsGridStyle {
+        display: block;
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    .step-desc {
+        padding: 10px;
+    }
+
+    h5 {
+        display: inline-block;
+    }
+
+    .control-label {
+        padding-top: 4px;
+    }
+
+    .z-white-btn-group {
+        z-index: 2;
+    }
+    .grid-container {
+        height: 415px;
+    }
+}
 
 .alerts-tooltip__container {
   width: 650px;
@@ -825,86 +906,151 @@ textarea {
   }
 }
 
-.advanced-vm-replication-settings {
-
-    .modal-body {
-        background-color: white;
-        height: 500px;
+.alerts-list-controller {
+    .chck-display-acknowledged {
+        position: absolute;
+        left: 386px;
+        top: 11px;
     }
 
-    .modal-dialog {
-        width: 860px;
-    }
-
-    .advancedVmsSettingsGridStyle {
-        display: block;
-        position: relative;
+    @mixin z-alerts-image-icon($bgImage) {
         width: 100%;
         height: 100%;
+        background-image: url($bgImage);
+        background-repeat: no-repeat;
+        background-position: center 4px;
+        background-color: transparent;
     }
 
-    .step-desc {
-        padding: 10px;
+    .alerts-list-level-status-0 {
+        @include z-alerts-image-icon("../assets/list_icons/warning-list-icon.png");
     }
 
-    h5 {
-        display: inline-block;
+    .alerts-list-level-status-1 {
+        @include z-alerts-image-icon("../assets/list_icons/error-list-icon.png");
     }
 
-    .control-label {
-        padding-top: 4px;
+    .alerts-list-level-status-2 {
+        @include z-alerts-image-icon("../assets/list_icons/error-list-icon.png");
+    }
+    .alerts-list-level-status-8 {
+        @include z-alerts-image-icon("../assets/list_icons/recovered_list_icon.png");
     }
 
-    .z-white-btn-group {
-        z-index: 2;
+    .alerts-list-dismiss-status-false {
+        @include z-alerts-image-icon("../assets/alerts/dismiss.png");
+        opacity: 0.4;
     }
-    .grid-container {
-        height: 415px;
+
+    .alerts-list-dismiss-status-true {
+        @include z-alerts-image-icon("../assets/alerts/dismiss.png");
+    }
+
+    .grid-view-selector {
+        display: none;
+    }
+
+    .description-ellipsis {
+        white-space: normal;
+        height: 100%;
+        overflow: hidden;
     }
 }
 
-.advanced-vcd-vm-replication-settings {
+.alerts-status-panel {
+  color: $brand-font-white;
+  pointer-events: none;
 
-    .modal-body {
-        background-color: white;
-        height: 500px;
+  .modal-dialog {
+    width: 450px;
+    pointer-events: all !important;
+    position: absolute;
+    bottom: 40px;
+    left: 5px;
+  }
+
+  .row {
+    background-color: $brand-grey-content-bg;
+    padding: 5px;
+    margin-bottom: 1px;
+    &:last-child {
+      margin-bottom: 0px;
+    }
+    @mixin alert-icon($path) {
+      width: 18px;
+      height: 18px;
+      margin: 12px 0px;
+      background-repeat: no-repeat;
+      background-image: url($path);
     }
 
-    .modal-dialog {
-        width: 860px;
+    .alert-icon-1 {
+      @include alert-icon('../assets/small_status_icons/error-alerts-list-icon.gif');
     }
 
-    .advancedVcdVmReplicationSettingsController {
-        height: 100%;
+    .alert-icon-0 {
+      @include alert-icon('../assets/small_status_icons/small_icon_warning.png');
     }
 
-    .advancedVcdVmsSettingsGridStyle {
-        display: block;
-        position: relative;
-        width: 100%;
-        height: 100%;
+    label {
+      width: 100%;
     }
+  }
 
-    .advanced-vcd-grid-container{
-       height: 430px;
-    }
+  a {
+    color: $z-panel-link-color;
+    font-size: 11px;
 
-    .step-desc {
-        padding: 10px;
+    &:hover {
+      color: $brand-font-white;
+      text-decoration: none;
     }
-
-    h5 {
-        display: inline-block;
-    }
-
-    .control-label {
-        padding-top: 4px;
-    }
-
-    .z-white-btn-group {
-        z-index: 2;
-    }
+  }
 }
+
+@mixin alertsStatusButtonClass($path, $cursorPointer) {
+  position: relative;
+  display: block;
+  width: 136px;
+  height: 44px;
+  background-image: url($path);
+  background-repeat: no-repeat;
+  background-position: 12px 10px;
+  border: solid 2px transparent;
+  cursor: $cursorPointer;
+  padding: 12px 12px 12px 45px;
+  &:hover {
+    background-color: #656c74;
+    border-color:#9da3af;
+    .alertsStatusExpandButton{
+      visibility: visible;
+    }
+  }
+  &:active {
+    background-color: #656c74;
+  }
+
+  .alertsStatusExpandButton {
+    position: absolute;
+    right: 6px;
+    top: 5px;
+    visibility: hidden;
+  }
+}
+
+.errorAlertsStatusButtonClass {
+  @include alertsStatusButtonClass('../assets/alerts_status_button/error.png', pointer);
+}
+
+.warningAlertsStatusButtonClass {
+  @include alertsStatusButtonClass('../assets/alerts_status_button/warning.png', pointer);
+}
+
+.normalAlertsStatusButtonClass {
+  @include alertsStatusButtonClass('../assets/alerts_status_button/normal.png', default);
+}
+
+
 
 .boot-order {
     .ui-tree {
@@ -989,150 +1135,122 @@ textarea {
 }
 
 
-.alerts-list-controller {
-    .chck-display-acknowledged {
-        position: absolute;
-        left: 386px;
-        top: 11px;
-    }
+.cards-filter-container {
 
-    @mixin z-alerts-image-icon($bgImage) {
-        width: 100%;
-        height: 100%;
-        background-image: url($bgImage);
-        background-repeat: no-repeat;
-        background-position: center 4px;
-        background-color: transparent;
-    }
-
-    .alerts-list-level-status-0 {
-        @include z-alerts-image-icon("../assets/list_icons/warning-list-icon.png");
-    }
-
-    .alerts-list-level-status-1 {
-        @include z-alerts-image-icon("../assets/list_icons/error-list-icon.png");
-    }
-
-    .alerts-list-level-status-2 {
-        @include z-alerts-image-icon("../assets/list_icons/error-list-icon.png");
-    }
-    .alerts-list-level-status-8 {
-        @include z-alerts-image-icon("../assets/list_icons/recovered_list_icon.png");
-    }
-
-    .alerts-list-dismiss-status-false {
-        @include z-alerts-image-icon("../assets/alerts/dismiss.png");
-        opacity: 0.4;
-    }
-
-    .alerts-list-dismiss-status-true {
-        @include z-alerts-image-icon("../assets/alerts/dismiss.png");
-    }
-
-    .grid-view-selector {
-        display: none;
-    }
-
-    .description-ellipsis {
-        white-space: normal;
-        height: 100%;
+    .cards-filter-toggle-wrapper {
         overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        width: auto;
+        padding-right: 20px;
+    }
+
+    .cards-filter-class-group-item {
+        display: block;
+        height: 18px;
+    }
+
+    .dropdown-menu {
+        border: 2px solid #616773;
+        padding: 0;
+    }
+
+    .slick-header-menu {
+        margin-top: 8px;
+        position: static;
+        border: none;
+        box-shadow: none;
+        padding-top: 20px;
+    }
+
+    .slick-grid-header-formatter {
+        width: 40px;
+    }
+
+    .cards-filter-name, .cards-active-filter__value {
+        white-space: nowrap;
+        line-height: 26px;
+        display: inline;
+    }
+
+    .cards-active-filter__content {
+        display: inline;
+
+    }
+
+    .card-selection-wrapper {
+        width: 30px;
+        height: 26px;
+        display: inline-block;
+        vertical-align: middle;
     }
 }
 
-@mixin alertsStatusButtonClass($path, $cursorPointer) {
-  position: relative;
-  display: block;
-  width: 136px;
-  height: 44px;
-  background-image: url($path);
-  background-repeat: no-repeat;
-  background-position: 12px 10px;
-  border: solid 2px transparent;
-  cursor: $cursorPointer;
-  padding: 12px 12px 12px 45px;
-  &:hover {
-    background-color: #656c74;
-    border-color:#9da3af;
-    .alertsStatusExpandButton{
-      visibility: visible;
-    }
-  }
-  &:active {
-    background-color: #656c74;
-  }
-
-  .alertsStatusExpandButton {
-    position: absolute;
-    right: 6px;
-    top: 5px;
-    visibility: hidden;
-  }
+.card-active-filter--category-item {
+    font-weight: bold;
 }
 
-.errorAlertsStatusButtonClass {
-  @include alertsStatusButtonClass('../assets/alerts_status_button/error.png', pointer);
-}
-
-.warningAlertsStatusButtonClass {
-  @include alertsStatusButtonClass('../assets/alerts_status_button/warning.png', pointer);
-}
-
-.normalAlertsStatusButtonClass {
-  @include alertsStatusButtonClass('../assets/alerts_status_button/normal.png', default);
-}
-
-
-
-.alerts-status-panel {
-  color: $brand-font-white;
-  pointer-events: none;
-
-  .modal-dialog {
-    width: 450px;
-    pointer-events: all !important;
-    position: absolute;
-    bottom: 40px;
-    left: 5px;
-  }
-
-  .row {
-    background-color: $brand-grey-content-bg;
-    padding: 5px;
-    margin-bottom: 1px;
-    &:last-child {
-      margin-bottom: 0px;
+.cards-filters-drop-down {
+    .ui-select-choices {
+        outline: none;
     }
-    @mixin alert-icon($path) {
-      width: 18px;
-      height: 18px;
-      margin: 12px 0px;
-      background-repeat: no-repeat;
-      background-image: url($path);
+    @media (max-height: 515px) {
+        .ui-select-choices {
+            max-height: 80px;
+            outline: none;
+        }
     }
 
-    .alert-icon-1 {
-      @include alert-icon('../assets/small_status_icons/error-alerts-list-icon.gif');
+    .ui-select-choices-group-label {
+        font-weight: bold;
+        font-size: 1.1em;
     }
 
-    .alert-icon-0 {
-      @include alert-icon('../assets/small_status_icons/small_icon_warning.png');
+    .ui-select-choices-group {
+        > ul {
+            padding: 2.5px 0px;
+
+            > li {
+                padding-left: 5px;
+            }
+        }
     }
 
-    label {
-      width: 100%;
+    .ui-select-dropdown.select2-drop.select2-with-searchbox.select2-drop-active {
+        border-top: 1px solid #7C8289;
+        padding-top: 4px;
+        outline: none;
     }
-  }
 
-  a {
-    color: $z-panel-link-color;
-    font-size: 11px;
+    a.ui-select-match {
+        cursor: default;
+        width: 70px;
 
-    &:hover {
-      color: $brand-font-white;
-      text-decoration: none;
+        span.select2-chosen {
+            display: none;
+        }
+
+        span.ui-select-toggle {
+            left: 45px;
+        }
+
+        border: none;
+        position: relative;
+        background: none;
+
+        &::before {
+            content: "ADD";
+            position: absolute;
+            left: 15px;
+            font-weight: bold;
+            color: #5581ae;
+        }
+
+        &:hover {
+            background: none;
+        }
     }
-  }
+
 }
 
 .cards-component__container {
@@ -1430,124 +1548,6 @@ textarea {
 }
 
 
-
-.cards-filter-container {
-
-    .cards-filter-toggle-wrapper {
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        width: auto;
-        padding-right: 20px;
-    }
-
-    .cards-filter-class-group-item {
-        display: block;
-        height: 18px;
-    }
-
-    .dropdown-menu {
-        border: 2px solid #616773;
-        padding: 0;
-    }
-
-    .slick-header-menu {
-        margin-top: 8px;
-        position: static;
-        border: none;
-        box-shadow: none;
-        padding-top: 20px;
-    }
-
-    .slick-grid-header-formatter {
-        width: 40px;
-    }
-
-    .cards-filter-name, .cards-active-filter__value {
-        white-space: nowrap;
-        line-height: 26px;
-        display: inline;
-    }
-
-    .cards-active-filter__content {
-        display: inline;
-
-    }
-
-    .card-selection-wrapper {
-        width: 30px;
-        height: 26px;
-        display: inline-block;
-        vertical-align: middle;
-    }
-}
-
-.card-active-filter--category-item {
-    font-weight: bold;
-}
-
-.cards-filters-drop-down {
-    .ui-select-choices {
-        outline: none;
-    }
-    @media (max-height: 515px) {
-        .ui-select-choices {
-            max-height: 80px;
-            outline: none;
-        }
-    }
-
-    .ui-select-choices-group-label {
-        font-weight: bold;
-        font-size: 1.1em;
-    }
-
-    .ui-select-choices-group {
-        > ul {
-            padding: 2.5px 0px;
-
-            > li {
-                padding-left: 5px;
-            }
-        }
-    }
-
-    .ui-select-dropdown.select2-drop.select2-with-searchbox.select2-drop-active {
-        border-top: 1px solid #7C8289;
-        padding-top: 4px;
-        outline: none;
-    }
-
-    a.ui-select-match {
-        cursor: default;
-        width: 70px;
-
-        span.select2-chosen {
-            display: none;
-        }
-
-        span.ui-select-toggle {
-            left: 45px;
-        }
-
-        border: none;
-        position: relative;
-        background: none;
-
-        &::before {
-            content: "ADD";
-            position: absolute;
-            left: 15px;
-            font-weight: bold;
-            color: #5581ae;
-        }
-
-        &:hover {
-            background: none;
-        }
-    }
-
-}
 
 .change-vm-recovery-vra {
 
@@ -2595,6 +2595,80 @@ z-heat-map {
 }
 
 
+.nic-edit-modal {
+  .modal-dialog {
+    width: 660px;
+  }
+
+  .modal-body{
+    background-color: white;
+    padding: 6px 10px;
+  }
+
+  .center-label{
+    text-align:center;
+  }
+
+  .info-label{
+      height: 200px;
+      width:100%;
+      text-align:center;
+      label{
+        width:380px;
+        padding-top:60px;
+      }
+  }
+
+  hr{
+    border-top:1px solid $gray-light;
+    margin-bottom: 4px;
+    margin-top:4px;
+  }
+
+  .step-desc{
+    padding: 10px 0 10px 0;
+  }
+}
+
+.nic-vcd-edit-modal {
+  .modal-dialog {
+    width: 660px;
+  }
+
+  .modal-body {
+    background-color: white;
+  }
+
+  .center-label {
+    text-align: center;
+  }
+
+  .info-label {
+    height: 200px;
+    width: 100%;
+    text-align: center;
+    label {
+      width: 380px;
+      padding-top: 60px;
+    }
+  }
+
+  hr {
+    border-top: 1px solid $gray-light;
+    margin-bottom: 4px;
+    margin-top: 4px;
+  }
+}
+.edit-vcd-vm{
+  .modal-body{
+    background-color: white;
+  }
+
+  .modal-dialog {
+    width: 590px;
+  }
+}
+
 .rep-edit-modal {
     .modal-dialog {
 
@@ -2885,80 +2959,6 @@ z-heat-map {
     }
 }
 
-.nic-edit-modal {
-  .modal-dialog {
-    width: 660px;
-  }
-
-  .modal-body{
-    background-color: white;
-    padding: 6px 10px;
-  }
-
-  .center-label{
-    text-align:center;
-  }
-
-  .info-label{
-      height: 200px;
-      width:100%;
-      text-align:center;
-      label{
-        width:380px;
-        padding-top:60px;
-      }
-  }
-
-  hr{
-    border-top:1px solid $gray-light;
-    margin-bottom: 4px;
-    margin-top:4px;
-  }
-
-  .step-desc{
-    padding: 10px 0 10px 0;
-  }
-}
-
-.edit-vcd-vm{
-  .modal-body{
-    background-color: white;
-  }
-
-  .modal-dialog {
-    width: 590px;
-  }
-}
-
-.nic-vcd-edit-modal {
-  .modal-dialog {
-    width: 660px;
-  }
-
-  .modal-body {
-    background-color: white;
-  }
-
-  .center-label {
-    text-align: center;
-  }
-
-  .info-label {
-    height: 200px;
-    width: 100%;
-    text-align: center;
-    label {
-      width: 380px;
-      padding-top: 60px;
-    }
-  }
-
-  hr {
-    border-top: 1px solid $gray-light;
-    margin-bottom: 4px;
-    margin-top: 4px;
-  }
-}
 .edit-vm{
   .modal-body{
     background-color: white;
@@ -3049,6 +3049,45 @@ z-heat-map {
     }
 }
 
+
+.file-browse {
+  .modal-body {
+    background-color: white;
+    height: 360px;
+  }
+
+  .modal-dialog {
+    width: 600px;
+  }
+
+  .glyphicon-remove-sign {
+    color: #ff6942
+  }
+
+  .glyphicon-folder-open, .glyphicon-folder-close {
+    color: #ff9c10
+  }
+
+  .tree-view-container{
+    max-height: 271px;
+    overflow-y: auto
+  }
+  .filename {
+    padding: 0 5px;
+    &.selected {
+      background-color: #ccc;
+    }
+
+    &.selectable:hover {
+      cursor: pointer;
+    }
+    &.disabled {
+      color: #aaa;
+      cursor: not-allowed;
+    }
+  }
+
+}
 
 .flr-download {
     .z-wizard-body {
@@ -3246,45 +3285,6 @@ z-heat-map {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-}
-
-.file-browse {
-  .modal-body {
-    background-color: white;
-    height: 360px;
-  }
-
-  .modal-dialog {
-    width: 600px;
-  }
-
-  .glyphicon-remove-sign {
-    color: #ff6942
-  }
-
-  .glyphicon-folder-open, .glyphicon-folder-close {
-    color: #ff9c10
-  }
-
-  .tree-view-container{
-    max-height: 271px;
-    overflow-y: auto
-  }
-  .filename {
-    padding: 0 5px;
-    &.selected {
-      background-color: #ccc;
-    }
-
-    &.selectable:hover {
-      cursor: pointer;
-    }
-    &.disabled {
-      color: #aaa;
-      cursor: not-allowed;
-    }
-  }
-
 }
 
 .flr-wizard {
@@ -4342,6 +4342,22 @@ $width: 550px;
     }
 }
 
+.remoteSupportModal {
+
+    .modal-body {
+        background-color: white;
+        height: 120px;
+    }
+
+    .modal-content {
+        width: 420px;
+    }
+
+    .old-settings {
+        padding-bottom: 15px;
+    }
+}
+
 .reports-container {
     $width: 100%;
     $reportsHeaderHeight: 92px;
@@ -4625,22 +4641,6 @@ $width: 550px;
     @include icon-base("../assets/list_icons/error-list-icon.png");
 }
 
-.remoteSupportModal {
-
-    .modal-body {
-        background-color: white;
-        height: 120px;
-    }
-
-    .modal-content {
-        width: 420px;
-    }
-
-    .old-settings {
-        padding-bottom: 15px;
-    }
-}
-
 .repository-list-controller {
   .connected-state-label{
     padding-left:24px;
@@ -4678,15 +4678,6 @@ $width: 550px;
   }
 }
 
-.restore-bulk-edit {
-  .modal-dialog {
-    width: 600px;
-  }
-  .modal-body {
-    background-color: white;
-    padding: 10px 10px;
-  }
-}
 .restore-edit-nic {
   .modal-dialog {
     width: 600px;
@@ -4696,19 +4687,22 @@ $width: 550px;
     padding: 10px 10px;
   }
 }
-.restore-volumes {
+.restore-bulk-edit {
   .modal-dialog {
-    width: 980px;
+    width: 600px;
   }
   .modal-body {
     background-color: white;
     padding: 10px 10px;
   }
-  .restore-volume-grid {
-    height: 300px;
+}
+.restore-edit-volume {
+  .modal-dialog {
+    width: 600px;
   }
-  .btn-group {
-    width: 100%;
+  .modal-body {
+    background-color: white;
+    padding: 10px 10px;
   }
 }
 .restore-nics {
@@ -4726,13 +4720,19 @@ $width: 550px;
     width: 100%;
   }
 }
-.restore-edit-volume {
+.restore-volumes {
   .modal-dialog {
-    width: 600px;
+    width: 980px;
   }
   .modal-body {
     background-color: white;
     padding: 10px 10px;
+  }
+  .restore-volume-grid {
+    height: 300px;
+  }
+  .btn-group {
+    width: 100%;
   }
 }
 .restore-wizard-style {
@@ -5238,6 +5238,48 @@ $width: 768px;
   }
 }
 
+.stop-failover-test {
+  .modal-body {
+    background-color: white;
+  }
+
+  .modal-dialog {
+    width: 400px;
+  }
+}
+$width: 550px;
+
+.supportTicketModal {
+  .modal-body{
+    background-color: white;
+    height:420px;
+  }
+
+  .modal-content{
+    width: $width;
+  }
+
+  .error-text{
+    background-color: #f2cfd0;
+    padding: 2px 2px 2px 2px;
+  }
+
+  .success-text{
+    background-color: #a1f27d;
+    padding: 2px 2px 2px 2px;
+  }
+
+  .supportTicketModal__tooltip-position{
+    top: 204px;
+    right: 55px;
+  }
+}
+
+.version-label{
+  position: absolute;
+  bottom: -50px;
+}
+
 .recent-tasks {
 
     @mixin base-vpg-status-tasks-progress {
@@ -5444,48 +5486,6 @@ $width: 768px;
     }
 }
 
-$width: 550px;
-
-.supportTicketModal {
-  .modal-body{
-    background-color: white;
-    height:420px;
-  }
-
-  .modal-content{
-    width: $width;
-  }
-
-  .error-text{
-    background-color: #f2cfd0;
-    padding: 2px 2px 2px 2px;
-  }
-
-  .success-text{
-    background-color: #a1f27d;
-    padding: 2px 2px 2px 2px;
-  }
-
-  .supportTicketModal__tooltip-position{
-    top: 204px;
-    right: 55px;
-  }
-}
-
-.version-label{
-  position: absolute;
-  bottom: -50px;
-}
-
-.stop-failover-test {
-  .modal-body {
-    background-color: white;
-  }
-
-  .modal-dialog {
-    width: 400px;
-  }
-}
 .tasks-list-controller {
     .float-tasks-list-button-right {
         margin: 0;
@@ -6577,61 +6577,6 @@ $width: 550px;
     }
 }
 
-.vra-edit-modal {
-    .modal-body {
-        background-color: white;
-    }
-
-    .modal-content {
-        width: 500px;
-    }
-
-    .checkbox-align {
-        margin-top: 4px;
-    }
-
-    .create-group-btn {
-        height: 24px;
-        padding: 2px 12px;
-    }
-
-    .vib-label {
-        padding: 0;
-        top: 3px;
-        right: 10px;
-    }
-
-    .password-label {
-        margin-top: 5px;
-        font-size: 10px;
-    }
-}
-
-
-.vra-install-modal{
-  .modal-body{
-    background-color: white;
-  }
-
-  .modal-content{
-    width: 500px;
-  }
-
-  .checkbox-align{
-    margin-top:4px;
-  }
-
-  .create-group-btn{
-    height: 24px;
-    padding: 2px 12px;
-  }
-
-  .amount-ram-label{
-      padding: 3px 0 0 9px;
-      position: absolute;
-  }
-}
-
 .vra-view {
     $title-height: 42px;
 
@@ -6960,6 +6905,61 @@ $width: 550px;
     .vra-drop-down-menu {
         min-width: 200px;
     }
+}
+
+.vra-edit-modal {
+    .modal-body {
+        background-color: white;
+    }
+
+    .modal-content {
+        width: 500px;
+    }
+
+    .checkbox-align {
+        margin-top: 4px;
+    }
+
+    .create-group-btn {
+        height: 24px;
+        padding: 2px 12px;
+    }
+
+    .vib-label {
+        padding: 0;
+        top: 3px;
+        right: 10px;
+    }
+
+    .password-label {
+        margin-top: 5px;
+        font-size: 10px;
+    }
+}
+
+
+.vra-install-modal{
+  .modal-body{
+    background-color: white;
+  }
+
+  .modal-content{
+    width: 500px;
+  }
+
+  .checkbox-align{
+    margin-top:4px;
+  }
+
+  .create-group-btn{
+    height: 24px;
+    padding: 2px 12px;
+  }
+
+  .amount-ram-label{
+      padding: 3px 0 0 9px;
+      position: absolute;
+  }
 }
 
 .vra-list-controller {
@@ -7696,7 +7696,7 @@ $width: 550px;
     z-index: 3000;
     border: 1px solid black;
     width: 300px;
-    height: 320px;
+    height: 340px;
     background-color: white;
 }
 
@@ -8519,55 +8519,6 @@ $width: 550px;
     }
 }
 
-.topology-tooltip {
-    position: fixed;
-    width: 180px;
-    border: 1px solid #53585f;
-    z-index: 100;
-    background-color: #fff;
-    user-select: text;
-    h4 {
-        position: relative;
-        width: 100%;
-        margin: 0;
-        color: #fff;
-        font-size: 12px;
-        padding: 10px 10px 10px 35px;
-        background: #53585f url('../assets/vpgs_details/topology/vm.png') scroll no-repeat 10px 8px;
-        word-break: break-all;
-    }
-    div {
-        width: 100%;
-        padding: 7px;
-        overflow-y: auto;
-        color: #333;
-    }
-    ul {
-        padding: 7px;
-        list-style-position: inside;
-        li {
-            margin-bottom: 5px;
-            list-style: none;
-            img {
-                display: block;
-                float: left;
-                margin: 2px 5px 0 0;
-            }
-            a {
-                float: right;
-            }
-        }
-    }
-    p {
-        padding: 7px;
-        border-bottom: 1px solid #53585f;
-        &:last-child {
-            border-bottom: 0;
-        }
-    }
-
-}
-
 .vpg-sites-svg {
     width: 100%;
     height: 100%;
@@ -8639,6 +8590,55 @@ $width: 550px;
     }
 }
 
+.topology-tooltip {
+    position: fixed;
+    width: 180px;
+    border: 1px solid #53585f;
+    z-index: 100;
+    background-color: #fff;
+    user-select: text;
+    h4 {
+        position: relative;
+        width: 100%;
+        margin: 0;
+        color: #fff;
+        font-size: 12px;
+        padding: 10px 10px 10px 35px;
+        background: #53585f url('../assets/vpgs_details/topology/vm.png') scroll no-repeat 10px 8px;
+        word-break: break-all;
+    }
+    div {
+        width: 100%;
+        padding: 7px;
+        overflow-y: auto;
+        color: #333;
+    }
+    ul {
+        padding: 7px;
+        list-style-position: inside;
+        li {
+            margin-bottom: 5px;
+            list-style: none;
+            img {
+                display: block;
+                float: left;
+                margin: 2px 5px 0 0;
+            }
+            a {
+                float: right;
+            }
+        }
+    }
+    p {
+        padding: 7px;
+        border-bottom: 1px solid #53585f;
+        &:last-child {
+            border-bottom: 0;
+        }
+    }
+
+}
+
 .z-group-span-pos {
   margin-left: 20px;
 }
@@ -8694,18 +8694,6 @@ $width: 550px;
   }
 }
 
-.date-input-group{
-
-  .input-group-btn{
-    position:relative;
-    right: 17px;
-  }
-
-  .dropdown-menu{
-    background-color: white;
-    border: none;
-  }
-}
 //TODO  refactoring needed
 //START Charts styles
 // d3 charts styles
@@ -8985,6 +8973,18 @@ z-area-chart {
 }
 //END Charts styles
 
+.date-input-group{
+
+  .input-group-btn{
+    position:relative;
+    right: 17px;
+  }
+
+  .dropdown-menu{
+    background-color: white;
+    border: none;
+  }
+}
 .info-cell{
   height:100%;
   width:100%;
@@ -9479,41 +9479,6 @@ div[z-stepper] {
     }
 }
 
-z-timepicker {
-    display: block;
-    text-align: center;
-    position: relative;
-    width: 100%;
-    height: 26px;
-
-    div:first-child,div:last-child {
-        text-align: center;
-        width: 45%;
-        height: 26px;
-
-    }
-
-    #minutes,#hours {
-        float: left;
-    }
-
-    #colons {
-        height: 26px;
-        width: 5px;
-        display: inline-block;
-        float: left;
-        margin-left: 1px;
-        margin-right: 1px;
-
-        div {
-            position: relative;
-            width: 5px;
-            float: left;
-            line-height: 26px;
-        }
-    }
-}
-
 $stepper-height: 26px;
 $stepper-button-bg: #4D4DFF;
 $stepper-value-bg: #eee;
@@ -9581,6 +9546,41 @@ div[z-time-input] {
             &:active {
                 background-color: #808080;
             }
+        }
+    }
+}
+
+z-timepicker {
+    display: block;
+    text-align: center;
+    position: relative;
+    width: 100%;
+    height: 26px;
+
+    div:first-child,div:last-child {
+        text-align: center;
+        width: 45%;
+        height: 26px;
+
+    }
+
+    #minutes,#hours {
+        float: left;
+    }
+
+    #colons {
+        height: 26px;
+        width: 5px;
+        display: inline-block;
+        float: left;
+        margin-left: 1px;
+        margin-right: 1px;
+
+        div {
+            position: relative;
+            width: 5px;
+            float: left;
+            line-height: 26px;
         }
     }
 }
@@ -9946,33 +9946,6 @@ z-wizard {
     cursor: default;
   }
 }
-.z-inline-dropdown {
-    position: absolute;
-    right: 0;
-    top: 0;
-    z-index: 3;
-
-    .z-inline-dropdown__container {
-        height: 25px;
-    }
-
-    .z-inline-dropdown__ellipsis {
-        overflow: hidden;
-        word-break: break-all;
-        display: block;
-        text-overflow: ellipsis;
-    }
-}
-
-.z-inline-dropdown__loading-indicator{
-    height: 100%;
-    top: 3px;
-    position: relative;
-    background-repeat: no-repeat;
-    background-image: url("../assets/tasks/progress_icon.gif");
-}
-
-
 .edit-columns-modal {
   .modal-dialog{
     width: 530px;
@@ -10012,6 +9985,33 @@ z-wizard {
     background-color: #ffffff;
   }
 }
+
+.z-inline-dropdown {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 3;
+
+    .z-inline-dropdown__container {
+        height: 25px;
+    }
+
+    .z-inline-dropdown__ellipsis {
+        overflow: hidden;
+        word-break: break-all;
+        display: block;
+        text-overflow: ellipsis;
+    }
+}
+
+.z-inline-dropdown__loading-indicator{
+    height: 100%;
+    top: 3px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-image: url("../assets/tasks/progress_icon.gif");
+}
+
 
 .entities-formatter {
     width: 100%;
