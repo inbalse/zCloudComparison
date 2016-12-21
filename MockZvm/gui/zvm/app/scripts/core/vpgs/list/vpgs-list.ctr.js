@@ -53,8 +53,14 @@ angular.module('zvmApp.core')
 
         personalQuerySubscriber.promise.then(null, null, runPersonalQuery);
 
-        vpgsListCtrl.OnMigrateVpg = function(a){
-            console.log();
+        vpgsListCtrl.OnMigrateVpg = function(a,vpgId){
+
+            var rows = a['toElement']['parentElement']['children'][1]['children'][1]['children'];
+            for(var a=0; a<rows.length; a++) {
+                var row = rows[a];
+                var rowChecked = row['children'][0]['childNodes'][0]['checked'];
+                var cloudName = row['children'][0]['childNodes'][1]['innerText'];
+            }
         }
 
 
@@ -91,13 +97,11 @@ angular.module('zvmApp.core')
                 });
 
                 $('.migrate-dr').on('click', function(a){
-                    vpgsListCtrl.OnMigrateVpg(a)
+                    vpgsListCtrl.OnMigrateVpg(a,rowItem['id']);
+                    $( ".tco-container" ).remove();
                 });
 
             }
-
-
-
 
             if (e.target.value) {
                 e.preventDefault();
