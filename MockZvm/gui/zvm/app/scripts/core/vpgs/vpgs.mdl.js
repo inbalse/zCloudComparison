@@ -144,14 +144,30 @@ angular.module('zvmApp.models')
         };
 
         vpgsModel.setTcoObject = function (item) {
-            item.tco = {realTco: "$300k",
-                bestTco: "$180k",
+			
+			var actualTco = Math.round(250+0.1*item.UsedStorageInMB);
+			var AWSTco = Math.round(100 +  0.0295*item.UsedStorageInMB);
+			var azureTco = Math.round(70 + 0.05 *item.UsedStorageInMB);
+			var iLandTco = Math.round(150+ 0.7*item.UsedStorageInMB);
+			var NavisiteTco = Math.round(155+ 0.8*item.UsedStorageInMB);
+			var Peak10Tco = Math.round(160+ 0.9*item.UsedStorageInMB);
+			
+			var AWSSave = actualTco - AWSTco;
+			var azureSave = actualTco - azureTco;
+			var iLandSave = actualTco - iLandTco;
+			var NavisiteSave = actualTco - NavisiteTco;
+			var Peak10Save = actualTco - Peak10Tco;
+			
+			var bestSave = Math.max(AWSSave, azureSave, iLandSave, NavisiteSave, Peak10Save);
+			
+            item.tco = {realTco: "$"+actualTco+"k",
+                bestSave: "$"+bestSave+"k",
                 alternativeTco:[
-                    {cloud: 'Azure',tco:'$180k',save:'$120k'},
-                    {cloud: 'AWS', tco:'$150k',save:'$150k'},
-                    {cloud: 'iLand', tco:'$120k',save:'$180k'},
-                    {cloud: 'NaviSite', tco:'$110k',save:'$190k'},
-                    {cloud: 'Peak10', tco:'$140k',save:'$160k'}
+                    {cloud: 'Azure',tco:'$'+azureTco+'k',save:'$'+azureSave+'k',saveNum:azureSave},
+                    {cloud: 'AWS', tco:'$'+AWSTco+'k',save:'$'+AWSSave+'k',saveNum:AWSSave},
+                    {cloud: 'iLand', tco:'$'+iLandTco+'k',save:'$'+iLandSave+'k',saveNum:iLandSave},
+                    {cloud: 'NaviSite', tco:'$'+NavisiteTco+'k',save:'$'+NavisiteSave+'k',saveNum:NavisiteSave},
+                    {cloud: 'Peak10', tco:'$'+Peak10Tco+'k',save:'$'+Peak10Save+'k',saveNum:Peak10Save}
                 ]};
         };
 
@@ -293,7 +309,7 @@ angular.module('zvmApp.models')
                     views: ['']
                 },
                 {
-                    name: 'TCO',
+                    name: 'Monthly TCO',
                     field: 'tco',
                     views: ['General'],
                     formatter: $filter('tcoFormatter')

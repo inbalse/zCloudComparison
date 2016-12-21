@@ -63,15 +63,14 @@ angular.module('zvmApp.core')
             }
         }
 
-
         vpgsListCtrl.rowClick = function (e, row, cell, grid) {
             if (cell === grid.getColumnIndex('tco')) {
 
                 var dataView = grid.getData();
-                var rowItem = dataView.getItem(row);
                 var tco = dataView.getItem(row)['tco'];
                 var rows = '';
 
+				tco.alternativeTco.sort(function(a,b) {return a.saveNum < b.saveNum});
                 for(var a=0; a<tco.alternativeTco.length; a++) {
                     var rowCloudProviderLogo ='';
                     if (tco.alternativeTco[a].cloud == 'AWS') rowCloudProviderLogo = '<img src="assets/list_icons/aws-icon-trans.png">';
@@ -80,17 +79,19 @@ angular.module('zvmApp.core')
                     else if (tco.alternativeTco[a].cloud == 'NaviSite') rowCloudProviderLogo = '<img src="assets/list_icons/navisite.png">';
                     else if (tco.alternativeTco[a].cloud == 'Peak10') rowCloudProviderLogo = '<img src="assets/list_icons/peak10.png">';
 
-                    rows += '<tr><td><input type="radio" name="radios" id="radio'+a+'" /><label for="radio'+a+'">'+rowCloudProviderLogo + tco.alternativeTco[a].cloud + '</label></td><td>' + tco.alternativeTco[a].tco + '</td><td>' + tco.alternativeTco[a].save + '</td></tr>';
+                    rows += '<tr><td><input type="radio" name="radios" id="radio'+a+'" /><label for="radio'+a+'">'+rowCloudProviderLogo + tco.alternativeTco[a].cloud + '</label></td><td>' + tco.alternativeTco[a].tco + '</td><td style="color:green"><b>' + tco.alternativeTco[a].save + '</b></td></tr>';
                 }
 
 
                 var cellElement = $(e.target.parentElement)[0];
-                $('<div class="tco-container table-responsive"><h>Choose a DR provider</h>' +
-                    ' <table class="table table-hover">' +
-                    '<thead><tr><th>Cloud</th><th>TCO</th><th>Save</th></tr></thead>' +
-                    '<tbody>'+rows+'</tbody></table>'+
-                    '<button class="migrate-dr">Migrate DR</button>'+
-                    '<button class="migrate-dr-close">close</button></div>').appendTo($('body'));
+                $('<div class="tco-container table-responsive"><center style="margin-top:5px"><b>Choose a DR provider:</b></center> <table class="table table-hover"><thead><tr><th>Cloud</th><th>TCO</th><th>Save</th></tr></thead><tbody>'+rows+'</tbody></table><button style="margin-left:auto;margin-right:auto;display:block;margin-top:0%;margin-bottom:0%" type="button" onclick="">Migrate DR</button></div>').appendTo($('body'));
+
+                //$('<div class="tco-container table-responsive"><h>Choose a DR provider</h>' +
+                //    ' <table class="table table-hover">' +
+                 //   '<thead><tr><th>Cloud</th><th>TCO</th><th>Save</th></tr></thead>' +
+                 //   '<tbody>'+rows+'</tbody></table>'+
+                 //   '<button class="migrate-dr">Migrate DR</button>'+
+                 //   '<button class="migrate-dr-close">close</button></div>').appendTo($('body'));
 
                 $('.migrate-dr-close').on('click', function() {
                     $( ".tco-container" ).remove();
@@ -100,6 +101,8 @@ angular.module('zvmApp.core')
                     vpgsListCtrl.OnMigrateVpg(a,rowItem['id']);
                     $( ".tco-container" ).remove();
                 });
+
+
 
             }
 
