@@ -309,7 +309,7 @@ angular.module('zvmApp.models')
                     views: ['']
                 },
                 {
-                    name: 'TCO',
+                    name: 'Monthly TCO',
                     field: 'tco',
                     views: ['General'],
                     formatter: $filter('tcoFormatter')
