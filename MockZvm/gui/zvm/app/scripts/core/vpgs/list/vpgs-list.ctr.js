@@ -53,10 +53,16 @@ angular.module('zvmApp.core')
 
         personalQuerySubscriber.promise.then(null, null, runPersonalQuery);
 
+        vpgsListCtrl.OnMigrateVpg = function(a){
+            console.log();
+        }
+
+
         vpgsListCtrl.rowClick = function (e, row, cell, grid) {
             if (cell === grid.getColumnIndex('tco')) {
 
                 var dataView = grid.getData();
+                var rowItem = dataView.getItem(row);
                 var tco = dataView.getItem(row)['tco'];
                 var rows = '';
 
@@ -73,7 +79,20 @@ angular.module('zvmApp.core')
 
 
                 var cellElement = $(e.target.parentElement)[0];
-                $('<div class="tco-container table-responsive"><h>Choose a DR provider</h> <table class="table table-hover"><thead><tr><th>Cloud</th><th>TCO</th><th>Save</th></tr></thead><tbody>'+rows+'</tbody></table><input type="button" onclick="" value="Migrate DR"></div>').appendTo($('body'));
+                $('<div class="tco-container table-responsive"><h>Choose a DR provider</h>' +
+                    ' <table class="table table-hover">' +
+                    '<thead><tr><th>Cloud</th><th>TCO</th><th>Save</th></tr></thead>' +
+                    '<tbody>'+rows+'</tbody></table>'+
+                    '<button class="migrate-dr">Migrate DR</button>'+
+                    '<button class="migrate-dr-close">close</button></div>').appendTo($('body'));
+
+                $('.migrate-dr-close').on('click', function() {
+                    $( ".tco-container" ).remove();
+                });
+
+                $('.migrate-dr').on('click', function(a){
+                    vpgsListCtrl.OnMigrateVpg(a)
+                });
 
             }
 

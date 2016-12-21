@@ -402,6 +402,58 @@ textarea {
     margin-right: -15px;
 }
 
+.advanced-journal-settings{
+   .modal-body{
+     background-color: white;
+   }
+   .journalHistoryStepper{
+     height: 26px;
+   }
+ }
+
+.advanced-vcd-vm-replication-settings {
+
+    .modal-body {
+        background-color: white;
+        height: 500px;
+    }
+
+    .modal-dialog {
+        width: 860px;
+    }
+
+    .advancedVcdVmReplicationSettingsController {
+        height: 100%;
+    }
+
+    .advancedVcdVmsSettingsGridStyle {
+        display: block;
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    .advanced-vcd-grid-container{
+       height: 430px;
+    }
+
+    .step-desc {
+        padding: 10px;
+    }
+
+    h5 {
+        display: inline-block;
+    }
+
+    .control-label {
+        padding-top: 4px;
+    }
+
+    .z-white-btn-group {
+        z-index: 2;
+    }
+}
+
 @mixin actionsButtonBaseClass($bgColor, $border) {
     height: 44px;
     width: 120px;
@@ -745,96 +797,6 @@ textarea {
     }
 }
 
-.advanced-journal-settings{
-   .modal-body{
-     background-color: white;
-   }
-   .journalHistoryStepper{
-     height: 26px;
-   }
- }
-
-.advanced-vcd-vm-replication-settings {
-
-    .modal-body {
-        background-color: white;
-        height: 500px;
-    }
-
-    .modal-dialog {
-        width: 860px;
-    }
-
-    .advancedVcdVmReplicationSettingsController {
-        height: 100%;
-    }
-
-    .advancedVcdVmsSettingsGridStyle {
-        display: block;
-        position: relative;
-        width: 100%;
-        height: 100%;
-    }
-
-    .advanced-vcd-grid-container{
-       height: 430px;
-    }
-
-    .step-desc {
-        padding: 10px;
-    }
-
-    h5 {
-        display: inline-block;
-    }
-
-    .control-label {
-        padding-top: 4px;
-    }
-
-    .z-white-btn-group {
-        z-index: 2;
-    }
-}
-
-.advanced-vm-replication-settings {
-
-    .modal-body {
-        background-color: white;
-        height: 500px;
-    }
-
-    .modal-dialog {
-        width: 860px;
-    }
-
-    .advancedVmsSettingsGridStyle {
-        display: block;
-        position: relative;
-        width: 100%;
-        height: 100%;
-    }
-
-    .step-desc {
-        padding: 10px;
-    }
-
-    h5 {
-        display: inline-block;
-    }
-
-    .control-label {
-        padding-top: 4px;
-    }
-
-    .z-white-btn-group {
-        z-index: 2;
-    }
-    .grid-container {
-        height: 415px;
-    }
-}
-
 .alerts-tooltip__container {
   width: 650px;
   max-height: 50%;
@@ -904,6 +866,44 @@ textarea {
     border-top: 1px solid #DEE0E2;
     padding-left: 18px;
   }
+}
+
+.advanced-vm-replication-settings {
+
+    .modal-body {
+        background-color: white;
+        height: 500px;
+    }
+
+    .modal-dialog {
+        width: 860px;
+    }
+
+    .advancedVmsSettingsGridStyle {
+        display: block;
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    .step-desc {
+        padding: 10px;
+    }
+
+    h5 {
+        display: inline-block;
+    }
+
+    .control-label {
+        padding-top: 4px;
+    }
+
+    .z-white-btn-group {
+        z-index: 2;
+    }
+    .grid-container {
+        height: 415px;
+    }
 }
 
 .alerts-list-controller {
@@ -1051,6 +1051,89 @@ textarea {
     }
   }
 }
+
+.boot-order {
+    .ui-tree {
+        height: 280px
+    }
+    .angular-ui-tree-nodes .angular-ui-tree-nodes {
+        padding-left: 40px;
+        padding-right: 26px;
+    }
+    .modal-body {
+        background-color: white;
+        height: 360px;
+        padding: 10px 10px 32px 10px;
+    }
+    .modal-dialog {
+        width: 600px;
+    }
+    .btn-add {
+        margin-bottom: 5px;
+    }
+    .boot-order-root > ul > li {
+        & > div {
+            min-height: 30px;
+        }
+        & > ul {
+            padding-bottom: 5px;
+        }
+    }
+    .boot-order-controls {
+        width: 200px;
+        float: right;
+        text-align: left;
+    }
+
+    .boot-order-icon {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        top: 4px;
+        position: relative;
+        &:hover {
+            cursor: pointer;
+        }
+        &.boot-order-remove {
+            background-image: url('../assets/tree_view/delete.png');
+        }
+        &.boot-order-edit {
+            background-image: url('../assets/tree_view/edit.png');
+        }
+        &.boot-order-vm {
+            background-image: url('../assets/tree_view/vm.png');
+        }
+    }
+
+    .boot-order-edit-text {
+        width: 40%;
+    }
+    .boot-order-save {
+        width: 50px;
+    }
+
+    .boot-order-delay {
+        width: 75px;
+        margin-left: 5px;
+    }
+
+    label {
+        max-width: 200px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        vertical-align: middle;
+    }
+    .boot-order-sec-label {
+        margin: 0 0 0 8px;
+    }
+
+    .step-desc {
+        padding: 10px 0 10px 0;
+        margin: 0;
+    }
+}
+
 
 .cards-component__container {
     position: relative;
@@ -1348,56 +1431,6 @@ textarea {
 
 
 
-.change-vm-recovery-vra {
-
-  .modal-body {
-    background-color: white;
-    max-height: 500px;
-    min-height: 250px;
-      padding: 0 10px;
-  }
-  .modal-dialog {
-    width: 860px;
-  }
-
-  ul {
-    max-height: 90px;
-    overflow-y: auto;
-    min-height: 20px;
-  }
-
-  h5 {
-    display: inline-block;
-  }
-
-  .notification-style {
-    list-style: none;
-  }
-
-  .grid-container{
-      height: 158px;
-      margin-bottom: 30px;
-  }
-  .title-class {
-    text-align: center;
-  }
-
-  .notification-icon {
-    width: 16px;
-    height: 16px;
-    margin-right: 10px;
-    background-image: url('../assets/list_icons/warning-list-icon.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    display: inline-block;
-    float: left;
-  }
-}
-
-.select2-results .underline-text .select2-result-label{
-  text-decoration:underline;
-}
-
 .cards-filter-container {
 
     .cards-filter-toggle-wrapper {
@@ -1516,89 +1549,62 @@ textarea {
 
 }
 
-.boot-order {
-    .ui-tree {
-        height: 280px
-    }
-    .angular-ui-tree-nodes .angular-ui-tree-nodes {
-        padding-left: 40px;
-        padding-right: 26px;
-    }
-    .modal-body {
-        background-color: white;
-        height: 360px;
-        padding: 10px 10px 32px 10px;
-    }
-    .modal-dialog {
-        width: 600px;
-    }
-    .btn-add {
-        margin-bottom: 5px;
-    }
-    .boot-order-root > ul > li {
-        & > div {
-            min-height: 30px;
-        }
-        & > ul {
-            padding-bottom: 5px;
-        }
-    }
-    .boot-order-controls {
-        width: 200px;
-        float: right;
-        text-align: left;
-    }
+.change-vm-recovery-vra {
 
-    .boot-order-icon {
-        display: inline-block;
-        width: 16px;
-        height: 16px;
-        top: 4px;
-        position: relative;
-        &:hover {
-            cursor: pointer;
-        }
-        &.boot-order-remove {
-            background-image: url('../assets/tree_view/delete.png');
-        }
-        &.boot-order-edit {
-            background-image: url('../assets/tree_view/edit.png');
-        }
-        &.boot-order-vm {
-            background-image: url('../assets/tree_view/vm.png');
-        }
-    }
+  .modal-body {
+    background-color: white;
+    max-height: 500px;
+    min-height: 250px;
+      padding: 0 10px;
+  }
+  .modal-dialog {
+    width: 860px;
+  }
 
-    .boot-order-edit-text {
-        width: 40%;
-    }
-    .boot-order-save {
-        width: 50px;
-    }
+  ul {
+    max-height: 90px;
+    overflow-y: auto;
+    min-height: 20px;
+  }
 
-    .boot-order-delay {
-        width: 75px;
-        margin-left: 5px;
-    }
+  h5 {
+    display: inline-block;
+  }
 
-    label {
-        max-width: 200px;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
-        vertical-align: middle;
-    }
-    .boot-order-sec-label {
-        margin: 0 0 0 8px;
-    }
+  .notification-style {
+    list-style: none;
+  }
 
-    .step-desc {
-        padding: 10px 0 10px 0;
-        margin: 0;
-    }
+  .grid-container{
+      height: 158px;
+      margin-bottom: 30px;
+  }
+  .title-class {
+    text-align: center;
+  }
+
+  .notification-icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+    background-image: url('../assets/list_icons/warning-list-icon.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    float: left;
+  }
 }
 
+.select2-results .underline-text .select2-result-label{
+  text-decoration:underline;
+}
 
+.clone-vpg {
+  .modal-body {
+    background-color: white;
+    padding-bottom: 5px;
+  }
+}
 .commit-vpg {
 
   .modal-content{
@@ -1704,12 +1710,6 @@ $create-checkpoint-width: 688px;
     }
 }
 
-.clone-vpg {
-  .modal-body {
-    background-color: white;
-    padding-bottom: 5px;
-  }
-}
 
 .configure-paired-site-routing {
     .modal-body {
@@ -2236,18 +2236,6 @@ z-heat-map {
 }
 
 
-.datastore-controller {
-    padding-bottom: 30px;
-    .chckShowZerto {
-        position: absolute;
-        left: 386px;
-        top: 11px;
-    }
-}
-
-
-
-
 .create-vpg-style {
 
     .tooltip-invalid {
@@ -2595,70 +2583,18 @@ z-heat-map {
     background-image: url("../assets/list_icons/priority-high.png");
 }
 
-.nic-edit-modal {
-  .modal-dialog {
-    width: 660px;
-  }
-
-  .modal-body{
-    background-color: white;
-    padding: 6px 10px;
-  }
-
-  .center-label{
-    text-align:center;
-  }
-
-  .info-label{
-      height: 200px;
-      width:100%;
-      text-align:center;
-      label{
-        width:380px;
-        padding-top:60px;
-      }
-  }
-
-  hr{
-    border-top:1px solid $gray-light;
-    margin-bottom: 4px;
-    margin-top:4px;
-  }
-
-  .step-desc{
-    padding: 10px 0 10px 0;
-  }
-}
-
-.nic-vcd-edit-modal {
-  .modal-dialog {
-    width: 660px;
-  }
-
-  .modal-body {
-    background-color: white;
-  }
-
-  .center-label {
-    text-align: center;
-  }
-
-  .info-label {
-    height: 200px;
-    width: 100%;
-    text-align: center;
-    label {
-      width: 380px;
-      padding-top: 60px;
+.datastore-controller {
+    padding-bottom: 30px;
+    .chckShowZerto {
+        position: absolute;
+        left: 386px;
+        top: 11px;
     }
-  }
-
-  hr {
-    border-top: 1px solid $gray-light;
-    margin-bottom: 4px;
-    margin-top: 4px;
-  }
 }
+
+
+
+
 .rep-edit-modal {
     .modal-dialog {
 
@@ -2949,6 +2885,70 @@ z-heat-map {
     }
 }
 
+.nic-edit-modal {
+  .modal-dialog {
+    width: 660px;
+  }
+
+  .modal-body{
+    background-color: white;
+    padding: 6px 10px;
+  }
+
+  .center-label{
+    text-align:center;
+  }
+
+  .info-label{
+      height: 200px;
+      width:100%;
+      text-align:center;
+      label{
+        width:380px;
+        padding-top:60px;
+      }
+  }
+
+  hr{
+    border-top:1px solid $gray-light;
+    margin-bottom: 4px;
+    margin-top:4px;
+  }
+
+  .step-desc{
+    padding: 10px 0 10px 0;
+  }
+}
+
+.nic-vcd-edit-modal {
+  .modal-dialog {
+    width: 660px;
+  }
+
+  .modal-body {
+    background-color: white;
+  }
+
+  .center-label {
+    text-align: center;
+  }
+
+  .info-label {
+    height: 200px;
+    width: 100%;
+    text-align: center;
+    label {
+      width: 380px;
+      padding-top: 60px;
+    }
+  }
+
+  hr {
+    border-top: 1px solid $gray-light;
+    margin-bottom: 4px;
+    margin-top: 4px;
+  }
+}
 .edit-vcd-vm{
   .modal-body{
     background-color: white;
@@ -2967,6 +2967,16 @@ z-heat-map {
   .modal-dialog {
     width: 590px;
   }
+}
+
+.edit-vm-folder{
+    .modal-body{
+        background-color: white;
+    }
+
+    .modal-dialog {
+        width: 500px;
+    }
 }
 
 .edit-volumes{
@@ -3039,16 +3049,6 @@ z-heat-map {
     }
 }
 
-
-.edit-vm-folder{
-    .modal-body{
-        background-color: white;
-    }
-
-    .modal-dialog {
-        width: 500px;
-    }
-}
 
 .file-browse {
   .modal-body {
@@ -3515,27 +3515,6 @@ z-heat-map {
   }
 }
 
-.base-static-window.login {
-    .login-form {
-        width: 400px;
-        position: absolute;
-        left: 70px;
-        top: 125px;
-
-        .z-checkbox-fix {
-            padding-left: 11px;
-        }
-
-        .help-icon {
-            color: #BBBBBB;
-            border-color: #BBBBBB;
-        }
-    }
-
-}
-
-
-
 #mainViewController {
     width: 100%;
     height: 100%;
@@ -3935,6 +3914,27 @@ z-heat-map {
     padding-top: 80px;
 }
 
+.base-static-window.login {
+    .login-form {
+        width: 400px;
+        position: absolute;
+        left: 70px;
+        top: 125px;
+
+        .z-checkbox-fix {
+            padding-left: 11px;
+        }
+
+        .help-icon {
+            color: #BBBBBB;
+            border-color: #BBBBBB;
+        }
+    }
+
+}
+
+
+
 .monitoring {
 
     .active .tab-content {
@@ -4054,6 +4054,17 @@ z-heat-map {
     }
 }
 
+$width: 550px;
+
+.pairSitesStyle {
+  .modal-dialog{
+    width: $width;
+  }
+
+  .modal-body{
+    background-color: white;
+  }
+}
 .public-cloud-vm-settings {
   .modal-body {
     background-color: white;
@@ -4087,17 +4098,6 @@ z-heat-map {
   }
 }
 
-$width: 550px;
-
-.pairSitesStyle {
-  .modal-dialog{
-    width: $width;
-  }
-
-  .modal-body{
-    background-color: white;
-  }
-}
 
 .v-sphere-view {
     padding: 20px 0;
@@ -4720,21 +4720,6 @@ $width: 550px;
     width: 100%;
   }
 }
-.restore-volumes {
-  .modal-dialog {
-    width: 980px;
-  }
-  .modal-body {
-    background-color: white;
-    padding: 10px 10px;
-  }
-  .restore-volume-grid {
-    height: 300px;
-  }
-  .btn-group {
-    width: 100%;
-  }
-}
 .restore-wizard-style {
     .z-wizard-body {
         padding-top: 15px;
@@ -4810,6 +4795,21 @@ $width: 550px;
 
 
 
+.restore-volumes {
+  .modal-dialog {
+    width: 980px;
+  }
+  .modal-body {
+    background-color: white;
+    padding: 10px 10px;
+  }
+  .restore-volume-grid {
+    height: 300px;
+  }
+  .btn-group {
+    width: 100%;
+  }
+}
 .select-vpg-popup {
     .modal-dialog {
         width: 800px;
@@ -4853,62 +4853,6 @@ $width: 550px;
             font-size: 10px;
         }
     }
-}
-
-@mixin siteSettingsButtonBase($path) {
-  background-image: url($path);
-  width: 37px;
-  height: 29px;
-}
-
-.siteSettingsButtonUp {
-  @include siteSettingsButtonBase('../assets/menuUp.png');
-}
-
-.siteSettingsButtonSelected {
-  @include siteSettingsButtonBase('../assets/menuSelected.png');
-}
-
-.siteSettingsMenu {
-  -webkit-transition: all linear 0.5s;
-  -moz-transition: all linear 0.5s;
-  -o-transition: all linear 0.5s;
-  transition: all linear 0.5s;
-  display: none;
-
-  .z-arrow {
-    width: 10px;
-    height: 10px;
-    right: 10%;
-    margin-right: -5px;
-    top: -7px;
-  }
-}
-
-.siteSettingsMenu.ng-hide-add, .siteSettingsMenu.ng-hide-remove {
-  display: block !important;
-}
-
-.siteSettingsMenu.ng-hide-add.ng-hide-add-active,
-.siteSettingsMenu.ng-hide-remove {
-  opacity: 0;
-}
-
-.siteSettingsMenu.ng-hide-add,
-.siteSettingsMenu.ng-hide-remove.ng-hide-remove-active {
-  opacity: 1;
-}
-
-.siteSettingsMenu {
-  display: inline-block;
-  position: absolute;
-  left: -154px;
-  top: 40px;
-  z-index: 1000;
-}
-
-.dropdown-menu > li > a {
-    text-align: left;
 }
 
 $width: 768px;
@@ -5181,15 +5125,62 @@ $width: 768px;
 
 
 
-.stop-failover-test {
-  .modal-body {
-    background-color: white;
-  }
+@mixin siteSettingsButtonBase($path) {
+  background-image: url($path);
+  width: 37px;
+  height: 29px;
+}
 
-  .modal-dialog {
-    width: 400px;
+.siteSettingsButtonUp {
+  @include siteSettingsButtonBase('../assets/menuUp.png');
+}
+
+.siteSettingsButtonSelected {
+  @include siteSettingsButtonBase('../assets/menuSelected.png');
+}
+
+.siteSettingsMenu {
+  -webkit-transition: all linear 0.5s;
+  -moz-transition: all linear 0.5s;
+  -o-transition: all linear 0.5s;
+  transition: all linear 0.5s;
+  display: none;
+
+  .z-arrow {
+    width: 10px;
+    height: 10px;
+    right: 10%;
+    margin-right: -5px;
+    top: -7px;
   }
 }
+
+.siteSettingsMenu.ng-hide-add, .siteSettingsMenu.ng-hide-remove {
+  display: block !important;
+}
+
+.siteSettingsMenu.ng-hide-add.ng-hide-add-active,
+.siteSettingsMenu.ng-hide-remove {
+  opacity: 0;
+}
+
+.siteSettingsMenu.ng-hide-add,
+.siteSettingsMenu.ng-hide-remove.ng-hide-remove-active {
+  opacity: 1;
+}
+
+.siteSettingsMenu {
+  display: inline-block;
+  position: absolute;
+  left: -154px;
+  top: 40px;
+  z-index: 1000;
+}
+
+.dropdown-menu > li > a {
+    text-align: left;
+}
+
 .static-routes {
   .angular-ui-tree-nodes .angular-ui-tree-nodes {
     padding-left: 40px;
@@ -5245,39 +5236,6 @@ $width: 768px;
   .modal-body {
     background-color: white;
   }
-}
-
-$width: 550px;
-
-.supportTicketModal {
-  .modal-body{
-    background-color: white;
-    height:420px;
-  }
-
-  .modal-content{
-    width: $width;
-  }
-
-  .error-text{
-    background-color: #f2cfd0;
-    padding: 2px 2px 2px 2px;
-  }
-
-  .success-text{
-    background-color: #a1f27d;
-    padding: 2px 2px 2px 2px;
-  }
-
-  .supportTicketModal__tooltip-position{
-    top: 204px;
-    right: 55px;
-  }
-}
-
-.version-label{
-  position: absolute;
-  bottom: -50px;
 }
 
 .recent-tasks {
@@ -5484,6 +5442,48 @@ $width: 550px;
             background-position: -16px -32px;
         }
     }
+}
+
+.stop-failover-test {
+  .modal-body {
+    background-color: white;
+  }
+
+  .modal-dialog {
+    width: 400px;
+  }
+}
+$width: 550px;
+
+.supportTicketModal {
+  .modal-body{
+    background-color: white;
+    height:420px;
+  }
+
+  .modal-content{
+    width: $width;
+  }
+
+  .error-text{
+    background-color: #f2cfd0;
+    padding: 2px 2px 2px 2px;
+  }
+
+  .success-text{
+    background-color: #a1f27d;
+    padding: 2px 2px 2px 2px;
+  }
+
+  .supportTicketModal__tooltip-position{
+    top: 204px;
+    right: 55px;
+  }
+}
+
+.version-label{
+  position: absolute;
+  bottom: -50px;
 }
 
 .tasks-list-controller {
@@ -5821,6 +5821,40 @@ $width: 550px;
     top: 10px;
   }
 }*/
+
+.vpgs-list-controller {
+    min-width: 1047px;
+    view-switch {
+        position: absolute;
+        left: 115px;
+        top: 16px;
+    }
+
+    .status-filter {
+        float: left;
+        margin-right: 15px;
+        min-width: 70px;
+    }
+
+    .status-filter-area {
+        position: absolute;
+        left: 225px;
+        top: 16px;
+    }
+
+    .status-icon {
+        margin-right: 3px;
+        margin-left: -8px;
+    }
+
+    .ui-select-choices-group-label {
+        color: #595959;
+    }
+
+    .query-position {
+        position: relative;
+    }
+}
 
 .vpg-view {
     @media screen and (min-width: 1366px) {
@@ -6524,37 +6558,52 @@ $width: 550px;
 
 
 
-.vpgs-list-controller {
-    min-width: 1047px;
-    view-switch {
-        position: absolute;
-        left: 115px;
-        top: 16px;
+.modal-vra-change-password {
+  .modal-body {
+    background-color: white;
+  }
+
+  .modal-content {
+    width: 500px;
+  }
+
+  .checkbox-align {
+    margin-top: 4px;
+  }
+    .vib-label{
+        padding: 0;
+        top: 3px;
+        right: 10px;
+    }
+}
+
+.vra-edit-modal {
+    .modal-body {
+        background-color: white;
     }
 
-    .status-filter {
-        float: left;
-        margin-right: 15px;
-        min-width: 70px;
+    .modal-content {
+        width: 500px;
     }
 
-    .status-filter-area {
-        position: absolute;
-        left: 225px;
-        top: 16px;
+    .checkbox-align {
+        margin-top: 4px;
     }
 
-    .status-icon {
-        margin-right: 3px;
-        margin-left: -8px;
+    .create-group-btn {
+        height: 24px;
+        padding: 2px 12px;
     }
 
-    .ui-select-choices-group-label {
-        color: #595959;
+    .vib-label {
+        padding: 0;
+        top: 3px;
+        right: 10px;
     }
 
-    .query-position {
-        position: relative;
+    .password-label {
+        margin-top: 5px;
+        font-size: 10px;
     }
 }
 
@@ -6888,80 +6937,6 @@ $width: 550px;
     }
 }
 
-.modal-vra-change-password {
-  .modal-body {
-    background-color: white;
-  }
-
-  .modal-content {
-    width: 500px;
-  }
-
-  .checkbox-align {
-    margin-top: 4px;
-  }
-    .vib-label{
-        padding: 0;
-        top: 3px;
-        right: 10px;
-    }
-}
-
-.vra-edit-modal {
-    .modal-body {
-        background-color: white;
-    }
-
-    .modal-content {
-        width: 500px;
-    }
-
-    .checkbox-align {
-        margin-top: 4px;
-    }
-
-    .create-group-btn {
-        height: 24px;
-        padding: 2px 12px;
-    }
-
-    .vib-label {
-        padding: 0;
-        top: 3px;
-        right: 10px;
-    }
-
-    .password-label {
-        margin-top: 5px;
-        font-size: 10px;
-    }
-}
-
-
-.vra-install-modal{
-  .modal-body{
-    background-color: white;
-  }
-
-  .modal-content{
-    width: 500px;
-  }
-
-  .checkbox-align{
-    margin-top:4px;
-  }
-
-  .create-group-btn{
-    height: 24px;
-    padding: 2px 12px;
-  }
-
-  .amount-ram-label{
-      padding: 3px 0 0 9px;
-      position: absolute;
-  }
-}
-
 .vra-list-controller {
     .chck-show-host-without-vra-install {
         position: absolute;
@@ -6994,6 +6969,31 @@ $width: 550px;
             }
         }
     }
+}
+
+
+.vra-install-modal{
+  .modal-body{
+    background-color: white;
+  }
+
+  .modal-content{
+    width: 500px;
+  }
+
+  .checkbox-align{
+    margin-top:4px;
+  }
+
+  .create-group-btn{
+    height: 24px;
+    padding: 2px 12px;
+  }
+
+  .amount-ram-label{
+      padding: 3px 0 0 9px;
+      position: absolute;
+  }
 }
 
 .modal-upgrade-vra-modal {
@@ -7581,6 +7581,15 @@ $width: 550px;
     }
 }
 
+.default-query {
+
+    display: inline;
+
+    .fix-dropdown-position {
+        margin-top: 8px;
+    }
+}
+
 .z-grid-inner-container.vpgs-cards-component {
     height: 100%;
 }
@@ -7599,15 +7608,6 @@ $width: 550px;
                 padding-left: 5px;
             }
         }
-    }
-}
-
-.default-query {
-
-    display: inline;
-
-    .fix-dropdown-position {
-        margin-top: 8px;
     }
 }
 
@@ -7696,8 +7696,19 @@ $width: 550px;
     z-index: 3000;
     border: 1px solid black;
     width: 300px;
-    height: 300px;
-    background-color: wheat;
+    height: 320px;
+    background-color: white;
+}
+
+.migrate-dr{
+    margin-bottom: 10px;
+    position: relative;
+    left: 100px;
+}
+.migrate-dr-close{
+    margin-bottom: 10px;
+    position: relative;
+    left: 150px;
 }
 
 .slick-header-menu-date {
@@ -8508,6 +8519,55 @@ $width: 550px;
     }
 }
 
+.topology-tooltip {
+    position: fixed;
+    width: 180px;
+    border: 1px solid #53585f;
+    z-index: 100;
+    background-color: #fff;
+    user-select: text;
+    h4 {
+        position: relative;
+        width: 100%;
+        margin: 0;
+        color: #fff;
+        font-size: 12px;
+        padding: 10px 10px 10px 35px;
+        background: #53585f url('../assets/vpgs_details/topology/vm.png') scroll no-repeat 10px 8px;
+        word-break: break-all;
+    }
+    div {
+        width: 100%;
+        padding: 7px;
+        overflow-y: auto;
+        color: #333;
+    }
+    ul {
+        padding: 7px;
+        list-style-position: inside;
+        li {
+            margin-bottom: 5px;
+            list-style: none;
+            img {
+                display: block;
+                float: left;
+                margin: 2px 5px 0 0;
+            }
+            a {
+                float: right;
+            }
+        }
+    }
+    p {
+        padding: 7px;
+        border-bottom: 1px solid #53585f;
+        &:last-child {
+            border-bottom: 0;
+        }
+    }
+
+}
+
 .vpg-sites-svg {
     width: 100%;
     height: 100%;
@@ -8579,55 +8639,6 @@ $width: 550px;
     }
 }
 
-.topology-tooltip {
-    position: fixed;
-    width: 180px;
-    border: 1px solid #53585f;
-    z-index: 100;
-    background-color: #fff;
-    user-select: text;
-    h4 {
-        position: relative;
-        width: 100%;
-        margin: 0;
-        color: #fff;
-        font-size: 12px;
-        padding: 10px 10px 10px 35px;
-        background: #53585f url('../assets/vpgs_details/topology/vm.png') scroll no-repeat 10px 8px;
-        word-break: break-all;
-    }
-    div {
-        width: 100%;
-        padding: 7px;
-        overflow-y: auto;
-        color: #333;
-    }
-    ul {
-        padding: 7px;
-        list-style-position: inside;
-        li {
-            margin-bottom: 5px;
-            list-style: none;
-            img {
-                display: block;
-                float: left;
-                margin: 2px 5px 0 0;
-            }
-            a {
-                float: right;
-            }
-        }
-    }
-    p {
-        padding: 7px;
-        border-bottom: 1px solid #53585f;
-        &:last-child {
-            border-bottom: 0;
-        }
-    }
-
-}
-
 .z-group-span-pos {
   margin-left: 20px;
 }
@@ -8655,6 +8666,18 @@ $width: 550px;
     }
 }
 
+.date-input-group{
+
+  .input-group-btn{
+    position:relative;
+    right: 17px;
+  }
+
+  .dropdown-menu{
+    background-color: white;
+    border: none;
+  }
+}
 .z-arrow {
   background-color: #656c74;
   border: solid 2px #9da3af;
@@ -8962,18 +8985,6 @@ z-area-chart {
 }
 //END Charts styles
 
-.date-input-group{
-
-  .input-group-btn{
-    position:relative;
-    right: 17px;
-  }
-
-  .dropdown-menu{
-    background-color: white;
-    border: none;
-  }
-}
 .info-cell{
   height:100%;
   width:100%;
